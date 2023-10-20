@@ -12,7 +12,7 @@ website:
     background: "#f0eeeb"
     #logo: images/rwds-logo-150px.png
     #logo-alt: "should be a picture of GS"
-    #title: "&nbsp;Pre<span class='icon-line'></span>Fer"
+    title: "Pre<span class='icon-line'></span>Fer"
     collapse-below: lg
     right:
       #- research/index.qmd
