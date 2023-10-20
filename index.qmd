@@ -109,7 +109,7 @@ PreFer data challenge aims to answer this question by applying a predictive appr
 
 The data challenge will take place in March-September 2024. It is open to everyone, no matter what you do.  
 
-PreFer is organised by the University of Groningen, ODISSEI, Eyra, and Centerdata.  
+PreFer is organised by the [University of Groningen](https://www.rug.nl/), [ODISSEI](https://odissei-data.nl/en/), [Eyra](https://www.eyra.co/), and [Centerdata](https://www.centerdata.nl/).  
 
 :::
 
