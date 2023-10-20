@@ -6,7 +6,7 @@ editor: source
 sidebar: false
 search: false
 description: | 
-  personal website of gert stulp
+  website of the PreFer data challenge
 #image: images/rwds-logo-150px.png
 #title: "GERT<span class='icon-line'></span>STULP"
 listing:
@@ -47,7 +47,7 @@ toc: false
 ::: {.top-story .purple-background}
 ::: {.website-text}
 
-WELCOME TO PreFer DATA CHALLENGE
+Welcome to PreFer data challenge
 
 :::
 :::

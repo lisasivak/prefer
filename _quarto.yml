@@ -2,29 +2,29 @@ project:
   type: website
 
 website:
-  title: "Gert Stulp"
+  #title: "PreFer"
   open-graph: true
   site-url: https://www.gertstulp.com/
-  repo-url: https://github.com/gertstulp/website
+  repo-url: https://github.com/lisasivak/prefer
   #image: images/rwds-logo-150px.png
-  favicon: images/faviconGS.png
+  #favicon: images/faviconGS.png
   navbar:
     background: "#f0eeeb"
     #logo: images/rwds-logo-150px.png
     #logo-alt: "should be a picture of GS"
-    title: "&nbsp;GERT<span class='icon-line'></span>STULP"
+    #title: "&nbsp;Pre<span class='icon-line'></span>Fer"
     collapse-below: lg
     right:
-      - research/index.qmd
+      #- research/index.qmd
       - posts/index.qmd
-      - CV/index.qmd
-      - resources/index.qmd
-      - text: "Other"
-        menu: 
-        - text: "Some notes"
-          href: other/about.qmd
-        - text: "copy-paste"
-          href: other/copypaste.qmd
+      #- CV/index.qmd
+      #- resources/index.qmd
+      #- text: "Other"
+      #  menu: 
+      #  - text: "Some notes"
+      #    href: other/about.qmd
+      #  - text: "copy-paste"
+      #    href: other/copypaste.qmd
   # sidebar: 
   #   - title: "About us"
   #     contents:
@@ -67,22 +67,22 @@ website:
   page-footer:
     background: "#000000"
     left: |
-      GS
+      PreFer data challenge
     center:  
       - href: mailto:g.stulp@rug.nl
         icon: envelope
         aria-label: envelope
-      - href: https://github.com/gertstulp
-        icon: github
-        aria-label: GitHub
-      - href: https://scholar.google.nl/citations?user=fFcVaEYAAAAJ&hl=nl
-        text: "{{< ai google-scholar >}}"
-        aria-label: Scholar
-      - href: https://orcid.org/0000-0003-0173-5554
-        text: "{{< ai orcid >}}"
-        aria-label: Orcid
-    right: |
-      GS
+    #  - href: https://github.com/gertstulp
+    #    icon: github
+    #    aria-label: GitHub
+    #  - href: https://scholar.google.nl/citations?user=fFcVaEYAAAAJ&hl=nl
+    #    text: "{{< ai google-scholar >}}"
+    #    aria-label: Scholar
+    #  - href: https://orcid.org/0000-0003-0173-5554
+    #    text: "{{< ai orcid >}}"
+    #    aria-label: Orcid
+    #right: |
+    #  GS
     
 format:
   html:
