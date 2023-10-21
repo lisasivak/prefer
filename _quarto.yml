@@ -6,13 +6,13 @@ website:
   open-graph: true
   site-url: https://www.gertstulp.com/
   repo-url: https://github.com/lisasivak/prefer
-  #image: images/rwds-logo-150px.png
+  image: images/stork_logo_tr.png
   #favicon: images/faviconGS.png
   navbar:
     background: "#f0eeeb"
-    #logo: images/rwds-logo-150px.png
+    logo: images/stork_logo_tr.png
     #logo-alt: "should be a picture of GS"
-    title: "Pre<span class='icon-line'></span>Fer"
+    #title: "Pre<span class='icon-line'></span>Fer"
     collapse-below: lg
     right:
       #- research/index.qmd
