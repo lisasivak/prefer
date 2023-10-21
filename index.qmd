@@ -63,7 +63,7 @@ Welcome to the PreFer data challenge website
 ::: {.column width="20%"}
 ::: {.face}
 
-![](images/Gert_website_round.png){width=85%}
+![](images/stork_logo_tr.png){width=85%}
 :::
 :::
 
