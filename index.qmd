@@ -142,10 +142,14 @@ To apply for participation, fill in [this form](https://forms.gle/F2YaH6fevYgfKB
 
 You can participate in teams. Ask all your team members to apply.  
 :::
+::: {.column width="3%"}
+:::
 ::: {.column width="30%"}
 __Build a model__  
 
 Use any method you’d like to train a predictive model using training sets. The models will be then evaluated on a holdout set based on the F1 score.  
+:::
+::: {.column width="3%"}
 :::
 ::: {.column width="30%"}
 __Submit the model__  
@@ -154,10 +158,7 @@ Submission platform supports Python and R.
 Information about the deadlines for submissions will appear later on this website.
  
 :::
-::: {.column width="2.5%"}
-:::
-::: {.column width="35%"}
-:::
+
 ::::
 :::
 :::
