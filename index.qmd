@@ -128,7 +128,39 @@ PreFer is organised by the [University of Groningen](https://www.rug.nl/), [ODIS
 
 
 
+<!-- how to participate -->
 
+::: {.content-container}
+::: {.listing-block}
+
+## How to participate
+:::: {.columns}
+::: {.column width="30%"}
+__Apply__  
+
+To apply for participation, fill in [this form](https://forms.gle/F2YaH6fevYgfKBqG7) before February 25, 2024.  
+
+You can participate in teams. Ask all your team members to apply.  
+:::
+::: {.column width="30%"}
+__Build a model__  
+
+Use any method you’d like to train a predictive model using training sets. The models will be then evaluated on a holdout set based on the F1 score.  
+:::
+::: {.column width="30%"}
+__Submit the model__  
+
+Submission platform supports Python and R.
+Information about the deadlines for submissions will appear later on this website.
+ 
+:::
+::: {.column width="2.5%"}
+:::
+::: {.column width="35%"}
+:::
+::::
+:::
+:::
 
 
 
