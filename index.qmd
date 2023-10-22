@@ -10,21 +10,9 @@ description: |
 image: images/stork_logo_tr.png
 #title: "PreFer data<span class='icon-line'></span>challenge"
 listing:
-  - id: details-overview
-    contents: 
-    - /details/overview
-    - "!index.qmd"
-    sort: "date desc"
-    type: grid
-    categories: false
-    sort-ui: false
-    filter-ui: false
-    max-items: 6
-    feed: false
-    
-#  - id: research-overview
+#  - id: details-overview
 #    contents: 
-#    - /research/overview
+#    - /details/overview
 #    - "!index.qmd"
 #    sort: "date desc"
 #    type: grid
@@ -33,6 +21,18 @@ listing:
 #    filter-ui: false
 #    max-items: 6
 #    feed: false
+    
+  - id: research-overview
+    contents: 
+    - /research/overview
+    - "!index.qmd"
+    sort: "date desc"
+    type: grid
+    categories: false
+    sort-ui: false
+    filter-ui: false
+    max-items: 6
+    feed: false
     
 #  - id: latest-content
 #    contents: 
@@ -54,14 +54,25 @@ listing:
 toc: false
 ---
 
-<!-- purple bar at top -->
 ::: {.content-container}
 ::: {.top-story .purple-background}
-::: {.website-text}
 
 
+::: grid
+::: {.g-col-12 .g-col-lg-4 .top-story-text}
+<!-- add emply line-->
+<font size="+1">    </font>
+  
+<font size="+1">Fertility is widely studied in diverse disciplines due to its importance to individuals and societies. Yet we are unable to explain even its short-term changes.</font>  
 
+<font size="+3">__What do we miss?__</font>
 :::
+::: {.g-col-12 .g-col-lg-8 .top-story-img}
+![](/images/etienne-girardet-_HO6LmpGDl8-unsplash.png)
+:::
+:::
+
+
 :::
 :::
 
@@ -70,9 +81,9 @@ toc: false
 ::: {.content-container}
 ::: {.listing-block}
 
-
-Welcome to the website of the __PreFer data challenge__. The aim of the challenge is to measure current predictability of fertility outcomes in the Netherlands.
-PreFer is organised by the [University of Groningen](https://www.rug.nl/), [ODISSEI](https://odissei-data.nl/en/), [EYRA](https://www.eyra.co/), and [Centerdata](https://www.centerdata.nl/).
+<!-- add emply line-->
+<font size="+1">    </font>  
+<font size="+1">Welcome to the website of the __Predicting Fertility data challenge (PreFer)__. The aim of the challenge is to measure current predictability of fertility outcomes in the Netherlands to advance our understanding of fertility.</font>
 
 :::
 ::::
@@ -83,17 +94,33 @@ PreFer is organised by the [University of Groningen](https://www.rug.nl/), [ODIS
 ::: {.content-container}
 ::: {.listing-block}
 ## Overview
-Fertility is widely studied in diverse disciplines due to its importance to individuals and societies. Yet we are unable to explain even its short-term changes and disagree over long-term levels. What do we miss?  
 
-PreFer data challenge aims to answer this question by applying a predictive approach. The challenge measures the current predictability of the following fertility outcome: having a child in 2021-2023 based on the data from previous years up to 2020.  
+
+PreFer data challenge focuses on the following task: for people aged 18-45 in 2020, predict who will have a(nother) child within the following three years (2021-2023) based on the data up to 2020. 
 
 In the challenge, participants will use two unique data sources: the LISS panel, a longitudinal survey based on a random representative sample of the Dutch population, and administrative data from Statistics Netherlands covering the entire Dutch population. Comparing and interpreting the models created in the challenge will help quantify the existing knowledge, highlight the gaps, and gain insights.  
 
-The data challenge will take place in March-September 2024. It is open to everyone, no matter what you do.  
+The data challenge will take place in March-September 2024. It is open for participants from different backgrounds.
+  
 
 PreFer is organised by the [University of Groningen](https://www.rug.nl/), [ODISSEI](https://odissei-data.nl/en/), [Eyra](https://www.eyra.co/), and [Centerdata](https://www.centerdata.nl/).  
 :::
 :::
+
+
+
+::: {.pullout-text}
+::: {.pullout-container}
+::: {.pullout-block .black-background}
+
+
+## Apply to participate and become a part of a unique data challenge in the social sciences
+
+
+:::
+:::
+:::
+
 
 
 
@@ -104,7 +131,7 @@ PreFer is organised by the [University of Groningen](https://www.rug.nl/), [ODIS
 ## How to participate
 :::: {.columns}
 ::: {.column width="30%"}
-__Apply__  
+<font size="+2">__Apply__</font>
 
 To apply for participation, fill in [this form](https://forms.gle/F2YaH6fevYgfKBqG7) before February 25, 2024.  
 
@@ -113,14 +140,14 @@ You can participate in teams. Ask all your team members to apply.
 ::: {.column width="3%"}
 :::
 ::: {.column width="30%"}
-__Build a model__  
+<font size="+2">__Build a model__</font> 
 
 Use any method you’d like to train a predictive model using training sets. The models will be then evaluated on a holdout set based on the F1 score.  
 :::
 ::: {.column width="3%"}
 :::
 ::: {.column width="30%"}
-__Submit the model__  
+<font size="+2">__Submit the model__</font>  
 
 Submission platform supports Python and R.
 Information about the deadlines for submissions will appear later on this website.
@@ -159,7 +186,7 @@ The data challenge is organised by [Gert Stulp](https://www.gertstulp.com/), [To
 ::: {.listing-block}
 
 ## Details about the challenge
-::: {#details-overview}
+::: {#research-overview}
 :::
 
 :::
