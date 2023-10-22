@@ -10,9 +10,9 @@ description: |
 image: images/stork_logo_tr.png
 #title: "PreFer data<span class='icon-line'></span>challenge"
 listing:
-  - id: research-overview
+  - id: details-overview
     contents: 
-    - /research/overview
+    - /details/overview
     - "!index.qmd"
     sort: "date desc"
     type: grid
@@ -22,22 +22,34 @@ listing:
     max-items: 6
     feed: false
     
-  - id: latest-content
-    contents: 
-    - /posts
-    - /research/publications
-    - /research/talks
-    - /viewpoints
-    - "!index.qmd"
-    - "!template_talk.md"
-    - "!template_pub.md"
-    sort: "date desc"
-    type: grid
-    categories: false
-    sort-ui: false
-    filter-ui: false
-    max-items: 3
-    feed: false
+#  - id: research-overview
+#    contents: 
+#    - /research/overview
+#    - "!index.qmd"
+#    sort: "date desc"
+#    type: grid
+#    categories: false
+#    sort-ui: false
+#    filter-ui: false
+#    max-items: 6
+#    feed: false
+    
+#  - id: latest-content
+#    contents: 
+#    - /posts
+#    - /research/publications
+#    - /research/talks
+#    - /viewpoints
+#    - "!index.qmd"
+#    - "!template_talk.md"
+#    - "!template_pub.md"
+#    sort: "date desc"
+#    type: grid
+#    categories: false
+#    sort-ui: false
+#    filter-ui: false
+#    max-items: 3
+#    feed: false
 
 toc: false
 ---
@@ -145,30 +157,14 @@ The data challenge is organised by [Gert Stulp](https://www.gertstulp.com/), [To
 <!-- overview of research -->
 ::: {.content-container}
 ::: {.listing-block}
-<a href="research/index.qmd">
 
-## Research
-</a> 
-
-::: {#research-overview}
+## Details about the challenge
+::: {#details-overview}
 :::
 
 :::
 :::
 
 
-<!-- latest content information -->
-::: {.content-container}
-::: {.listing-block .last-block} 
-<!-- last-block to remove line below -->
-<a href="all-content.qmd">
-
-## Latest content
-</a>
 
 
-::: {#latest-content}
-:::
-
-:::
-:::
