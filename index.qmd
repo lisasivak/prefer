@@ -68,7 +68,7 @@ toc: false
 <font size="+3">__What do we miss?__</font>
 :::
 ::: {.g-col-12 .g-col-lg-8 .top-story-img}
-![](/images/etienne-girardet-_HO6LmpGDl8-unsplash.png)
+![](/images/placeholder_pick.png)
 :::
 :::
 
