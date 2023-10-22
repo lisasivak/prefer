@@ -1,7 +1,7 @@
 ---
-pagetitle: Research | Gert Stulp
+pagetitle: Details
 title: Research
-subtitle: An overview of my research, including talks and publications
+subtitle: Here we describe the details about the challenge.
 title-block-banner: true
 sidebar: false
 page-layout: full
@@ -47,8 +47,7 @@ listing:
     feed: true
 ---
 
-You don't care about the "blabla" and want to get straight to the list of publications? 
-[Go here](../publications.qmd)
+
 
 
 
