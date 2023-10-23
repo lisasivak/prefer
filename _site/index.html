@@ -65,7 +65,7 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-research-overview .list');
+    const listingTargetEl = window.document.querySelector('#listing-details-overview .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
@@ -78,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-research-overview'] = new List('listing-research-overview', options);
+    window['quarto-listings']['listing-details-overview'] = new List('listing-details-overview', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -120,10 +120,33 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="./posts/index.html" rel="" target="">
- <span class="menu-text">Blog</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-about-prefer" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">About PreFer</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-about-prefer">    
+        <li>
+    <a class="dropdown-item" href="./#overview" rel="" target="">
+ <span class="dropdown-text">Overview</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./#how to participate" rel="" target="">
+ <span class="dropdown-text">How to participate</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./#why participate" rel="" target="">
+ <span class="dropdown-text">Why participate</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./#organisers" rel="" target="">
+ <span class="dropdown-text">Organisers</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./#details about the challenge" rel="" target="">
+ <span class="dropdown-text">Details</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
             <div class="quarto-navbar-tools">
 </div>
@@ -219,21 +242,44 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </section>
 </div>
-<!-- about us -->
+<!-- organisers -->
 <div class="content-container">
-<section id="about" class="listing-block">
-<h2>About</h2>
+<section id="organisers" class="listing-block">
+<h2>Organisers</h2>
 <p>The data challenge is organised by <a href="https://www.gertstulp.com/">Gert Stulp</a>, <a href="https://tomemery.eu/">Tom Emery</a>, <a href="https://www.uu.nl/staff/JGarciaBernardo">Javier Garcia Bernardo</a>, <a href="https://www.linkedin.com/in/adriennemendrik?originalSubdomain=nl">Adriënne Mendrik</a>, <a href="https://www.centerdata.nl/team/joris-mulder">Joris Mulder</a>, <a href="https://malvinanissim.github.io/">Malvina Nissim</a>, <a href="https://www.uu.nl/staff/PKPankowska">Paulina Pankowska</a>, <a href="https://lisasivak.github.io/">Elizaveta Sivak</a>.</p>
 </section>
 </div>
-<!-- overview of research -->
+<p>::: :::</p>
+<!-- details about the challenge -->
 <div class="content-container">
 <section id="details-about-the-challenge" class="listing-block">
 <h2>Details about the challenge</h2>
-<div id="listing-research-overview" class="quarto-listing quarto-listing-container-grid">
+<div id="listing-details-overview" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="Overview,Prediction,Machine learning,Data science" data-listing-date-sort="1687730400000" data-listing-file-modified-sort="1697982582497" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<a href="./research/overview/prediction.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="0" data-categories="Data description" data-listing-file-modified-sort="1697981907409" data-listing-reading-time-sort="2">
+<a href="./details/overview/data.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./images/network_Netherlands.jpg" class="thumbnail-image card-img" style="height: 150px;" alt="An image of Gert Darwin or Charles Stulp">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Data
+</h5>
+<div class="card-text listing-description">
+<p>PreFer uses two datasets: the LISS panel and Dutch population registries data.</p>
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="Overview,Prediction,Machine learning,Data science" data-listing-date-sort="1687730400000" data-listing-file-modified-sort="1697981152521" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<a href="./details/overview/prediction.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img src="./images/prediction.png" class="thumbnail-image card-img" style="height: 150px;" alt="Image downloaded from https://rossum.ai/blog/top-5-predictions-for-ai-in-2022/">
@@ -257,8 +303,8 @@ Jun 26, 2023
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="Overview,Networks,Visualisation" data-listing-date-sort="1616022000000" data-listing-file-modified-sort="1697816510687" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<a href="./research/overview/social networks.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="2" data-categories="Overview,Networks,Visualisation" data-listing-date-sort="1616022000000" data-listing-file-modified-sort="1697981152522" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<a href="./details/overview/social networks.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img src="./images/network.png" class="thumbnail-image card-img" style="height: 150px;" alt="Picture of network">
@@ -282,8 +328,8 @@ Mar 18, 2021
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="Overview,Fertility" data-listing-date-sort="1522360800000" data-listing-file-modified-sort="1697977659196" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<a href="./research/overview/fertility.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="3" data-categories="Overview,Fertility" data-listing-date-sort="1522360800000" data-listing-file-modified-sort="1697981152518" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<a href="./details/overview/fertility.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img src="./images/fertility.png" class="thumbnail-image card-img" style="height: 150px;" alt="Visualisation of fertility across time">
@@ -307,8 +353,8 @@ Mar 30, 2018
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="3" data-categories="Overview,Visualisation" data-listing-date-sort="1521586800000" data-listing-file-modified-sort="1697816510688" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<a href="./research/overview/visualisation.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="4" data-categories="Overview,Visualisation" data-listing-date-sort="1521586800000" data-listing-file-modified-sort="1697981152524" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<a href="./details/overview/visualisation.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img src="./images/esm.gif" class="thumbnail-image card-img" style="height: 150px;" alt="A visualistion from ESMvis">
@@ -332,33 +378,8 @@ Mar 21, 2018
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="4" data-categories="Overview,Evolution" data-listing-date-sort="1521327600000" data-listing-file-modified-sort="1698000794121" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
-<a href="./research/overview/evolution.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./images/Charles_Stulp.png" class="thumbnail-image card-img" style="height: 150px;" alt="An image of Gert Darwin or Charles Stulp">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Evolutionary perspectives on human behaviour
-</h5>
-<div class="card-text listing-description">
-<p>Humans are a weird species.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Gert Stulp
-</div>
-<div class="listing-date">
-Mar 18, 2018
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="5" data-categories="Overview,Height,Evolution" data-listing-date-sort="1521154800000" data-listing-file-modified-sort="1697816510685" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<a href="./research/overview/height.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="5" data-categories="Overview,Height,Evolution" data-listing-date-sort="1521154800000" data-listing-file-modified-sort="1697981152519" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<a href="./details/overview/height.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img src="./images/Evolution.png" class="thumbnail-image card-img" style="height: 150px;" alt="Awesome image of animals getting taller">
@@ -389,6 +410,14 @@ No matching items
 </div>
 </section>
 </div>
+<!-- overview of research -->
+<p>&lt;!–::: {.content-container} ::: {.listing-block} <a href="./research/index.html"></a></p><a href="./research/index.html">
+<h2 id="research">Research</h2>
+</a><p><a href="./research/index.html"></a></p>
+<div id="research-overview">
+
+</div>
+<p>::: :::</p>
 
 
 

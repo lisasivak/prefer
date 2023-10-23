@@ -145,12 +145,12 @@
   {
     "listing": "/index.html",
     "items": [
-      "/research/overview/prediction.html",
-      "/research/overview/social networks.html",
-      "/research/overview/fertility.html",
-      "/research/overview/visualisation.html",
-      "/research/overview/evolution.html",
-      "/research/overview/height.html"
+      "/details/overview/data.html",
+      "/details/overview/prediction.html",
+      "/details/overview/social networks.html",
+      "/details/overview/fertility.html",
+      "/details/overview/visualisation.html",
+      "/details/overview/height.html"
     ]
   },
   {

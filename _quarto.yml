@@ -16,7 +16,7 @@ website:
     collapse-below: lg
     right:
       #- research/index.qmd
-      - posts/index.qmd
+      #- posts/index.qmd
       #- CV/index.qmd
       #- resources/index.qmd
       #- text: "Other"
@@ -25,7 +25,19 @@ website:
       #    href: other/about.qmd
       #  - text: "copy-paste"
       #    href: other/copypaste.qmd
-  # sidebar: 
+      - text: "About PreFer"
+        menu: 
+        - text: "Overview"
+          href: "#overview"
+        - text: "How to participate"
+          href: "#how to participate"
+        - text: "Why participate"
+          href: "#why participate"
+        - text: "Organisers"
+          href: "#organisers"
+        - text: "Details about the challenge"
+          href: "#details about the challenge"
+  #sidebar: 
   #   - title: "About us"
   #     contents:
   #       - about-rwds.qmd
