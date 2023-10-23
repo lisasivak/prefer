@@ -7,7 +7,7 @@ website:
   site-url: https://www.gertstulp.com/
   repo-url: https://github.com/lisasivak/prefer
   image: images/stork_logo_tr.png
-  #favicon: images/faviconGS.png
+  favicon: images/stork_logo.png
   navbar:
     background: "#f0eeeb"
     logo: images/stork_logo_tr.png
