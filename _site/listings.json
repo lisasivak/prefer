@@ -145,12 +145,12 @@
   {
     "listing": "/index.html",
     "items": [
-      "/details/overview/data.html",
-      "/details/overview/prediction.html",
-      "/details/overview/social networks.html",
-      "/details/overview/fertility.html",
-      "/details/overview/visualisation.html",
-      "/details/overview/height.html"
+      "/details/overview/1research_questions.html",
+      "/details/overview/2data.html",
+      "/details/overview/3phases.html",
+      "/details/overview/4evaluation_and_winners.html",
+      "/details/overview/5platform.html",
+      "/details/overview/6special_issue.html"
     ]
   },
   {

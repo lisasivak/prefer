@@ -19,7 +19,7 @@ listing:
     categories: false
     sort-ui: false
     filter-ui: false
-    max-items: 6
+    #max-items: 6
     feed: false
     
 #  - id: research-overview
@@ -186,7 +186,7 @@ The data challenge is organised by [Gert Stulp](https://www.gertstulp.com/), [To
 ::: {.content-container}
 ::: {.listing-block}
 
-## Details about the challenge
+## Details
 
 ::: {#details-overview}
 :::
@@ -194,16 +194,7 @@ The data challenge is organised by [Gert Stulp](https://www.gertstulp.com/), [To
 :::
 :::
 
-<!-- overview of research -->
-<!--::: {.content-container}
-::: {.listing-block}
-<a href="research/index.qmd">
 
-## Research
-</a> 
-
-::: {#research-overview}
-:::
 
 :::
 :::

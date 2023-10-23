@@ -72,9 +72,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -142,8 +142,8 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Organisers</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./#details about the challenge" rel="" target="">
- <span class="dropdown-text">Details</span></a>
+    <a class="dropdown-item" href="./#details" rel="" target="">
+ <span class="dropdown-text">Details about the challenge</span></a>
   </li>  
     </ul>
   </li>
@@ -252,15 +252,37 @@ ul.task-list li input[type="checkbox"] {
 <p>::: :::</p>
 <!-- details about the challenge -->
 <div class="content-container">
-<section id="details-about-the-challenge" class="listing-block">
-<h2>Details about the challenge</h2>
+<section id="details" class="listing-block">
+<h2>Details</h2>
 <div id="listing-details-overview" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="Data description" data-listing-file-modified-sort="1697981907409" data-listing-reading-time-sort="2">
-<a href="./details/overview/data.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1698064697275" data-listing-reading-time-sort="1">
+<a href="./details/overview/1research_questions.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img src="./images/network_Netherlands.jpg" class="thumbnail-image card-img" style="height: 150px;" alt="An image of Gert Darwin or Charles Stulp">
+<img src="./images/network.png" class="thumbnail-image card-img" style="height: 150px;" alt="Picture of network">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+The goal and research questions
+</h5>
+<div class="card-text listing-description">
+<p>The goal of the data challenge is to assess the current predictability of individual-level fertility and improve our understanding of fertility behaviour.</p>
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="Data description" data-listing-file-modified-sort="1698064706612" data-listing-reading-time-sort="2">
+<a href="./details/overview/2data.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./images/network_Netherlands.jpg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -278,125 +300,88 @@ Data
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="Overview,Prediction,Machine learning,Data science" data-listing-date-sort="1687730400000" data-listing-file-modified-sort="1697981152521" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<a href="./details/overview/prediction.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1698064033503" data-listing-reading-time-sort="2">
+<a href="./details/overview/3phases.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img src="./images/prediction.png" class="thumbnail-image card-img" style="height: 150px;" alt="Image downloaded from https://rossum.ai/blog/top-5-predictions-for-ai-in-2022/">
+<img src="./images/phases.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-Prediction in the social sciences
+Phases of the challenge
 </h5>
 <div class="card-text listing-description">
 <p>Prediction and explanation in the social sciences.</p>
 </div>
-<div class="card-attribution card-text-small justify">
+<div class="card-attribution card-text-small start">
 <div class="listing-author">
-Gert Stulp
-</div>
-<div class="listing-date">
-Jun 26, 2023
+
 </div>
 </div>
 </div>
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="Overview,Networks,Visualisation" data-listing-date-sort="1616022000000" data-listing-file-modified-sort="1697981152522" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<a href="./details/overview/social networks.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./images/network.png" class="thumbnail-image card-img" style="height: 150px;" alt="Picture of network">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Social networks
-</h5>
-<div class="card-text listing-description">
-Humans are a social species, being influenced by the thoughs and behaviours of people in their networks. Characterising these networks, and getting data on them, is…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Gert Stulp
-</div>
-<div class="listing-date">
-Mar 18, 2021
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="Overview,Fertility" data-listing-date-sort="1522360800000" data-listing-file-modified-sort="1697981152518" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<a href="./details/overview/fertility.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1698065300585" data-listing-reading-time-sort="1">
+<a href="./details/overview/4evaluation_and_winners.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img src="./images/fertility.png" class="thumbnail-image card-img" style="height: 150px;" alt="Visualisation of fertility across time">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-Studying the number of children people want and have
+Evaluation and winners
 </h5>
 <div class="card-text listing-description">
-There is huge variation in the number of children people (would like to) have over time / across the globe / within countries. I try to study the determinants of this…
+<p>Evaluation criteria and determining the winners.</p>
 </div>
-<div class="card-attribution card-text-small justify">
+<div class="card-attribution card-text-small start">
 <div class="listing-author">
-Gert Stulp
-</div>
-<div class="listing-date">
-Mar 30, 2018
+
 </div>
 </div>
 </div>
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="4" data-categories="Overview,Visualisation" data-listing-date-sort="1521586800000" data-listing-file-modified-sort="1697981152524" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<a href="./details/overview/visualisation.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./images/esm.gif" class="thumbnail-image card-img" style="height: 150px;" alt="A visualistion from ESMvis">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Visualisation in research
-</h5>
-<div class="card-text listing-description">
-Visualisation is key in any project involving datapoints. Yet the reader is not ‘showered in graphical displays’ [Anscombe, 1973]. I am an active promotor of the use of…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Gert Stulp
-</div>
-<div class="listing-date">
-Mar 21, 2018
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="5" data-categories="Overview,Height,Evolution" data-listing-date-sort="1521154800000" data-listing-file-modified-sort="1697981152519" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<a href="./details/overview/height.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="4" data-listing-file-modified-sort="1698065011030" data-listing-reading-time-sort="2">
+<a href="./details/overview/5platform.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img src="./images/Evolution.png" class="thumbnail-image card-img" style="height: 150px;" alt="Awesome image of animals getting taller">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-Evolutionary perspectives on human height variation
+Submission
 </h5>
 <div class="card-text listing-description">
-My research in the past has focussed on variation in human height. In particular, how evolutionary processes have been and are shaping variation in stature. I tried to…
+<p>Description of the submission process.</p>
 </div>
-<div class="card-attribution card-text-small justify">
+<div class="card-attribution card-text-small start">
 <div class="listing-author">
-Gert Stulp
+
 </div>
-<div class="listing-date">
-Mar 16, 2018
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="5" data-listing-file-modified-sort="1698064860573" data-listing-reading-time-sort="1">
+<a href="./details/overview/6special_issue.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./images/esm.gif" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Special issue
+</h5>
+<div class="card-text listing-description">
+<p>Results will be published in a special issue of a journal.</p>
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+
 </div>
 </div>
 </div>
@@ -409,13 +394,6 @@ No matching items
 </div>
 </div>
 </section>
-</div>
-<!-- overview of research -->
-<p>&lt;!–::: {.content-container} ::: {.listing-block} <a href="./research/index.html"></a></p><a href="./research/index.html">
-<h2 id="research">Research</h2>
-</a><p><a href="./research/index.html"></a></p>
-<div id="research-overview">
-
 </div>
 <p>::: :::</p>
 

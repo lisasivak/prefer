@@ -1,15 +1,9 @@
 ---
-title: "Visualisation in research"
+title: "Special issue"
 description: |
-  Visualisation is key in any project involving datapoints. Yet the reader is not 'showered in graphical displays' [Anscombe, 1973]. I am an active promotor of the use of visualisation, and try to help people make graphs in several ways: i) by making the graphs for them; ii) by giving visualisation-workshops in R; iii) by creating R-packages that facilitate the use of graphs.
-categories:
-  - Overview
-  - Visualisation
-author: "Gert Stulp"
-date: "2018-03-21"
+  Results will be published in a special issue of a journal.
 toc: true
 image: ../../images/esm.gif
-image-alt: A visualistion from ESMvis
 language: 
     section-title-footnotes: References
 ---
