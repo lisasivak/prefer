@@ -6,11 +6,11 @@ website:
   open-graph: true
   site-url: https://www.gertstulp.com/
   repo-url: https://github.com/lisasivak/prefer
-  image: images/stork_logo_tr.png
-  favicon: images/stork_logo.png
+  image: images/PreFer_logo LONG2.png
+  favicon: images/PreFer_logo_favicon.png
   navbar:
     background: "#f0eeeb"
-    logo: images/stork_logo_tr.png
+    logo: images/PreFer_logo LONG2.png
     #logo-alt: "should be a picture of GS"
     #title: "Pre<span class='icon-line'></span>Fer"
     collapse-below: lg

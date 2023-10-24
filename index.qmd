@@ -7,7 +7,7 @@ sidebar: false
 search: false
 description: | 
   website of the PreFer data challenge
-image: images/stork_logo_tr.png
+image: images/PreFer_logo LONG2.png
 #title: "PreFer data<span class='icon-line'></span>challenge"
 listing:
   - id: details-overview
@@ -99,10 +99,12 @@ PreFer data challenge focuses on the following task: for people aged 18-45 in 20
 
 In the challenge, participants will use two unique data sources: the LISS panel, a longitudinal survey based on a random representative sample of the Dutch population, and administrative data from Statistics Netherlands covering the entire Dutch population. Comparing and interpreting the models created in the challenge will help quantify the existing knowledge, highlight the gaps, and gain insights.  
 
-The data challenge will take place in March-September 2024. It is open for participants from different backgrounds.
+The data challenge will take place in Spring-Summer 2024. It is open for participants from different backgrounds.
   
 
 PreFer is organised by the [University of Groningen](https://www.rug.nl/), [ODISSEI](https://odissei-data.nl/en/), [Eyra](https://www.eyra.co/), and [Centerdata](https://www.centerdata.nl/).  
+
+<font size="+2">Registration will open in early 2024. __Please fill out [this form](https://forms.gle/HUzwTZqmg8BTt6Bg7)__ to receive an update when registration opens.</font>
 :::
 :::
 
@@ -132,16 +134,17 @@ PreFer is organised by the [University of Groningen](https://www.rug.nl/), [ODIS
 ::: {.column width="30%"}
 <font size="+2">__Apply__</font>
 
-To apply for participation, fill in [this form](https://forms.gle/F2YaH6fevYgfKBqG7) before February 25, 2024.  
+Registration will open in early 2024.   
 
-You can participate in teams. Ask all your team members to apply.  
+__Please fill out [this form](https://forms.gle/HUzwTZqmg8BTt6Bg7)__ to receive an update when registration opens.
+  
 :::
 ::: {.column width="3%"}
 :::
 ::: {.column width="30%"}
 <font size="+2">__Build a model__</font> 
 
-Use any method you’d like to train a predictive model using training sets. The models will be then evaluated on a holdout set based on the F1 score.  
+Use any method you’d like to train a predictive model using training sets. The models will be then evaluated on a holdout set based on the F1 score. You can participate individually or in teams.  
 :::
 ::: {.column width="3%"}
 :::
@@ -196,8 +199,6 @@ The data challenge is organised by [Gert Stulp](https://www.gertstulp.com/), [To
 
 
 
-:::
-:::
 
 
 

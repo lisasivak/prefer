@@ -3,7 +3,7 @@ title: "Special issue"
 description: |
   Results will be published in a special issue of a journal.
 toc: true
-image: ../../images/esm.gif
+image: ../../images/spec_issue.png
 language: 
     section-title-footnotes: References
 ---
