@@ -25,6 +25,7 @@ website:
       #    href: other/about.qmd
       #  - text: "copy-paste"
       #    href: other/copypaste.qmd
+      - posts/index.qmd
       - text: "About PreFer"
         menu: 
         - text: "Overview"
@@ -37,6 +38,7 @@ website:
           href: "#organisers"
         - text: "Details about the challenge"
           href: "#details"
+      
   #sidebar: 
   #   - title: "About us"
   #     contents:
@@ -80,10 +82,10 @@ website:
     background: "#000000"
     left: |
       PreFer data challenge
-    center:  
-      - href: mailto:g.stulp@rug.nl
-        icon: envelope
-        aria-label: envelope
+    #center:  
+    #  - href: mailto:g.stulp@rug.nl
+    #    icon: envelope
+    #    aria-label: envelope
     #  - href: https://github.com/gertstulp
     #    icon: github
     #    aria-label: GitHub

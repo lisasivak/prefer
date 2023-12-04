@@ -123,23 +123,7 @@
   {
     "listing": "/posts/index.html",
     "items": [
-      "/posts/posts/2023-08-24-density-plots.html",
-      "/posts/posts/2023-06-01-demos.html",
-      "/posts/posts/2023-07-15-introducing-new-website.html",
-      "/posts/posts/2023-05-25-thesis-prize-hannah.html",
-      "/posts/posts/2023-04-19-HOP.html",
-      "/posts/posts/2021-11-15-open-as-possible.html",
-      "/posts/posts/2021-09-29-several-interviews-height.html",
-      "/posts/posts/2020-02-20-the-economist-improving-my-graphs.html",
-      "/posts/posts/2020-02-19-artikel-op-sociale-vraagstukken.html",
-      "/posts/posts/2020-03-12-interview-voor-het-parool-over-het-jong-krijgen-van-kinderen.html",
-      "/posts/posts/2020-03-12-interview-for-bbc-about-secular-trend-in-height.html",
-      "/posts/posts/2019-03-01-winning-hackaton-hack-the-educational-gap.html",
-      "/posts/posts/2019-02-24-talk-about-the-flag-research-group.html",
-      "/posts/posts/2018-10-22-new-movie-about-research-group.html",
-      "/posts/posts/2018-04-24-new-scientist-wetenschapstalent.html",
-      "/posts/posts/2018-03-24-different-ways-of-calculating-rowmeans-on-selected-variables-in-a-tidyverse-framework.html",
-      "/posts/posts/2018-04-11-testing-theory-in-r.html"
+      "/posts/posts/2023-08-24-density-plots.html"
     ]
   },
   {
@@ -157,25 +141,9 @@
     "listing": "/all-content.html",
     "items": [
       "/posts/posts/2023-08-24-density-plots.html",
-      "/posts/posts/2023-06-01-demos.html",
-      "/posts/posts/2023-07-15-introducing-new-website.html",
       "/research/overview/prediction.html",
-      "/posts/posts/2023-05-25-thesis-prize-hannah.html",
-      "/posts/posts/2023-04-19-HOP.html",
-      "/posts/posts/2021-11-15-open-as-possible.html",
-      "/posts/posts/2021-09-29-several-interviews-height.html",
       "/research/overview/social networks.html",
-      "/posts/posts/2020-02-20-the-economist-improving-my-graphs.html",
-      "/posts/posts/2020-02-19-artikel-op-sociale-vraagstukken.html",
-      "/posts/posts/2020-03-12-interview-voor-het-parool-over-het-jong-krijgen-van-kinderen.html",
-      "/posts/posts/2020-03-12-interview-for-bbc-about-secular-trend-in-height.html",
-      "/posts/posts/2019-03-01-winning-hackaton-hack-the-educational-gap.html",
-      "/posts/posts/2019-02-24-talk-about-the-flag-research-group.html",
-      "/posts/posts/2018-10-22-new-movie-about-research-group.html",
-      "/posts/posts/2018-04-24-new-scientist-wetenschapstalent.html",
       "/research/overview/fertility.html",
-      "/posts/posts/2018-03-24-different-ways-of-calculating-rowmeans-on-selected-variables-in-a-tidyverse-framework.html",
-      "/posts/posts/2018-04-11-testing-theory-in-r.html",
       "/research/overview/visualisation.html",
       "/research/overview/evolution.html",
       "/research/overview/height.html"
