@@ -4,7 +4,7 @@ project:
 website:
   #title: "PreFer"
   open-graph: true
-  site-url: https://www.gertstulp.com/
+  site-url: https://www.prefer.web.rug.nl/
   repo-url: https://github.com/lisasivak/prefer
   image: images/PreFer_logo LONG2.png
   favicon: images/PreFer_logo_favicon.png
@@ -26,9 +26,11 @@ website:
       #  - text: "copy-paste"
       #    href: other/copypaste.qmd
       - text: "About PreFer"
-        href: "#overview"
+        href: "#about prefer"
+      - text: "Apply"
+        href: "#apply-to"
       - text: "How to participate"
-        href: "#overview"
+        href: "#how-to-participate"
       - posts/index.qmd
       - text: "About PreFer"
         menu: 
@@ -36,7 +38,7 @@ website:
           href: "#overview"
         - text: "How to participate"
           href: "#participate"
-        - text: "Why participate"
+        - text: "Why-participate"
           href: "#why participate"
         - text: "Organisers"
           href: "#organisers"
