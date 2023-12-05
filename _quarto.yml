@@ -27,6 +27,8 @@ website:
       #    href: other/copypaste.qmd
       - text: "About PreFer"
         href: "#overview"
+      - text: "Goal"
+        href: "#the-goal"
       - text: "How to participate"
         href: "#overview"
       - faq/index.qmd
