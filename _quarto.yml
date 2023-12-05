@@ -29,6 +29,7 @@ website:
         href: "#overview"
       - text: "How to participate"
         href: "#overview"
+      - faq/index.qmd
       - posts/index.qmd
       - text: "About PreFer"
         menu: 

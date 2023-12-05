@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="website of the PreFer data challenge">
 
-<title>prefer.gmw.rug.nl</title>
+<title>FAQ</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,8 +31,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./images/PreFer_logo_favicon.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -63,48 +60,14 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-details-overview .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-details-overview'] = new List('listing-details-overview', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="rwds.css">
-<meta property="og:title" content="prefer.gmw.rug.nl">
-<meta property="og:description" content="website of the PreFer data challenge">
-<meta property="og:image" content="https://www.gertstulp.com/images/PreFer_logo LONG2.png">
-<meta property="og:image:height" content="84">
-<meta property="og:image:width" content="300">
+<meta property="og:title" content="FAQ">
+<meta property="og:description" content="Questions">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -130,8 +93,8 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">How to participate</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./faq/index.html" rel="" target="">
- <span class="menu-text">FAQ</span></a>
+    <a class="nav-link active" href="./faq.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./posts/index.html" rel="" target="">
@@ -172,252 +135,40 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-layout-custom page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page">
+      <h1 class="title">Research</h1>
+            <p class="subtitle lead">Questions</p>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
 <!-- main -->
-
-
-
-<div class="content-container">
-<div class="top-story purple-background">
-<div class="grid">
-<div class="g-col-12 g-col-lg-4 top-story-text">
-<!-- add emply line-->
-<p><font size="+1"> </font></p>
-<p><font size="+1">Fertility is widely studied in diverse disciplines due to its importance to individuals and societies. Yet we are unable to explain even its short-term changes.</font></p>
-<p><font size="+3"><strong>What do we miss?</strong></font></p>
-</div>
-<div class="g-col-12 g-col-lg-8 top-story-img">
-<p><img src=".\images/placeholder_pick.png" class="img-fluid"></p>
-</div>
-</div>
-</div>
-</div>
-<!-- quick overview -->
-<div class="content-container">
-<div class="listing-block">
-<!-- add emply line-->
-<p><font size="+1"> </font><br>
-<font size="+1">Welcome to the website of the <strong>Predicting Fertility data challenge (PreFer)</strong>. The aim of the challenge is to measure current predictability of fertility outcomes in the Netherlands to advance our understanding of fertility.</font></p>
-</div>
-</div>
-<!--  overview  -->
-<div class="content-container">
-<section id="overview" class="listing-block">
-<h2>Overview</h2>
-<p>PreFer data challenge focuses on the following task: for people aged 18-45 in 2020, predict who will have a(nother) child within the following three years (2021-2023) based on the data up to 2020.</p>
-<p>In the challenge, participants will use two unique data sources: the LISS panel, a longitudinal survey based on a random representative sample of the Dutch population, and administrative data from Statistics Netherlands covering the entire Dutch population. Comparing and interpreting the models created in the challenge will help quantify the existing knowledge, highlight the gaps, and gain insights.</p>
-<p>The data challenge will take place in Spring-Summer 2024. It is open for participants from different backgrounds.</p>
-<p>PreFer is organised by the <a href="https://www.rug.nl/">University of Groningen</a>, <a href="https://odissei-data.nl/en/">ODISSEI</a>, <a href="https://www.eyra.co/">Eyra</a>, and <a href="https://www.centerdata.nl/">Centerdata</a>.</p>
-<p><font size="+2">Registration will open in early 2024. <strong>Please fill out <a href="https://forms.gle/HUzwTZqmg8BTt6Bg7">this form</a></strong> to receive an update when registration opens.</font></p>
-</section>
-</div>
-<div class="pullout-text">
-<div class="pullout-container">
-<section id="apply-to-participate-and-become-a-part-of-a-unique-data-challenge-in-the-social-sciences" class="pullout-block black-background">
-<h2>Apply to participate and become a part of a unique data challenge in the social sciences</h2>
-</section>
-</div>
-</div>
-<!-- how to participate -->
-<div class="content-container">
-<section id="participate" class="listing-block">
-<h2>Participate</h2>
-<div class="columns">
-<div class="column" style="width:30%;">
-<p><font size="+2"><strong>Apply</strong></font></p>
-<p>Registration will open in early 2024.</p>
-<p><strong>Please fill out <a href="https://forms.gle/HUzwTZqmg8BTt6Bg7">this form</a></strong> to receive an update when registration opens.</p>
-</div><div class="column" style="width:3%;">
-
-</div><div class="column" style="width:30%;">
-<p><font size="+2"><strong>Build a model</strong></font></p>
-<p>Use any method you’d like to train a predictive model using training sets. The models will be then evaluated on a holdout set based on the F1 score. You can participate individually or in teams.</p>
-</div><div class="column" style="width:3%;">
-
-</div><div class="column" style="width:30%;">
-<p><font size="+2"><strong>Submit the model</strong></font></p>
-<p>Submission platform supports Python and R. Information about the deadlines for submissions will appear later on this website.</p>
-</div>
-</div>
-</section>
-</div>
-<!-- why participate -->
-<div class="content-container">
-<section id="why-participate" class="listing-block">
-<h2>Why participate</h2>
-<ul>
-<li>Use unique data from the LISS panel and the Dutch population registries, including a social network for the entire Dutch population<br>
-</li>
-<li>Have fun learning new skills, competing with other teams, and discovering unique data while predicting an important life outcome<br>
-</li>
-<li>Contribute to research on fertility behaviour<br>
-</li>
-<li>Collaborate on scientific papers describing the results of the challenge<br>
-</li>
-<li>Win recognition and prizes</li>
-</ul>
-</section>
-</div>
-<!-- organisers -->
-<div class="content-container">
-<section id="organisers" class="listing-block">
-<h2>Organisers</h2>
-<p>The data challenge is organised by <a href="https://www.gertstulp.com/">Gert Stulp</a>, <a href="https://tomemery.eu/">Tom Emery</a>, <a href="https://www.uu.nl/staff/JGarciaBernardo">Javier Garcia Bernardo</a>, <a href="https://www.linkedin.com/in/adriennemendrik?originalSubdomain=nl">Adriënne Mendrik</a>, <a href="https://www.centerdata.nl/team/joris-mulder">Joris Mulder</a>, <a href="https://malvinanissim.github.io/">Malvina Nissim</a>, <a href="https://www.uu.nl/staff/PKPankowska">Paulina Pankowska</a>, <a href="https://lisasivak.github.io/">Elizaveta Sivak</a>.</p>
-</section>
-</div>
-<p>::: :::</p>
-<!-- details about the challenge -->
-<div class="content-container">
-<section id="details" class="listing-block">
-<h2>Details</h2>
-<div id="listing-details-overview" class="quarto-listing quarto-listing-container-grid">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1701769251783" data-listing-reading-time-sort="1">
-<a href="./details/overview/1research_questions.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./images/adam-mosley-rfpkJjNWJLE-unsplash.jpg" class="thumbnail-image card-img" style="height: 150px;" alt="Picture of network">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-The goal and research questions
-</h5>
-<div class="card-text listing-description">
-<p>The goal of the data challenge is to assess the current predictability of individual-level fertility and improve our understanding of fertility behaviour.</p>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="Data description" data-listing-file-modified-sort="1701769251802" data-listing-reading-time-sort="2">
-<a href="./details/overview/2data.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./images/data_scheme.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Data
-</h5>
-<div class="card-text listing-description">
-<p>PreFer uses two datasets: the LISS panel and Dutch population registries data.</p>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1698064033503" data-listing-reading-time-sort="2">
-<a href="./details/overview/3phases.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./images/phases.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Phases of the challenge
-</h5>
-<div class="card-text listing-description">
-<p>Prediction and explanation in the social sciences.</p>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1701769251822" data-listing-reading-time-sort="1">
-<a href="./details/overview/4evaluation_and_winners.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./images/jason-leung-Xaanw0s0pMk-unsplash.jpg" class="thumbnail-image card-img" style="height: 150px;" alt="Visualisation of fertility across time">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Evaluation and winners
-</h5>
-<div class="card-text listing-description">
-<p>Evaluation criteria and determining the winners.</p>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="4" data-listing-file-modified-sort="1698065011030" data-listing-reading-time-sort="2">
-<a href="./details/overview/5platform.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./images/Evolution.png" class="thumbnail-image card-img" style="height: 150px;" alt="Awesome image of animals getting taller">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Submission
-</h5>
-<div class="card-text listing-description">
-<p>Description of the submission process.</p>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="5" data-listing-file-modified-sort="1698170229617" data-listing-reading-time-sort="1">
-<a href="./details/overview/6special_issue.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./images/spec_issue.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Special issue
-</h5>
-<div class="card-text listing-description">
-<p>Results will be published in a special issue of a journal.</p>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div>
-</section>
-</div>
+<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
 
 
 
 
+<p>You don’t care about the “blabla” and want to get straight to the list of publications? <a href="../publications.qmd">Go here</a></p>
 
+
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

@@ -1,0 +1,20 @@
+---
+pagetitle: FAQ
+title: FAQ
+#subtitle: Questions
+title-block-banner: true
+sidebar: false
+page-layout: full
+search: false  
+
+---
+
+- __How much time it will take to participate in the challenge?__
+- From a couple of days to several months
+
+- __I don't have experience in machine learning, can I participate?__
+- Yes
+
+
+
+
