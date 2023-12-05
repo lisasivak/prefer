@@ -5,7 +5,7 @@ description: |
 categories:
   - Data description
 toc: true
-image: ../../images/network_Netherlands.jpg
+image: ../../images/data_scheme.png
 language: 
     section-title-footnotes: References
 ---

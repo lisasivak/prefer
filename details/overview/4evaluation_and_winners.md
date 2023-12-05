@@ -3,7 +3,7 @@ title: "Evaluation and winners"
 description: |
   Evaluation criteria and determining the winners.
 toc: true
-image: ../../images/fertility.png
+image: ../../images/jason-leung-Xaanw0s0pMk-unsplash.jpg
 image-alt: Visualisation of fertility across time
 language: 
     section-title-footnotes: References

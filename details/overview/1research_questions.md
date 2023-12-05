@@ -3,7 +3,7 @@ title: "The goal and research questions"
 description: |
   The goal of the data challenge is to assess the current predictability of individual-level fertility and improve our understanding of fertility behaviour.
 toc: true
-image: ../../images/network.png
+image: ../../images/adam-mosley-rfpkJjNWJLE-unsplash.jpg
 image-alt: Picture of network
 language: 
     section-title-footnotes: References
