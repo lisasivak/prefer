@@ -25,13 +25,17 @@ website:
       #    href: other/about.qmd
       #  - text: "copy-paste"
       #    href: other/copypaste.qmd
+      - text: "About PreFer"
+        href: "#overview"
+      - text: "How to participate"
+        href: "#overview"
       - posts/index.qmd
       - text: "About PreFer"
         menu: 
         - text: "Overview"
           href: "#overview"
         - text: "How to participate"
-          href: "#how to participate"
+          href: "#participate"
         - text: "Why participate"
           href: "#why participate"
         - text: "Organisers"

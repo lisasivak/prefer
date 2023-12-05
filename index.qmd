@@ -129,7 +129,7 @@ PreFer is organised by the [University of Groningen](https://www.rug.nl/), [ODIS
 ::: {.content-container}
 ::: {.listing-block}
 
-## How to participate
+## Participate
 :::: {.columns}
 ::: {.column width="30%"}
 <font size="+2">__Apply__</font>
