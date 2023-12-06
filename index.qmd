@@ -59,16 +59,16 @@ toc: false
 
 ::: grid
 
-::: {.g-col-2 .g-col-lg-10 .top-story-text}
+::: {.g-col-8  .top-story-text}
 <!-- add emply line-->
 <font size="+1">    </font>
   
-<font size="+1">Fertility is widely studied in diverse disciplines due to its importance to individuals and societies. Yet we are unable to explain even its short-term changes.</font>  
+<font size="+2">Fertility is widely studied in diverse disciplines due to its importance to individuals and societies. Yet we are unable to explain even its short-term changes.</font>  
 
 <font size="+3">__What do we miss?__</font>
 :::
-::: {.g-col-2 .g-col-lg-2 .top-story-img}
-![](/images/PreFer logo white_no text.png)
+::: {.g-col-4  .top-story-img}
+![](/images/ttf plot.png)
 :::
 
 :::
@@ -95,20 +95,20 @@ toc: false
 ::: {.listing-block}
 ## About PreFer
 
-PreFer data challenge focuses on the following task: for people aged 18-45 in 2020, predict who will have a(nother) child within the following three years (2021-2023) based on the data up to 2020. 
+PreFer data challenge focuses on the following task: for people aged 18-45 in 2020, predict who will have a(nother) child within the following three years (2021-2023) based on the data up to and including 2020. 
 
 In the challenge, participants will use two unique data sources to make predictions: the LISS panel, a longitudinal survey based on a random representative sample of the Dutch population, and administrative data from Statistics Netherlands covering the entire Dutch population. Comparing and interpreting the models created in the challenge will help quantify the existing knowledge, highlight the gaps, and gain insights.  
 
-The data challenge will take place from __the beginning of March__ until __the end of September 2024__. It is open for participants from __different backgrounds__.
+The data challenge will take place from __the beginning of April__ until __the end of September 2024__. It is open for participants from __different backgrounds__.
   
 
 PreFer is organised by the [University of Groningen](https://www.rug.nl/){target="_blank"}, [ODISSEI](https://odissei-data.nl/en/){target="_blank"}, [Eyra](https://www.eyra.co/){target="_blank"}, and [Centerdata](https://www.centerdata.nl/){target="_blank"}.  
 
 See [here](#details-about-the-challenge) details about the methodology of the data challenge.
 
-## The goal
+## The aim
 
-Data challenges led to progress in many fields. But rare in social sciences. this data challenge can asses the predictability
+The main aim of the data challenge is to understand fertility behavior better. Identify new predictors, etc.  Data challenges have led to progress in many fields but they are rare in social sciences. We hope that this data challenge will advance ....
 
 
 :::
@@ -140,30 +140,22 @@ Data challenges led to progress in many fields. But rare in social sciences. thi
 <!--::: {.column width="30%"}-->
 ### Apply 
 
-__Please fill out [this form](https://forms.gle/cxc7U24n5ox7A1vu7){target="_blank"}__ to apply for participation in the data challenge.
+Fill out [this form](https://forms.gle/cxc7U24n5ox7A1vu7){target="_blank"} to apply for participation in the data challenge.
+__The application deadline is March 24th.__
   
-## Build a model 
+### Build a model 
 
-Use any method you’d like to train a predictive model using training sets. The models will be then evaluated on a holdout set based on the F1 score. You can participate individually or in teams.  
-:::
-::: {.column width="3%"}
-:::
-::: {.column width="30%"}
-<font size="+2">__Submit the model__</font>  
+Use any method you’d like to train a predictive model using training data. The models will be then evaluated on a holdout set based on the F1 score. You can participate individually or in teams. 
+Example scripts will be provided...
 
-Submission platform supports Python and R.
-Information about the deadlines for submissions will appear later on this website.
+### Submit the model  
+
+submit your model (in the case of LISS) or predictions (for CBS)...
+Details about the submission here (link to submission page)
  
-:::
-
-::::
-:::
-:::
-
 
 <!-- why participate -->
-::: {.content-container}
-::: {.listing-block}
+
 ## Why participate
 * Use unique data from the LISS panel and the Dutch population registries, including a social network for the entire Dutch population  
 * Have fun learning new skills, competing with other teams, and discovering unique data while predicting an important life outcome  
@@ -171,16 +163,9 @@ Information about the deadlines for submissions will appear later on this websit
 * Collaborate on scientific papers describing the results of the challenge  
 * Win recognition and prizes  
 
-:::
-:::
 
-<!-- organisers -->
-::: {.content-container}
-::: {.listing-block}
-## Organisers
-The data challenge is organised by [Gert Stulp](https://www.gertstulp.com/){target="_blank"}, [Tom Emery](https://tomemery.eu/){target="_blank"}, [Javier Garcia Bernardo](https://www.uu.nl/staff/JGarciaBernardo){target="_blank"}, [Adriënne Mendrik](https://www.linkedin.com/in/adriennemendrik?originalSubdomain=nl){target="_blank"}, [Joris Mulder](https://www.centerdata.nl/team/joris-mulder){target="_blank"}, [Malvina Nissim](https://malvinanissim.github.io/){target="_blank"}, [Paulina Pankowska](https://www.uu.nl/staff/PKPankowska){target="_blank"}, [Elizaveta Sivak](https://lisasivak.github.io/){target="_blank"}.
-:::
-:::
+
+
 
 :::
 :::

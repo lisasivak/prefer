@@ -17,3 +17,7 @@ The goal of the data challenge is to assess the current predictability of indivi
 * How do theory-driven methods compare to data-driven in terms of predictive accuracy?  
 * What poses larger constraints on predicive ability: the number of cases or the number of (‘subjective’) variables? Survey data typically consists of thousands of variables (including subjective measures like intentions or values) on a relatively small sample (at least for data science projects; Garip). Population registries typically contain fewer variables only on a set of ‘objective’ measures (e.g., income, education, cohabiation) but describe a large number of people. 
 
+
+
+<font size="-2">Photo by <a href="https://unsplash.com/@awm0st?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Adam Mosley</a> on <a href="https://unsplash.com/photos/white-stork-flying-under-blue-sky-during-daytime-rfpkJjNWJLE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></font>
+  

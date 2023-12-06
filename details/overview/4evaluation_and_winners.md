@@ -14,3 +14,7 @@ To calculate the outcome for the LISS data, we used the data from the “Family 
 In the case of CBS, we used the CBS dataset Kindoudertab that links children with their parents and the data containing the year of birth for each resident of the Netherlands. Based on that, for each person in the sample (Dutch population aged 18-45 in 2020), we calculated the number of children born in 2021-2023 and then derived whether or not a person had at least one new child in 2021-2023. 
 
 
+
+
+<font size="-2">Photo by <a href="https://unsplash.com/@ninjason?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Jason Leung</a> on <a href="https://unsplash.com/photos/selective-focus-photography-of-multicolored-confetti-lot-Xaanw0s0pMk?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></font>
+  

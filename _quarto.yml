@@ -26,30 +26,38 @@ website:
       #  - text: "copy-paste"
       #    href: other/copypaste.qmd
       - text: "About PreFer"
-        href: "#overview"
-      - text: "Goal"
-        href: "#the-goal"
+        href: "#about-prefer"
+      - text: "APPLY"
+        href: "#apply-to"
+      #- text: "The aim"
+      #  href: "#the-aim"
       - text: "How to participate"
-        href: "#overview"
+        href: "#how-to-participate"
+      - text: "Why participate"
+        href: "#why-participate"
+      - text: "Methodology"
+        href: "#details-about-the-challenge"
       - faq/index.qmd
       - posts/index.qmd
-      - text: "About PreFer"
+      - text: "About the organizers"
         menu: 
-        - text: "Overview"
-          href: "#overview"
-        - text: "How to participate"
-          href: "#participate"
-        - text: "Why participate"
-          href: "#why participate"
-        - text: "Organisers"
-          href: "#organisers"
-        - text: "Details about the challenge"
-          href: "#details"
+        - text: "Who we are"
+          href: about-us.qmd
+        - text: "Contact us"
+          href: contact.qmd
+      #    href: contact.qmd
+      #  - text: "Why participate"
+      #    href: "#why participate"
+      #  - text: "Organisers"
+      #    href: "#organisers"
+      #  - text: "Details about the challenge"
+      #    href: "#details"
       
   #sidebar: 
   #   - title: "About us"
   #     contents:
-  #       - about-rwds.qmd
+  #       - about-us.qmd
+  #       - contact.qmd
   #       - viewpoints/editors-blog/posts/2022/10/18/meet-the-team.qmd
   #       - rwds-partners.qmd
   #       - contact.qmd

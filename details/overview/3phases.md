@@ -1,7 +1,7 @@
 ---
 title: "Phases of the challenge"
 description: |
-  Prediction and explanation in the social sciences.
+  The challenge includes two phases.
 toc: true
 image: ../../images/phases.png
 language: 

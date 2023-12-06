@@ -1,7 +1,7 @@
 ---
 pagetitle: Blog
 title: Blog
-subtitle: We will post news about the challenge and useful materials here.
+subtitle: We will post useful materials and news about the challenge here.
 search: false  
 title-block-banner: true
 sidebar: false

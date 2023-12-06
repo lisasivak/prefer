@@ -1,0 +1,16 @@
+---
+title: "Gert Stulp talks about PreFer"
+description: |
+  In this ODISSEI lecture, Gert Stulp describes the challenge.   
+categories:
+  - General info
+author: "Lisa Sivak"
+date: '2023-12-01'
+toc: true
+image: ../../images/density_blog.png
+image-alt: I still have to find a figure for this. 
+language: 
+    section-title-footnotes: References
+---
+
+Link to video here

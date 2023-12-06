@@ -10,10 +10,13 @@ search: false
 ---
 
 - __How much time it will take to participate in the challenge?__
-- From a couple of days to several months
+- It depends on how much time you can and want to dedicate to participation in the challenge. Given the example scripts and codebooks that we will provide, you will be able to produce and submit a basic method in several hours. Making a more advanced method can take weeks. however, any contribution is valuable. Consider applying even if you can dedicate only a few days
 
 - __I don't have experience in machine learning, can I participate?__
-- Yes
+- Yes, ....
+
+- __I'm not a social scientist and/or know nothing about fertility, can I participate?__
+- Yes, ... 
 
 
 
