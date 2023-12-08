@@ -68,7 +68,7 @@ toc: false
 <font size="+3">__What do we miss?__</font>
 :::
 ::: {.g-col-4  .top-story-img}
-![](/images/ttf plot.png)
+![](/images/tff plot.png)
 :::
 
 :::
@@ -154,8 +154,6 @@ submit your model (in the case of LISS) or predictions (for CBS)...
 Details about the submission here (link to submission page)
  
 
-<!-- why participate -->
-
 ## Why participate
 * Use unique data from the LISS panel and the Dutch population registries, including a social network for the entire Dutch population  
 * Have fun learning new skills, competing with other teams, and discovering unique data while predicting an important life outcome  
@@ -164,7 +162,13 @@ Details about the submission here (link to submission page)
 * Win recognition and prizes  
 
 
-
+## Important dates
+- [Application](#apply-to) opens: January 8, 2024
+- Application closes: March 24, 2024
+- Start of the data challenge [Phase 1](/details/overview/3phases.md): April 1, 2024
+- Start of [Phase 2](/details/overview/3phases.md), June 1, 2024
+- End of Phase 2: September 30, 2024
+- Announcing the winners: October 2024
 
 
 :::

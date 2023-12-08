@@ -25,21 +25,23 @@ website:
       #    href: other/about.qmd
       #  - text: "copy-paste"
       #    href: other/copypaste.qmd
-      - text: "About PreFer"
-        href: "#about-prefer"
+      #- text: "About PreFer"
+      #  href: "#about-prefer"
       - text: "APPLY"
         href: "#apply-to"
       #- text: "The aim"
       #  href: "#the-aim"
       - text: "How to participate"
         href: "#how-to-participate"
-      - text: "Why participate"
-        href: "#why-participate"
+      #- text: "Why participate"
+      #  href: "#why-participate"
       - text: "Methodology"
         href: "#details-about-the-challenge"
+      - text: "Important dates"
+        href: "#important-datese"
       - faq/index.qmd
       - posts/index.qmd
-      - text: "About the organizers"
+      - text: "Organizers"
         menu: 
         - text: "Who we are"
           href: about-us.qmd
@@ -96,7 +98,8 @@ website:
   page-footer:
     background: "#000000"
     left: |
-      PreFer data challenge
+      PreFer data challenge  
+      The website is based on [Real World Data Science](https://realworlddatascience.net/)
     #center:  
     #  - href: mailto:g.stulp@rug.nl
     #    icon: envelope
