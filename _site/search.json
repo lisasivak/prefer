@@ -2273,5 +2273,12 @@
     "title": "Contact us",
     "section": "",
     "text": "Gert Stulp:\nEmail: g.stulp@rug.nl\nElizaveta Sivak:\nEmail: e.sivak@rug.nl"
+  },
+  {
+    "objectID": "posts/posts/2023-12-20-liss-tips.html",
+    "href": "posts/posts/2023-12-20-liss-tips.html",
+    "title": "Tips for using the LISS dataset",
+    "section": "",
+    "text": "The merged LISS dataset contains about 20 thousand variables. To navigate this dataset, e.g. more easily find the variables related to some topic or to understand qickly which study and year a certain variable come from or understand what to do with missing values, here we provide some tips.\n\nUse the codebooks\nThere are detailed codebooks in Dutch and English on the LISS website (LINK!). They contain information about filtering ().\nWe also made the codebooks for the merged files in a machine-readable .csv format. You can find them here. Using these codebooks you can e.g. get a full list of variables from a certain Core study.\n\n\nNaming the variables\nAll the variables names in LISS contain information that can help navigate the dataset. Let’s use the variable name cf09b010 as an example. It consists of two main parts: cf09b which indicates the name of the Core study module and the year, and 010 which is a question number in this Core study module (same questions have the same numbers in all the questionnaires of a Core study module ). How to decipher the first part:\n\nc refers to Core study. Almost all the variables in the dataset (excluding about 400 variables in the beginning, that come from the Background survey) start with c\nf refers to the name of the Core study module - in this case, it’s “Family and household”. Other options are: w (Work and schooling), s (Social integration and values), h (Health), r (Religion and ethnicity), v (politics and Values), p (Personality), a (economic situation: Assets), i (economic situation: Income), and d (economic situation: Housing).\n09 refers to the year of this questionnaire. 09 means 2009. Some Core study modules are fielded each year, some (Assets, ) once in two years.\nb refers to the wave number (in this case, Wave 2). Keep in mind, that because some modules are fielded every year, and some - every other year, the same letters do not mean that these surveys were conducted in the same year (e.g. Wave 2 of Family and Household module cf09b was conducted in 2009 whereas the second Wave of the Assets core study module ca10b was conducted in 2010)."
   }
 ]

@@ -7,7 +7,7 @@ categories:
 author: "Lisa Sivak"
 date: '2023-12-01'
 toc: true
-image: ../../images/density_blog.png
+image: ../../images/PreFer_logo_favicon.png
 image-alt: I still have to find a figure for this. 
 language: 
     section-title-footnotes: References

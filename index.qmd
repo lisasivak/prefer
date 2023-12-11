@@ -141,7 +141,9 @@ The main aim of the data challenge is to understand fertility behavior better. I
 ### Apply 
 
 Fill out [this form](https://forms.gle/cxc7U24n5ox7A1vu7){target="_blank"} to apply for participation in the data challenge.
-__The application deadline is March 24th.__
+__The application deadline is March 24th.__  
+You can participate individually or as a part of a team.
+
   
 ### Build a model 
 

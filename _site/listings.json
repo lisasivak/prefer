@@ -122,7 +122,10 @@
   },
   {
     "listing": "/posts/index.html",
-    "items": []
+    "items": [
+      "/posts/posts/2023-12-15-odissei-talk.html",
+      "/posts/posts/2023-12-20-liss-tips.html"
+    ]
   },
   {
     "listing": "/index.html",
@@ -138,7 +141,8 @@
   {
     "listing": "/all-content.html",
     "items": [
-      "/posts/posts/2023-08-24-density-plots.html",
+      "/posts/posts/2023-12-15-odissei-talk.html",
+      "/posts/posts/2023-12-20-liss-tips.html",
       "/research/overview/prediction.html",
       "/research/overview/social networks.html",
       "/research/overview/fertility.html",
