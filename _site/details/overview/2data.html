@@ -66,7 +66,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../../rwds.css">
 <meta property="og:title" content="Data">
 <meta property="og:description" content="PreFer uses two datasets: the LISS panel and Dutch population registries data.">
-<meta property="og:image" content="https://www.prefer.web.rug.nl/images/data_scheme.png">
+<meta property="og:image" content="https://www.gertstulp.com/images/data_scheme.png">
 </head>
 
 <body class="nav-fixed">
@@ -87,41 +87,41 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../#about prefer" rel="" target="">
- <span class="menu-text">About PreFer</span></a>
+    <a class="nav-link" href="../../#apply-to" rel="" target="">
+ <span class="menu-text">APPLY</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../#how-to-participate" rel="" target="">
  <span class="menu-text">How to participate</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../../#details-about-the-challenge" rel="" target="">
+ <span class="menu-text">Methodology</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../#important-datese" rel="" target="">
+ <span class="menu-text">Important dates</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../faq/index.html" rel="" target="">
+ <span class="menu-text">FAQ</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../posts/index.html" rel="" target="">
  <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-about-prefer" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
- <span class="menu-text">About PreFer</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-organizers" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Organizers</span>
     </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-about-prefer">    
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-organizers">    
         <li>
-    <a class="dropdown-item" href="../../#overview" rel="" target="">
- <span class="dropdown-text">Overview</span></a>
+    <a class="dropdown-item" href="../../about-us.html" rel="" target="">
+ <span class="dropdown-text">Who we are</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../#participate" rel="" target="">
- <span class="dropdown-text">How to participate</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../#why participate" rel="" target="">
- <span class="dropdown-text">Why-participate</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../#organisers" rel="" target="">
- <span class="dropdown-text">Organisers</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../#details" rel="" target="">
- <span class="dropdown-text">Details about the challenge</span></a>
+    <a class="dropdown-item" href="../../contact.html" rel="" target="">
+ <span class="dropdown-text">Contact us</span></a>
   </li>  
     </ul>
   </li>
@@ -137,7 +137,14 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#liss-dataset" id="toc-liss-dataset" class="nav-link active" data-scroll-target="#liss-dataset">LISS dataset</a></li>
+  <li><a href="#cbs-dataset" id="toc-cbs-dataset" class="nav-link" data-scroll-target="#cbs-dataset">CBS dataset</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -167,10 +174,24 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>This challenge uses two data sources: survey data from the LISS panel and linked register data from Statistics Netherlands (Bakker et al., 2014). In both cases, subsamples of people aged 18-45 in 2020 are used. The LISS panel is based on a traditional probability sample drawn from the Dutch population register by Statistics Netherlands and is administered by the non-profit research institute Centerdata. Data collected in the LISS panel covers the 2007-2023 period. The subsample of LISS participants aged 18-45 in 2019 is about 1500 people. It includes thousands of variables related to a wide range of topics from income, education and health to values, religion, and personality, including variables designed specifically to study factors related to fertility behaviour (e.g.&nbsp;fertility intentions). Participants will use a merged dataset based on all LISS Core Studies as well as Background variables. This dataset is split into a train set, available to participants of the challenge (70% of the whole dataset) and a holdout set for evaluation (remaining 30% of the dataset).</p>
-<p>The linked register data comes from several population registries of the Netherlands collected by Statistics Netherlands (CBS) (we will refer to this source as CBS data). Participants will have access to the datasets that include information about marriages and partnerships, children, education, employment, income and assets, neighbourhood characteristics and more from 1995-2020, as well as also social networks (van der Laan et al., 2023) for more than 6 million people (aged 18-45 in 2020). The data about the outcome will be available for 80% of the sample for training; the remaining 20% will constitute the holdout set. Additional CBS datasets can be requested throughout the challenge. External data can also be uploaded. Also, a starter package of a base preprocessed dataset (mostly with the data from 2020) along with a codebook in Dutch and English and scripts to preprocess the network datasets will be made available to the participants of the challenge to make the analysis easier.</p>
+<p>This challenge uses two data sources: survey data from the <a href="https://www.lissdata.nl/">LISS panel</a> and linked register data from Statistics Netherlands <a href="https://doi.org/10.3233/SJI-140803">(Bakker et al., 2014)</a>.</p>
+<section id="liss-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="liss-dataset">LISS dataset</h3>
+<p>The LISS panel is based on a traditional probability sample drawn from the Dutch population register by Statistics Netherlands and is managed by the non-profit research institute Centerdata. Participants of the data challenge will use a merged dataset based on all modules from the LISS Core Study as well as the Background survey from 2007-2020. The <a href="https://www.dataarchive.lissdata.nl/study-units/view/1">LISS Core Study</a> is a longitudinal study that is fielded each year in the LISS panel and measures the same set of variables. The Core Study includes ten modules that cover a wide range of topics from income, education and health to values, religion, and personality, including variables designed specifically to study fertility behaviour (e.g.&nbsp;fertility intentions). The Background survey collects basic socio-demographic information about the household.</p>
+<p>The dataset includes only a subsample of people aged 18-45 in 2020. The dataset is split into a train set (the outcome and predictors), available to participants of the challenge (around 70% of the whole dataset) and a holdout set for evaluation (the remaining 30% of the outcome and predictors), unavailable to the participants (see the figure below).</p>
+<p><img src="../..\images/scheme liss.png" class="img-fluid"></p>
+<p>Read further:<br>
+- <a href="../../posts/posts/2023-12-20.qmd">Tips</a> for navigating the LISS dataset used in the challenge</p>
+</section>
+<section id="cbs-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="cbs-dataset">CBS dataset</h3>
+<p>The linked register data comes from population registries of the Netherlands collected by Statistics Netherlands (CBS) (we will refer to this source as CBS data). Participants will have access to a selection of all CBS datasets. The list of these datasets with a brief description is provided in Table 2 in the Supplementary information. These datasets include information about marriages and partnerships, children, education, employment, income and assets, neighbourhood characteristics and more, as well as social networks for the whole Dutch population (van der Laan et al., 2023). Most of these datasets cover the period from 1995 to 2023, but only the data up to 2020 can be used for training.</p>
+<p>Based on these selected datasets, a base preprocessed dataset (mostly with the data from 2020) will be prepared and made available to the participants as a starter package along with a codebook in Dutch and English. This preprocessed file includes only our target group – people aged 18-45 in 2020 (more than 6 million people). Participants will be able to calculate additional variables based on the full longitudinal datasets and also add characteristics of their networks, using the network datasets for the linkage. The scripts with examples of how to preprocess the network datasets and calculate variables about the structure and composition of one’s networks will be provided. To allow adding the characteristics of the network and because of the submission process (see section 2.5 Submission), only the outcome variable is split into the train and test sets (see the figure below).</p>
+<p>Additional CBS datasets (not initially available to the participants of the challenge) can be requested throughout the challenge with a short justification of why the dataset is requested. The relevant CBS datasets can be searched using the CBS micro-data catalogue and ODISSEI portal. Data from external sources (not included in the CBS datasets) that can be linked to groups of individuals can also be uploaded – for example, welfare policies by municipality.</p>
+<p><img src="../..\images/scheme cbs.png" class="img-fluid"></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -409,7 +430,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">PreFer data challenge</div>   
+    <div class="nav-footer-left">PreFer data challenge<br>
+The website is based on <a href="https://realworlddatascience.net/">Real World Data Science</a></div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>

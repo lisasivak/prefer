@@ -108,7 +108,9 @@ See [here](#details-about-the-challenge) details about the methodology of the da
 
 ## The aim
 
-The main aim of the data challenge is to understand fertility behavior better. Identify new predictors, etc.  Data challenges have led to progress in many fields but they are rare in social sciences. We hope that this data challenge will advance ....
+Fertility has been widely studied in many disciplines and many factors related to fertility have been identified. However, the ability of these factors to predict fertility outcomes on the novel data was not measured.   
+
+The main aim of the data challenge is to improve our understanding of fertility behavior using a more data scientific approach. [add more]
 
 
 :::
