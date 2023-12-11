@@ -18,6 +18,10 @@ search: false
 - __I'm not a social scientist and/or know nothing about fertility, can I participate?__
 - Yes, ... 
 
+- __I'm not affiliated with an academic institution, can I participate?__
+- [Phase 1](/details/overview/3phases.md) of the data challenge is open for everyone. It is not required to have an affiliation with an academic institution. Access to Phase 2 is more restricted, read details here...
+
+
 
 
 
