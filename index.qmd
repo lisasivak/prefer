@@ -148,7 +148,7 @@ __The application deadline is March 24th.__
 
 ### Build a model 
 
-Use any method you’d like to train a predictive model using training data we provide. The models will be then evaluated on a holdout set based on the F1 score. More information about the phases of the data challenge can be found [here](/details/3phases.md).
+Use any method you’d like to train a predictive model using training data we provide. The models will be then evaluated on a holdout set based on the F1 score. More information about the phases of the data challenge can be found [here](/details/overview/3phases.md).
 
 ### Submit the model  
 
