@@ -1,5 +1,5 @@
 ---
-pagetitle: "prefer.gmw.rug.nl"
+pagetitle: "preferdatachallenge.nl"
 page-layout: custom
 section-divs: false
 editor: source
@@ -97,7 +97,7 @@ toc: false
 
 PreFer data challenge focuses on the following task: for people aged 18-45 in 2020, predict who will have a(nother) child within the following three years (2021-2023) based on the data up to and including 2020. 
 
-In the challenge, participants will use two unique data sources to make predictions: the LISS panel, a longitudinal survey based on a random representative sample of the Dutch population, and administrative data from Statistics Netherlands covering the entire Dutch population. Comparing and interpreting the models created in the challenge will help quantify the existing knowledge, highlight the gaps, and gain insights.  
+In the challenge, participants will use two unique data sources to make predictions: the LISS panel, a longitudinal survey based on a random representative sample of the Dutch population, and administrative data from Statistics Netherlands covering the entire Dutch population. Comparing and interpreting the models created in the challenge will help quantify the existing knowledge and gain insights.  
 
 The data challenge will take place from __the beginning of April__ until __the end of September 2024__. It is open for participants from __different backgrounds__.
   
@@ -106,12 +106,13 @@ PreFer is organised by the [University of Groningen](https://www.rug.nl/){target
 
 See [here](#details-about-the-challenge) details about the methodology of the data challenge.
 
-## The aim
+__*NB: we are updating this website. More details will be available in the beginning of January. In the meantime, you can sign up [here](https://forms.gle/PkVLLSmzFefvsvSw9) to get notified when the website is updated and the applicatioin for the challenge opens.*__ 
 
-Fertility has been widely studied in many disciplines and many factors related to fertility have been identified. However, the ability of these factors to predict fertility outcomes on the novel data was not measured.   
+## Why predict fertility outcomes in a data challenge?
 
-The main aim of the data challenge is to improve our understanding of fertility behavior using a more data scientific approach. [add more]
+This data challenge can potentially advance our understanding of fertility behavior and improve social policies and family planning in several ways. Measuring how well different factors and models can predict fertility outcomes for new cases will show __which factors are more important__. It can narrow down a scope for potential interventions and help people reach their desired family size. Comparing and interpreting different models submitted to a data challenge (e.g. theory- and data-driven) can identify __new factors__ currently overlooked by the theories of fertility and  highlight the __gaps in current knowledge__ (e.g. important interactions or non-linear effects). 
 
+  
 
 :::
 :::
@@ -142,15 +143,13 @@ The main aim of the data challenge is to improve our understanding of fertility 
 <!--::: {.column width="30%"}-->
 ### Apply 
 
-Fill out [this form](https://forms.gle/cxc7U24n5ox7A1vu7){target="_blank"} to apply for participation in the data challenge.
+Fill out [this form](https://forms.gle/cxc7U24n5ox7A1vu7){target="_blank"} to apply for participation in the data challenge. You can find the details about applications [here](details/overview/1application.md).
 __The application deadline is March 24th.__  
-You can participate individually or as a part of a team.
 
-  
+
 ### Build a model 
 
-Use any method you’d like to train a predictive model using training data. The models will be then evaluated on a holdout set based on the F1 score. You can participate individually or in teams. 
-Example scripts will be provided...
+Use any method you’d like to train a predictive model using training data we provide. The models will be then evaluated on a holdout set based on the F1 score. More information about the phases of the data challenge can be found [here](/details/3phases.md).
 
 ### Submit the model  
 

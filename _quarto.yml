@@ -38,7 +38,7 @@ website:
       - text: "Methodology"
         href: "#details-about-the-challenge"
       - text: "Important dates"
-        href: "#important-datese"
+        href: "#important-dates"
       - faq/index.qmd
       - posts/index.qmd
       - text: "Organizers"
