@@ -99,14 +99,13 @@ PreFer data challenge focuses on the following task: for people aged 18-45 in 20
 
 In the challenge, participants will use two unique data sources to make predictions: the LISS panel, a longitudinal survey based on a random representative sample of the Dutch population, and administrative data from Statistics Netherlands covering the entire Dutch population. Comparing and interpreting the models created in the challenge will help quantify the existing knowledge and gain insights.  
 
-The data challenge will take place from __the beginning of April__ until __the end of September 2024__. It is open for participants from __different backgrounds__.
+The data challenge will take place from the beginning of April until the end of September 2024. It is open for participants from different backgrounds.
   
 
 PreFer is organised by the [University of Groningen](https://www.rug.nl/){target="_blank"}, [ODISSEI](https://odissei-data.nl/en/){target="_blank"}, [Eyra](https://www.eyra.co/){target="_blank"}, and [Centerdata](https://www.centerdata.nl/){target="_blank"}.  
 
 See [here](#details-about-the-challenge) details about the methodology of the data challenge.
 
-__*NB: we are updating this website. More details will be available in the beginning of January. In the meantime, you can sign up [here](https://forms.gle/PkVLLSmzFefvsvSw9) to get notified when the website is updated and the applicatioin for the challenge opens.*__ 
 
 ## Why predict fertility outcomes in a data challenge?
 
@@ -166,8 +165,7 @@ Details about the submission here (link to submission page)
 
 
 ## Important dates
-- [Application](#apply-to) opens: January 8, 2024
-- Application closes: March 24, 2024
+- [Application](#apply-to) closes: March 24, 2024
 - Start of the data challenge [Phase 1](/details/overview/3phases.md): April 1, 2024
 - Start of [Phase 2](/details/overview/3phases.md), June 1, 2024
 - End of Phase 2: September 30, 2024
