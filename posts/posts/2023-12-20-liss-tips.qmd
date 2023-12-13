@@ -7,7 +7,7 @@ categories:
 author: "Lisa Sivak"
 date: '2023-12-01'
 toc: true
-image: ../../images/LISS logo.png
+image: ../../images/liss pick.png
 image-alt: LISS logo. 
 language: 
     section-title-footnotes: References
