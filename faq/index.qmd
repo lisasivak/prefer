@@ -10,16 +10,17 @@ search: false
 ---
 
 - __How much time it will take to participate in the challenge?__
-- It depends on how much time you can and want to dedicate to participation in the challenge. Given the example scripts and codebooks that we will provide, you will be able to produce and submit a basic method in several hours. Making a more advanced method can take weeks. however, any contribution is valuable. Consider applying even if you can dedicate only a few days
+- With the example scripts and codebooks that we will provide, you will be able to produce and submit a basic method in several hours. Trying different methods to improve the predictions can take several weeks. However, any contribution is valuable. Consider applying even if you can dedicate only a few days.
 
 - __I don't have experience in machine learning, can I participate?__
-- Yes, ....
+- Yes. Participating in the challenge is a good opportunity to gain experience in machine learning.
 
 - __I'm not a social scientist and/or know nothing about fertility, can I participate?__
-- Yes, ... 
+- Yes, we welcome participants from various backgrounds who may take different approaches to developing their predictive models. Knowledge of the factors found to be significantly associated with fertility is not required. However, if you want to get a general overview of the factors influencing fertility behaviour you can read this review [(Balbo et al. 2013)](https://link.springer.com/article/10.1007/s10680-012-9277-y).  
 
 - __I'm not affiliated with an academic institution, can I participate?__
-- [Phase 1](/details/overview/3phases.md) of the data challenge is open for everyone. It is not required to have an affiliation with an academic institution. Access to Phase 2 is more restricted, read details here...
+- [Phase 1](/details/overview/3phases.md) of the data challenge is open for everyone. It is not required to have an affiliation with an academic institution. Access to Phase 2 is more restricted, you can find the details [here](/details/overview/1application.md).
+
 
 
 

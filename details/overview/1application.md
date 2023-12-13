@@ -3,7 +3,7 @@ title: "Application"
 description: |
   How to apply, who can apply, and what happens after application.
 toc: true
-image: ../../images/PreFer logo white_no text.png
+image: ../../images/prefer logo inverted.png
 image-alt: picture of a stork
 language: 
     section-title-footnotes: References
