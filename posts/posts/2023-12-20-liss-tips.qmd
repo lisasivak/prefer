@@ -3,11 +3,11 @@ title: "Tips for using the LISS dataset"
 description: |
   Here is some useful information that can help navigate the LISS dataset.   
 categories:
-  - General info
-author: "Lisa Sivak"
-date: '2023-12-01'
+  - LISS
+#author: "Lisa Sivak"
+date: '2023-12-11'
 toc: true
-image: ../../images/liss pick.png
+image: ../../images/liss_pick.png
 image-alt: LISS logo. 
 language: 
     section-title-footnotes: References
@@ -17,11 +17,13 @@ The merged LISS dataset contains about 20 thousand variables. To navigate this d
 
 ### Use the codebooks 
 
-There are detailed codebooks in Dutch and English on the LISS website (LINK!). They contain information about filtering ().
+We made the codebooks for the merged files in a machine-readable *.csv* format. You can find them here [add link]. Using these codebooks you can e.g. get a full list of variables from a certain Core study.
 
-We also made the codebooks for the merged files in a machine-readable .csv format. You can find them here. Using these codebooks you can e.g. get a full list of variables from a certain Core study.
+There are also detailed codebooks in Dutch and English on the [LISS website](https://www.dataarchive.lissdata.nl/study-units/view/1). They contain important information, e.g. about filtering, which can be useful for working with missing values.
 
-### Naming the variables
+
+
+### Variable naming conventions
 All the variables names in LISS contain information that can help navigate the dataset. Let's use the variable name *cf09b010* as an example. It consists of two main parts: *cf09b* which indicates the name of the Core study module and the year, and *010* which is a question number in this Core study module (same questions have the same numbers in all the questionnaires of a Core study module ). How to decipher the first part: 
 
 - *c* refers to *Core study*. Almost all the variables in the dataset (excluding about 400 variables in the beginning, that come from the Background survey) start with *c*

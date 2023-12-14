@@ -95,12 +95,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">How to participate</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../#details-about-the-challenge" rel="" target="">
- <span class="menu-text">Methodology</span></a>
+    <a class="nav-link" href="../../#important-dates" rel="" target="">
+ <span class="menu-text">Important dates</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../#important-datese" rel="" target="">
- <span class="menu-text">Important dates</span></a>
+    <a class="nav-link" href="../../#details-about-the-challenge" rel="" target="">
+ <span class="menu-text">Methodology</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../faq/index.html" rel="" target="">
@@ -181,12 +181,12 @@ ul.task-list li input[type="checkbox"] {
 <p>The dataset includes only a subsample of people aged 18-45 in 2020. The dataset is split into a train set (the outcome and predictors), available to participants of the challenge (around 70% of the whole dataset) and a holdout set for evaluation (the remaining 30% of the outcome and predictors), unavailable to the participants (see the figure below).</p>
 <p><img src="../..\images/scheme liss.png" class="img-fluid"></p>
 <p>Read further:<br>
-- <a href="../../posts/posts/2023-12-20.qmd">Tips</a> for navigating the LISS dataset used in the challenge</p>
+- <a href="../../posts/posts/2023-12-20-liss-tips.html">Tips</a> for navigating the LISS dataset used in the challenge</p>
 </section>
 <section id="cbs-dataset" class="level3">
 <h3 class="anchored" data-anchor-id="cbs-dataset">CBS dataset</h3>
 <p>The linked register data comes from population registries of the Netherlands collected by Statistics Netherlands (CBS) (we will refer to this source as CBS data). Participants will have access to a selection of all CBS datasets. The list of these datasets with a brief description is provided in Table 2 in the Supplementary information. These datasets include information about marriages and partnerships, children, education, employment, income and assets, neighbourhood characteristics and more, as well as social networks for the whole Dutch population (van der Laan et al., 2023). Most of these datasets cover the period from 1995 to 2023, but only the data up to 2020 can be used for training.</p>
-<p>Based on these selected datasets, a base preprocessed dataset (mostly with the data from 2020) will be prepared and made available to the participants as a starter package along with a codebook in Dutch and English. This preprocessed file includes only our target group – people aged 18-45 in 2020 (more than 6 million people). Participants will be able to calculate additional variables based on the full longitudinal datasets and also add characteristics of their networks, using the network datasets for the linkage. The scripts with examples of how to preprocess the network datasets and calculate variables about the structure and composition of one’s networks will be provided. To allow adding the characteristics of the network and because of the submission process (see section 2.5 Submission), only the outcome variable is split into the train and test sets (see the figure below).</p>
+<p>Based on these selected datasets, a base preprocessed dataset (mostly with the data from 2020) will be prepared and made available to the participants as a starter package along with a codebook in Dutch and English. This preprocessed file includes only our target group – people aged 18-45 in 2020 (more than 6 million people). Participants will be able to calculate additional variables based on the full longitudinal datasets and also add characteristics of their networks, using the network datasets for the linkage. The scripts with examples of how to preprocess the network datasets and calculate variables about the structure and composition of one’s networks will be provided. To allow adding the characteristics of the network and because in this phase participants will submit predictions (not only the code), only the outcome variable for the test set is held out (see the figure below).</p>
 <p>Additional CBS datasets (not initially available to the participants of the challenge) can be requested throughout the challenge with a short justification of why the dataset is requested. The relevant CBS datasets can be searched using the CBS micro-data catalogue and ODISSEI portal. Data from external sources (not included in the CBS datasets) that can be linked to groups of individuals can also be uploaded – for example, welfare policies by municipality.</p>
 <p><img src="../..\images/scheme cbs.png" class="img-fluid"></p>
 

@@ -35,10 +35,10 @@ website:
         href: "#how-to-participate"
       #- text: "Why participate"
       #  href: "#why-participate"
-      - text: "Methodology"
-        href: "#details-about-the-challenge"
       - text: "Important dates"
         href: "#important-dates"
+      - text: "Methodology"
+        href: "#details-about-the-challenge"
       - faq/index.qmd
       - posts/index.qmd
       - text: "Organizers"

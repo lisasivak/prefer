@@ -4,8 +4,8 @@ description: |
   In this ODISSEI lecture, Gert Stulp describes the challenge.   
 categories:
   - General info
-author: "Lisa Sivak"
-date: '2023-12-01'
+#author: "Lisa Sivak"
+date: '2023-12-14'
 toc: true
 image: ../../images/PreFer_logo_favicon.png
 image-alt: I still have to find a figure for this. 
@@ -13,4 +13,4 @@ language:
     section-title-footnotes: References
 ---
 
-Link to video here
+We will add the link to the video here soon.

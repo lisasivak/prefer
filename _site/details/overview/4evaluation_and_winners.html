@@ -88,10 +88,6 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../#about-prefer" rel="" target="">
- <span class="menu-text">About PreFer</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="../../#apply-to" rel="" target="">
  <span class="menu-text">APPLY</span></a>
   </li>  
@@ -100,8 +96,8 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">How to participate</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../#why-participate" rel="" target="">
- <span class="menu-text">Why participate</span></a>
+    <a class="nav-link" href="../../#important-dates" rel="" target="">
+ <span class="menu-text">Important dates</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../#details-about-the-challenge" rel="" target="">
@@ -116,10 +112,10 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-about-the-organizers" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
- <span class="menu-text">About the organizers</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-organizers" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Organizers</span>
     </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-about-the-organizers">    
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-organizers">    
         <li>
     <a class="dropdown-item" href="../../about-us.html" rel="" target="">
  <span class="dropdown-text">Who we are</span></a>
@@ -169,8 +165,17 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p><strong>Truth criteria</strong> To calculate the outcome for the LISS data, we used the data from the “Family and household” Core study about the number of children in 2020, 2021, 2022, and 2023 (“How many living children do you have in total?”). On the basis of these variables, we calculated whether a person had at least one new child in 2021-2023. LISS data from the “Family and Household” 2023 study will be made available only after the end of the data challenge. In the case of CBS, we used the CBS dataset Kindoudertab that links children with their parents and the data containing the year of birth for each resident of the Netherlands. Based on that, for each person in the sample (Dutch population aged 18-45 in 2020), we calculated the number of children born in 2021-2023 and then derived whether or not a person had at least one new child in 2021-2023.</p>
-<p><font size="-2">Photo by <a href="https://unsplash.com/@ninjason?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">Jason Leung</a> on <a href="https://unsplash.com/photos/selective-focus-photography-of-multicolored-confetti-lot-Xaanw0s0pMk?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">Unsplash</a></font></p>
+<p><font size="+1"><strong>Truth criteria</strong></font><br>
+To calculate the outcome for the LISS data, we used the data from the “Family and household” Core study about the number of children in 2020, 2021, 2022, and 2023 (“How many living children do you have in total?”). On the basis of these variables, we calculated whether a person had at least one new child in 2021-2023. LISS data from the “Family and Household” 2023 study will be made available only after the end of the data challenge.</p>
+<p>In the case of CBS, we used the CBS dataset Kindoudertab that links children with their parents and the data containing the year of birth for each resident of the Netherlands. Based on that, for each person in the sample (Dutch population aged 18-45 in 2020), we calculated the number of children born in 2021-2023 and then derived whether or not a person had at least one new child in 2021-2023.</p>
+<p><font size="+1"><strong>Metrics</strong></font></p>
+<p>The metrics below are used in both phases of the challenge to assess the quality of the predictions (i.e., the difference between the predicted values and the ground truth). These are common metrics for classification tasks (i.e., predictions with binary outcomes).</p>
+<p><a href="https://developers.google.com/machine-learning/crash-course/classification/accuracy" target="_blank"><strong>Accuracy</strong></a>: the ratio of correct predictions to the total number of predictions made.</p>
+<p><a href="https://developers.google.com/machine-learning/crash-course/classification/precision-and-recall" target="_blank"><strong>Precision</strong></a>: The proportion of positive predictions that were actually correct (i.e.&nbsp;the proportion of people who actually had a new child in 2021-2023 of all the people who were predicted to have a new child in this period).</p>
+<p><a href="https://developers.google.com/machine-learning/crash-course/classification/precision-and-recall" target="_blank"><strong>Recall</strong></a>: The proportion of positive cases that were correctly identified (i.e.&nbsp;the proportion of people who actually had a new child and were predicted to have a new child of all people in the sample who had a new child in 2021-2023).</p>
+<p><a href="https://www.educative.io/answers/what-is-the-f1-score" target="_blank"><strong>F1 score</strong></a> (for the positive class, or having a new child): The harmonic mean of the precision (P) and recall (R).</p>
+<p>For both phases of the data challenge, all four metrics will be used for the leaderboards (or ranked lists of the predictive performance of the submitted methods on the holdout data). The F1 score leaderboard is the main leaderboard that will be used as the quantitative criteria to determine the winners of the challenge.</p>
+<p><font size="-1">Photo by <a href="https://unsplash.com/@ninjason?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">Jason Leung</a> on <a href="https://unsplash.com/photos/selective-focus-photography-of-multicolored-confetti-lot-Xaanw0s0pMk?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">Unsplash</a></font></p>
 
 
 
@@ -411,7 +416,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">PreFer data challenge</div>   
+    <div class="nav-footer-left">PreFer data challenge<br>
+The website is based on <a href="https://realworlddatascience.net/">Real World Data Science</a></div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
