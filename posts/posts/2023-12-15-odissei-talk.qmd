@@ -1,7 +1,7 @@
 ---
 title: "Gert Stulp talks about PreFer"
 description: |
-  In this ODISSEI lecture, Gert Stulp describes the challenge.   
+  ODISSEI lecture about the challenge.   
 categories:
   - General info
 #author: "Lisa Sivak"
@@ -13,4 +13,6 @@ language:
     section-title-footnotes: References
 ---
 
-We will add the link to the video here soon.
+In this ODISSEI lecture, Gert Stulp talks about PreFer: the reasons for the challenge, its potential for research into fertility behaviour and design of the challenge.  
+
+You can watch the recording [here](https://eur.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=addbcfb3-2803-4ad7-a175-b0d600f80a92){target="_blank"}.
