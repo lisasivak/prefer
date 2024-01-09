@@ -1,0 +1,1069 @@
+---
+title: "LISS preprocessing"
+output: html_document
+date: "2023-05-22"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Packages
+
+```{r warning = F, message = F}
+library(tidyverse)
+library(haven)
+library(sjmisc)
+```
+
+
+# Background surveys
+
+Merging background files from different years and making a long dataset to match the format of the merged Core studies, and then a wide dataset.
+The questionnaire is here https://www.dataarchive.lissdata.nl/study_units/view/322
+
+```{r, message = F, warning = F}
+
+# find all file names ending in .sav 
+path <- "avars 2007-2022\\"
+files <- dir(path = path, pattern = "*.sav") # names of files
+files <- files[!str_detect(files, "2020|2021|2022")] # remove waves 2020-2022
+print(files) # print list of names
+files <- paste0(path, files) # path to files
+  
+list_data <- map(files, function(x) as_factor(read_sav(x)))
+  
+# Combine all datasets into a LONG file
+for(i in 1:length(list_data)) {
+    if(i == 1) {
+      background <- list_data[[i]]
+    } else {
+      temp <- list_data[[i]]
+      background <- sjmisc::add_rows(background, temp) # sjmisc::add_rows because it keeps variable attributes. If there is a warning about conflicting labels, it's because of one additional character (*) is missing in the labels in years 2007-8
+    }
+}
+  
+
+# Adding a variable with the year of data collection
+#table(background$wave, useNA="always")
+
+background$year <- round(background$wave/100)
+
+background <- background %>% dplyr::relocate(geslacht, gebjaar, .before = nohouse_encr)
+
+
+```
+
+## Codebooks for Background variables
+
+```{r eval = T, message = F, warning = F}
+# overview
+
+labels <- tibble(
+    var_names = names(background),
+    var_labels = map(var_names, 
+                     function(x) attributes(background[[x]])$label)) 
+
+which_waves<-sapply(background,function(x) unique(background$year[which(!is.na(x))]))
+n_waves <-sapply(1:length(which_waves), function(i) length(which_waves[[i]]))
+
+var_names_all <-c()
+for (i in 4:(ncol(background)-1)) {
+  var_names_i <- sapply(1:n_waves[i], function(x) paste0(names(which_waves)[[i]],which_waves[[i]][x]))
+  var_names_all <-append(var_names_all,list(var_names_i))
+}
+var_names_all <-append(list("gebjaar"), var_names_all)
+var_names_all <-append(list("geslacht"), var_names_all)
+var_names_all <-append(list("nomem_encr"), var_names_all)
+var_names_all <-append(var_names_all, list("year"))
+
+codebook_background_summary <- data.frame("last3letters" = labels$var_names,	n_waves)
+codebook_background_summary$which_waves <-which_waves
+codebook_background_summary$var_names<- var_names_all
+codebook_background_summary$n_unique_labels<-1
+codebook_background_summary$unique_labels<- labels$var_labels
+codebook_background_summary<-codebook_background_summary[-nrow(codebook_background_summary),] # don't need additional Year column
+
+# full
+
+var_names <-unlist(codebook_background_summary$var_names)
+codebook_background_full <-data.frame(var_names)
+
+codebook_background_full <- codebook_background_full %>% 
+   mutate(var_names2 = str_remove(var_names, '[0-9]+'))
+
+
+# save row numbers to restore initial row order after merging
+codebook_background_full$row_num  <- 1:nrow(codebook_background_full)
+
+
+codebook_background_full <- merge(codebook_background_full,codebook_background_summary[,c(1,6)], by.x=c("var_names2"), by.y=c("last3letters"))
+
+codebook_background_full<-codebook_background_full[order(codebook_background_full$row_num), ]
+codebook_background_full <-codebook_background_full[,-c(1,3)] 
+
+# add year
+codebook_background_full$year <- readr::parse_number(codebook_background_full$var_names)
+
+codebook_background_full$survey <- "Background"
+  
+names(codebook_background_full)[2] <- "var_labels"
+
+
+
+codebook_background_summary <- codebook_background_summary %>%
+  rowwise() %>% 
+  mutate_if(is.list, ~paste(unlist(.), collapse = ', '))
+
+#save(codebook_background_full, file ="codebook_background_full.RData")
+#save(codebook_background_summary, file ="codebook_background_summary.RData")
+
+## Add value labels
+
+b19 <-read_sav("avars 2007-2022\\avars_2018_Cumulatief.sav")
+b18 <-read_sav("avars 2007-2022\\avars_2019_Cumulatief.sav")
+b17 <-read_sav("avars 2007-2022\\avars_2017_Cumulatief.sav")
+b16 <-read_sav("avars 2007-2022\\avars_2016_Cumulatief.sav")
+b15 <-read_sav("avars 2007-2022\\avars_2015_Cumulatief.sav")
+b14 <-read_sav("avars 2007-2022\\avars_2014_Cumulatief.sav")
+b13 <-read_sav("avars 2007-2022\\avars_2013_Cumulatief.sav")
+b12 <-read_sav("avars 2007-2022\\avars_2012_Cumulatief.sav")
+b11 <-read_sav("avars 2007-2022\\avars_2011_Cumulatief.sav")
+b10 <-read_sav("avars 2007-2022\\avars_2010_Cumulatief.sav")
+b9 <-read_sav("avars 2007-2022\\avars_2009_Cumulatief.sav")
+b8 <-read_sav("avars 2007-2022\\avars_2008_Cumulatief.sav")
+b7 <-read_sav("avars 2007-2022\\avars_2007_Cumulatief.sav")
+
+
+background <- sjmisc::add_rows(b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18, b19)
+
+labels <- tibble(
+    last3letters = names(background),
+    value_labels = map(last3letters, 
+                     function(x) attributes(background[[x]])$labels)) 
+
+# save row numbers to restore initial row order after merging
+codebook_background_summary$row_num  <- 1:nrow(codebook_background_summary)
+
+codebook_background_summary <-merge(codebook_background_summary,labels, by="last3letters")
+codebook_background_summary<-codebook_background_summary[order(codebook_background_summary$row_num), ]
+codebook_background_summary <-codebook_background_summary[,-7]
+
+#saveRDS(codebook_background_summary,"codebook_background_summary.rds")
+
+```
+## Checking inconsistencies in the year of birth
+
+Our sample is LISS participants aged 18-45 years in 2019, so we need to check if a year of birth is consistent across the waves and do something if it's not.
+
+We also check how consistent across the waves are two other variables that should be constant for (at least) the majority of participants - country of origin ("herkomstgroep") and gender. 
+
+```{r, message = F, warning = F}
+# are there people with different year of birth, gender, country of origin?
+check_year_gender<- background %>%
+  group_by(nomem_encr) %>%
+  summarize(year = length(unique(gebjaar)), gen = length(unique(geslacht)), herkomstgroep = length(unique(geslacht)))
+
+
+table(check_year_gender$year) 
+table(check_year_gender$gen)  
+table(check_year_gender$herkomstgroep)
+
+```
+
+* 109 participants (0.4%) have two different years of birth in different waves of background survey  
+* 80 participants (0.3%) have different gender in different waves of background survey  
+* 80 participants (0.3%) have different country of origin in different waves of background survey  
+
+Strange, that the same people have 2 different values for gender and 2 different values for the country of origin (different people with the same id?). But these are (partly) different people than those who have 2 different birth years:
+
+
+```{r, message = F, warning = F}
+table(check_year_gender$herkomstgroep, check_year_gender$gen)
+table(check_year_gender$herkomstgroep, check_year_gender$year)
+
+
+```
+
+We will take the last value for gender and the most common value (among two different values) for each participant with two years of birth.  
+
+```{r eval = T, message = F, warning = F}
+ids <- check_year_gender$nomem_encr[check_year_gender$year==2] # IDs of people with two birth years
+
+# selecting the more common value for year
+check_year2<- background[background$nomem_encr %in% ids,] %>%
+  group_by(nomem_encr, gebjaar) %>%
+  summarize(n = n()) %>%
+  filter(n == max(n))
+
+check_year2 <- check_year2[- which(check_year2$nomem_encr == 813598 & check_year2$gebjaar == 1989), ]  # there were two equally common values for a person with id 813598 (1989 and 1991), selected 1991 at random  
+
+check_year2 <-check_year2[,-3] 
+colnames(check_year2) <-c("nomem_encr","gebjaar_correct")
+
+# replacing year of birth for those who had two different values
+background2_1 <-subset(background, !background$nomem_encr %in% ids)
+background2_2 <-subset(background, background$nomem_encr %in% ids)
+
+background2_2 <- merge(background2_2, check_year2, by = "nomem_encr", all.x = T)
+background2_2$gebjaar <-background2_2$gebjaar_correct
+background2_2 <-background2_2[,-ncol(background2_2)]
+
+background <- rbind(background2_1,background2_2)
+
+#check_year_gender<- background %>%  group_by(nomem_encr) %>% summarize(year = length(unique(gebjaar)))
+
+#table(check_year_gender$year)
+
+
+# selecting the value for gender from the last wave in which a person participated
+
+background_gender <- background[,c(1,2,34)] %>%
+  group_by(nomem_encr) %>%
+  arrange(year) %>%
+  filter(row_number()==n())
+
+background_gender <-background_gender[,-3]
+background <- merge(background, background_gender,by="nomem_encr", all.x=T)
+
+
+background$geslacht.x <-background$geslacht.y
+background <-background[,-ncol(background)]
+names(background)[names(background) == 'geslacht.x'] <- 'geslacht'
+
+```
+
+There are *26111* unique participants initially and *9970* unique participants after selecting only those 18-45 years old in 2019 .
+
+```{r eval = T, message = F, warning = F}
+#length(unique(background$nomem_encr)) 
+
+background <- subset(background, background$gebjaar>=1974 & background$gebjaar<=2001)
+
+#length(unique(background$nomem_encr)) 
+
+#save(background, file = "background_all months.RData")
+
+```
+
+## Selecting one entry per year
+
+LISS participants are asked to answer Background survey when joining the panel, and then are presented with the Background questionnaire each month to enter any changes that may have occurred. So, in a wide format, there will be 12 months * 14 years = 168 columns for each variable. For the purposes of our study, this information is too detailed given that the variables included in the Background survey shouldn't change that often during one year. We will only add one wave of Background survey per year. Not everybody participates each month, so, for each participant and each year, we take the last entry to better align with the Core studies, most of which take place at the end of a year. 
+
+But before selecting only the last entry per participant per year (e.g. from a survey in December), we check the number of missing values (only for our sample, people aged 18-45 in 2019). Probably, people may answer some questions in October or November, but didn't answer it in December. If there are a lot of cases like that, its problematic to simply take the last entry. 
+ 
+The latest waves are the most important given the outcome that we are predicting (having a child in the next three years).
+So for now we focus on missing values in the last three years (2017-2019).
+
+```{r, message = F, warning = F }
+b19 <- read_sav("avars 2007-2022//avars_2019_Cumulatief.sav")
+b18 <- read_sav("avars 2007-2022//avars_2018_Cumulatief.sav")
+b17 <- read_sav("avars 2007-2022//avars_2017_Cumulatief.sav")
+
+
+b19 <- subset(b19, b19$nomem_encr %in% background$nomem_encr)
+b18 <- subset(b18, b18$nomem_encr %in% background$nomem_encr)
+b17 <- subset(b17, b17$nomem_encr %in% background$nomem_encr)
+
+
+colSums(is.na(b19))*100/nrow(b19)  #Missing values are mostly in the columns about personal income (brutoink - Personal gross monthly income, brutocat - the same, but categorized, 43.85%), netinc 30.37%, and country of origin ("herkomstgroep"; 23.83% of rows with NA)
+colSums(is.na(b18))*100/nrow(b18) # same here
+colSums(is.na(b17))*100/nrow(b17) # same here
+
+
+# from the questionnaire it's not clear, if there was some filter before the questions about income. The proportion of NA is almost the same for younger (18-21) and older people
+b19_older <-subset(b19, b19$gebjaar<1999)
+colSums(is.na(b19_older))*100/nrow(b19_older)
+
+
+# however, most of the missing values in gross income were imputed by LISS based on the values of net income and vice versa 
+# the columns with imputed NA are nettoink_f and brutoink_f, they have 8.5% of missing values 
+
+
+# check for how many people the info about personal gross monthly income is missing in all the monthly waves in 2019 that a person participated
+b19_2<-b19 %>%
+  group_by(nomem_encr) %>%
+  summarize(n=n(), n_na=sum(is.na(brutoink)))
+
+b19_2<-b19 %>%
+  group_by(nomem_encr) %>%
+  summarize(n=n(), n_na=sum(is.na(brutoink_f)))
+
+# in this table rows are the number of months a person participated in the Background survey in 2019, and columns - number of times this person didn't answer about personal income
+table(b19_2$n, b19_2$n_na) # - sometimes people answered in one month, but didn't answer in another, but it is not very often
+
+# The same applies for 2018 and 2017
+b18_2<-b18 %>%
+  group_by(nomem_encr) %>%
+  summarize(n=n(), n_na=sum(is.na(brutoink_f)))
+
+table(b18_2$n, b18_2$n_na) 
+
+b17_2<-b17 %>%
+  group_by(nomem_encr) %>%
+  summarize(n=n(), n_na=sum(is.na(brutoink_f)))
+
+table(b17_2$n, b17_2$n_na) 
+
+
+
+# Checking the same for the country of origin ("herkomstgroep")
+# check for how many people info about personal gross monthly income is missing 
+b19_2<-b19 %>%
+  group_by(nomem_encr) %>%
+  summarize(n=n(), n_na=sum(is.na(herkomstgroep)))
+
+# in this table rows are the number of months a person participated in the Background survey in 2019, and columns - number of times this person didn't answer about personal income
+table(b19_2$n, b19_2$n_na) # as in the case of income, if information is missing, it's usually missing in almost each month's survey 
+
+
+
+
+# So, there is no point (for now) in imputing values about income from previous months
+# we can simply take answers from the latest month each year
+# But for the participants to be able to impute NA from previous months we will add all information about income and country of origin (from all waves) into a list (below)
+
+
+
+```
+
+Now, for each year and each participant, we select the last entry (usually December; if there is no entry from December, than November, etc.)
+
+```{r eval = T, message = F, warning = F}
+
+background2 <- background %>%
+  group_by(nomem_encr, year) %>%
+  arrange(wave) %>%
+  filter(row_number()==n())
+
+#length(unique(background2$nomem_encr)) == length(unique(background$nomem_encr))
+#table(background2$year)
+
+#save(background2, file = "background_long_one entry per year.RData")
+
+
+```
+
+
+## Long --> Wide
+
+```{r eval = T, message = F, warning = F}
+
+
+background_wide <- background2 %>%
+  pivot_wider(id_cols = c(nomem_encr,gebjaar,geslacht), names_from = year, values_from = c(4:(ncol(background2)-1)), names_glue = "{.value}{year}")
+
+
+not_in <- which(!colnames(background_wide) %in% codebook_background_full$var_names)
+colnames(background_wide)[not_in]# there are some additional empty columns in the wide file because not all the questions were asked in every year
+background_wide <- background_wide[, -not_in]
+
+
+
+```
+
+## Additional columns for income 
+
+Here I make lists for each year with 12 values of income 
+
+```{r eval = T, message = F, warning = F}
+# making columns of lists -- to include all monthly income data and herkomstgroep data
+
+income <- background %>% select("nomem_encr","wave","brutoink_f","nettoink_f","year")
+
+income$month <- round(((income$wave/100)%% 1)*100)
+
+# add rows with NA for the months
+income2 <- income %>% 
+       group_by(nomem_encr, year) %>% 
+       complete(month = full_seq(1:12, 1))
+
+
+# order by id and wave
+income3<- income2[with(income2, order(nomem_encr, year,month)), ]
+
+
+income3 <- income3 %>% group_by(nomem_encr, year) %>% 
+  summarize(brutoink_f_all = list(brutoink_f), nettoink_f_all = list(nettoink_f)) %>% 
+  select(brutoink_f_all, nettoink_f_all,year)
+
+# long --> wide
+income3_wide <- income3 %>%
+  pivot_wider(id_cols = nomem_encr, names_from = year, values_from = c(2:(ncol(income3)-1)), names_glue = "{.value}{year}")
+
+
+income3_wide <- income3_wide[,order(colnames(income3_wide))]
+
+# adding to the main wide file
+
+background_wide2 <-merge(background_wide, income3_wide, by = "nomem_encr")
+
+
+
+# ADD new columns to the Codebooks!
+
+
+background_wide3 <- background_wide2 %>% 
+  rowwise() %>% 
+  mutate_if(is.list, ~paste(unlist(.), collapse = '|')) 
+
+background_wide3 <-background_wide3[, -c(380,393)] # delete brutoink_f_all2007 and nettoink_f_all2007 which are empty
+
+#saveRDS(background_wide3, file = "background_wide.rds")
+
+```
+
+
+
+# Core studies: long --> wide
+
+```{r, message = F, warning = F }
+
+into_wide <- function(data, wave_core_name, core_study_name, var_all, background) {
+  
+  # select only those aged 18-45 in 2019
+  data <- subset(data, data$nomem_encr %in% background$nomem_encr)
+
+  
+  if (core_study_name!="Health" & core_study_name!="Politics and Values") { # Year variable was created during preprocessing, see below
+    data$year <-round(data[[2]]/100)}
+  
+  
+  # filter the last waves!
+  data <- subset(data, data$year<=2019)
+
+  # some waves have different wave names
+  if (core_study_name=="Economic Situation Assets"){
+    data <- data %>% mutate(year=recode(year, `2008`='08a',`2010`="10b",                                            `2012`="12c",`2014`="14d",`2016`="16e",`2018`="18f",`2020`="20g",`2022`="22h"))}
+  
+   else if (core_study_name=="Health"){
+    data <- data %>% mutate(year=recode(year, `2007`='07a',`2008`="08b",`2009`="09c",`2010`="10d",`2011`="11e",`2012`="12f",`2013`="13g",`2015`="15h",`2016`="16i",                                      `2017`="17j",`2018`="18k",`2019`="19l",`2020`="20m",`2021`="21n",`2022`="22o"))}
+
+  else if (core_study_name=="Personality"){
+     data <- data %>% mutate(year=recode(year, `2008`='08a',`2009`="09b",`2010`="10c",`2011`="11d",`2012`="12e",`2013`="13f",`2014`="14g",`2015`="15h",`2017`="17i",                                      `2018`="18j",`2019`="19k",`2020`="20l",`2021`="21m"))
+  }
+  
+  else if (core_study_name=="Politics and Values"){
+     data <- data %>% mutate(year=recode(year, `2008`='08a',`2009`="09b",`2010`="10c",`2011`="11d",`2012`="12e",`2013`="13f",`2014`="14g",`2016`="16h",`2017`="17i",                                      `2018`="18j",`2019`="19k",`2020`="20l",`2021`="21m"))
+  }
+  
+  else {
+     data <- data %>% mutate(year=recode(year, `2008`='08a',`2009`="09b",`2010`="10c",`2011`="11d",`2012`="12e",`2013`="13f",`2014`="14g",`2015`="15h",`2016`="16i",`2017`="17j",                                      `2018`="18k",`2019`="19l",`2020`="20m",`2021`="21n"))
+  }
+  
+  data_wide <- data %>%
+    pivot_wider(id_cols = nomem_encr, names_from = year, values_from = c(2:(ncol(data)-1)), names_glue = "{year}{.value}")
+
+
+  names(data_wide)[-1] <- gsub(wave_core_name, "" , names(data_wide)[-1], fixed = TRUE) # except nomem_encr
+
+  data_wide<-data_wide %>% 
+    rename_with(~paste0(wave_core_name,.), -nomem_encr)
+
+  colnum <- which(colnames(data_wide) %in% var_all$var_names)
+  data_wide <- data_wide[, colnum]
+  
+
+  not_in_wide<-which(!var_all$var_names[var_all$survey==core_study_name] %in% colnames(data_wide))
+  print("variables from codebook not in Wide:") 
+  print(var_all$var_names[var_all$survey==core_study_name][not_in_wide]) 
+
+  not_in_codebook<-which(!colnames(data_wide)  %in% var_all$var_names[var_all$survey==core_study_name])
+  print("variables from Wide not in codebook (should be 0):")
+  print(colnames(data_wide)[not_in_codebook])  
+  
+  if (length(not_in_wide)==0) {
+  mylist<-var_all$var_names[var_all$survey==core_study_name]
+  data_wide <- data_wide[,match(mylist, colnames(data_wide))] }
+  
+   else {
+  mylist<-var_all$var_names[var_all$survey==core_study_name][-not_in_wide] 
+  data_wide <- data_wide[,match(mylist, colnames(data_wide))] }
+  
+  return(data_wide)
+
+}  
+ 
+
+load("background_all months.RData")
+var_all <-read.csv("codebook_LISS_all_variables.csv") # ----> the output from "Combing all LISS files.Rmd"
+
+```
+
+## Family
+
+```{r eval = T, message = F, warning = F}
+fam <- read_sav("Family & Household\\Family&Household waves 1 - 14.sav")
+#table(fam$cf_m)
+fam_wide <- into_wide(fam, "cf", "Family & Household", var_all, background)
+
+saveRDS(fam_wide, file="fam_wide.rds")
+
+```
+
+## Economic Situation Assets
+
+```{r eval = T, message = F, warning = F}
+esa <- read_sav("Economic Situation Assets\\Assets waves 1 - 8.sav")
+#table(esa$ca_m)
+
+esa_wide <- into_wide(esa, "ca", "Economic Situation Assets", var_all, background)
+#saveRDS(esa_wide, file="esa_wide.rds")
+
+```
+
+## Economic Situation Housing
+
+```{r eval = T, message = F, warning = F}
+esh <- read_sav("Economic Situation Housing\\Housing waves 1 - 15.sav")
+#table(esh$cd_m)
+esh_wide <- into_wide(esh, "cd", "Economic Situation Housing", var_all, background)
+
+#saveRDS(esh_wide, file="esh_wide.rds")
+
+```
+## Economic Situation Income
+
+```{r eval = T, message = F, warning = F}
+esi <- read_sav("Economic situation Income\\Income waves 1 - 15.sav")
+#table(esi$ci_m)
+esi_wide <- into_wide(esi, "ci", "Economic Situation Income", var_all, background)
+
+#saveRDS(esi_wide, file="esi_wide.rds")
+
+```
+  
+## Health
+
+```{r eval = T, message = F, warning = F}
+hea <- read_sav("Health\\Health waves 1- 15.sav")
+hea <- subset(hea, hea$nomem_encr %in% background$nomem_encr)
+
+#table(hea$ch_m)
+hea$year <-round(hea[[2]]/100)
+
+hea <- subset(hea, hea$year<=2019)
+
+
+# additional preprocessing because there was an error during reshaping -- some people participated twice per year
+health2<-hea %>%
+  group_by(nomem_encr, year) %>%
+  summarize(n=n())
+
+
+table(health2$n,health2$year) # 1.7% participated twice in 2008
+
+### health 2008 and 2007
+hea8 <- read_sav("Health\\source\\ch08b_EN_1.3p.sav")
+hea8 <- subset(hea8, hea8$nomem_encr %in% background$nomem_encr)
+hea8$year <-round(hea8[[2]]/100)
+hea8_2<-hea8 %>%
+  group_by(nomem_encr, year) %>%
+  summarize(n=n()) # no people in the original file who participated twice in 2008
+
+hea7 <- read_sav("Health\\source\\ch07a_2p_EN.sav") # ----- some people in the 2007 wave participated in the survey in early 2008, that's why after extracting Year in the combined long file there were two 2008 entries for some people
+
+table(hea7$ch07a_m) # dates of fieldwork 200711 200802 
+
+# change fieldwork date to make correct variable with fieldwork year - replace  200802 with 200712
+#table(hea$ch_m)
+hea <- hea %>%
+  mutate(ch_m2 = ifelse(ch_m == 200802, 200712, ch_m))
+
+#table(hea$ch_m2)
+
+hea$year <-round(hea$ch_m2/100)
+hea<-hea[, -ncol(hea)] #deleting ch_m2
+
+hea_wide <- into_wide(hea, "ch", "Health", var_all, background)
+
+#saveRDS(hea_wide, file="hea_wide.rds")
+
+```  
+
+## Personality
+
+```{r eval = T, message = F, warning = F}
+per <- read_sav("Personality\\Personality waves 1 - 14.sav")
+#table(per$cp_m)
+per_wide <- into_wide(per, "cp", "Personality", var_all, background)
+
+#saveRDS(per_wide, file="per_wide.rds")
+
+```
+  
+## Politics and Values
+
+```{r eval = T, message = F, warning = F}
+pav <- read_sav("Politics and Values\\POV waves 1 - 14.sav")
+#table(pav$cv_m1) ----- many missing values in fieldwork date
+
+  
+
+#####
+# Fixing missing values in the fieldwork dates in Politics and values ---- combining a long file from source files, leaving only id and year of fieldwork
+path <- "Politics and Values\\source\\"
+files <- dir(path = path, pattern = "*.sav") # names of files
+files <- files[!str_detect(files, "cv23o")] # remove waves 2020-2023
+print(files) # print list of names
+files <- paste0(path, files) # path to files
+  
+list_data <- map(files, function(x) as_factor(read_sav(x)))
+  
+# Combine all datasets into a LONG file
+for(i in 1:length(list_data)) {
+    if(i == 1) {
+      pav_source <- list_data[[i]][1]
+      pav_source$year <-i
+    } else {
+      temp <- list_data[[i]][1]
+      temp$year<-i
+      pav_source <- bind_rows(pav_source, temp) 
+    }
+}
+
+pav_source <- pav_source %>% mutate(year=recode(year, `1`=2008,`2`=2009,`3`=2010,`4`=2011,`5`=2012,`6`=2013,`7`=2014,`8`=2016,`9`=2017,                                      `10`=2018,`11`=2019,`11`=2019,`12`=2020,`13`=2021,`14`=2022))
+
+pav_source <- pav_source[order(pav_source$nomem_encr,-pav_source$year),]
+
+#check
+#nrow(pav_source) == nrow(pav)
+
+pav_source_n<-pav_source %>%
+  group_by(nomem_encr) %>%
+  summarize(n=n())
+pav_n<-pav %>%
+  group_by(nomem_encr) %>%
+  summarize(n=n())
+
+table(pav_n$n==pav_source_n$n)
+
+pav$year <- pav_source$year
+#########################
+
+
+
+pav_wide <- into_wide(pav, "cv", "Politics and Values", var_all, background)
+
+# ! some technical variables that are present in the codebook are missing from the wide file because they were deleted during the preparation of long core files (see SPSS syntax files)
+
+#saveRDS(pav_wide, file="pav_wide.rds")
+
+```
+ 
+ 
+## Religion and Ethnicity 
+
+```{r eval = T, message = F, warning = F}
+rel <- read_sav("Religion and Ethnicity\\REE waves 1 - 15.sav")
+rel_wide <- into_wide(rel, "cr", "Religion and Ethnicity", var_all, background)
+
+#saveRDS(rel_wide, file="rel_wide.rds")
+
+```
+ 
+## Social Integration and Leisure
+
+```{r eval = T, message = F, warning = F}
+soc <- read_sav("Social Integration and Leisure\\SIL waves 1 - 15.sav")
+soc_wide <- into_wide(soc, "cs", "Social Integration and Leisure", var_all, background)
+
+#saveRDS(soc_wide, file="soc_wide.rds")
+
+```
+
+## Work & Schooling
+
+```{r eval = T, message = F, warning = F}
+wor <- read_sav("Work & Schooling\\Work&Schooling waves 1 - 15.sav")
+wor_wide <- into_wide(wor, "cw", "Work & Schooling", var_all, background)
+
+#saveRDS(wor_wide, file="wor_wide.rds")
+
+# cw11d530 -- "Participation in graphs experiment" -- is absent from the wide file because it was excluded from the long dataset
+
+```
+
+## Merging wide Core studies together
+
+
+```{r eval = T}
+file_names <- c("background_wide.rds","fam_wide.rds","esa_wide.rds","esh_wide.rds","esi_wide.rds","hea_wide.rds","per_wide.rds","pav_wide.rds","rel_wide.rds","soc_wide.rds","wor_wide.rds")
+
+for (i in 1:length(file_names)) {  
+    print(i)
+    if(i == 1) {
+      comb <- readRDS(file_names[i])
+    } else {
+      temp <- readRDS(file_names[i])
+      comb <- full_join(comb, temp, by = "nomem_encr")
+    }
+}
+
+#saveRDS(comb, file="core_background.rds") # All core studies and Background variables, all rows
+#write.csv(comb, "LISS all variables.csv", row.names = F) # this is way slower than write_csv, but write_csv doesn't work correctly
+
+
+#df <-read.csv("LISS all variables.csv")
+
+
+```
+
+## Calculating the number of waves in which participated
+
+```{r}
+
+comb <-readRDS("core_background.rds")
+#n<-which(colnames(comb)=="nettoink_f_all2019" )
+#comb_sub2 <- comb[, -c(2:n)]
+
+comb_sub <-comb |> 
+  select(nomem_encr, contains("_m"), -c(cv18j_m2, cv18j_m3,cv19k_m2,cv19k_m3,))
+
+comb_sub$num_part <- ncol(comb_sub) - 1 - rowSums(is.na(comb_sub[, -1]))
+sum(comb_sub$num_part==0) # 3700 people did not participate in any core studies
+
+hist(numNA)
+
+ggplot(comb_sub, aes(numNA))+
+  geom_histogram()
+
+```
+
+
+
+
+# Outcome variable
+
+```{r}
+#comb <-readRDS("core_background.rds")
+comb2 <- comb %>% select(c("nomem_encr","nohouse_encr2019", "cf19l455","cf19l454"))
+
+f20 <- read_sav("Family & Household\\source\\cf20m_EN_1.0p.sav")
+f20 <- f20 %>% select(c("nomem_encr","cf20m454","cf20m455"))%>% filter(nomem_encr %in% comb2$nomem_encr) #----> far less people because of the filter by age and because there were some new people in the panel in 2020 who didn't participate in 2007-2019
+
+
+
+
+f21 <- read_sav("Family & Household\\source\\cf21n_EN_1.0p.sav")
+f21 <- f21 %>% select(c("nomem_encr","cf21n454","cf21n455"))%>% filter(nomem_encr %in% comb$nomem_encr)
+
+f22 <- read_sav("Family & Household\\source\\cf22o_EN_1.0p.sav")
+f22 <- f22 %>% select(c("nomem_encr","cf22o454","cf22o455")) %>% filter(nomem_encr %in% comb$nomem_encr) 
+
+
+comb2 <- merge(comb2, f20, by = "nomem_encr", all.x = T)
+comb2 <- merge(comb2, f21, by = "nomem_encr", all.x = T)
+comb2 <- merge(comb2, f22, by = "nomem_encr", all.x = T)
+
+comb2 <-comb2 %>% mutate(cf19l455 = ifelse(cf19l454 == 2, 0, cf19l455),# if did not ever have any children, impute 0 in the Number of children variable instead of NA
+                         cf20m455 = ifelse(cf20m454 == 2, 0, cf20m455),
+                         cf21n455 = ifelse(cf21n454 == 2, 0, cf21n455),
+                         cf22o455 = ifelse(cf22o454 == 2, 0, cf22o455)) 
+
+
+#table(comb2$cf19l455, useNA="always")
+#table(comb2$cf20m455, useNA="always")
+#table(comb2$cf21n455, useNA="always")
+#table(comb2$cf22o455, useNA="always")
+
+
+numNA <- rowSums(is.na(comb2[, c("cf19l455","cf20m455","cf21n455", "cf22o455")]))
+
+prop.table(table(numNA))
+
+```
+
+Data about the number of children in 2019-2022 is only available for 10% of or sample. 
+The proportion of missing values in the variable about having children (cf22o454) is the highest in 2022.    
+So, if we calculate the outcome only for those who answered these questions in each wave, we have about 90% missing values. But additional 8% of participants answered at least in two waves. Since the outcome is not the number of children but having at least one child in 2020-2022, we can calculate the differences between all the pairs of questions (2020-2019, 2021-2020, 2021-2019, etc), then sum up, and then dichotomize the resulting variable. The participants for whom the sum is at least one had at least one child in 2020-2022. 
+
+But we cannot establish that there were no new child in 2020-2022 without data about 2022. If a person said in 2022 that they did not ever have any children, than the outcome is 0 (even if in 2020-2021 there are NAs). If the question "did you ever have any children" wasn't answered in 2022, than the outcome is NA.  
+
+
+
+
+```{r}
+# 2022-2021
+comb2$new22_21 <- comb2$cf22o455 - comb2$cf21n455
+#table(comb2$new22_21) # 46 new children in 2022
+# 2022-2020
+comb2$new22_20 <- comb2$cf22o455 - comb2$cf20m455
+# 2022-2019
+comb2$new22_19 <- comb2$cf22o455 - comb2$cf19l455
+
+# 2021-2020
+comb2$new21_20 <- comb2$cf21n455 - comb2$cf20m455
+#table(comb2$new21_20) # 93 new children in 2021  (covid?)
+# 2021-2019
+comb2$new21_19 <- comb2$cf21n455 - comb2$cf19l455
+
+#2020-2019
+comb2$new20_19 <- comb2$cf20m455 - comb2$cf19l455
+#table(comb2$new20_19) # 69 new children in 2020
+
+ 
+comb2$new_child <- apply(comb2[, c("new22_21","new22_20","new22_19", "new21_20", "new21_19", "new20_19")], 1, function(x) sum(x>0, na.rm=T))  # whether had at least one child in 3 years
+comb2$new_child <- ifelse(comb2$new_child>0, 1,0)
+
+# for the cases with 0, we cannot determine if there were really no new children if the value for the number of children in 2022 is missing -- in these cases, replacing 0 with NA
+comb2$new_child <- ifelse(is.na(comb2$cf22o454) & comb2$new_child==0, NA,comb2$new_child)
+
+prop.table(table(comb2$new_child, useNA="always"))
+
+comb2<-comb2 |> select(nomem_encr,new_child)
+
+saveRDS(comb2, "outcome.RDS")
+write.csv(comb2, "outcome.csv", row.names = F)
+
+```
+
+
+## Making the 2019 file
+
+```{r}
+
+
+
+```
+
+## Making the 2019 file 
+
+```{r}
+
+# selecting only variables from 2019 waves + Asset variables from 2018 because there were no data collection in 2019
+
+
+
+comb3 <- comb %>%
+  select(matches("nomem_encr|gebjaar|geslacht|19l|19k|ca18f|2019"))
+
+# check
+#f19 <- read_sav("Family & Household\\source\\cf19l_EN_1.0p.sav")
+#f19 <- subset(f19, f19$nomem_encr %in% comb$nomem_encr)
+#table(f19$cf19l031)
+#table(comb3$cf19l031)
+#table(f19$cf19l392)
+#table(comb3$cf19l392)
+
+#saveRDS(comb3, "LISS 2019.rds")
+write.csv(comb3, "LISS 2019.csv", row.names = F)
+
+```
+
+Add variable type to codebooks
+
+```{r}
+
+data <-read.csv("C:\\Users\\lisch\\3D Objects\\ODISSEI Summer School 2023 - Gert & Lisa\\ODISSEI Summer School 2023 - Gert Stulp\\FINAL DATASETS\\LISS for Eyra\\LISS_train.csv")
+
+
+test <-read.csv("C:\\Users\\lisch\\3D Objects\\ODISSEI Summer School 2023 - Gert & Lisa\\ODISSEI Summer School 2023 - Gert Stulp\\FINAL DATASETS\\LISS for Eyra\\LISS_test.csv")
+
+test_outcome <-read.csv("C:\\Users\\lisch\\3D Objects\\ODISSEI Summer School 2023 - Gert & Lisa\\ODISSEI Summer School 2023 - Gert Stulp\\FINAL DATASETS\\LISS for Eyra\\outcome_test.csv")
+
+tr_outcome <-read.csv("C:\\Users\\lisch\\3D Objects\\ODISSEI Summer School 2023 - Gert & Lisa\\ODISSEI Summer School 2023 - Gert Stulp\\FINAL DATASETS\\LISS for Eyra\\outcome_train.csv")
+
+
+num_values <- apply(data, 2, function(x) length(unique(x)))
+
+num_values2 <- ifelse(num_values<=18, "categorical", "interval")
+num_values2[2] <-"interval"
+num_values2[17:29] <-"interval"
+num_values2[82:107] <-"interval"
+num_values2[404:415] <-"interval"
+num_values2[428:439] <-"interval"
+num_values2[495:506] <-"interval"
+num_values2[538:549] <-"interval"
+num_values2[573] <-"interval"
+num_values2[573] <-"interval"
+num_values2[715:738] <-"interval"
+num_values2[751:754] <-"interval"
+num_values2[751:754] <-"interval"
+num_values2[806:812] <-"interval"
+num_values2[820:823] <-"interval"
+num_values2[820:917] <-"interval"
+num_values2[1762:1773] <-"interval"
+num_values2[1784:1785] <-"interval"
+num_values2[2825:2831] <-"string"
+num_values2[3809:3832] <-"interval"
+num_values2[5230] <-"string"
+num_values2[5232] <-"string"
+
+code_full <- read.csv("codebook_LISS_all_variables_background_full.csv")
+code_full <- code_full[c(1,3,2,4:nrow(code_full)),]
+code_full["type"] <- num_values2
+
+
+write.csv(code_full, "codebook_LISS_all_variables_full.csv", row.names = F)
+
+
+code_summ <-read.csv("codebook_LISS_all_variables_background_summary.csv")
+codebook <-readRDS("codebook.rds")
+
+
+```
+
+```{r}
+
+library(data.table)
+
+data <-fread("C:\\Users\\lisch\\3D Objects\\ODISSEI Summer School 2023 - Gert & Lisa\\ODISSEI Summer School 2023 - Gert Stulp\\FINAL DATASETS\\LISS for Eyra\\LISS_train.csv")
+
+#data <-fread("X:\\LISS\\ODISSEI Summer School 2023 - Gert & Lisa\\ODISSEI Summer School 2023 - Gert Stulp\\DATASETS FINAL\\LISS for Eyra\\LISS_train.csv")
+
+
+
+table(data$cf19l130, data$cf19l128, useNA="always")
+
+test <-fread("C:\\Users\\lisch\\3D Objects\\ODISSEI Summer School 2023 - Gert & Lisa\\ODISSEI Summer School 2023 - Gert Stulp\\FINAL DATASETS\\LISS for Eyra\\LISS_test.csv")
+#test <-fread("X:\\LISS\\ODISSEI Summer School 2023 - Gert & Lisa\\ODISSEI Summer School 2023 - Gert Stulp\\DATASETS FINAL\\LISS for Eyra\\LISS_test.csv")
+
+test_outcome <-fread("C:\\Users\\lisch\\3D Objects\\ODISSEI Summer School 2023 - Gert & Lisa\\ODISSEI Summer School 2023 - Gert Stulp\\FINAL DATASETS\\LISS for Eyra\\outcome_test.csv")
+#test_outcome <-fread("X:\\LISS\\ODISSEI Summer School 2023 - Gert & Lisa\\ODISSEI Summer School 2023 - Gert Stulp\\DATASETS FINAL\\LISS for Eyra\\outcome_test.csv")
+
+
+tr_outcome <-fread("C:\\Users\\lisch\\3D Objects\\ODISSEI Summer School 2023 - Gert & Lisa\\ODISSEI Summer School 2023 - Gert Stulp\\FINAL DATASETS\\LISS for Eyra\\outcome_train.csv")
+
+
+
+# F1 weighted random classif
+test_outcome$pred_null <-rbinom(396, 1, 0.174)
+
+true_positives <- sum(test_outcome$new_child==1 &test_outcome$pred_null==1)
+false_positives <- sum(test_outcome$new_child==0 &test_outcome$pred_null==1)
+
+false_negatives <-sum(test_outcome$new_child==1 &test_outcome$pred_null==0)
+precision = true_positives / (true_positives + false_positives)
+recall = true_positives / (true_positives + false_negatives)
+f1_score = 2 * (precision * recall) / (precision + recall)
+
+t = table(test_outcome$new_child, test_outcome$pred_null)
+accuracy = (t[1]+t[4])/nrow(test_outcome)
+# conf interval
+f1 <-c()
+acc <-c()
+
+for (i in 1:1000) {
+  subset <-sample(nrow(test_outcome),nrow(test_outcome), replace = T)
+  df_boot <-test_outcome[subset,]
+  true_positives <- sum(df_boot$new_child==1 &df_boot$pred_null==1)
+  false_positives <- sum(df_boot$new_child==0 &df_boot$pred_null==1)
+  false_negatives <-sum(df_boot$new_child==1 &df_boot$pred_null==0)
+  
+  precision = true_positives / (true_positives + false_positives)
+  recall = true_positives / (true_positives + false_negatives)
+  f1_score = 2 * (precision * recall) / (precision + recall)
+  f1<-c(f1,f1_score)
+  
+  
+  t = table(df_boot$new_child, df_boot$pred_null)
+accuracy_=(t[1]+t[4])/nrow(test_outcome)
+  acc <-c(acc,accuracy_)
+}
+mean(f1)
+quantile(f1, c(0.975))
+quantile(f1, c(0.025))
+
+
+
+# F1 of a random classifier
+test_outcome$pred_null <-rbinom(396, 1, 0.5)
+
+true_positives <- sum(test_outcome$new_child==1 &test_outcome$pred_null==1)
+false_positives <- sum(test_outcome$new_child==0 &test_outcome$pred_null==1)
+
+false_negatives <-sum(test_outcome$new_child==1 &test_outcome$pred_null==0)
+precision = true_positives / (true_positives + false_positives)
+recall = true_positives / (true_positives + false_negatives)
+f1_score = 2 * (precision * recall) / (precision + recall)
+
+accuracy_ = table(test_outcome$new_child, test_outcome$pred_null)
+(accuracy_[1]+accuracy_[4])/nrow(test_outcome)
+
+# calculate confidence interval
+f1 <-c()
+acc <-c()
+
+for (i in 1:1000) {
+  subset <-sample(nrow(test_outcome),nrow(test_outcome), replace = T)
+  df_boot <-test_outcome[subset,]
+  true_positives <- sum(df_boot$new_child==1 &df_boot$pred_null==1)
+  false_positives <- sum(df_boot$new_child==0 &df_boot$pred_null==1)
+  false_negatives <-sum(df_boot$new_child==1 &df_boot$pred_null==0)
+  
+  precision = true_positives / (true_positives + false_positives)
+  recall = true_positives / (true_positives + false_negatives)
+  f1_score = 2 * (precision * recall) / (precision + recall)
+  f1<-c(f1,f1_score)
+  
+  
+  t = table(df_boot$new_child, df_boot$pred_null)
+accuracy_=(t[1]+t[4])/nrow(test_outcome)
+  acc <-c(acc,accuracy_)
+}
+mean(f1)
+quantile(f1, c(0.975))
+quantile(f1, c(0.025))
+
+mean(acc)
+quantile(acc, c(0.975))
+quantile(acc, c(0.025))
+
+
+
+# F1 of predictions based on age and education
+train.control <- caret::trainControl(method = "cv", number = 5, savePredictions = "final",  verboseIter = F)
+
+data<-merge(data, tr_outcome, by = "nomem_encr")
+test<-merge(test, test_outcome, by = "nomem_encr")
+
+data$new <-as.factor(data$new)
+test$new <-as.factor(test$new)
+
+table(test$new)
+
+data$age <- 2019 -data$gebjaar
+test$age <- 2019 -test$gebjaar
+
+data$oplmet2019 <-as.factor(data$oplmet2019)
+test$oplmet2019 <-as.factor(test$oplmet2019)
+
+test$oplmet2019[is.na(test$oplmet2019)]<-"hbo (higher vocational education, US: college)"
+
+fit_new_lm <- caret::train(new ~ oplmet2019+age + I(age^2), data, method = 'glm',family = "binomial", na.action=na.exclude, trControl=train.control) #prediction from a rank-deficient fit may be misleading
+  
+pred <-predict(fit_new_lm, test)
+
+true_positives <- sum(test$new==1 & pred ==1, na.rm=T)
+false_positives <- sum(test$new==0 & pred==1)
+
+false_negatives <-sum(test$new==1 & pred==0)
+precision = true_positives / (true_positives + false_positives)
+recall = true_positives / (true_positives + false_negatives)
+f1_score = 2 * (precision * recall) / (precision + recall)
+
+# intercept only
+
+data<-merge(data, tr_outcome, by = "nomem_encr")
+test<-merge(test, test_outcome, by = "nomem_encr")
+
+data2 <-data[,29460]
+data2$new_child <- as.factor(data2$new_child)
+test$new <-as.factor(test$new)
+
+table(test$new)
+fit_new_lm2 <- glm(new_child ~ 1, data2,family = "binomial", na.action=na.exclude)
+  
+pred <-predict(fit_new_lm2, test, type = "response")
+pred<-ifelse(pred>0.5,1,0)
+true_positives <- sum(test$new==1 & pred ==1, na.rm=T)
+false_positives <- sum(test$new==0 & pred==1)
+
+false_negatives <-sum(test$new==1 & pred==0)
+precision = true_positives / (true_positives + false_positives)
+recall = true_positives / (true_positives + false_negatives)
+f1_score = 2 * (precision * recall) / (precision + recall)
+
+```
+

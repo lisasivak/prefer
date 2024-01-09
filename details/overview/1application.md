@@ -1,7 +1,7 @@
 ---
 title: "Application"
 description: |
-  How to apply, who can apply, and what happens after application.
+  How to apply and who can apply.
 toc: true
 image: ../../images/prefer logo inverted.png
 image-alt: picture of a stork
@@ -15,9 +15,9 @@ You can participate individually or as part of a team. If you participate as a t
 
 __Who can apply to participate in PreFer?__  
 
-Anyone can apply, regardless of the field of work or study.  
+Anyone can apply, regardless of the field of work or study.
 
-[Phase 1](/details/overview/3phases.md) of the data challenge is open for everyone. There will be a winner determined after Phase 1. All of the Phase 1 participants who make at least one working submissions will get an opportunity to co-author a community paper about the challenge or submit a paper to the special issue. 
+[Phase 1](/details/overview/3phases.md) of the data challenge is open for everyone. There will be a winner determined after Phase 1. All of the Phase 1 participants who make at least one working submission (other than the submission provided as an example) will get an opportunity to co-author a community paper about the challenge or submit a paper to the special issue. 
 
 Certain requirements must be met to participate in [Phase 2](/details/overview/3phases.md) of PreFer. During this phase of the challenge, participants will have access to Dutch registry data. The access to this data is governed by strict rules and regulations in relation to data protection and privacy. One of the main requirements is that access to this data is only possible from the EU and [a few other countries](https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/adequacy-decisions_en). One must be physically located in one of these countries to access the data. We will select several teams to participate in Phase 2: those that achieved top scores in Phase 1 and at the same time have at least one team member who can be physically present in one of these countries during Phase 2 of the challenge.    
 One person per team will be granted access to this data.

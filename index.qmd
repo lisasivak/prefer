@@ -133,9 +133,18 @@ This data challenge can potentially advance our understanding of fertility behav
 :::
 :::
 
+
+
 <!-- how to participate -->
 ::: {.content-container}
 ::: {.listing-block}
+
+## Why participate
+* Use unique data from the LISS panel and the Dutch population registries, including a social network for the entire Dutch population  
+* Have fun learning new skills, competing with other teams, and discovering unique data while predicting an important life outcome  
+* Contribute to research on fertility behaviour  
+* Collaborate on scientific papers describing the results of the challenge  
+* Win recognition and prizes  
 
 ## How to participate
 <!-- :::: {.columns}-->
@@ -152,16 +161,8 @@ Use any method you’d like to train a predictive model using training data we p
 
 ### Submit the model  
 
-Submit your model (in [Phase 1](/details/overview/3phases.md)) or predictions (in [Phase 2](/details/overview/3phases.md)). The link yo the submission platform with all the instructions how to submit will appear on this website soon.
+Submit your model (in [Phase 1](/details/overview/3phases.md)) or predictions (in [Phase 2](/details/overview/3phases.md)). The link the submission platform with all the instructions how to submit will appear on this website soon.
  
-
-## Why participate
-* Use unique data from the LISS panel and the Dutch population registries, including a social network for the entire Dutch population  
-* Have fun learning new skills, competing with other teams, and discovering unique data while predicting an important life outcome  
-* Contribute to research on fertility behaviour  
-* Collaborate on scientific papers describing the results of the challenge  
-* Win recognition and prizes  
-
 
 ## Important dates
 - <font size="+2">[Application](#apply-to) closes: March 24, 2024</font>
