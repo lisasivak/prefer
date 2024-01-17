@@ -16,3 +16,5 @@ language:
 In this ODISSEI lecture, Gert Stulp talks about PreFer: the reasons for the challenge, its potential for research into fertility behaviour and design of the challenge.  
 
 You can watch the recording [here](https://eur.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=addbcfb3-2803-4ad7-a175-b0d600f80a92){target="_blank"}.
+
+![](/images/reasons_challenge.png)

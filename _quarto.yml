@@ -28,17 +28,17 @@ website:
       #- text: "About PreFer"
       #  href: "#about-prefer"
       - text: "APPLY"
-        href: "#apply-to"
+        href: details/overview/3application.md
+      - text: "Important dates"
+        href: "#important-dates"
       #- text: "The aim"
       #  href: "#the-aim"
-      - text: "How to participate"
-        href: "#how-to-participate"
       - text: "Why participate"
         href: "#why-participate"
-      #- text: "Important dates"
-      #  href: "#important-dates"
-      - text: "Methodology"
-        href: "#about-prefer"
+      - text: "How to participate"
+        href: "#how-to-participate"
+      #- text: "Methodology"
+      #  href: "#about-prefer"
       - faq/index.qmd
       - posts/index.qmd
       - text: "Organizers"
@@ -99,7 +99,7 @@ website:
     background: "#000000"
     left: |
       PreFer data challenge  
-      The website is based on [Real World Data Science](https://realworlddatascience.net/)
+      The website is based on [Real World Data Science](https://realworlddatascience.net/){target="_blank"}
     #center:  
     #  - href: mailto:g.stulp@rug.nl
     #    icon: envelope

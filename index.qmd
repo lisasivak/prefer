@@ -63,10 +63,12 @@ toc: false
 <!-- add emply line-->
 <font size="+1">    </font>
   
-<font size="+2">Welcome to the website of the __Predicting Fertility data challenge (PreFer)__. The aim of the challenge is to measure current predictability of fertility outcomes in the Netherlands to advance our understanding of fertility.</font>  
+<font size="+1">Welcome to the website of the __Predicting Fertility data challenge (PreFer)__. The aim of the challenge is to measure current predictability of fertility outcomes in the Netherlands to advance our understanding of fertility</font>  
 
-<font size="+3">__What do we miss?__</font>
+<font size="+1">[<span style="color:#cbcfe6;">__APPLY TO PARTICIPATE __</span>](https://forms.gle/cxc7U24n5ox7A1vu7){target="_blank"} and become a part of a unique data challenge in the social sciences</font> 
+
 :::
+
 ::: {.g-col-4  .top-story-img}
 ![](/images/tff plot.png)
 :::
@@ -75,6 +77,8 @@ toc: false
 
 :::
 ::: 
+
+
 <!-- details about the challenge -->
 ::: {.content-container}
 ::: {.listing-block}
@@ -93,7 +97,7 @@ toc: false
 ::: {.listing-block}
 
 ## Important dates
-- [Application](#apply-to) deadline: March 24, 2024
+- [Application](/details/overview/3application.md){target="_blank"} deadline: March 24, 2024
 - Start of the data challenge [Phase 1](/details/overview/3phases.md): April 1, 2024
 - End of the data challenge [Phase 1](/details/overview/3phases.md): May 27, 2024
 - Start of [Phase 2](/details/overview/3phases.md): June 17, 2024
@@ -111,6 +115,8 @@ toc: false
 
 ## Why predict fertility outcomes in a data challenge?
 
+Fertility is widely studied in diverse disciplines due to its importance to individuals and societies. A lot of factors have been identified that are related to fertility outcomes. Yet these important factors only explain a fraction of the variation in fertility outcomes and we are unable to explain even their short-term changes. What do we miss?
+
 This data challenge can potentially advance our understanding of fertility behavior and improve social policies and family planning in several ways. Measuring how well different factors and models can predict fertility outcomes for new cases will show __which factors are more important__. It can narrow down a scope for potential interventions and help people reach their desired family size. Comparing and interpreting different models submitted to a data challenge (e.g. theory- and data-driven) can identify __new factors__ currently overlooked by the theories of fertility and  highlight the __gaps in current knowledge__ (e.g. important interactions or non-linear effects). 
 
   
@@ -119,21 +125,6 @@ This data challenge can potentially advance our understanding of fertility behav
 :::
 
 
-::: {.pullout-text}
-::: {.pullout-container}
-::: {.pullout-block .black-background}
-
-
-## Become a part of a unique data challenge in the social sciences {#apply-to}
-
-
-::: {.button}
-[Apply to participate](https://forms.gle/cxc7U24n5ox7A1vu7){target="_blank"}
-:::
-
-:::
-:::
-:::
 
 
 
@@ -142,18 +133,22 @@ This data challenge can potentially advance our understanding of fertility behav
 ::: {.listing-block}
 
 ## Why participate
-* Use unique data from the LISS panel and the Dutch population registries, including a social network for the entire Dutch population  
+* Use unique data from the LISS panel and the Dutch population registers, including a social network for the entire Dutch population*  
 * Have fun learning new skills, competing with other teams, and discovering unique data while predicting an important life outcome  
 * Contribute to research on fertility behaviour  
 * Collaborate on scientific papers describing the results of the challenge  
 * Win recognition and prizes  
+  
+   
+
+*Only a selection of participants will get an opportunity to work with the register data in [Phase 2](/details/overview/3phases.md){target="_blank"} of the data challenge. For these participants the costs of access to the register datasets will be covered by ODISSEI. See __conditions for accessing the register data__ [here](/details/overview/4submission_evaluation_winners.md){target="_blank"}.
 
 ## How to participate
 <!-- :::: {.columns}-->
 <!--::: {.column width="30%"}-->
 ### Apply 
 
-Fill out [this form](https://forms.gle/cxc7U24n5ox7A1vu7){target="_blank"} to apply for participation in the data challenge. You can find the details about applications [here](details/overview/1application.md).
+Fill out [this form](https://forms.gle/cxc7U24n5ox7A1vu7){target="_blank"} to apply for participation in the data challenge. You can find the details about applications [here](details/overview/3application.md).
 __The application deadline is March 24th.__  
 
 
@@ -165,13 +160,6 @@ Use any method you’d like to train a predictive model using training data we p
 
 Submit your model (in [Phase 1](/details/overview/3phases.md)) or predictions (in [Phase 2](/details/overview/3phases.md)). The link the submission platform with all the instructions how to submit will appear on this website soon.
  
-
-## Important dates
-- <font size="+2">[Application](#apply-to) closes: March 24, 2024</font>
-- <font size="+2">Start of the data challenge [Phase 1](/details/overview/3phases.md): April 1, 2024</font>
-- <font size="+2">Start of [Phase 2](/details/overview/3phases.md), June 1, 2024</font>
-- <font size="+2">End of Phase 2: September 30, 2024</font>
-- <font size="+2">Announcing the winners: October 2024</font>
 
 
 :::
