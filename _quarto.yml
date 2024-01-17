@@ -6,11 +6,11 @@ website:
   open-graph: true
   site-url: https://www.gertstulp.com/
   repo-url: https://github.com/lisasivak/prefer
-  image: images/PreFer_logo LONG2.png
+  image: images/PreFer_logo_no_text2.png
   favicon: images/PreFer_logo_favicon.png
   navbar:
     background: "#f0eeeb"
-    logo: images/PreFer_logo LONG2.png
+    logo: images/PreFer_logo_no_text2.png
     #logo-alt: "should be a picture of GS"
     #title: "Pre<span class='icon-line'></span>Fer"
     collapse-below: lg
@@ -33,12 +33,12 @@ website:
       #  href: "#the-aim"
       - text: "How to participate"
         href: "#how-to-participate"
-      #- text: "Why participate"
-      #  href: "#why-participate"
-      - text: "Important dates"
-        href: "#important-dates"
+      - text: "Why participate"
+        href: "#why-participate"
+      #- text: "Important dates"
+      #  href: "#important-dates"
       - text: "Methodology"
-        href: "#details-about-the-challenge"
+        href: "#about-prefer"
       - faq/index.qmd
       - posts/index.qmd
       - text: "Organizers"

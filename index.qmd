@@ -7,7 +7,7 @@ sidebar: false
 search: false
 description: | 
   website of the PreFer data challenge
-image: images/PreFer_logo LONG2.png
+image: images/PreFer_logo_no_text2.png
 #title: "PreFer data<span class='icon-line'></span>challenge"
 listing:
   - id: details-overview
@@ -63,7 +63,7 @@ toc: false
 <!-- add emply line-->
 <font size="+1">    </font>
   
-<font size="+2">Fertility is widely studied in diverse disciplines due to its importance to individuals and societies. Yet we are unable to explain even its short-term changes.</font>  
+<font size="+2">Welcome to the website of the __Predicting Fertility data challenge (PreFer)__. The aim of the challenge is to measure current predictability of fertility outcomes in the Netherlands to advance our understanding of fertility.</font>  
 
 <font size="+3">__What do we miss?__</font>
 :::
@@ -75,37 +75,39 @@ toc: false
 
 :::
 ::: 
-
-
-<!-- quick overview -->
+<!-- details about the challenge -->
 ::: {.content-container}
 ::: {.listing-block}
 
-<!-- add emply line-->
-<font size="+1">    </font>  
-<font size="+1">Welcome to the website of the __Predicting Fertility data challenge (PreFer)__. The aim of the challenge is to measure current predictability of fertility outcomes in the Netherlands to advance our understanding of fertility.</font>
+## About PreFer 
+
+::: {#details-overview}
+:::
 
 :::
-::::
+:::
 
+
+<!--  dates  -->
+::: {.content-container}
+::: {.listing-block}
+
+## Important dates
+- [Application](#apply-to) deadline: March 24, 2024
+- Start of the data challenge [Phase 1](/details/overview/3phases.md): April 1, 2024
+- End of the data challenge [Phase 1](/details/overview/3phases.md): May 27, 2024
+- Start of [Phase 2](/details/overview/3phases.md): June 17, 2024
+- End of [Phase 2](/details/overview/3phases.md): September 30, 2024
+- Announcing the winners: October 2024
+
+
+:::
+:::
 
 
 <!--  overview  -->
 ::: {.content-container}
 ::: {.listing-block}
-## About PreFer
-
-PreFer data challenge focuses on the following task: for people aged 18-45 in 2020, predict who will have a(nother) child within the following three years (2021-2023) based on the data up to and including 2020. 
-
-In the challenge, participants will use two unique data sources to make predictions: the LISS panel, a longitudinal survey based on a random representative sample of the Dutch population, and administrative data from Statistics Netherlands covering the entire Dutch population. Comparing and interpreting the models created in the challenge will help quantify the existing knowledge and gain insights.  
-
-The data challenge will take place from the beginning of April until the end of September 2024. It is open for participants from different backgrounds.
-  
-
-PreFer is organised by the [University of Groningen](https://www.rug.nl/){target="_blank"}, [ODISSEI](https://odissei-data.nl/en/){target="_blank"}, [Eyra](https://www.eyra.co/){target="_blank"}, and [Centerdata](https://www.centerdata.nl/){target="_blank"}.  
-
-See [here](#details-about-the-challenge) details about the methodology of the data challenge.
-
 
 ## Why predict fertility outcomes in a data challenge?
 
@@ -171,18 +173,6 @@ Submit your model (in [Phase 1](/details/overview/3phases.md)) or predictions (i
 - <font size="+2">End of Phase 2: September 30, 2024</font>
 - <font size="+2">Announcing the winners: October 2024</font>
 
-
-:::
-:::
-
-<!-- details about the challenge -->
-::: {.content-container}
-::: {.listing-block}
-
-## Details about the challenge 
-
-::: {#details-overview}
-:::
 
 :::
 :::

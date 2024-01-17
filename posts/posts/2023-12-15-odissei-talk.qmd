@@ -7,7 +7,7 @@ categories:
 #author: "Lisa Sivak"
 date: '2023-12-14'
 toc: true
-image: ../../images/PreFer_logo_favicon.png
+image: ../../images/incompatible_results.png
 image-alt: I still have to find a figure for this. 
 language: 
     section-title-footnotes: References
