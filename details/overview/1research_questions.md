@@ -25,7 +25,7 @@ The results of PreFer will be used to answer the following __research questions_
 * To what extent can predictions on survey data be improved by augmenting it by register data? (e.g. imputing missing values, correcting measurement errors, adding new variables)  
 * To what extent can predictions based on the register data be improved by augmenting it with survey data (e.g. “subjective” variables)?
 
-
+Gert Stulp talks in more detail about potential of the data challenge for research into fertility behaviour [here](https://eur.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=addbcfb3-2803-4ad7-a175-b0d600f80a92){target="_blank"}.
 
 <font size="-1">Photo by <a href="https://unsplash.com/@awm0st?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Adam Mosley</a> on <a href="https://unsplash.com/photos/white-stork-flying-under-blue-sky-during-daytime-rfpkJjNWJLE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></font>
   
