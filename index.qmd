@@ -59,7 +59,7 @@ toc: false
 
 ::: grid
 
-::: {.g-col-8  .top-story-text}
+::: {.g-col-9  .top-story-text}
 <!-- add emply line-->
 <font size="+1">    </font>
   
@@ -69,8 +69,8 @@ toc: false
 
 :::
 
-::: {.g-col-4  .top-story-img}
-![](/images/tff plot.png)
+::: {.g-col-3  .top-story-img}
+![](/images/map_nl1.png)
 :::
 
 :::
