@@ -33,10 +33,12 @@ website:
         href: "#important-dates"
       #- text: "The aim"
       #  href: "#the-aim"
-      - text: "Why participate"
-        href: "#why-participate"
+      #- text: "Why participate"
+      #  href: "#why-participate"
       - text: "How to participate"
         href: "#how-to-participate"
+      - text: "Preprint"
+        href: https://arxiv.org/abs/2402.00705
       #- text: "Methodology"
       #  href: "#about-prefer"
       - faq/index.qmd
