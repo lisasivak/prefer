@@ -99,7 +99,8 @@ website:
     background: "#000000"
     left: |
       PreFer data challenge  
-      The website is based on [Real World Data Science](https://realworlddatascience.net/){target="_blank"}
+      The website is based on [Real World Data Science](https://realworlddatascience.net/){target="_blank"}  
+      
     #center:  
     #  - href: mailto:g.stulp@rug.nl
     #    icon: envelope
@@ -113,8 +114,8 @@ website:
     #  - href: https://orcid.org/0000-0003-0173-5554
     #    text: "{{< ai orcid >}}"
     #    aria-label: Orcid
-    #right: |
-    #  GS
+    right: |
+      The map of the Netherlands by [Tananuphong Kummaru on Vecteezy](https://www.vecteezy.com/png/18876571-polygonal-netherlands-map){target="_blank"}
     
 format:
   html:
