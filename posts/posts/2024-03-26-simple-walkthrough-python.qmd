@@ -1,0 +1,19 @@
+---
+title: "A walkthough of submitting a simple model in python"
+description: |
+  Here we show the steps for submitting a simple model in `python`
+categories:
+  - dataset
+  - guide
+author: 
+  - "Gert Stulp"
+  - "Lisa Sivak"
+date: '2024-03-26'
+toc: true
+image: ../../images/liss_pick.png
+image-alt: LISS logo. 
+language: 
+    section-title-footnotes: References
+---
+
+

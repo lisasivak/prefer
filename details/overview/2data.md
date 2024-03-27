@@ -5,7 +5,7 @@ description: |
 categories:
   - Data description
 toc: true
-image: ../../images/data_scheme.png
+image: ../../images/data scheme pick.png
 language: 
     section-title-footnotes: References
 ---
@@ -23,7 +23,7 @@ The dataset includes only a subsample of people aged 18-45 in 2020. The dataset 
 __The dataset will be provided to the participants of the data challenge after sighing the user statement.__
 
 Read further:   
-- [Tips](/posts/posts/2023-12-20-liss-tips.qmd) for navigating the LISS dataset used in the challenge
+- [Tips](/posts/posts/2024-03-20-prefer-datasets.qmd) for navigating the LISS datasets used in the challenge
 
 ![](/images/scheme liss.png)  
 

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Gert Stulp">
+<meta name="author" content="Lisa Sivak">
+<meta name="dcterms.date" content="2024-03-21">
+<meta name="description" content="Here is some useful information that can help navigate the PreFer codebooks">
+
+<title>A guide on PreFer codebooks</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/PreFer_logo_favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../rwds.css">
+<meta property="og:title" content="A guide on PreFer codebooks">
+<meta property="og:description" content="Here is some useful information that can help navigate the PreFer codebooks">
+<meta property="og:image" content="https://preferdatachallenge.nl/images/liss_pick.png">
+<meta property="og:image:height" content="382">
+<meta property="og:image:width" content="467">
+<meta property="og:image:alt" content="LISS logo.">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/PreFer_logo_no_text2.png" alt="" class="navbar-logo">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../details/overview/3application.html" rel="" target="">
+ <span class="menu-text">APPLY</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../#important-dates" rel="" target="">
+ <span class="menu-text">Important dates</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../#how-to-participate" rel="" target="">
+ <span class="menu-text">How to participate</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://arxiv.org/abs/2402.00705" rel="" target="">
+ <span class="menu-text">Preprint</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../faq/index.html" rel="" target="">
+ <span class="menu-text">FAQ</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts/index.html" rel="" target="">
+ <span class="menu-text">Guides</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-organizers" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Organizers</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-organizers">    
+        <li>
+    <a class="dropdown-item" href="../../about-us.html" rel="" target="">
+ <span class="dropdown-text">Who we are</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../contact.html" rel="" target="">
+ <span class="dropdown-text">Contact us</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../funding.html" rel="" target="">
+ <span class="dropdown-text">Funding</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#prefer_codebook.csv" id="toc-prefer_codebook.csv" class="nav-link active" data-scroll-target="#prefer_codebook.csv">PreFer_codebook.csv</a>
+  <ul class="collapse">
+  <li><a href="#finding-variables" id="toc-finding-variables" class="nav-link" data-scroll-target="#finding-variables">Finding variables</a>
+  <ul class="collapse">
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example 1</a></li>
+  <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2">Example 2</a></li>
+  </ul></li>
+  <li><a href="#variable-types" id="toc-variable-types" class="nav-link" data-scroll-target="#variable-types">Variable types</a></li>
+  <li><a href="#using-variable-information" id="toc-using-variable-information" class="nav-link" data-scroll-target="#using-variable-information">Using variable information</a></li>
+  </ul></li>
+  <li><a href="#prefer_codebook_summary.csv" id="toc-prefer_codebook_summary.csv" class="nav-link" data-scroll-target="#prefer_codebook_summary.csv">PreFer_codebook_summary.csv</a>
+  <ul class="collapse">
+  <li><a href="#example-interpretation" id="toc-example-interpretation" class="nav-link" data-scroll-target="#example-interpretation">Example interpretation</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">A guide on PreFer codebooks</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">LISS</div>
+    <div class="quarto-category">dataset</div>
+    <div class="quarto-category">guide</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    <p>Here is some useful information that can help navigate the PreFer codebooks</p>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Authors</div>
+    <div class="quarto-title-meta-contents">
+             <p>Gert Stulp </p>
+             <p>Lisa Sivak </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 21, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Here we describe how to make use the codebooks <code>PreFer_codebook.csv</code> and <code>PreFer_codebook_summary.csv</code>. Broadly speaking, the first codebook is most useful to examine the meaning and characteristics of individual values and the second is most useful to see how the measurement of particular variables may have changed over time.</p>
+<p>There are also detailed codebooks in Dutch and English on the <a href="https://www.dataarchive.lissdata.nl/study-units/view/1">LISS website</a>. They contain important information, e.g.&nbsp;about filtering, which can be useful for working with missing values.</p>
+<p>Here we describe how to use the PreFer codebooks.</p>
+<section id="prefer_codebook.csv" class="level1">
+<h1>PreFer_codebook.csv</h1>
+<p>This codebook contains metadata on all 31665 XXX CHECK THIS variables in the dataset <code>PreFer_train_data.csv</code> and the 33 variables XXX CHECK THIS in the <code>PreFer_background_data.csv</code>.</p>
+<p>The codebook contains the following variables:</p>
+<ul>
+<li><p><strong>“var_name”</strong>; name of variables.</p></li>
+<li><p><strong>“var_label”</strong>; the variable label; this is either a description of the variable or the survey question asked to respondents.</p></li>
+<li><p><strong>“values_cat”</strong>; the different values in the variable that had labels associated with these values (see variable <code>labels_cat</code>). For instance, “1; 2” in <code>values_cat</code> and “Male; Female” in <code>labels_cat</code> means that value 1 corresponds to males, and 2 to females.</p></li>
+<li><p><strong>“labels_cat”</strong>; the labels associated with the values in <code>values_cat</code>. For instance, “1; 2” in <code>values_cat</code> and “Male; Female” in <code>labels_cat</code> means that value 1 corresponds to males, and 2 to females.</p></li>
+<li><p><strong>“unique_values_n”</strong>; indicates how many unique values exist in the variable (<strong>excluding</strong> missing (NA) values, which certainly exist). This is <code>NA</code> for <code>nomem_encr</code> and <code>nohouse_encr</code> because these vary for each wave and survey.</p></li>
+<li><p><strong>“n_missing”</strong>; number of missing cases.</p></li>
+<li><p><strong>“prop_missing”</strong>; proportion of missing cases within survey (i.e., n_missing / n who did the specific survey)</p></li>
+<li><p><strong>“type_var”</strong>; assessment of the type of variable, with possibilities empty, “numeric”, “categorical”, “open-ended question”, “date or time”, and “character [almost exclusively empty strings]”. When a variable had value labels (see <code>value_labels</code>), and these value labels were of character type (e.g., 1 = “female”, 2 = “male”), then we considered the variable to be “categorical”. When a variable had no value labels, and the values in the variable were numeric, we considered the variable to be “numeric”. When a variable had value labels and none of the value labels were present in the data, and the values in the variable were numeric, we considered the variables to be “numeric”. For example, the variable <code>cf08a005</code> had value labels “<code>I don't know</code> = 99999”, but <code>99999</code> was not present in the variable. Given that all values of the variable were numeric, we considered this variable to be numeric. We considered the value labels to be erroneous and updated the variables <code>value_labels</code> and <code>value_labels_n</code> to reflect this. We made a note in the variable <code>note</code>. The category “character [almost exclusively empty strings]” was reserved for variables that were strictly speaking of type character but that exclusively or nearly exclusively consisted of missing value and empty strings.</p></li>
+<li><p><strong>“note”</strong>; describes decisions we made in determining the type of the variable (see <code>type_var</code>) and the changes we made to the data.</p></li>
+<li><p><strong>“year”</strong>; indicates year of survey/wave.</p></li>
+<li><p><strong>“survey”</strong>; indicates in which core survey this variable is assessed.</p></li>
+<li><p><strong>“dataset”</strong>; variable can be found in this dataset.</p></li>
+</ul>
+<section id="finding-variables" class="level2">
+<h2 class="anchored" data-anchor-id="finding-variables">Finding variables</h2>
+<p>An important aim of the codebook is to get insight on individual variables.</p>
+<section id="example-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-1">Example 1</h3>
+<p>Imagine you are interested in what the variable <code>cp12e007</code> means. You can just open the codebook in an editor and look for it:</p>
+<p><img src="../../images/cp12e007.png" class="img-fluid" style="width:50.0%"></p>
+<p>You can also do that via R or Python. R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr) <span class="co"># for nicer output tables in html</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>codebook <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"../../data/PreFer_codebook.csv"</span>) </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># you can also find this codebook at preferdatachallenge.nl/data/PreFer_codebook.csv</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>codebook[ codebook<span class="sc">$</span>var_name <span class="sc">==</span> <span class="st">"cp12e007"</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 12
+  var_name var_label             values_cat labels_cat unique_values_n n_missing
+  &lt;chr&gt;    &lt;chr&gt;                 &lt;chr&gt;      &lt;chr&gt;                &lt;dbl&gt;     &lt;dbl&gt;
+1 cp12e007 I receive far too ma… 1; 2; 3; … 1 totally…               7         1
+# ℹ 6 more variables: prop_missing &lt;dbl&gt;, type_var &lt;chr&gt;, note &lt;chr&gt;,
+#   year &lt;dbl&gt;, survey &lt;chr&gt;, dataset &lt;chr&gt;</code></pre>
+</div>
+</div>
+<p>This variable contained an answer to the question “I receive far too many requests to participate in surveys.”. It came from the 2012 Personality core survey. This is a categorical variable and has 7 possible values (from 1 to 7, see <code>values_cat</code>) which reflects a Likert scale because it has value labels (1 totally disagree; 2; 3; 4; 5; 6; 7 totally agree; see <code>labels_cat</code>). In the data, 7 unique values were actually observed (see <code>unique_values_n</code>), which does not need to be the case. In this 2012 wave of this Personality core survey, there was only 1 missing value (<code>n_missing</code>), which meant 0.0001679825 was missing (and that 1/0.0001679825 = 5953 participated in the survey). There is no <code>note</code> meaning no problems were observed for this particular variable.</p>
+</section>
+<section id="example-2" class="level3">
+<h3 class="anchored" data-anchor-id="example-2">Example 2</h3>
+<p>Let’s examine whether any variable labels (or question labels) say anything about income.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>codebook[ <span class="fu">grepl</span>(<span class="st">"income"</span>, codebook<span class="sc">$</span>var_label), ] <span class="co"># 1192 variables!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,192 × 12
+   var_name var_label            values_cat labels_cat unique_values_n n_missing
+   &lt;chr&gt;    &lt;chr&gt;                &lt;chr&gt;      &lt;chr&gt;                &lt;dbl&gt;     &lt;dbl&gt;
+ 1 ci08a008 Did you receive inc… 1; 2       yes; no                  2        50
+ 2 ci09b008 Did you receive inc… 1; 2       yes; no                  2        27
+ 3 ci10c008 Did you receive inc… 1; 2       yes; no                  2        62
+ 4 ci11d008 Did you receive inc… 1; 2       yes; no                  2        87
+ 5 ci12e008 Did you receive inc… 1; 2       yes; no                  2        40
+ 6 ci13f008 Did you receive inc… 1; 2       yes; no                  2        81
+ 7 ci14g008 Did you receive inc… 1; 2       yes; no                  2        41
+ 8 ci15h008 Did you receive inc… 1; 2       yes; no                  2        68
+ 9 ci16i008 Did you receive inc… 1; 2       yes; no                  2        32
+10 ci17j008 Did you receive inc… 1; 2       yes; no                  2        32
+# ℹ 1,182 more rows
+# ℹ 6 more variables: prop_missing &lt;dbl&gt;, type_var &lt;chr&gt;, note &lt;chr&gt;,
+#   year &lt;dbl&gt;, survey &lt;chr&gt;, dataset &lt;chr&gt;</code></pre>
+</div>
+</div>
+<p>Let’s focus on the variable <code>netinc</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>codebook[ codebook<span class="sc">$</span>var_name <span class="sc">==</span> <span class="st">"netinc"</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 12
+  var_name var_label             values_cat labels_cat unique_values_n n_missing
+  &lt;chr&gt;    &lt;chr&gt;                 &lt;chr&gt;      &lt;chr&gt;                &lt;dbl&gt;     &lt;dbl&gt;
+1 netinc   Personal net monthly… &lt;NA&gt;       &lt;NA&gt;                  4244    509064
+# ℹ 6 more variables: prop_missing &lt;dbl&gt;, type_var &lt;chr&gt;, note &lt;chr&gt;,
+#   year &lt;dbl&gt;, survey &lt;chr&gt;, dataset &lt;chr&gt;</code></pre>
+</div>
+</div>
+<p>This variables measures personal net monthly income in euro. This is a numeric variable, and about 24% is missing. This is a background variable which means that it is recorded monthly for respondents. This variable can be found in <code>PreFer_train_background_data.csv</code>. At one point in time this variable had value labels associated with it: <code>Unknown (missing)</code> = -15, <code>Prefer not to say</code> = -14, <code>I dont know</code> = -13. However, these values were never observed in the actual data, which is why we removed these value labels from the variable <code>var_label</code> and why we turned this variable into <code>numeric</code> (from categorical). This process is described in <code>note</code>.</p>
+</section>
+</section>
+<section id="variable-types" class="level2">
+<h2 class="anchored" data-anchor-id="variable-types">Variable types</h2>
+<p>Most variables types are either categorical (meaning that values have labels associated with them, e.g., 1 = “Male”, 2 = “Female”) or numeric.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(codebook<span class="sc">$</span>type_var)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+                                 categorical 
+                                       23571 
+character [almost exclusively empty strings] 
+                                          15 
+                                date or time 
+                                         566 
+                                     numeric 
+                                        6434 
+             response to open-ended question 
+                                        1079 </code></pre>
+</div>
+</div>
+<p>Let’s imagine that in our analyses we only want to select variables that are categorical, numeric, or date or time. Note that we want to select these variable in the Core survey data (the train data) and do not want to include variables from the Background data (see “Explanation of datasets”-blogs HAVE TO UPDATE THIS for further information)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>select_type <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"categorical"</span>, <span class="st">"numeric"</span>, <span class="st">"date or time"</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>list_variables <span class="ot">&lt;-</span> codebook[ (codebook<span class="sc">$</span>type_var <span class="sc">%in%</span> select_type) <span class="sc">&amp;</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                              codebook<span class="sc">$</span>dataset <span class="sc">==</span> <span class="st">"PreFer_train_data.csv"</span>, ]<span class="sc">$</span>var_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can now use this list of variables in our data. Let’s use the <code>PreFer_fake_train.csv</code> which is a fake dataset that has randomly generated information for 30 cases with identical variable names and structures of variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>fake_data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"../../data/PreFer_fake_data.csv"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># can also be found preferdatachallenge.nl/data/PreFer_fake_data.csv</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>fake_data_sel <span class="ot">&lt;-</span> fake_data[ , list_variables ]</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(fake_data_sel) <span class="co"># brief overview</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 30,539
+  nomem_encr new_child cf08a_m cf09b_m cf10c_m cf11d_m cf12e_m cf13f_m cf14g_m
+       &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1     700001         1  200803  200903  185567  201104  201203  201304  201404
+2     700002         0  200803  200904  101344  201103  201204  201304  201404
+3     700003         0  200806  200904  129353  201104  201204  201304  201403
+4     700004         1  200806  200904  201003  201103  201203  201304  201403
+5     700005         0  200803  200903  185654  201104  201203  201304  201404
+6     700006         0  200803  200904  127275  201103  201204  201304  201403
+# ℹ 30,530 more variables: cf15h_m &lt;dbl&gt;, cf16i_m &lt;dbl&gt;, cf17j_m &lt;dbl&gt;,
+#   cf18k_m &lt;dbl&gt;, cf19l_m &lt;dbl&gt;, cf20m_m &lt;dbl&gt;, cf08a001 &lt;dbl&gt;,
+#   cf09b001 &lt;dbl&gt;, cf10c001 &lt;dbl&gt;, cf11d001 &lt;dbl&gt;, cf12e001 &lt;dbl&gt;,
+#   cf13f001 &lt;dbl&gt;, cf14g001 &lt;dbl&gt;, cf15h001 &lt;dbl&gt;, cf16i001 &lt;dbl&gt;,
+#   cf17j001 &lt;dbl&gt;, cf18k001 &lt;dbl&gt;, cf19l001 &lt;dbl&gt;, cf20m001 &lt;dbl&gt;,
+#   cf08a002 &lt;dbl&gt;, cf09b002 &lt;dbl&gt;, cf10c002 &lt;dbl&gt;, cf11d002 &lt;dbl&gt;,
+#   cf12e002 &lt;dbl&gt;, cf13f002 &lt;dbl&gt;, cf14g002 &lt;dbl&gt;, cf15h002 &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+<p>The Python equivalent for the above steps would be something like:</p>
+<pre><code>codebook &lt;- read.csv("PreFer_codebook.csv")
+codebook[ codebook$var_name == "cp12e007", ]
+select_type &lt;- c("categorical", "numeric", "date or time")
+list_variables &lt;- codebook[ (codebook$type_var %in% select_type) &amp; 
+                              codebook$dataset == "PreFer_train_data.csv", ]$var_name
+fake_data &lt;- read.csv("PreFer_fake_data.csv")
+fake_data_sel &lt;- fake_data[ , list_variables ]</code></pre>
+</section>
+<section id="using-variable-information" class="level2">
+<h2 class="anchored" data-anchor-id="using-variable-information">Using variable information</h2>
+<p>In an earlier example, we observed that variable <code>cp12e007</code> was a categorical variable, but from the <code>labels_cat</code> it was clear that this was some sort of Likert scale, from “1 totally disagree; 2; 3; 4; 5; 6; 7 totally agree” (separated by semi-colons). Let’s read-in and parse the values from <code>values_cat</code> and the corresponding labels from <code>labels_cat</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>values_cp12e007 <span class="ot">&lt;-</span> codebook[ codebook<span class="sc">$</span>var_name <span class="sc">==</span> <span class="st">"cp12e007"</span>, ]<span class="sc">$</span>values_cat <span class="co"># is a string</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>values_cp12e007 <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(values_cp12e007, <span class="st">"; "</span>)[[<span class="dv">1</span>]] <span class="co"># to vector</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>labels_cp12e007 <span class="ot">&lt;-</span> codebook[ codebook<span class="sc">$</span>var_name <span class="sc">==</span> <span class="st">"cp12e007"</span>, ]<span class="sc">$</span>labels_cat <span class="co"># is a string</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>labels_cp12e007 <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(labels_cp12e007, <span class="st">"; "</span>)[[<span class="dv">1</span>]] <span class="co"># to vector</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># add information to variable in data</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>fake_data_sel<span class="sc">$</span>cp12e007 <span class="ot">&lt;-</span> <span class="fu">factor</span>(fake_data_sel<span class="sc">$</span>cp12e007, </span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">levels =</span> values_cp12e007, <span class="at">labels =</span> labels_cp12e007,</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(fake_data_sel<span class="sc">$</span>cp12e007)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$levels
+[1] "1 totally disagree" "2"                  "3"                 
+[4] "4"                  "5"                  "6"                 
+[7] " 7 totally agree"  
+
+$class
+[1] "ordered" "factor" </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="prefer_codebook_summary.csv" class="level1">
+<h1>PreFer_codebook_summary.csv</h1>
+<p>The summary codebook is useful to examine whether particular questions have been repeatedly asked to respondents, and whether the questions asked or answer options provided were consistent or modified throughout time. The summary codebook contains the following variables:</p>
+<ul>
+<li><p><strong>survey</strong>; indicates in which core survey this variable is assessed</p></li>
+<li><p><strong>“last3letters”</strong>; the last 3 letters of the variable name that are consistent throughout waves. Exceptions here are the first three entries, “nomem_encr”, ” new_child”, and “*****_m”. “nomem_encr” is the unique personal identifier and is used to link all datasets and will never change for an individual; the variable ending with “_m” refers to the year and month of the survey (e.g., 200806 -&gt; June 2008)</p></li>
+<li><p><strong>“var_names”</strong>; the names of the variables within a particular core surve with the extension in <code>last3letters</code> across all the waves it was in</p></li>
+<li><p><strong>“n_waves”</strong>; the number of waves the variable with the extension in <code>last3letters</code> used in</p></li>
+<li><p><strong>“which_waves”</strong>; in which waves (years) was the variable with the extension in <code>last3letters</code> used</p></li>
+<li><p><strong>“n_different_var_label”</strong>; the number of different labels of the variables with the extension in <code>last3letters</code> across all the waves it was in. A value higher than one implies that the text / question of this variable has changed across waves.</p></li>
+<li><p><strong>“var_label_across_waves”</strong>; the different labels that were used for the variables with the extension in <code>last3letters</code> across all the waves it was in.</p></li>
+<li><p><strong>“n_different_value_labels”</strong>; the number of different value labels for the variables with the extension in <code>last3letters</code> across all the waves it was in. A value higher than one implies that the possible answer categories have changes across waves.</p></li>
+<li><p><strong>“value_labels_across_waves”</strong>; which different values did the variables have with the extension in <code>last3letters</code> across all the waves it was in.</p></li>
+<li><p><strong>“n_different_value_labels”</strong>; the number of different variable types (e.g., categorical, numeric) of the variables with the extension in <code>last3letters</code> across all the waves it was in. A value higher than one implies that the variable type has changed across waves.</p></li>
+<li><p><strong>“var_type_across_waves”</strong>; which different variable types did the variables have with the extension in <code>last3letters</code> across all the waves it was in.</p></li>
+</ul>
+<section id="example-interpretation" class="level2">
+<h2 class="anchored" data-anchor-id="example-interpretation">Example interpretation</h2>
+<p>Here we examine the variable with the extension <code>007</code> both in the “Family &amp; Household” and “Personality” core surveys.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>codebook_summ <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"../../data/PreFer_codebook_summary.csv"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># can also be found at preferdatachallenge.nl/data/PreFer_codebook_summary.csv</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(codebook_summ, </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>       last3letters <span class="sc">==</span> <span class="st">"007"</span> <span class="sc">&amp;</span> survey <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Family &amp; Household"</span>, <span class="st">"Personality"</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 11
+  survey        last3letters var_names n_waves which_waves n_different_var_label
+  &lt;chr&gt;         &lt;chr&gt;        &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;
+1 Family &amp; Hou… 007          cf08a007…      13 2008, 2009…                     2
+2 Personality   007          cp08a007…      10 2008, 2009…                     1
+# ℹ 5 more variables: var_label_across_waves &lt;chr&gt;,
+#   n_different_value_labels &lt;dbl&gt;, value_labels_across_waves &lt;chr&gt;,
+#   n_different_var_type &lt;dbl&gt;, var_type_across_waves &lt;chr&gt;</code></pre>
+</div>
+</div>
+<p>The variable with the extension (last 3 letters/digits) <strong>007</strong> in the Family &amp; Household survey (“cf”) featured in 13 waves, from 2008 to 2020. It had the following names across those 13 waves: cf08a007, cf09b007, cf10c007, cf11d007, cf12e007, cf13f007, cf14g007, cf15h007, cf16i007, cf17j007, cf18k007, cf19l007, cf20m007. The label of this variable was changed once because there are two labels for these variables: 1) Is your father still alive? and 2) Is your biological father still alive? The answer categories were: yes = 1, no = 2, I don’t know = 99 across all waves.</p>
+<p>The variable with the same extension (last 3 letters/digits) <strong>007</strong> in the Personality survey (“cp”) featured in 10 waves, from 2008 to 2018. It had the following names across those 10 waves: cp08a007, cp09b007, cp10c007, cp11d007, cp12e007, cp13f007, cp14g007, cp15h007, cp17i007, cp18j007. The label of this variable across waves was “I receive far too many requests to participate in surveys”. Across all waves, there has been a change in labelling: <code>1 totally disagree</code> = 1, <code>2</code> = 2, <code>3</code> = 3, <code>4</code> = 4, <code>5</code> = 5, <code>6</code> = 6, <code>7 totally agree</code> = 7 – AND – <code>1 totally disagree</code> = 1, <code>2</code> = 2, <code>3</code> = 3, <code>4</code> = 4, <code>5</code> = 5, <code>6</code> = 6, <code>7 totally agree</code> = 7. Note the extra space before the ” 7 totally agree” in the first instance.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">PreFer data challenge<br>
+The website is based on <a href="https://realworlddatascience.net/" target="_blank">Real World Data Science</a><br>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">The map of the Netherlands by <a href="https://www.vecteezy.com/png/18876571-polygonal-netherlands-map" target="_blank">Tananuphong Kummaru on Vecteezy</a></div>
+  </div>
+</footer>
+
+
+
+</body></html>

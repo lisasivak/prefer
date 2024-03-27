@@ -1,6 +1,6 @@
 ---
-pagetitle: Blog
-title: Blog
+pagetitle: Guides
+title: Guides
 subtitle: We will post useful materials and news about the challenge here.
 search: false  
 title-block-banner: true
@@ -12,7 +12,7 @@ listing:
   - "!index.qmd"
   sort: "date desc"
   type: grid
-  categories: true
+  categories: false
   sort-ui: false
   filter-ui: false
   page-size: 30

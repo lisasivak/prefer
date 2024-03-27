@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Gert Stulp">
+<meta name="author" content="Lisa Sivak">
+<meta name="dcterms.date" content="2024-03-20">
+<meta name="description" content="Here is some useful information that can help navigate the PreFer datasets.">
+
+<title>A guide on PreFer datasets</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/PreFer_logo_favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../rwds.css">
+<meta property="og:title" content="A guide on PreFer datasets">
+<meta property="og:description" content="Here is some useful information that can help navigate the PreFer datasets.">
+<meta property="og:image" content="https://preferdatachallenge.nl/images/liss_pick.png">
+<meta property="og:image:height" content="382">
+<meta property="og:image:width" content="467">
+<meta property="og:image:alt" content="LISS logo.">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/PreFer_logo_no_text2.png" alt="" class="navbar-logo">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../details/overview/3application.html" rel="" target="">
+ <span class="menu-text">APPLY</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../#important-dates" rel="" target="">
+ <span class="menu-text">Important dates</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../#how-to-participate" rel="" target="">
+ <span class="menu-text">How to participate</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://arxiv.org/abs/2402.00705" rel="" target="">
+ <span class="menu-text">Preprint</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../faq/index.html" rel="" target="">
+ <span class="menu-text">FAQ</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts/index.html" rel="" target="">
+ <span class="menu-text">Guides</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-organizers" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Organizers</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-organizers">    
+        <li>
+    <a class="dropdown-item" href="../../about-us.html" rel="" target="">
+ <span class="dropdown-text">Who we are</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../contact.html" rel="" target="">
+ <span class="dropdown-text">Contact us</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../funding.html" rel="" target="">
+ <span class="dropdown-text">Funding</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#core-surveys-and-background-surveys" id="toc-core-surveys-and-background-surveys" class="nav-link active" data-scroll-target="#core-surveys-and-background-surveys">Core surveys and background surveys</a>
+  <ul class="collapse">
+  <li><a href="#core-surveys" id="toc-core-surveys" class="nav-link" data-scroll-target="#core-surveys">Core surveys</a>
+  <ul class="collapse">
+  <li><a href="#variable-naming-conventions" id="toc-variable-naming-conventions" class="nav-link" data-scroll-target="#variable-naming-conventions">Variable naming conventions</a></li>
+  </ul></li>
+  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background variables</a></li>
+  </ul></li>
+  <li><a href="#prefer-datasets" id="toc-prefer-datasets" class="nav-link" data-scroll-target="#prefer-datasets">PreFer datasets</a>
+  <ul class="collapse">
+  <li><a href="#prefer_train_data.csv" id="toc-prefer_train_data.csv" class="nav-link" data-scroll-target="#prefer_train_data.csv">1. PreFer_train_data.csv</a></li>
+  <li><a href="#selected-yearly-background-variables" id="toc-selected-yearly-background-variables" class="nav-link" data-scroll-target="#selected-yearly-background-variables">Selected yearly background variables</a>
+  <ul class="collapse">
+  <li><a href="#fixed-background-variables" id="toc-fixed-background-variables" class="nav-link" data-scroll-target="#fixed-background-variables">Fixed background variables</a></li>
+  <li><a href="#time-varying-background-variables" id="toc-time-varying-background-variables" class="nav-link" data-scroll-target="#time-varying-background-variables">Time varying background variables</a></li>
+  </ul></li>
+  <li><a href="#prefer_train_background_data.csv" id="toc-prefer_train_background_data.csv" class="nav-link" data-scroll-target="#prefer_train_background_data.csv">2. PreFer_train_background_data.csv</a></li>
+  <li><a href="#prefer_train_supplementary_data.csv" id="toc-prefer_train_supplementary_data.csv" class="nav-link" data-scroll-target="#prefer_train_supplementary_data.csv">3. PreFer_train_supplementary_data.csv</a></li>
+  <li><a href="#prefer_fake_data.csv" id="toc-prefer_fake_data.csv" class="nav-link" data-scroll-target="#prefer_fake_data.csv">4. PreFer_fake_data.csv</a></li>
+  <li><a href="#prefer_fake_background_data.csv" id="toc-prefer_fake_background_data.csv" class="nav-link" data-scroll-target="#prefer_fake_background_data.csv">5. PreFer_fake_background_data.csv</a></li>
+  <li><a href="#prefer_holdout_data.csv" id="toc-prefer_holdout_data.csv" class="nav-link" data-scroll-target="#prefer_holdout_data.csv">6. PreFer_holdout_data.csv</a></li>
+  </ul></li>
+  <li><a href="#prefer_holdout_background_data.csv" id="toc-prefer_holdout_background_data.csv" class="nav-link" data-scroll-target="#prefer_holdout_background_data.csv">7. PreFer_holdout_background_data.csv</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">A guide on PreFer datasets</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">LISS</div>
+    <div class="quarto-category">dataset</div>
+    <div class="quarto-category">guide</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    <p>Here is some useful information that can help navigate the PreFer datasets.</p>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Authors</div>
+    <div class="quarto-title-meta-contents">
+             <p>Gert Stulp </p>
+             <p>Lisa Sivak </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 20, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Here we describe the different datasets that are available in the PreFer data challenge that are all based on the <a href="https://www.lissdata.nl/">LISS panel</a>. The datasets <code>PreFer_train_data.csv</code>, <code>PreFer_train_background_data.csv</code> and <code>PreFer_train_supplementary_data.csv</code> will be available to PreFer participants. The dataset <code>PreFer_holdout_data.csv</code> and <code>PreFer_holdout_background_data.csv</code> will only be available to PreFer organisers.</p>
+<p>To navigate these datasets and get a better understanding of the many variables, there are also machine-readable (and human readable) codebooks available <a href="LINKTOCODEBOOKS">here</a>. [Click here](LINKTOPOSTGUIDE for a guide on how to use the codebooks.</p>
+<section id="core-surveys-and-background-surveys" class="level1">
+<h1>Core surveys and background surveys</h1>
+<p>Broadly speaking, the LISS panel contains two types of datasets: 1) Core surveys: yearly surveys on topics like health, wealth, personal values.</p>
+<ol start="2" type="1">
+<li>Background surveys: particular demographic characteristics of households and the individuals in these households (e.g., age, gender, education, income).</li>
+</ol>
+<section id="core-surveys" class="level2">
+<h2 class="anchored" data-anchor-id="core-surveys">Core surveys</h2>
+<p>The Core study modules are (bi)yearly questionnaires that are targeted at all LISS respondents. This is the list of Core study modules:</p>
+<ol type="1">
+<li><p><strong>“Family &amp; Household/source/”</strong>; all waves of <a href="https://www.dataarchive.lissdata.nl/study-units/view/10">Family &amp; Household data</a>, except 2021 and beyond</p></li>
+<li><p><strong>“Economic Situation Assets/source/”</strong>; all waves of <a href="https://www.dataarchive.lissdata.nl/study-units/view/33">Economic Situation Assets data</a>, except 2021 and beyond</p></li>
+<li><p><strong>“Economic Situation Housing/source/”</strong>; all waves of <a href="https://www.dataarchive.lissdata.nl/study-units/view/37">Economic Situation Housing data</a>, except 2021 and beyond</p></li>
+<li><p><strong>“Economic Situation Income/source/”</strong>; all waves of <a href="https://www.dataarchive.lissdata.nl/study-units/view/35">Economic Situation Income data</a>, except 2021 and beyond</p></li>
+<li><p><strong>“Health/source/”</strong>; all waves of <a href="https://www.dataarchive.lissdata.nl/study-units/view/12">Health data</a>, except 2021 and beyond</p></li>
+<li><p><strong>“Personality/source/”</strong>; all waves of <a href="https://www.dataarchive.lissdata.nl/study-units/view/14">Personality data</a>, except 2021 and beyond</p></li>
+<li><p><strong>“Politics and Values/source/”</strong>; all waves of <a href="https://www.dataarchive.lissdata.nl/study-units/view/22">Politics and Values data</a>, except 2021 and beyond</p></li>
+<li><p><strong>“Religion and Ethnicity/source/”</strong>; all waves of <a href="https://www.dataarchive.lissdata.nl/study-units/view/8">Religion and Ethnicity data</a>, except 2021 and beyond</p></li>
+<li><p><strong>“Social Integration and Leisure/source/”</strong>; all waves of <a href="https://www.dataarchive.lissdata.nl/study-units/view/6">Social Integration and Leisure data</a>, except 2021 and beyond</p></li>
+<li><p><strong>“Work &amp; Schooling/source/”</strong>; all waves of <a href="https://www.dataarchive.lissdata.nl/study-units/view/16">Work &amp; Schooling data</a>, except 2021 and beyond</p></li>
+</ol>
+<p>We have merged all Core surveys from 2007 to 2020 leading to a dataset with 31633 variables and UPDATE THIS for XXX respondents.</p>
+<section id="variable-naming-conventions" class="level3">
+<h3 class="anchored" data-anchor-id="variable-naming-conventions">Variable naming conventions</h3>
+<p>All the variables names in LISS contain information that can help navigate the dataset. Let’s use the variable name <em>cf09b010</em> as an example. It consists of two main parts: <em>cf09b</em> which indicates the name of the Core study module and the year, and <em>010</em> which is a question number in this Core study module (the same questions have the same numbers in all the yearly questionnaires of a Core study module). How to decipher the first part:</p>
+<ul>
+<li><em>c</em> refers to <em>Core study</em>. Almost all the variables in the dataset (excluding about 400 variables in the beginning, that come from the Background survey) start with <em>c</em></li>
+<li><em>f</em> refers to the name of the Core study module - in this case, it’s “Family and household”. Other options are: <em>w</em> (Work and schooling), <em>s</em> (Social integration and values), <em>h</em> (Health), <em>r</em> (Religion and ethnicity), <em>v</em> (politics and Values), <em>p</em> (Personality), <em>a</em> (economic situation: Assets), <em>i</em> (economic situation: Income), and <em>d</em> (economic situation: Housing).</li>
+<li><em>09</em> refers to the year of this questionnaire. <em>09</em> means 2009. Some Core study modules are fielded each year, some (Assets) once in two years.</li>
+<li><em>b</em> refers to the wave number (in this case, Wave 2). Keep in mind, that because some modules are fielded every year, and some - every other year, the same letters do not mean that these surveys were conducted in the same year (e.g.&nbsp;Wave 2 of Family and Household module <em>cf09b</em> was conducted in 2009 whereas the second Wave of the Assets core study module <em>ca10b</em> was conducted in 2010).</li>
+</ul>
+<p>[The codebooks] are particularly useful in navigating the merged Core survey dataset. The datasets <code>PreFer_train_data.csv</code>, <code>PreFer_train_supplement.csv</code>, and <code>PreFer_holdout_data.csv</code> all come from this merged Core survey dataset.</p>
+</section>
+</section>
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background variables</h2>
+<p>The Background survey is filled out by a household’s contact person when the household joins the panel and is updated monthly. It collects basic socio-demographic information about the household and all of its members (including those who are not LISS panel members and do not participate in the Core surveys). The following variables are available:</p>
+<ul>
+<li><code>nomem_encr</code> Number of household member encrypted</li>
+<li><code>nohouse_encr</code> Number of household encrypted</li>
+<li><code>wave</code> Year and month of the field work period</li>
+<li><code>positie</code> Position within the household</li>
+<li><code>lftdcat</code> Age in CBS (Statistics Netherlands) categories</li>
+<li><code>lftdhhh</code> Age of the household head</li>
+<li><code>aantalhh</code> Number of household members</li>
+<li><code>aantalki</code> Number of living-at-home children in the household, children of the household head or his/her partner</li>
+<li><code>partner</code> The household head lives together with a partner (wedded or unwedded)</li>
+<li><code>burgstat</code> Civil status</li>
+<li><code>woonvorm</code> Domestic situation</li>
+<li><code>woning</code> Type of dwelling that the household inhabits</li>
+<li><code>belbezig</code> Primary occupation</li>
+<li><code>brutoink</code> Personal gross monthly income in Euros</li>
+<li><code>nettoink</code> Personal net monthly income in Euros (incl.&nbsp;nettocat)</li>
+<li><code>brutocat</code> Personal gross monthly income in categories</li>
+<li><code>nettocat</code> Personal net monthly income in categories</li>
+<li><code>oplzon</code> Highest level of education irrespective of diploma</li>
+<li><code>oplmet</code> Highest level of education with diploma</li>
+<li><code>oplcat</code> Level of education in CBS (Statistics Netherlands) categories</li>
+<li><code>doetmee</code> Household member participates in the panel</li>
+<li><code>sted</code> Urban character of place of residence</li>
+<li><code>simpc</code> Does the household have a simPC?</li>
+<li><code>brutoink_f</code> Personal gross monthly income in Euros, imputed</li>
+<li><code>netinc</code> Personal net monthly income in Euros</li>
+<li><code>nettoink_f</code> Personal net monthly income in Euros, imputed</li>
+<li><code>brutohh_f</code> Gross household income in Euros</li>
+<li><code>nettohh_f</code> Net household income in Euros</li>
+<li><code>werving</code> From which recruitment wave the household originates</li>
+<li><code>birthyear_imp</code> Year of birth [imputed by PreFer organisers] (based on original <code>gebjaar</code> variable)</li>
+<li><code>gender_imp</code> Gender [imputed by PreFer organisers] (based on original <code>geslacht</code> variable)</li>
+<li><code>migration_background_imp</code> Origin [imputed by PreFer organisers] (based on original <code>herkomstgroep</code> variable)</li>
+<li><code>age_imp</code> Age of the household member [imputed by PreFer organisers] (based on original <code>leeftijd</code> variable)</li>
+</ul>
+<p>The full dataset thus has XXXX variables on XXXXX respondents. The PreFer datasets <code>PreFer_train_background_data.csv</code> and <code>PreFer_holdout_background_data.csv</code> are based on this dataset.</p>
+</section>
+</section>
+<section id="prefer-datasets" class="level1">
+<h1>PreFer datasets</h1>
+<section id="prefer_train_data.csv" class="level2">
+<h2 class="anchored" data-anchor-id="prefer_train_data.csv">1. PreFer_train_data.csv</h2>
+<p>The PreFer_train_data.csv consists of 31633 variables from 10307XXXX CHECK individuals. These individuals are LISS respondents who were born between 1974 and 2002 (meaning they were between 18 and 45 years old in 2020). These variables are a combination of all Core study modules (see above) and selected yearly background variables.</p>
+<p>Particularly important variables are:</p>
+<ol type="1">
+<li><p><code>nomem_encr</code>: this is the unique identifier and can be used to link the train data to the other datasets (<code>PreFer_train_background.csv</code> and <code>PreFer_train_supplement.csv</code>). Note that this identifier is a pseudonym of the original <code>nomem_encr</code> identifier in the LISS data.</p></li>
+<li><p><code>new_child</code>: this is the outcome variable; whether people had a child between 2021 and 2023. <a href="UPDATE">Here</a> you can find detailed information on how this outcome was constructed. This dataset also included people for whom this outcome is not known.</p></li>
+</ol>
+</section>
+<section id="selected-yearly-background-variables" class="level2">
+<h2 class="anchored" data-anchor-id="selected-yearly-background-variables">Selected yearly background variables</h2>
+<p>The background variables can be found in a separate dataset (see <code>PreFer_train_background.csv</code>), but we have chosen to include some of the information from the background variables to the Core surveys. Specifically, we have added information from variables that either vary considerably across time or that are useful fixed variables. Remember that the background variables contain information on a monthly basis; we chose to add 14 yearly variables (for each of the years 2007 up to and including 2020) for a select number of varying background variables.</p>
+<section id="fixed-background-variables" class="level3">
+<h3 class="anchored" data-anchor-id="fixed-background-variables">Fixed background variables</h3>
+<p>We included the following fixed variables from the background variables: 1. birthyear of respondent (recorded through <code>birthyear_bg</code>; which we created and cleaned)</p>
+<ol start="2" type="1">
+<li><p>gender of respondent (<code>gender_bg</code>; which we created and cleaned)</p></li>
+<li><p>migration background of the respondent (<code>migration_background_bg</code>; which we created and cleaned)</p></li>
+<li><p>the age of the respondent on December 2020 (<code>age_bg</code>; which we created)</p></li>
+</ol>
+</section>
+<section id="time-varying-background-variables" class="level3">
+<h3 class="anchored" data-anchor-id="time-varying-background-variables">Time varying background variables</h3>
+<p>With respect to the time varying variables: - There are 7 variables that vary over time for households for which yearly variables will be added to the Core dataset: 1) <code>partner</code> (whether household head lives together with partner), 2) <code>woonvorm</code> (living arrangement), 3) <code>burgstat</code> (marital status), 4) <code>woning</code> (type of dwelling), 5) <code>sted</code> (urban character of place of residence), 6) <code>brutohh_f</code> (gross household income), and 7) <code>nettohh_f</code> (net household income).</p>
+<ul>
+<li>There are 9 variables that vary over time for each individual for which yearly variables will be added to the Core dataset: 1) <code>belbezig</code> (primary occupation), 2) <code>brutoink</code> (personal gross monthly income), 3) <code>nettoink</code> (net montly income), 4) <code>oplzon</code> (highest level of education irrespective of diploma), 5) <code>oplmet</code> (highest level of education with diploma), 6) <code>oplcat</code> (level of education in Statistics Netherlands categories), 7) <code>brutoink_f</code> (personal gross monthly income, imputed), 8) <code>netinc</code> (net monthly income), and 9) <code>nettoink_f</code> (personal net monthly income, imputed).</li>
+</ul>
+<p>Thus, we include information from 4 fixed variables, and 14 yearly variables (2007 to 2020) for each of the 16 varying variables, totalling 228 variables. CHECK THIS</p>
+</section>
+</section>
+<section id="prefer_train_background_data.csv" class="level2">
+<h2 class="anchored" data-anchor-id="prefer_train_background_data.csv">2. PreFer_train_background_data.csv</h2>
+<p>This dataset consists all variables that are listed in #background and contains information on XXX respondents.</p>
+</section>
+<section id="prefer_train_supplementary_data.csv" class="level2">
+<h2 class="anchored" data-anchor-id="prefer_train_supplementary_data.csv">3. PreFer_train_supplementary_data.csv</h2>
+<p>This dataset contains the same variables as <code>PreFer_train_data.csv</code>, but it includes data from respondents outside our target group (i.e., this dataset contains people born prior to 1975 or post 2002) and has information on XXXX respondents..</p>
+</section>
+<section id="prefer_fake_data.csv" class="level2">
+<h2 class="anchored" data-anchor-id="prefer_fake_data.csv">4. PreFer_fake_data.csv</h2>
+<p>This dataset contains the same variables as <code>PreFer_train_data.csv</code>, but it includes fake data with 30 randomly dawn values from each variable in the train data. This dataset is used for testing whether the developed preprocessing scripts and trained models work. A failed test on this data likely means a failed submission on the holdout data.</p>
+</section>
+<section id="prefer_fake_background_data.csv" class="level2">
+<h2 class="anchored" data-anchor-id="prefer_fake_background_data.csv">5. PreFer_fake_background_data.csv</h2>
+<p>This dataset contains the same variables as <code>PreFer_train_background_data.csv</code>, but it includes fake data with randomly dawn values from each variable in the background data.</p>
+</section>
+<section id="prefer_holdout_data.csv" class="level2">
+<h2 class="anchored" data-anchor-id="prefer_holdout_data.csv">6. PreFer_holdout_data.csv</h2>
+<p>The holdout data. This dataset contains the same variables as <code>PreFer_train_data.csv</code>. It is not available to participants. It is the dataset that will be used for evaluation.</p>
+<p>This dataset only contains information for XXXX respondents born between 1975 and 2002 and for whom the outcome (<code>new_child</code>) was known.</p>
+</section>
+</section>
+<section id="prefer_holdout_background_data.csv" class="level1">
+<h1>7. PreFer_holdout_background_data.csv</h1>
+<p>This dataset contains the same variables as <code>PreFer_train_background_data.csv</code> and contains information on XXXX respondents. It is not available to participants. It is a dataset is used if the participants decided to work with <code>PreFer_train_background_data.csv</code>.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">PreFer data challenge<br>
+The website is based on <a href="https://realworlddatascience.net/" target="_blank">Real World Data Science</a><br>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">The map of the Netherlands by <a href="https://www.vecteezy.com/png/18876571-polygonal-netherlands-map" target="_blank">Tananuphong Kummaru on Vecteezy</a></div>
+  </div>
+</footer>
+
+
+
+</body></html>

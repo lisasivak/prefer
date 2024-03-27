@@ -1,0 +1,14 @@
+{
+  "hash": "d7e5dd80cebc6fef09de581a194e546f",
+  "result": {
+    "markdown": "---\ntitle: \"Reading in data\"\ndescription: |\n  Here is some useful information on reading in / load PreFer data.   \ncategories:\n  - dataset\n  - guide\nauthor: \n  - \"Gert Stulp\"\n  - \"Lisa Sivak\"\ndate: '2024-03-22'\ntoc: true\nimage: ../../images/liss_pick.png\nimage-alt: LISS logo. \nlanguage: \n    section-title-footnotes: References\n---\n\n\n\nHere we describe ways of reading-in the data for both Python and R. \n\n# Reading in the data\n\nThe most important dataset of the PreFer data challenge is the `PreFer_train_data.csv` dataset ([clic here] for information on the datasets that are available). This contains data on all LISS respondents who were between the ages of 18 and 45 in 2020 (i.e., had birthyears between 1975 and 2002). We will see how we can read-in this data with the help of R or Python. \n\n\n## R\n\nThere are several ways in which one could read data into R, but some of them are more successful and quicker than others (TL;DR: use `data.table::fread`. The below code assumes that you have the data `PreFer_train_data.csv` in your working directory.   \n\n### read.csv\n`read.csv` works, requires no additional packages, but is *very* slow. \n\n::: {.cell}\n\n```{.r .cell-code}\ndata <- read.csv(\"PreFer_train_data.csv\", row.names = FALSE) # this works but is very slow\n```\n:::\n\n\n### read_csv\n`readr::read_csv` from the package `readr` in principle works, but gets many of the column types wrong with default settings (because, by default, it only bases column types on the first 1000 values present in the variable). Do not run this code `data <- readr::read_csv(\"PreFer_train_data.csv\")`, but use the following code which explicitly tells `read_csv` that it must make use of the entire column (i.e., all cases) to make a guess of the column type:\n\nCHECK THESE NUMBER OF ROWS\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(readr) # requires install.packages(\"readr\") first\ndata <- readr::read_csv(\"PreFer_train_data.csv\", guess_max = 10307) # this works but is slow\n# 13707 is the number of rows in the data\n```\n:::\n\n\n### fread\n`data.table::fread` from the package `data.table` works like a charm and is very fast. Some additional arguments are useful to avoid default behaviour. \n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(data.table) # requires install.packages(\"data.table\") first\ndata <- data.table::fread(\"PreFer_train_data.csv\", \n                          keepLeadingZeros = TRUE, # if FALSE adds zeroes to some dates\n                          data.table = FALSE) # returns a data.frame object rather than data.table \n```\n:::\n\n\n\n## Python\n\nLISA COULD YOU ADD THIS? \n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

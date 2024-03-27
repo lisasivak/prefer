@@ -1,0 +1,11 @@
+---
+title: "Funding"
+sidebar: false
+page-layout: full
+toc: false
+title-block-banner: true
+---
+
+This work is generously supported by a VIDI grant (VI.Vidi.201.119) from the Netherlands Organization for Scientific Research ([NWO](https://www.nwo.nl/)) to Gert Stulp. The LISS panel data were collected by Centerdata (Tilburg University, The Netherlands) through its MESS project funded by the Netherlands Organization for Scientific Research. The ODISSEI Benchmark Platform, the ODISSEI-SICSS Summer School, and the development of the LISS harmonized dataset are financed by the ODISSEI Roadmap Project financed by NWO. 
+
+

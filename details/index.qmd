@@ -12,7 +12,7 @@ listing:
     - details
     - "!index.qmd"
     - "!template_pub.md"
-    sort: "date desc"
+    sort: "title"
     type: grid
     categories: true
     sort-ui: false

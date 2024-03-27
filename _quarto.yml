@@ -4,7 +4,7 @@ project:
 website:
   #title: "PreFer"
   open-graph: true
-  site-url: https://www.gertstulp.com/
+  site-url: https://preferdatachallenge.nl/
   repo-url: https://github.com/lisasivak/prefer
   image: images/PreFer_logo_no_text2.png
   favicon: images/PreFer_logo_favicon.png
@@ -49,6 +49,8 @@ website:
           href: about-us.qmd
         - text: "Contact us"
           href: contact.qmd
+        - text: "Funding"
+          href: funding.qmd
       #    href: contact.qmd
       #  - text: "Why participate"
       #    href: "#why participate"
