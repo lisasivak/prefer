@@ -124,7 +124,7 @@ Everything works on fake data. Don't forget to save your training script.
 
 9. Go to GitHub Desktop and save changes (commit) -- see [here]() how to do it  
 
-10. push the changes (i.e. update your online repository)  
+10. push the changes ("Push origin") (i.e. update your online repository)  
 
 11. Go to the Action page. After a few minutes you'll see if your submission passed the authomatic checks  
 
