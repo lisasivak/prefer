@@ -65,7 +65,7 @@ toc: false
   
 <font size="+1">Welcome to the website of the __Predicting Fertility data challenge (PreFer)__. The aim of the challenge is to measure current predictability of fertility outcomes in the Netherlands to advance our understanding of fertility</font>  
 
-<font size="+1">[<span style="color:#cbcfe6;">__APPLY TO PARTICIPATE __</span>](https://forms.gle/cxc7U24n5ox7A1vu7){target="_blank"} before March 24, 2024 and become a part of a unique data challenge in the social sciences</font> 
+<font size="+1">[<span style="color:#cbcfe6;">__APPLY TO PARTICIPATE __</span>](https://forms.gle/cxc7U24n5ox7A1vu7){target="_blank"} and become a part of a unique data challenge in the social sciences</font> 
 
 :::
 
@@ -97,7 +97,7 @@ toc: false
 ::: {.listing-block}
 
 ## Important dates
-- [Application](/details/overview/3application.md){target="_blank"} deadline: March 24, 2024
+- <s>[Application](/details/overview/3application.md){target="_blank"} deadline: March 24, 2024</s>. This deadline has passed and the challenge is about to start, but you can still apply.
 - Start of the data challenge [Phase 1](/details/overview/3phases.md): April 1, 2024
 - Selection into [Phase 2](/details/overview/3phases.md): June 3 - June 17, 2024
 - Start of [Phase 2](/details/overview/3phases.md): June 17, 2024

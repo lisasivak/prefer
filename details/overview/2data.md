@@ -12,20 +12,35 @@ language:
 
 This challenge uses two data sources: survey data from the [LISS panel](https://www.lissdata.nl/){target="_blank"} and linked register data from [Statistics Netherlands](https://www.cbs.nl/nl-nl/onze-diensten/maatwerk-en-microdata/microdata-zelf-onderzoek-doen/catalogus-microdata){target="_blank"} [(Bakker et al., 2014)](https://doi.org/10.3233/SJI-140803){target="_blank"}, or CBS.  
 
-### LISS dataset
+### LISS datasets
 
-The LISS panel is based on a traditional probability sample drawn from the Dutch population register by Statistics Netherlands and is managed by the non-profit research institute Centerdata. Participants of the data challenge will use a merged dataset based on all modules from the LISS Core Study as well as the Background survey from 2007-2020.  
+The LISS panel is based on a traditional probability sample drawn from the Dutch population register by Statistics Netherlands and is managed by the non-profit research institute Centerdata. The LISS panel started in 2007 when approximately 5000 households comprising 8000 individuals of 16 years and older were recruited. 
 
-The [LISS Core Study](https://www.dataarchive.lissdata.nl/study-units/view/1) is a longitudinal study that is fielded each year in the LISS panel and measures the same set of variables. The Core Study includes ten modules that cover a wide range of topics from income, education and health to values, religion, and personality, including variables designed specifically to study fertility behaviour (e.g. fertility intentions). The Background survey collects basic socio-demographic information about the household. 
+Members of the panel participate in ten longitudinal surveys (or [Core Study modules](https://www.dataarchive.lissdata.nl/study-units/view/1)) on ten different topics (family, health, religion, social integration and leisure, work and education, personality, politics and values, assets, income, housing). Most of these surveys are conducted annually, and some biannually. Each time, each survey measures the same set of variables.  
 
-The dataset includes only a subsample of people aged 18-45 in 2020. The dataset is split into a train set (the outcome and predictors), available to participants of the challenge (around 70% of the whole dataset) and a holdout set for evaluation (the remaining 30% of the outcome and predictors), unavailable to the participants (see the figure below).  
+We merged all these surveys from 2007-2020 and selected only respondents from our target group: people aged 18-45 years old in 2020, who participated at least in one Core study survey in 2007-2020. Overall, there are ~6900 people in this group. However, most of them have dropped out of the LISS panel by 2021-2023, and because of that the outcome - getting a new child in 2021-2023 - is available only for ~1400 of them.  
+
+We splitted all individuals for whom the outcome is available into a training set and holdout (test) set. Some respondents come from the same households, soTo avoid data leakage, we first splitted the households, and then 
+To ensure independence in training and holdout data, we addressed the issue of participants from the same household by randomly assigning entire households to either the training or holdout set. We selected households where at least one member had a new child and households where no new child was born, then randomly allocated 30% of each group to the holdout set. All members of selected households were included in their respective sets, excluding those with missing outcomes. Comparisons of key variables between training and holdout sets showed similarity, ensuring robustness. It's important to note that only individuals with non-missing outcomes in the training set are comparable to the holdout set, as missing outcomes are likely non-random.
+
+The training set is participants of the challenge (around 70% of the whole dataset) and a holdout set for evaluation (the remaining 30% of the outcome and predictors), unavailable to the participants. We added all people for whom the outcome is unknown to the training set as well. (see the figure below). *Note*:  ; see more details on the train-test split in the [paper](https://arxiv.org/abs/2402.00705){target="_blank"})
+
+There are two main sources of data on the LISS panel: the LISS Core Study and Background surveys.   
+
+
+The dataset includes only a subsample of people aged 18-45 in 2020. The dataset is split into a train set (the outcome and predictors), available to participants of the challenge (around 70% of the whole dataset) and a holdout set for evaluation (the remaining 30% of the outcome and predictors), unavailable to the participants (see the figure below). 
+
+We explain in the [paper](https://arxiv.org/abs/2402.00705){target="_blank"} why the outcome is available only for ~1400 people in this target group. 
 
 __The dataset will be provided to the participants of the data challenge after sighing the user statement.__
 
 Read further:   
-- [Tips](/posts/posts/2024-03-20-prefer-datasets.qmd) for navigating the LISS datasets used in the challenge
+- [More detailed description](/posts/posts/2024-03-20-prefer-datasets.qmd){target="_blank"} of all LISS datasets provided for participants of the challenge  
+- Some [examples](/posts/posts/2024-03-20-prefer-datasets.qmd){target="_blank"} of how to make use of these different LISS datasets
+- [Tips about how to use codebooks](/posts/posts/2024-03-21-prefer-codebooks.qmd){target="_blank"} for these LISS datasets  
+- More [guides](/posts/index.qmd){target="_blank"} that help work with LISS data.   
 
-![](/images/scheme liss.png)  
+![](/images/liss_scheme_gray.jpg)  
 
 
 
@@ -42,4 +57,4 @@ __NB:__ because the access to the CBS data is governed by strict rules and regul
 Read further:   
 - Tips for using the CBS data [to be added]
 
-![](/images/scheme cbs.png)  
+![](/images/cbs_scheme_gray.jpg)  

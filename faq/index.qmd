@@ -9,41 +9,8 @@ search: false
 
 ---
 
-## Application
 
-::: {.callout-note appearance="simple" collapse="true" icon=false}
-## I don't have experience in machine learning, can I participate?
-Yes. Participating in the challenge is a good opportunity to gain experience in machine learning.
-:::
-
-::: {.callout-note appearance="simple" collapse="true" icon=false}
-## I'm not a social scientist and/or know nothing about fertility, can I participate?
-Yes, we welcome participants from various backgrounds who may take different approaches to developing their predictive models. Knowledge of the factors found to be significantly associated with fertility is not required. However, if you want to get a general overview of the factors influencing fertility behaviour you can read this review [(Balbo et al. 2013)](https://link.springer.com/article/10.1007/s10680-012-9277-y){target="_blank"}.
-:::
-
-::: {.callout-note appearance="simple" collapse="true" icon=false}
-## I'm not affiliated with an academic institution, can I participate?
-[Phase 1](/details/overview/3phases.md) of the data challenge is open for everyone. It is not required to have an affiliation with an academic institution. Access to Phase 2 is more restricted, you can find the details [here](/details/overview/3application.md).
-:::
-
-::: {.callout-note appearance="simple" collapse="true" icon=false}
-## I want to participate in a team consisting of people from several different institutions. Is it possible?
-Yes, it is possible. As in any other case, all team members must submit applications to participate.
-:::
-
-::: {.callout-note appearance="simple" collapse="true" icon=false}
-## I am a student. Can I apply and use the challenge for my bachelor or master thesis?
-Yes, you can participate in the challenge and then describe your approach in your thesis. We can't help supervise it though, because as organizers we will decide on the winners so we cannot participate ourselves.
-:::
-
-
-## Participation
-
-::: {.callout-note appearance="simple" collapse="true" icon=false}
-## How much time it will take to participate in the challenge?
-With the example scripts and codebooks that we will provide, you will be able to produce and submit a basic method in several hours. Trying different methods to improve the predictions can take several weeks. However, any contribution is valuable. Consider applying even if you can dedicate only a few days.
-:::
- 
+## Participation: general
 
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
 ## Can I work with the data in a cloud (e.g., Google Colab) where I can collaborate with other members of my team in the data challenge?
@@ -52,7 +19,30 @@ Yes, in Phase 1 you can use the LISS data in such a shared cloud environment, bu
 
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
 ## What programming languages can I use? 
-You can use either R or python to develop your method (i.e. train your model). [Here](/details/overview/4submission.md){target="_blank"} we will soon add a link to the submission platform with the detailed steps how to prepare a submission and submit your method.
+You can use either R or python to develop your method (i.e. train your model). [Here](/details/overview/4submission.md){target="_blank"} you can read how to prepare a submission and submit your method.
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## Can I use both Python and R? For example, R for cleaning the data, and Python for training 
+The submission (i.e. the scripts for preprocessing the data and training the model, and the model itself) should be either in Python or R, otherwise it will not run on the holdout data.    
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## Can I use external data for training? 
+During the first phase you can use external data to build better models using the training data, but there is no possibility for this external data to be linked to the holdout set. The reason is that this holdout data is in a secure environment where no access is possible to the "outside world" (e.g., downloading external data from some website).  
+
+In tracks 1-2 (working inside the secure CBS environment) linking external data is possible for both training and holdout sets, but this external data must be approved by CBS employees. If you are selected to participate in Phase 2 and want to use external data, please let us know and we will discuss what can be done.   
+
+:::
+
+## Participation: submission
+
+Here we will be adding common errors during submission and what you should do about them.  
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## buildx failed with: ERROR: failed to solve: failed to read dockerfile: open Dockerfile: no such file or directory
+![](/images/error_edit_settings.png)
+If you see this on the Action page in your github repository, you are probably using R for submission, but you haven't changed the settings. The default set-up is Python; if you would like to use R, go to settings.json and change {"dockerfile": "python.Dockerfile"} into {"dockerfile": "r.Dockerfile"}. Read here how to update files in your forked repository.
 :::
 
 
@@ -88,4 +78,37 @@ You can start with [this review by Balbo et al.] (https://link.springer.com/arti
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
 ## I need help?! Or I have a suggestion
 You can contact e.sivak [at] rug [dot] nl and/or g.stulp [at] rug [dot] nl for any questions and suggestions you might have. 
+:::
+
+
+## Application
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## I don't have experience in machine learning, can I participate?
+Yes. Participating in the challenge is a good opportunity to gain experience in machine learning.
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## I'm not a social scientist and/or know nothing about fertility, can I participate?
+Yes, we welcome participants from various backgrounds who may take different approaches to developing their predictive models. Knowledge of the factors found to be significantly associated with fertility is not required. However, if you want to get a general overview of the factors influencing fertility behaviour you can read this review [(Balbo et al. 2013)](https://link.springer.com/article/10.1007/s10680-012-9277-y){target="_blank"}.
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## I'm not affiliated with an academic institution, can I participate?
+[Phase 1](/details/overview/3phases.md) of the data challenge is open for everyone. It is not required to have an affiliation with an academic institution. Access to Phase 2 is more restricted, you can find the details [here](/details/overview/3application.md).
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## I want to participate in a team consisting of people from several different institutions. Is it possible?
+Yes, it is possible. As in any other case, all team members must submit applications to participate.
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## I am a student. Can I apply and use the challenge for my bachelor or master thesis?
+Yes, you can participate in the challenge and then describe your approach in your thesis. We can't help supervise it though, because as organizers we will decide on the winners so we cannot participate ourselves.
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## How much time it will take to participate in the challenge?
+With the example scripts and codebooks that we will provide, you will be able to produce and submit a basic method in several hours. Trying different methods to improve the predictions can take several weeks. However, any contribution is valuable. Consider applying even if you can dedicate only a few days.
 :::
