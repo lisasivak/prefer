@@ -24,6 +24,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -69,9 +103,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../../rwds.css">
 <meta property="og:title" content="A walkthough of submitting a simple model in python">
 <meta property="og:description" content="Here we show the steps for submitting a simple model in python">
-<meta property="og:image" content="https://preferdatachallenge.nl/images/liss_pick.png">
-<meta property="og:image:height" content="382">
-<meta property="og:image:width" content="467">
+<meta property="og:image" content="https://preferdatachallenge.nl/images/python_submission.jpg">
 <meta property="og:image:alt" content="LISS logo.">
 </head>
 
@@ -191,6 +223,107 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p>Here we describe how to prepare and make a submission for Python users.</p>
+<p>Disclaimer: the data preprocessing and the model that we will train here is very basic. You should not use it as an example of how to properly train a model (e.g.&nbsp;imputing missing values with a mean or mode is often a bad idea). The sole purpose of this script is to make the submission process more clear.</p>
+<p>In this example we assume that you are using <a href="https://docs.github.com/en/desktop">GitHub Desktop</a>, which is a very convenient tool for updating your github repository. <a href="https://github.com/eyra/fertility-prediction-challenge/wiki">Here</a> you can find useful links how to use GitHub Desktop for cloning your repository and for update the files in it.</p>
+<p>We also assume that you did all the prerequisite steps described <a href="https://github.com/eyra/fertility-prediction-challenge?tab=readme-ov-file#prerequisites" target="_blank">here</a>.</p>
+<p>Let’s imagine that you want to add one predictor to the model that is already in the repository – highest education level (variable “oplmet_2020”, as you found using the codebooks). You can edit the scripts that are already in the repository to preprocess the data and train and save such a model.</p>
+<p>Steps:</p>
+<ol type="1">
+<li><p>Go to your cloned folder and open “training.py” script in the environment that you normally use for python. This is the script that you should update to produce a model.</p></li>
+<li><p>Copy paste the “clean_df” function from the “submission.py” script. Add the variable that you want to add and impute missing values.<br>
+This is what we have now in this function:</p></li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># List your libraries and modules here. Don't forget to update environment.yml if you use packages that are not there!</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> joblib</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> clean_df(df, background_df<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">    Preprocess the input dataframe to feed the model.</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">    # If no cleaning is done (e.g. if all the cleaning is done in a pipeline) leave only the "return df" command</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters:</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">    df (pd.DataFrame): The input dataframe containing the raw data (e.g., from PreFer_train_data.csv or PreFer_fake_data.csv).</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">    background (pd.DataFrame): Optional input dataframe containing background data (e.g., from PreFer_train_background_data.csv or PreFer_fake_background_data.csv).</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">    pd.DataFrame: The cleaned dataframe with only the necessary columns and processed variables.</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">## This script contains a bare minimum working example</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create new variable with age</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">"age"</span>] <span class="op">=</span> <span class="dv">2024</span> <span class="op">-</span> df[<span class="st">"birthyear_bg"</span>]</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Imputing missing values in age with the mean</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">"age"</span>] <span class="op">=</span> df[<span class="st">"age"</span>].fillna(df[<span class="st">"age"</span>].mean())</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Imputing missing values in education (oplmet_2020) with the mode </span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">"oplmet_2020"</span>] <span class="op">=</span> df[<span class="st">"oplmet_2020"</span>].fillna(df[<span class="st">"oplmet_2020"</span>].mode()) <span class="co"># &lt;----- that's what we added!</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Selecting variables for modelling</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    keepcols <span class="op">=</span> [</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>        <span class="st">"nomem_encr"</span>,  <span class="co"># ID variable required for predictions,</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>        <span class="st">"age"</span>          <span class="co"># newly created variable</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    ] </span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Keeping data with variables selected</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df[keepcols]</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li>Edit train_save_model function - add the new variable. Here is how the code will look like</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train_save_model(cleaned_df, outcome_df):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Trains a model using the cleaned dataframe and saves the model to a file.</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters:</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">    cleaned_df (pd.DataFrame): The cleaned data from clean_df function to be used for training the model.</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">    outcome_df (pd.DataFrame): The data with the outcome variable </span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">    (e.g., from PreFer_train_outcome.csv or PreFer_fake_outcome.csv).</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">## This script contains a bare minimum working example</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">#random.seed(1) # not useful here because logistic regression deterministic</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Combine cleaned_df and outcome_df</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    model_df <span class="op">=</span> pd.merge(cleaned_df, outcome_df, on<span class="op">=</span><span class="st">"nomem_encr"</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Filter cases for whom the outcome is not available</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    model_df <span class="op">=</span> model_df[<span class="op">~</span>model_df[<span class="st">'new_child'</span>].isna()]  </span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Logistic regression model</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    model <span class="op">=</span> LogisticRegression()</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Fit the model</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    model.fit(model_df[[<span class="st">'age'</span>, <span class="st">'oplmet_2020'</span>]], model_df[<span class="st">'new_child'</span>]) <span class="co">#&lt;---- added variable here</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Save the model</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    joblib.dump(model, <span class="st">"model.joblib"</span>)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="4" type="1">
+<li><p>Load the data to train the model and apply the clean_df function to it. Code:</p></li>
+<li><p>Train the model by feeding the cleaned data to the train_save_model. Now the model is saved in the same folder. Code:</p></li>
+<li><p>To test your preprocessing function and model, check them on fake data. Code: …</p></li>
+</ol>
+<p>Everything works on fake data. Don’t forget to save your training script.</p>
+<ol start="7" type="1">
+<li><p>You can now edit the submission.py script: copypaste your clean_df function there. This code will be applied to the holdout data</p></li>
+<li><p>(your model is already in the folder, no need to do anything with it)</p></li>
+<li><p>Go to GitHub Desktop and save changes (commit) – see <a href="">here</a> how to do it</p></li>
+<li><p>push the changes (i.e.&nbsp;update your online repository)</p></li>
+<li><p>Go to the Action page. After a few minutes you’ll see if your submission passed the authomatic checks</p></li>
+<li><p>(copy link to commit etc.)</p></li>
+</ol>
+<p>(add the note about importance of using the same versions of packages and updating the environment.yml)</p>
 
 
 

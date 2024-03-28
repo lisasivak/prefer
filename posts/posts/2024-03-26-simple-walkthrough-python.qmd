@@ -10,19 +10,127 @@ author:
   - "Lisa Sivak"
 date: '2024-03-26'
 toc: true
-image: ../../images/liss_pick.png
+image: ../../images/python_submission.jpg
 image-alt: LISS logo. 
 language: 
     section-title-footnotes: References
 ---
 
-Here we describe how to prepare and make a submission for Python users. The data preprocessing and the model that we will train here is very basic. The sole purpose of this script is to make the submission process more clear.  
+Here we describe how to prepare and make a submission for Python users.  
 
+Disclaimer: the data preprocessing and the model that we will train here is very basic. You should not use it as an example of how to properly train a model (e.g. imputing missing values with a mean or mode is often a bad idea). The sole purpose of this script is to make the submission process more clear.  
+
+In this example we assume that you are using [GitHub Desktop](https://docs.github.com/en/desktop), which is a very convenient tool for updating your github repository. [Here](https://github.com/eyra/fertility-prediction-challenge/wiki) you can find useful links how to use GitHub Desktop for cloning your repository and for update the files in it.  
+
+We also assume that you did all the prerequisite steps described   [here](https://github.com/eyra/fertility-prediction-challenge?tab=readme-ov-file#prerequisites){target="_blank"}.
+
+Let's imagine that you want to add one predictor to the model that is already in the repository -- highest education level (variable "oplmet_2020", as you found using the codebooks). You can edit the scripts that are already in the repository to preprocess the data and train and save such a model.
 
 Steps:  
 
-1. Do all the prerequisite steps described   [here](https://github.com/eyra/fertility-prediction-challenge?tab=readme-ov-file#prerequisites){target="_blank"}
+1. Go to your cloned folder and open "training.py" script in the environment that you normally use for python. This is the script that you should update to produce a model.    
+
+2. Copy paste the "clean_df" function from the "submission.py" script. Add the variable that you want to add and impute missing values.   
+This is what we have now in this function:
+
+```{{python}}
+# List your libraries and modules here. Don't forget to update environment.yml if you use packages that are not there!
+import pandas as pd
+from sklearn.linear_model import LogisticRegression
+import joblib
 
 
-Note: in this example we assume that you are using [GitHub Desktop](https://docs.github.com/en/desktop), which is a very convenient tool for updating your github repository. [Here](https://github.com/eyra/fertility-prediction-challenge/wiki) you can find useful links how to use GitHub Desktop for cloning your repository and for update the files in it.
+def clean_df(df, background_df=None):
+    """
+    Preprocess the input dataframe to feed the model.
+    # If no cleaning is done (e.g. if all the cleaning is done in a pipeline) leave only the "return df" command
 
+    Parameters:
+    df (pd.DataFrame): The input dataframe containing the raw data (e.g., from PreFer_train_data.csv or PreFer_fake_data.csv).
+    background (pd.DataFrame): Optional input dataframe containing background data (e.g., from PreFer_train_background_data.csv or PreFer_fake_background_data.csv).
+
+    Returns:
+    pd.DataFrame: The cleaned dataframe with only the necessary columns and processed variables.
+    """
+
+    ## This script contains a bare minimum working example
+    # Create new variable with age
+    df["age"] = 2024 - df["birthyear_bg"]
+
+    # Imputing missing values in age with the mean
+    df["age"] = df["age"].fillna(df["age"].mean())
+    
+    # Imputing missing values in education (oplmet_2020) with the mode 
+    df["oplmet_2020"] = df["oplmet_2020"].fillna(df["oplmet_2020"].mode()) # <----- that's what we added!
+
+    # Selecting variables for modelling
+    keepcols = [
+        "nomem_encr",  # ID variable required for predictions,
+        "age"          # newly created variable
+    ] 
+
+    # Keeping data with variables selected
+    df = df[keepcols]
+
+    return df
+
+```
+
+
+3. Edit train_save_model function - add the new variable. Here is how the code will look like
+
+```{{python}}
+def train_save_model(cleaned_df, outcome_df):
+    """
+    Trains a model using the cleaned dataframe and saves the model to a file.
+
+    Parameters:
+    cleaned_df (pd.DataFrame): The cleaned data from clean_df function to be used for training the model.
+    outcome_df (pd.DataFrame): The data with the outcome variable 
+    (e.g., from PreFer_train_outcome.csv or PreFer_fake_outcome.csv).
+    """
+    
+    ## This script contains a bare minimum working example
+    #random.seed(1) # not useful here because logistic regression deterministic
+    
+    # Combine cleaned_df and outcome_df
+    model_df = pd.merge(cleaned_df, outcome_df, on="nomem_encr")
+
+    # Filter cases for whom the outcome is not available
+    model_df = model_df[~model_df['new_child'].isna()]  
+    
+    # Logistic regression model
+    model = LogisticRegression()
+
+    # Fit the model
+    model.fit(model_df[['age', 'oplmet_2020']], model_df['new_child']) #<---- added variable here
+
+    # Save the model
+    joblib.dump(model, "model.joblib")
+
+```
+
+4. Load the data to train the model and apply the clean_df function to it. Code:
+
+5. Train the model by feeding the cleaned data to the train_save_model. Now the model is saved in the same folder. Code:
+
+6. To test your preprocessing function and model, check them on fake data. Code: ... 
+
+Everything works on fake data. Don't forget to save your training script. 
+
+7. You can now edit the submission.py script: copypaste your clean_df function there. This code will be applied to the holdout data 
+
+8. (your model is already in the folder, no need to do anything with it)  
+
+9. Go to GitHub Desktop and save changes (commit) -- see [here]() how to do it  
+
+10. push the changes (i.e. update your online repository)  
+
+11. Go to the Action page. After a few minutes you'll see if your submission passed the authomatic checks  
+
+12. (copy link to commit etc.)  
+
+
+
+
+(add the note about importance of using the same versions of packages and updating the environment.yml)
