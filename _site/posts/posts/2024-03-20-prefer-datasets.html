@@ -9,9 +9,9 @@
 <meta name="author" content="Gert Stulp">
 <meta name="author" content="Lisa Sivak">
 <meta name="dcterms.date" content="2024-03-20">
-<meta name="description" content="Here is some useful information that can help navigate the PreFer datasets.">
+<meta name="description" content="Here is some useful information that can help navigate the PreFer datasets from the LISS panel.">
 
-<title>A guide on PreFer datasets</title>
+<title>A guide on PreFer LISS datasets</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,8 +67,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../../rwds.css">
-<meta property="og:title" content="A guide on PreFer datasets">
-<meta property="og:description" content="Here is some useful information that can help navigate the PreFer datasets.">
+<meta property="og:title" content="A guide on PreFer LISS datasets">
+<meta property="og:description" content="Here is some useful information that can help navigate the PreFer datasets from the LISS panel.">
 <meta property="og:image" content="https://preferdatachallenge.nl/images/liss_pick.png">
 <meta property="og:image:height" content="382">
 <meta property="og:image:width" content="467">
@@ -162,18 +162,22 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#prefer-datasets" id="toc-prefer-datasets" class="nav-link" data-scroll-target="#prefer-datasets">PreFer datasets</a>
   <ul class="collapse">
   <li><a href="#prefer_train_data.csv" id="toc-prefer_train_data.csv" class="nav-link" data-scroll-target="#prefer_train_data.csv">1. PreFer_train_data.csv</a></li>
-  <li><a href="#selected-yearly-background-variables" id="toc-selected-yearly-background-variables" class="nav-link" data-scroll-target="#selected-yearly-background-variables">Selected yearly background variables</a>
+  <li><a href="#selected-yearly-background-variables-added-to-core-surveys" id="toc-selected-yearly-background-variables-added-to-core-surveys" class="nav-link" data-scroll-target="#selected-yearly-background-variables-added-to-core-surveys">Selected yearly background variables added to Core surveys</a>
   <ul class="collapse">
   <li><a href="#fixed-background-variables" id="toc-fixed-background-variables" class="nav-link" data-scroll-target="#fixed-background-variables">Fixed background variables</a></li>
   <li><a href="#time-varying-background-variables" id="toc-time-varying-background-variables" class="nav-link" data-scroll-target="#time-varying-background-variables">Time varying background variables</a></li>
   </ul></li>
-  <li><a href="#prefer_train_background_data.csv" id="toc-prefer_train_background_data.csv" class="nav-link" data-scroll-target="#prefer_train_background_data.csv">2. PreFer_train_background_data.csv</a></li>
-  <li><a href="#prefer_train_supplementary_data.csv" id="toc-prefer_train_supplementary_data.csv" class="nav-link" data-scroll-target="#prefer_train_supplementary_data.csv">3. PreFer_train_supplementary_data.csv</a></li>
-  <li><a href="#prefer_fake_data.csv" id="toc-prefer_fake_data.csv" class="nav-link" data-scroll-target="#prefer_fake_data.csv">4. PreFer_fake_data.csv</a></li>
-  <li><a href="#prefer_fake_background_data.csv" id="toc-prefer_fake_background_data.csv" class="nav-link" data-scroll-target="#prefer_fake_background_data.csv">5. PreFer_fake_background_data.csv</a></li>
-  <li><a href="#prefer_holdout_data.csv" id="toc-prefer_holdout_data.csv" class="nav-link" data-scroll-target="#prefer_holdout_data.csv">6. PreFer_holdout_data.csv</a></li>
+  <li><a href="#prefer_train_outcome.csv" id="toc-prefer_train_outcome.csv" class="nav-link" data-scroll-target="#prefer_train_outcome.csv">2. PreFer_train_outcome.csv</a></li>
+  <li><a href="#prefer_train_background_data.csv" id="toc-prefer_train_background_data.csv" class="nav-link" data-scroll-target="#prefer_train_background_data.csv">3. PreFer_train_background_data.csv</a></li>
+  <li><a href="#prefer_train_supplementary_data.csv" id="toc-prefer_train_supplementary_data.csv" class="nav-link" data-scroll-target="#prefer_train_supplementary_data.csv">4. PreFer_train_supplementary_data.csv</a></li>
+  <li><a href="#prefer_train_supplementary_outcome.csv" id="toc-prefer_train_supplementary_outcome.csv" class="nav-link" data-scroll-target="#prefer_train_supplementary_outcome.csv">5. PreFer_train_supplementary_outcome.csv</a></li>
+  <li><a href="#prefer_fake_data.csv" id="toc-prefer_fake_data.csv" class="nav-link" data-scroll-target="#prefer_fake_data.csv">6. PreFer_fake_data.csv</a></li>
+  <li><a href="#prefer_fake_outcome.csv" id="toc-prefer_fake_outcome.csv" class="nav-link" data-scroll-target="#prefer_fake_outcome.csv">7. PreFer_fake_outcome.csv</a></li>
+  <li><a href="#prefer_fake_background_data.csv" id="toc-prefer_fake_background_data.csv" class="nav-link" data-scroll-target="#prefer_fake_background_data.csv">8. PreFer_fake_background_data.csv</a></li>
+  <li><a href="#prefer_holdout_data.csv" id="toc-prefer_holdout_data.csv" class="nav-link" data-scroll-target="#prefer_holdout_data.csv">9. PreFer_holdout_data.csv</a></li>
+  <li><a href="#prefer_holdout_outcome.csv" id="toc-prefer_holdout_outcome.csv" class="nav-link" data-scroll-target="#prefer_holdout_outcome.csv">10. PreFer_holdout_outcome.csv</a></li>
   </ul></li>
-  <li><a href="#prefer_holdout_background_data.csv" id="toc-prefer_holdout_background_data.csv" class="nav-link" data-scroll-target="#prefer_holdout_background_data.csv">7. PreFer_holdout_background_data.csv</a></li>
+  <li><a href="#prefer_holdout_background_data.csv" id="toc-prefer_holdout_background_data.csv" class="nav-link" data-scroll-target="#prefer_holdout_background_data.csv">11. PreFer_holdout_background_data.csv</a></li>
   </ul>
 </nav>
     </div>
@@ -182,7 +186,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">A guide on PreFer datasets</h1>
+<h1 class="title">A guide on PreFer LISS datasets</h1>
   <div class="quarto-categories">
     <div class="quarto-category">LISS</div>
     <div class="quarto-category">dataset</div>
@@ -192,7 +196,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div>
   <div class="description">
-    <p>Here is some useful information that can help navigate the PreFer datasets.</p>
+    <p>Here is some useful information that can help navigate the PreFer datasets from the LISS panel.</p>
   </div>
 </div>
 
@@ -220,11 +224,11 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Here we describe the different datasets that are available in the PreFer data challenge that are all based on the <a href="https://www.lissdata.nl/">LISS panel</a>. The datasets <code>PreFer_train_data.csv</code>, <code>PreFer_train_background_data.csv</code> and <code>PreFer_train_supplementary_data.csv</code> will be available to PreFer participants. The dataset <code>PreFer_holdout_data.csv</code> and <code>PreFer_holdout_background_data.csv</code> will only be available to PreFer organisers.</p>
-<p>To navigate these datasets and get a better understanding of the many variables, there are also machine-readable (and human readable) codebooks available <a href="LINKTOCODEBOOKS">here</a>. [Click here](LINKTOPOSTGUIDE for a guide on how to use the codebooks.</p>
+<p>Here we describe the different datasets that are available in the PreFer data challenge that are all based on the <a href="https://www.lissdata.nl/">LISS panel</a>. There are five datasets available to PreFer participants: 1) <code>PreFer_train_data.csv</code>, 2) <code>PreFer_train_outcome</code>, 3) <code>PreFer_train_background_data.csv</code>, 4) <code>PreFer_train_supplementary_data.csv</code>, and 5) <code>PreFer_train_supplementary_outcome.csv</code>. The three datasets <code>PreFer_holdout_data.csv</code>, <code>PreFer_holdout_outcome</code>, and <code>PreFer_holdout_background_data.csv</code> will only be available to PreFer organisers. There are also three datasets of fake data, available for participants, that are mostly in place for testing whether your submission will be able to run on the holdout data (<code>PreFer_fake_data.csv</code>, <code>PreFer_fake_outcome</code>, and <code>PreFer_fake_background_data.csv</code>). This all sounds overwhelming, so let’s quickly get to explaining them.</p>
+<p>To navigate these datasets and get a better understanding of the many variables, there are also machine-readable (and human readable) codebooks available: <a href="../../posts/posts/2024-03-21-prefer-codebooks.html">click here</a> for a guide on how to use the codebooks.</p>
 <section id="core-surveys-and-background-surveys" class="level1">
 <h1>Core surveys and background surveys</h1>
-<p>Broadly speaking, the LISS panel contains two types of datasets: 1) Core surveys: yearly surveys on topics like health, wealth, personal values.</p>
+<p>Broadly speaking, the LISS panel contains two types of datasets: 1) Core surveys: yearly surveys on topics like health, wealth, and personal values.</p>
 <ol start="2" type="1">
 <li>Background surveys: particular demographic characteristics of households and the individuals in these households (e.g., age, gender, education, income).</li>
 </ol>
@@ -243,117 +247,238 @@ ul.task-list li input[type="checkbox"] {
 <li><p><strong>“Social Integration and Leisure/source/”</strong>; all waves of <a href="https://www.dataarchive.lissdata.nl/study-units/view/6">Social Integration and Leisure data</a>, except 2021 and beyond</p></li>
 <li><p><strong>“Work &amp; Schooling/source/”</strong>; all waves of <a href="https://www.dataarchive.lissdata.nl/study-units/view/16">Work &amp; Schooling data</a>, except 2021 and beyond</p></li>
 </ol>
-<p>We have merged all Core surveys from 2007 to 2020 leading to a dataset with 31633 variables and UPDATE THIS for XXX respondents.</p>
+<p>We have merged all Core surveys from 2007 to 2020.</p>
 <section id="variable-naming-conventions" class="level3">
 <h3 class="anchored" data-anchor-id="variable-naming-conventions">Variable naming conventions</h3>
-<p>All the variables names in LISS contain information that can help navigate the dataset. Let’s use the variable name <em>cf09b010</em> as an example. It consists of two main parts: <em>cf09b</em> which indicates the name of the Core study module and the year, and <em>010</em> which is a question number in this Core study module (the same questions have the same numbers in all the yearly questionnaires of a Core study module). How to decipher the first part:</p>
+<p>All the variable names in LISS contain information that can help navigate the dataset. Let’s use the variable name <em>cf09b010</em> as an example. It consists of two main parts: <em>cf09b</em> which indicates the name of the Core study module and the year, and <em>010</em> which is a question number in this Core study module (the same questions have the same numbers in all the yearly questionnaires of a Core study module). How to decipher the first part:</p>
 <ul>
-<li><em>c</em> refers to <em>Core study</em>. Almost all the variables in the dataset (excluding about 400 variables in the beginning, that come from the Background survey) start with <em>c</em></li>
+<li><em>c</em> refers to <em>Core study</em>. Almost all the variables in the dataset start with <em>c</em></li>
 <li><em>f</em> refers to the name of the Core study module - in this case, it’s “Family and household”. Other options are: <em>w</em> (Work and schooling), <em>s</em> (Social integration and values), <em>h</em> (Health), <em>r</em> (Religion and ethnicity), <em>v</em> (politics and Values), <em>p</em> (Personality), <em>a</em> (economic situation: Assets), <em>i</em> (economic situation: Income), and <em>d</em> (economic situation: Housing).</li>
 <li><em>09</em> refers to the year of this questionnaire. <em>09</em> means 2009. Some Core study modules are fielded each year, some (Assets) once in two years.</li>
-<li><em>b</em> refers to the wave number (in this case, Wave 2). Keep in mind, that because some modules are fielded every year, and some - every other year, the same letters do not mean that these surveys were conducted in the same year (e.g.&nbsp;Wave 2 of Family and Household module <em>cf09b</em> was conducted in 2009 whereas the second Wave of the Assets core study module <em>ca10b</em> was conducted in 2010).</li>
+<li><em>b</em> refers to the wave number (in this case, Wave 2). Keep in mind, that because some modules are fielded every year, and some every other year, the same letters do not mean that these surveys were conducted in the same year (e.g.&nbsp;Wave 2 of Family and Household module <em>cf09b</em> was conducted in 2009 whereas the second Wave of the Assets core study module <em>ca10b</em> was conducted in 2010).</li>
 </ul>
-<p>[The codebooks] are particularly useful in navigating the merged Core survey dataset. The datasets <code>PreFer_train_data.csv</code>, <code>PreFer_train_supplement.csv</code>, and <code>PreFer_holdout_data.csv</code> all come from this merged Core survey dataset.</p>
+<p><a href="(2024-03-21-prefer-codebooks.qmd)">The codebooks</a> are particularly useful in navigating the merged Core survey dataset. The datasets <code>PreFer_train_data.csv</code>, <code>PreFer_train_supplement.csv</code>, and <code>PreFer_holdout_data.csv</code> all come from this merged Core survey dataset.</p>
 </section>
 </section>
 <section id="background" class="level2">
 <h2 class="anchored" data-anchor-id="background">Background variables</h2>
 <p>The Background survey is filled out by a household’s contact person when the household joins the panel and is updated monthly. It collects basic socio-demographic information about the household and all of its members (including those who are not LISS panel members and do not participate in the Core surveys). The following variables are available:</p>
 <ul>
-<li><code>nomem_encr</code> Number of household member encrypted</li>
-<li><code>nohouse_encr</code> Number of household encrypted</li>
-<li><code>wave</code> Year and month of the field work period</li>
-<li><code>positie</code> Position within the household</li>
-<li><code>lftdcat</code> Age in CBS (Statistics Netherlands) categories</li>
-<li><code>lftdhhh</code> Age of the household head</li>
-<li><code>aantalhh</code> Number of household members</li>
-<li><code>aantalki</code> Number of living-at-home children in the household, children of the household head or his/her partner</li>
-<li><code>partner</code> The household head lives together with a partner (wedded or unwedded)</li>
-<li><code>burgstat</code> Civil status</li>
-<li><code>woonvorm</code> Domestic situation</li>
-<li><code>woning</code> Type of dwelling that the household inhabits</li>
-<li><code>belbezig</code> Primary occupation</li>
-<li><code>brutoink</code> Personal gross monthly income in Euros</li>
-<li><code>nettoink</code> Personal net monthly income in Euros (incl.&nbsp;nettocat)</li>
-<li><code>brutocat</code> Personal gross monthly income in categories</li>
-<li><code>nettocat</code> Personal net monthly income in categories</li>
-<li><code>oplzon</code> Highest level of education irrespective of diploma</li>
-<li><code>oplmet</code> Highest level of education with diploma</li>
-<li><code>oplcat</code> Level of education in CBS (Statistics Netherlands) categories</li>
-<li><code>doetmee</code> Household member participates in the panel</li>
-<li><code>sted</code> Urban character of place of residence</li>
-<li><code>simpc</code> Does the household have a simPC?</li>
-<li><code>brutoink_f</code> Personal gross monthly income in Euros, imputed</li>
-<li><code>netinc</code> Personal net monthly income in Euros</li>
-<li><code>nettoink_f</code> Personal net monthly income in Euros, imputed</li>
-<li><code>brutohh_f</code> Gross household income in Euros</li>
-<li><code>nettohh_f</code> Net household income in Euros</li>
-<li><code>werving</code> From which recruitment wave the household originates</li>
-<li><code>birthyear_imp</code> Year of birth [imputed by PreFer organisers] (based on original <code>gebjaar</code> variable)</li>
-<li><code>gender_imp</code> Gender [imputed by PreFer organisers] (based on original <code>geslacht</code> variable)</li>
-<li><code>migration_background_imp</code> Origin [imputed by PreFer organisers] (based on original <code>herkomstgroep</code> variable)</li>
+<li><code>nomem_encr</code> Number of household member encrypted<br>
+</li>
+<li><code>nohouse_encr</code> Number of household encrypted<br>
+</li>
+<li><code>wave</code> Year and month of the field work period<br>
+</li>
+<li><code>positie</code> Position within the household<br>
+</li>
+<li><code>lftdcat</code> Age in CBS (Statistics Netherlands) categories<br>
+</li>
+<li><code>lftdhhh</code> Age of the household head<br>
+</li>
+<li><code>aantalhh</code> Number of household members<br>
+</li>
+<li><code>aantalki</code> Number of living-at-home children in the household, children of the household head or his/her partner<br>
+</li>
+<li><code>partner</code> The household head lives together with a partner (wedded or unwedded)<br>
+</li>
+<li><code>burgstat</code> Civil status<br>
+</li>
+<li><code>woonvorm</code> Domestic situation<br>
+</li>
+<li><code>woning</code> Type of dwelling that the household inhabits<br>
+</li>
+<li><code>belbezig</code> Primary occupation<br>
+</li>
+<li><code>brutoink</code> Personal gross monthly income in Euros<br>
+</li>
+<li><code>nettoink</code> Personal net monthly income in Euros (incl.&nbsp;nettocat)<br>
+</li>
+<li><code>brutocat</code> Personal gross monthly income in categories<br>
+</li>
+<li><code>nettocat</code> Personal net monthly income in categories<br>
+</li>
+<li><code>oplzon</code> Highest level of education irrespective of diploma<br>
+</li>
+<li><code>oplmet</code> Highest level of education with diploma<br>
+</li>
+<li><code>oplcat</code> Level of education in CBS (Statistics Netherlands) categories<br>
+</li>
+<li><code>doetmee</code> Household member participates in the panel<br>
+</li>
+<li><code>sted</code> Urban character of place of residence<br>
+</li>
+<li><code>simpc</code> Does the household have a simPC?<br>
+</li>
+<li><code>brutoink_f</code> Personal gross monthly income in Euros, imputed<br>
+</li>
+<li><code>netinc</code> Personal net monthly income in Euros<br>
+</li>
+<li><code>nettoink_f</code> Personal net monthly income in Euros, imputed<br>
+</li>
+<li><code>brutohh_f</code> Gross household income in Euros<br>
+</li>
+<li><code>nettohh_f</code> Net household income in Euros<br>
+</li>
+<li><code>werving</code> From which recruitment wave the household originates<br>
+</li>
+<li><code>birthyear_imp</code> Year of birth [imputed by PreFer organisers] (based on original <code>gebjaar</code> variable)<br>
+</li>
+<li><code>gender_imp</code> Gender [imputed by PreFer organisers] (based on original <code>geslacht</code> variable)<br>
+</li>
+<li><code>migration_background_imp</code> Origin [imputed by PreFer organisers] (based on original <code>herkomstgroep</code> variable)<br>
+</li>
 <li><code>age_imp</code> Age of the household member [imputed by PreFer organisers] (based on original <code>leeftijd</code> variable)</li>
 </ul>
-<p>The full dataset thus has XXXX variables on XXXXX respondents. The PreFer datasets <code>PreFer_train_background_data.csv</code> and <code>PreFer_holdout_background_data.csv</code> are based on this dataset.</p>
+<p>The PreFer datasets <code>PreFer_train_background_data.csv</code> and <code>PreFer_holdout_background_data.csv</code> are based on this background dataset.</p>
 </section>
 </section>
 <section id="prefer-datasets" class="level1">
 <h1>PreFer datasets</h1>
 <section id="prefer_train_data.csv" class="level2">
 <h2 class="anchored" data-anchor-id="prefer_train_data.csv">1. PreFer_train_data.csv</h2>
-<p>The PreFer_train_data.csv consists of 31633 variables from 10307XXXX CHECK individuals. These individuals are LISS respondents who were born between 1974 and 2002 (meaning they were between 18 and 45 years old in 2020). These variables are a combination of all Core study modules (see above) and selected yearly background variables.</p>
+<p>The <code>PreFer_train_data.csv</code> consists of 31634 variables from 6418 respondents. These individuals are LISS respondents who were born between 1975 and 2002 (meaning they were between 18 and 45 years old in 2020). These variables are a combination of all Core study modules (see above) and selected yearly background variables.</p>
 <p>Particularly important variables are:</p>
 <ol type="1">
-<li><p><code>nomem_encr</code>: this is the unique identifier and can be used to link the train data to the other datasets (<code>PreFer_train_background.csv</code> and <code>PreFer_train_supplement.csv</code>). Note that this identifier is a pseudonym of the original <code>nomem_encr</code> identifier in the LISS data.</p></li>
+<li><p><code>nomem_encr</code>: this is the unique identifier and can be used to link the train data to the other datasets (<code>PreFer_train_background.csv</code>, <code>PreFer_train_supplement.csv</code>, and <code>PreFer_train_outcome</code>). Note that this identifier is a pseudonym of the original <code>nomem_encr</code> identifier in the LISS data.</p></li>
 <li><p><code>new_child</code>: this is the outcome variable; whether people had a child between 2021 and 2023. <a href="UPDATE">Here</a> you can find detailed information on how this outcome was constructed. This dataset also included people for whom this outcome is not known.</p></li>
 </ol>
+<p>Less important, but useful to know:</p>
+<ol start="3" type="1">
+<li><code>outcome_available</code>: this is variable that records whether the outcome <code>new_child</code> is available for a particular respondent. <code>1</code> means that the outcome is available, <code>0</code> means that the outcome is unavailable. Most likely, one would use this variable to restrict the sample to respondents for whom the outcome is available (i.e.&nbsp;<code>outcome_available = 1</code>).</li>
+</ol>
 </section>
-<section id="selected-yearly-background-variables" class="level2">
-<h2 class="anchored" data-anchor-id="selected-yearly-background-variables">Selected yearly background variables</h2>
-<p>The background variables can be found in a separate dataset (see <code>PreFer_train_background.csv</code>), but we have chosen to include some of the information from the background variables to the Core surveys. Specifically, we have added information from variables that either vary considerably across time or that are useful fixed variables. Remember that the background variables contain information on a monthly basis; we chose to add 14 yearly variables (for each of the years 2007 up to and including 2020) for a select number of varying background variables.</p>
+<section id="selected-yearly-background-variables-added-to-core-surveys" class="level2">
+<h2 class="anchored" data-anchor-id="selected-yearly-background-variables-added-to-core-surveys">Selected yearly background variables added to Core surveys</h2>
+<p>The background variables can be found in a separate dataset (see <code>PreFer_train_background.csv</code>), but we have chosen to include some of the information from the background variables to the Core surveys. Specifically, we have added information from variables that either vary considerably across time or that are useful as fixed variables. Remember that the background variables contain information on a monthly basis; we chose to add 14 yearly variables (for each of the years 2007 up to and including 2020) for a select number of varying background variables.</p>
 <section id="fixed-background-variables" class="level3">
 <h3 class="anchored" data-anchor-id="fixed-background-variables">Fixed background variables</h3>
-<p>We included the following fixed variables from the background variables: 1. birthyear of respondent (recorded through <code>birthyear_bg</code>; which we created and cleaned)</p>
+<p>We included the following fixed variables from the background variables: 1. <code>birthyear_bg</code> (birthyear of respondent; which we created and cleaned)</p>
 <ol start="2" type="1">
-<li><p>gender of respondent (<code>gender_bg</code>; which we created and cleaned)</p></li>
-<li><p>migration background of the respondent (<code>migration_background_bg</code>; which we created and cleaned)</p></li>
-<li><p>the age of the respondent on December 2020 (<code>age_bg</code>; which we created)</p></li>
+<li><p><code>gender_bg</code> (gender of respondent; which we created and cleaned)</p></li>
+<li><p><code>migration_background_bg</code> (migration background of the respondent; which we created and cleaned)</p></li>
+<li><p><code>age_bg</code> (the age of the respondent for each wave; which we created; this variable is obviously not fixed, but more or less records the same information as birthyear).</p></li>
 </ol>
 </section>
 <section id="time-varying-background-variables" class="level3">
 <h3 class="anchored" data-anchor-id="time-varying-background-variables">Time varying background variables</h3>
-<p>With respect to the time varying variables: - There are 7 variables that vary over time for households for which yearly variables will be added to the Core dataset: 1) <code>partner</code> (whether household head lives together with partner), 2) <code>woonvorm</code> (living arrangement), 3) <code>burgstat</code> (marital status), 4) <code>woning</code> (type of dwelling), 5) <code>sted</code> (urban character of place of residence), 6) <code>brutohh_f</code> (gross household income), and 7) <code>nettohh_f</code> (net household income).</p>
-<ul>
-<li>There are 9 variables that vary over time for each individual for which yearly variables will be added to the Core dataset: 1) <code>belbezig</code> (primary occupation), 2) <code>brutoink</code> (personal gross monthly income), 3) <code>nettoink</code> (net montly income), 4) <code>oplzon</code> (highest level of education irrespective of diploma), 5) <code>oplmet</code> (highest level of education with diploma), 6) <code>oplcat</code> (level of education in Statistics Netherlands categories), 7) <code>brutoink_f</code> (personal gross monthly income, imputed), 8) <code>netinc</code> (net monthly income), and 9) <code>nettoink_f</code> (personal net monthly income, imputed).</li>
-</ul>
-<p>Thus, we include information from 4 fixed variables, and 14 yearly variables (2007 to 2020) for each of the 16 varying variables, totalling 228 variables. CHECK THIS</p>
+<p>With respect to the time varying variables: There are 7 variables that vary over time for households for which yearly variables will be added to the Core dataset:</p>
+<ol start="5" type="1">
+<li><p><code>partner</code> (whether household head lives together with partner)</p></li>
+<li><p><code>woonvorm</code> (living arrangement)</p></li>
+<li><p><code>burgstat</code> (marital status)</p></li>
+<li><p><code>woning</code> (type of dwelling)</p></li>
+<li><p><code>sted</code> (urban character of place of residence)</p></li>
+<li><p><code>brutohh_f</code> (gross household income)</p></li>
+<li><p><code>nettohh_f</code> (net household income).</p></li>
+</ol>
+<p>There are 9 variables that vary over time for each individual for which yearly variables will be added to the Core dataset</p>
+<ol start="12" type="1">
+<li><p><code>belbezig</code> (primary occupation)</p></li>
+<li><p><code>brutoink</code> (personal gross monthly income)</p></li>
+<li><p><code>nettoink</code> (net montly income)</p></li>
+<li><p><code>oplzon</code> (highest level of education irrespective of diploma)</p></li>
+<li><p><code>oplmet</code> (highest level of education with diploma),</p></li>
+<li><p><code>oplcat</code> (level of education in Statistics Netherlands categories)</p></li>
+<li><p><code>brutoink_f</code> (personal gross monthly income, imputed)</p></li>
+<li><p><code>netinc</code> (net monthly income)</p></li>
+<li><p><code>nettoink_f</code> (personal net monthly income, imputed).</p></li>
+</ol>
+<p>Thus, we include information from 4 fixed variables, and 14 yearly variables (2007 to 2020) for each of the 16 varying variables, totalling 228 variables.</p>
 </section>
+</section>
+<section id="prefer_train_outcome.csv" class="level2">
+<h2 class="anchored" data-anchor-id="prefer_train_outcome.csv">2. PreFer_train_outcome.csv</h2>
+<p>This dataset contains the outcome variable for the 6418 respondents in our target groups (born between 1975 and 2002) and it includes only two variables, <code>nomem_encr</code> and the outcome variable <code>new_child</code> (this variables includes missing values). <code>nomem_encr</code> can be used to link this dataset to <code>PreFer_train_data.csv</code>.</p>
 </section>
 <section id="prefer_train_background_data.csv" class="level2">
-<h2 class="anchored" data-anchor-id="prefer_train_background_data.csv">2. PreFer_train_background_data.csv</h2>
-<p>This dataset consists all variables that are listed in #background and contains information on XXX respondents.</p>
+<h2 class="anchored" data-anchor-id="prefer_train_background_data.csv">3. PreFer_train_background_data.csv</h2>
+<p>This dataset consists all 33 variables that are listed in #background and contains information on 12854 respondents from 4950 different households.</p>
 </section>
 <section id="prefer_train_supplementary_data.csv" class="level2">
-<h2 class="anchored" data-anchor-id="prefer_train_supplementary_data.csv">3. PreFer_train_supplementary_data.csv</h2>
-<p>This dataset contains the same variables as <code>PreFer_train_data.csv</code>, but it includes data from respondents outside our target group (i.e., this dataset contains people born prior to 1975 or post 2002) and has information on XXXX respondents..</p>
+<h2 class="anchored" data-anchor-id="prefer_train_supplementary_data.csv">4. PreFer_train_supplementary_data.csv</h2>
+<p>This dataset contains the same 31634 variables as <code>PreFer_train_data.csv</code>, but it includes data from 10644 respondents outside our target group (i.e., this dataset contains people born prior to 1975 or post 2002).</p>
+</section>
+<section id="prefer_train_supplementary_outcome.csv" class="level2">
+<h2 class="anchored" data-anchor-id="prefer_train_supplementary_outcome.csv">5. PreFer_train_supplementary_outcome.csv</h2>
+<p>This dataset contains the outcome (<code>new_child</code>) for the respondents in <code>PreFer_train_supplementary_data.csv</code>. It can be linked through <code>nomem_encr</code>.</p>
 </section>
 <section id="prefer_fake_data.csv" class="level2">
-<h2 class="anchored" data-anchor-id="prefer_fake_data.csv">4. PreFer_fake_data.csv</h2>
+<h2 class="anchored" data-anchor-id="prefer_fake_data.csv">6. PreFer_fake_data.csv</h2>
 <p>This dataset contains the same variables as <code>PreFer_train_data.csv</code>, but it includes fake data with 30 randomly dawn values from each variable in the train data. This dataset is used for testing whether the developed preprocessing scripts and trained models work. A failed test on this data likely means a failed submission on the holdout data.</p>
 </section>
+<section id="prefer_fake_outcome.csv" class="level2">
+<h2 class="anchored" data-anchor-id="prefer_fake_outcome.csv">7. PreFer_fake_outcome.csv</h2>
+<p>A dataset that contains the fake outcomes for the fake data <code>PreFer_fake_data.csv</code>. It can be linked through <code>nomem_encr</code>. This dataset is used for testing whether the developed preprocessing scripts and trained models work. A failed test using this data likely means a failed submission on the holdout data.</p>
+</section>
 <section id="prefer_fake_background_data.csv" class="level2">
-<h2 class="anchored" data-anchor-id="prefer_fake_background_data.csv">5. PreFer_fake_background_data.csv</h2>
-<p>This dataset contains the same variables as <code>PreFer_train_background_data.csv</code>, but it includes fake data with randomly dawn values from each variable in the background data.</p>
+<h2 class="anchored" data-anchor-id="prefer_fake_background_data.csv">8. PreFer_fake_background_data.csv</h2>
+<p>This dataset contains the same variables as <code>PreFer_train_background_data.csv</code>, but it includes fake data with randomly dawn values from each variable in the background data. This dataset is used for testing whether the developed preprocessing scripts and trained models work when the original analyses included <code>PreFer_train_background_data.csv</code>. A failed test using this data likely means a failed submission on the holdout data.</p>
 </section>
 <section id="prefer_holdout_data.csv" class="level2">
-<h2 class="anchored" data-anchor-id="prefer_holdout_data.csv">6. PreFer_holdout_data.csv</h2>
-<p>The holdout data. This dataset contains the same variables as <code>PreFer_train_data.csv</code>. It is not available to participants. It is the dataset that will be used for evaluation.</p>
-<p>This dataset only contains information for XXXX respondents born between 1975 and 2002 and for whom the outcome (<code>new_child</code>) was known.</p>
+<h2 class="anchored" data-anchor-id="prefer_holdout_data.csv">9. PreFer_holdout_data.csv</h2>
+<p>The holdout data, only available to PreFer organisers. This dataset contains the same 31634 variables as <code>PreFer_train_data.csv</code> and for 395 respondents. It is the dataset that will be used for assessing predictive ability.</p>
+<p>This dataset only contains information for 395 respondents born between 1975 and 2002 and for whom the outcome (<code>new_child</code>) was known.</p>
+</section>
+<section id="prefer_holdout_outcome.csv" class="level2">
+<h2 class="anchored" data-anchor-id="prefer_holdout_outcome.csv">10. PreFer_holdout_outcome.csv</h2>
+<p>The outcome for the holdout data, only available to PreFer organisers. This dataset contains the outcomes for the same 395 respondents as those in as <code>PreFer_train_data.csv</code>.</p>
 </section>
 </section>
 <section id="prefer_holdout_background_data.csv" class="level1">
-<h1>7. PreFer_holdout_background_data.csv</h1>
-<p>This dataset contains the same variables as <code>PreFer_train_background_data.csv</code> and contains information on XXXX respondents. It is not available to participants. It is a dataset is used if the participants decided to work with <code>PreFer_train_background_data.csv</code>.</p>
+<h1>11. PreFer_holdout_background_data.csv</h1>
+<p>The holdout background data, only available to PreFer organisers. This dataset contains the same variables as <code>PreFer_train_background_data.csv</code> and contains information on 33 variables on 963 respondents from 336 households.</p>
+<ol start="6" type="1">
+<li></li>
+</ol>
+<p>This is a fake dataset that is used for testing whether the method submitted will run on the holdout data.</p>
+<ol start="7" type="1">
+<li></li>
+</ol>
+<p>This ZIP-file contains the following documents:</p>
+<p>*** In the folder “training_data” ***</p>
+<ol type="1">
+<li>PreFer_train_data.csv</li>
+</ol>
+<p>This is the main training data for data challenge participants. It includes respondents born between 1975 and 2002.</p>
+<ol start="2" type="1">
+<li>PreFer_train_outcome.csv</li>
+</ol>
+<p>This is the outcome [who had a(nother) child in 2021-2023] for respondents in the training data (PreFer_train_data.csv).</p>
+<p>*** In the folder “other_data” ***</p>
+<ol start="3" type="1">
+<li>PreFer_train_background_data.csv</li>
+</ol>
+<p>This is the dataset with background variables that can be used to augment the PreFer_train_data.csv.</p>
+<ol start="4" type="1">
+<li>PreFer_train_supplementary_data.csv</li>
+</ol>
+<p>This is the dataset with information on respondents that are <em>not</em> included in PreFer_train_data.csv, but that can be used to augment the PreFer_train_data.csv. It includes respondents born prior to 1975 and after 2002.</p>
+<ol start="5" type="1">
+<li>PreFer_train_supplementary_outcome.csv</li>
+</ol>
+<p>This is the outcome [who had a(nother) child in 2021-2023] for respondents in the supplementary data (PreFer_train_data.csv).</p>
+<ol start="6" type="1">
+<li>PreFer_fake_data.csv</li>
+</ol>
+<p>This is a fake dataset that is used for testing whether the method submitted will run on the holdout data.</p>
+<ol start="7" type="1">
+<li>PreFer_fake_background_data.csv</li>
+</ol>
+<p>This is a fake dataset that is used for testing whether the method submitted will run on the holdout data.</p>
+<ol start="8" type="1">
+<li>PreFer_fake_outcome.csv</li>
+</ol>
+<p>This is a fake dataset that is used for testing whether the method submitted will run on the holdout data.</p>
+<p>*** In the folder “codebooks” ***</p>
+<ol start="9" type="1">
+<li>PreFer_codebook.csv</li>
+</ol>
+<p>This provides a machine-readable codebook for <em>all</em> variables in the dataset(s).</p>
+<ol start="10" type="1">
+<li>PreFer_codebook_summary.csv</li>
+</ol>
+<p>This provides a machine-readable summary codebook that is useful for tracking the consistency of the measurement of variables across waves.</p>
 
 
 </section>

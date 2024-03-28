@@ -21,7 +21,7 @@ Here we describe ways of reading-in the data for both Python and R.
 
 # Reading in the data
 
-The most important dataset of the PreFer data challenge is the `PreFer_train_data.csv` dataset ([clic here] for information on the datasets that are available). This contains data on all LISS respondents who were between the ages of 18 and 45 in 2020 (i.e., had birthyears between 1975 and 2002). We will see how we can read-in this data with the help of R or Python. 
+The most important dataset of the PreFer data challenge is the `PreFer_train_data.csv` dataset ([click here](2024-03-20-prefer-datasets.qmd) for information on the datasets that are available). This contains data on all LISS respondents who were between the ages of 18 and 45 in 2020 (i.e., had birthyears between 1975 and 2002). We will see how we can read-in this data with the help of R or Python. 
 
 
 ## R
@@ -31,7 +31,7 @@ There are several ways in which one could read data into R, but some of them are
 ### read.csv
 `read.csv` works, requires no additional packages, but is *very* slow. 
 ```{r eval = FALSE}
-data <- read.csv("PreFer_train_data.csv", row.names = FALSE) # this works but is very slow
+data <- read.csv("path/to/folder/PreFer_train_data.csv", row.names = FALSE) # this works but is very slow
 ```
 
 ### read_csv
@@ -41,8 +41,8 @@ CHECK THESE NUMBER OF ROWS
 
 ```{r eval = FALSE}
 library(readr) # requires install.packages("readr") first
-data <- readr::read_csv("PreFer_train_data.csv", guess_max = 10307) # this works but is slow
-# 13707 is the number of rows in the data
+data <- readr::read_csv("path/to/folder/PreFer_train_data.csv", guess_max = 6418) # this works but is slow
+# 6418 is the number of rows in the data
 ```
 
 ### fread
@@ -50,7 +50,7 @@ data <- readr::read_csv("PreFer_train_data.csv", guess_max = 10307) # this works
 
 ```{r eval = FALSE}
 library(data.table) # requires install.packages("data.table") first
-data <- data.table::fread("PreFer_train_data.csv", 
+data <- data.table::fread("path/to/folder/PreFer_train_data.csv", 
                           keepLeadingZeros = TRUE, # if FALSE adds zeroes to some dates
                           data.table = FALSE) # returns a data.frame object rather than data.table 
 ```

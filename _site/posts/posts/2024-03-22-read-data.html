@@ -243,7 +243,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Here we describe ways of reading-in the data for both Python and R.</p>
 <section id="reading-in-the-data" class="level1">
 <h1>Reading in the data</h1>
-<p>The most important dataset of the PreFer data challenge is the <code>PreFer_train_data.csv</code> dataset ([clic here] for information on the datasets that are available). This contains data on all LISS respondents who were between the ages of 18 and 45 in 2020 (i.e., had birthyears between 1975 and 2002). We will see how we can read-in this data with the help of R or Python.</p>
+<p>The most important dataset of the PreFer data challenge is the <code>PreFer_train_data.csv</code> dataset (<a href="../../posts/posts/2024-03-20-prefer-datasets.html">click here</a> for information on the datasets that are available). This contains data on all LISS respondents who were between the ages of 18 and 45 in 2020 (i.e., had birthyears between 1975 and 2002). We will see how we can read-in this data with the help of R or Python.</p>
 <section id="r" class="level2">
 <h2 class="anchored" data-anchor-id="r">R</h2>
 <p>There are several ways in which one could read data into R, but some of them are more successful and quicker than others (TL;DR: use <code>data.table::fread</code>. The below code assumes that you have the data <code>PreFer_train_data.csv</code> in your working directory.</p>
@@ -251,7 +251,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="read.csv">read.csv</h3>
 <p><code>read.csv</code> works, requires no additional packages, but is <em>very</em> slow.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"PreFer_train_data.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>) <span class="co"># this works but is very slow</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"path/to/folder/PreFer_train_data.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>) <span class="co"># this works but is very slow</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="read_csv" class="level3">
@@ -260,8 +260,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>CHECK THESE NUMBER OF ROWS</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr) <span class="co"># requires install.packages("readr") first</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"PreFer_train_data.csv"</span>, <span class="at">guess_max =</span> <span class="dv">10307</span>) <span class="co"># this works but is slow</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 13707 is the number of rows in the data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"path/to/folder/PreFer_train_data.csv"</span>, <span class="at">guess_max =</span> <span class="dv">6418</span>) <span class="co"># this works but is slow</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 6418 is the number of rows in the data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="fread" class="level3">
@@ -269,7 +269,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><code>data.table::fread</code> from the package <code>data.table</code> works like a charm and is very fast. Some additional arguments are useful to avoid default behaviour.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table) <span class="co"># requires install.packages("data.table") first</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">fread</span>(<span class="st">"PreFer_train_data.csv"</span>, </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">fread</span>(<span class="st">"path/to/folder/PreFer_train_data.csv"</span>, </span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">keepLeadingZeros =</span> <span class="cn">TRUE</span>, <span class="co"># if FALSE adds zeroes to some dates</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">data.table =</span> <span class="cn">FALSE</span>) <span class="co"># returns a data.frame object rather than data.table </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>

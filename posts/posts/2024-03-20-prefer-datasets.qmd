@@ -1,7 +1,7 @@
 ---
-title: "A guide on PreFer datasets"
+title: "A guide on PreFer LISS datasets"
 description: |
-  Here is some useful information that can help navigate the PreFer datasets.   
+  Here is some useful information that can help navigate the PreFer datasets from the LISS panel.   
 categories:
   - LISS
   - dataset
@@ -17,13 +17,13 @@ language:
     section-title-footnotes: References
 ---
 
-Here we describe the different datasets that are available in the PreFer data challenge that are all based on the [LISS panel](https://www.lissdata.nl/). The datasets `PreFer_train_data.csv`, `PreFer_train_background_data.csv` and `PreFer_train_supplementary_data.csv` will be available to PreFer participants. The dataset `PreFer_holdout_data.csv` and `PreFer_holdout_background_data.csv` will only be available to PreFer organisers.
+Here we describe the different datasets that are available in the PreFer data challenge that are all based on the [LISS panel](https://www.lissdata.nl/). There are five datasets available to PreFer participants: 1) `PreFer_train_data.csv`, 2) `PreFer_train_outcome`, 3) `PreFer_train_background_data.csv`, 4) `PreFer_train_supplementary_data.csv`, and 5) `PreFer_train_supplementary_outcome.csv`. The three datasets `PreFer_holdout_data.csv`, `PreFer_holdout_outcome`, and `PreFer_holdout_background_data.csv` will only be available to PreFer organisers. There are also three datasets of fake data, available for participants, that are mostly in place for testing whether your submission will be able to run on the holdout data (`PreFer_fake_data.csv`, `PreFer_fake_outcome`, and `PreFer_fake_background_data.csv`). This all sounds overwhelming, so let's quickly get to explaining them. 
 
-To navigate these datasets and get a better understanding of the many variables, there are also machine-readable (and human readable) codebooks available [here](LINKTOCODEBOOKS). [Click here](LINKTOPOSTGUIDE for a guide on how to use the codebooks.
+To navigate these datasets and get a better understanding of the many variables, there are also machine-readable (and human readable) codebooks available: [click here](2024-03-21-prefer-codebooks.qmd) for a guide on how to use the codebooks.
 
 # Core surveys and background surveys
 Broadly speaking, the LISS panel contains two types of datasets: 
-1) Core surveys: yearly surveys on topics like health, wealth, personal values. 
+1) Core surveys: yearly surveys on topics like health, wealth, and personal values. 
 
 2) Background surveys: particular demographic characteristics of households and the individuals in these households (e.g., age, gender, education, income). 
 
@@ -51,119 +51,232 @@ The Core study modules are (bi)yearly questionnaires that are targeted at all LI
 
 10. **"Work & Schooling/source/"**; all waves of [Work & Schooling data](https://www.dataarchive.lissdata.nl/study-units/view/16), except 2021 and beyond
 
-We have merged all Core surveys from 2007 to 2020 leading to a dataset with 31633 variables and UPDATE THIS for XXX respondents. 
+We have merged all Core surveys from 2007 to 2020. 
 
 ### Variable naming conventions
-All the variables names in LISS contain information that can help navigate the dataset. Let's use the variable name *cf09b010* as an example. It consists of two main parts: *cf09b* which indicates the name of the Core study module and the year, and *010* which is a question number in this Core study module (the same questions have the same numbers in all the yearly questionnaires of a Core study module). How to decipher the first part: 
+All the variable names in LISS contain information that can help navigate the dataset. Let's use the variable name *cf09b010* as an example. It consists of two main parts: *cf09b* which indicates the name of the Core study module and the year, and *010* which is a question number in this Core study module (the same questions have the same numbers in all the yearly questionnaires of a Core study module). How to decipher the first part: 
 
-- *c* refers to *Core study*. Almost all the variables in the dataset (excluding about 400 variables in the beginning, that come from the Background survey) start with *c*
+- *c* refers to *Core study*. Almost all the variables in the dataset start with *c*
 - *f* refers to the name of the Core study module - in this case, it's "Family and household". Other options are: *w* (Work and schooling), *s* (Social integration and values), *h* (Health), *r* (Religion and ethnicity), *v* (politics and Values), *p* (Personality), *a* (economic situation: Assets), *i* (economic situation: Income), and *d* (economic situation: Housing).
 - *09* refers to the year of this questionnaire. *09* means 2009. Some Core study modules are fielded each year, some (Assets) once in two years. 
-- *b* refers to the wave number (in this case, Wave 2). Keep in mind, that because some modules are fielded every year, and some - every other year, the same letters do not mean that these surveys were conducted in the same year (e.g. Wave 2 of Family and Household module *cf09b* was conducted in 2009 whereas the second Wave of the Assets core study module *ca10b* was conducted in 2010).
+- *b* refers to the wave number (in this case, Wave 2). Keep in mind, that because some modules are fielded every year, and some every other year, the same letters do not mean that these surveys were conducted in the same year (e.g. Wave 2 of Family and Household module *cf09b* was conducted in 2009 whereas the second Wave of the Assets core study module *ca10b* was conducted in 2010).
 
-[The codebooks] are particularly useful in navigating the merged Core survey dataset. The datasets `PreFer_train_data.csv`, `PreFer_train_supplement.csv`, and `PreFer_holdout_data.csv` all come from this merged Core survey dataset. 
+[The codebooks]((2024-03-21-prefer-codebooks.qmd)) are particularly useful in navigating the merged Core survey dataset. The datasets `PreFer_train_data.csv`, `PreFer_train_supplement.csv`, and `PreFer_holdout_data.csv` all come from this merged Core survey dataset. 
 
 ## Background variables {#background}
 
 The Background survey is filled out by a household’s contact person when the household joins the panel and is updated monthly. It collects basic socio-demographic information about the household and all of its members (including those who are not LISS panel members and do not participate in the Core surveys). The following variables are available:
 
-- `nomem_encr` Number of household member encrypted
-- `nohouse_encr` Number of household encrypted
-- `wave` Year and month of the field work period
-- `positie` Position within the household
-- `lftdcat` Age in CBS (Statistics Netherlands) categories
-- `lftdhhh` Age of the household head
-- `aantalhh` Number of household members
-- `aantalki` Number of living-at-home children in the household, children of the household head or his/her partner
-- `partner` The household head lives together with a partner (wedded or unwedded)
-- `burgstat` Civil status
-- `woonvorm` Domestic situation
-- `woning` Type of dwelling that the household inhabits
-- `belbezig` Primary occupation
-- `brutoink` Personal gross monthly income in Euros
-- `nettoink` Personal net monthly income in Euros (incl. nettocat)
-- `brutocat` Personal gross monthly income in categories
-- `nettocat` Personal net monthly income in categories
-- `oplzon` Highest level of education irrespective of diploma
-- `oplmet` Highest level of education with diploma
-- `oplcat` Level of education in CBS (Statistics Netherlands) categories
-- `doetmee` Household member participates in the panel
-- `sted` Urban character of place of residence
-- `simpc` Does the household have a simPC?
-- `brutoink_f` Personal gross monthly income in Euros, imputed
-- `netinc` Personal net monthly income in Euros
-- `nettoink_f` Personal net monthly income in Euros, imputed
-- `brutohh_f` Gross household income in Euros
-- `nettohh_f` Net household income in Euros
-- `werving` From which recruitment wave the household originates
-- `birthyear_imp` Year of birth [imputed by PreFer organisers] (based on original `gebjaar` variable)
-- `gender_imp` Gender [imputed by PreFer organisers] (based on original `geslacht` variable)
-- `migration_background_imp` Origin [imputed by PreFer organisers] (based on original `herkomstgroep` variable)
-- `age_imp` Age of the household member [imputed by PreFer organisers] (based on original `leeftijd` variable)
+- `nomem_encr` Number of household member encrypted     
+- `nohouse_encr` Number of household encrypted     
+- `wave` Year and month of the field work period     
+- `positie` Position within the household     
+- `lftdcat` Age in CBS (Statistics Netherlands) categories     
+- `lftdhhh` Age of the household head     
+- `aantalhh` Number of household members     
+- `aantalki` Number of living-at-home children in the household, children of the household head or his/her partner     
+- `partner` The household head lives together with a partner (wedded or unwedded)      
+- `burgstat` Civil status     
+- `woonvorm` Domestic situation     
+- `woning` Type of dwelling that the household inhabits     
+- `belbezig` Primary occupation     
+- `brutoink` Personal gross monthly income in Euros    
+- `nettoink` Personal net monthly income in Euros (incl. nettocat)    
+- `brutocat` Personal gross monthly income in categories    
+- `nettocat` Personal net monthly income in categories      
+- `oplzon` Highest level of education irrespective of diploma      
+- `oplmet` Highest level of education with diploma      
+- `oplcat` Level of education in CBS (Statistics Netherlands) categories      
+- `doetmee` Household member participates in the panel       
+- `sted` Urban character of place of residence      
+- `simpc` Does the household have a simPC?     
+- `brutoink_f` Personal gross monthly income in Euros, imputed      
+- `netinc` Personal net monthly income in Euros      
+- `nettoink_f` Personal net monthly income in Euros, imputed      
+- `brutohh_f` Gross household income in Euros      
+- `nettohh_f` Net household income in Euros       
+- `werving` From which recruitment wave the household originates      
+- `birthyear_imp` Year of birth [imputed by PreFer organisers] (based on original `gebjaar` variable)     
+- `gender_imp` Gender [imputed by PreFer organisers] (based on original `geslacht` variable)      
+- `migration_background_imp` Origin [imputed by PreFer organisers] (based on original `herkomstgroep` variable)     
+- `age_imp` Age of the household member [imputed by PreFer organisers] (based on original `leeftijd` variable)     
 
-The full dataset thus has XXXX variables on XXXXX respondents. The PreFer datasets `PreFer_train_background_data.csv` and `PreFer_holdout_background_data.csv` are based on this dataset.
+The PreFer datasets `PreFer_train_background_data.csv` and `PreFer_holdout_background_data.csv` are based on this background dataset.
 
 # PreFer datasets
 ## 1. PreFer_train_data.csv
 
-The PreFer_train_data.csv consists of 31633 variables from 10307XXXX CHECK individuals. These individuals are LISS respondents who were born between 1974 and 2002 (meaning they were between 18 and 45 years old in 2020). These variables are a combination of all Core study modules (see above) and selected yearly background variables. 
+The `PreFer_train_data.csv` consists of 31634 variables from 6418 respondents. These individuals are LISS respondents who were born between 1975 and 2002 (meaning they were between 18 and 45 years old in 2020). These variables are a combination of all Core study modules (see above) and selected yearly background variables. 
 
 Particularly important variables are:
 
-1. `nomem_encr`: this is the unique identifier and can be used to link the train data to the other datasets (`PreFer_train_background.csv` and `PreFer_train_supplement.csv`). Note that this identifier is a pseudonym of the original `nomem_encr` identifier in the LISS data. 
+1. `nomem_encr`: this is the unique identifier and can be used to link the train data to the other datasets (`PreFer_train_background.csv`, `PreFer_train_supplement.csv`, and `PreFer_train_outcome`). Note that this identifier is a pseudonym of the original `nomem_encr` identifier in the LISS data. 
 
 2. `new_child`: this is the outcome variable; whether people had a child between 2021 and 2023. [Here](UPDATE) you can find detailed information on how this outcome was constructed. This dataset also included people for whom this outcome is not known.
 
+Less important, but useful to know:
 
-## Selected yearly background variables
+3. `outcome_available`: this is variable that records whether the outcome `new_child` is available for a particular respondent. `1` means that the outcome is available, `0` means that the outcome is unavailable. Most likely, one would use this variable to restrict the sample to respondents for whom the outcome is available (i.e. `outcome_available = 1`).  
 
-The background variables can be found in a separate dataset (see `PreFer_train_background.csv`), but we have chosen to include some of the information from the background variables to the Core surveys. Specifically, we have added information from variables that either vary considerably across time or that are useful fixed variables. Remember that the background variables contain information on a monthly basis; we chose to add 14 yearly variables (for each of the years 2007 up to and including 2020) for a select number of varying background variables. 
+
+## Selected yearly background variables added to Core surveys
+
+The background variables can be found in a separate dataset (see `PreFer_train_background.csv`), but we have chosen to include some of the information from the background variables to the Core surveys. Specifically, we have added information from variables that either vary considerably across time or that are useful as fixed variables. Remember that the background variables contain information on a monthly basis; we chose to add 14 yearly variables (for each of the years 2007 up to and including 2020) for a select number of varying background variables. 
 
 ### Fixed background variables
 
 We included the following fixed variables from the background variables: 
-1. birthyear of respondent (recorded through `birthyear_bg`; which we created and cleaned)
+1. `birthyear_bg` (birthyear of respondent; which we created and cleaned)
 
-2. gender of respondent (`gender_bg`; which we created and cleaned)
+2. `gender_bg` (gender of respondent; which we created and cleaned)
 
-3. migration background of the respondent (`migration_background_bg`; which we created and cleaned)
+3. `migration_background_bg` (migration background of the respondent; which we created and cleaned)
 
-4. the age of the respondent on December 2020 (`age_bg`; which we created)
+4. `age_bg` (the age of the respondent for each wave; which we created; this variable is obviously not fixed, but more or less records the same information as birthyear).
 
 ### Time varying background variables
 With respect to the time varying variables: 
-- There are 7 variables that vary over time for households for which yearly variables will be added to the Core dataset: 1) `partner` (whether household head lives together with partner), 2) `woonvorm` (living arrangement), 3) `burgstat` (marital status), 4) `woning` (type of dwelling), 5) `sted` (urban character of place of residence), 6) `brutohh_f` (gross household income), and 7) `nettohh_f` (net household income).
+There are 7 variables that vary over time for households for which yearly variables will be added to the Core dataset: 
 
-- There are 9 variables that vary over time for each individual for which yearly variables will be added to the Core dataset: 1) `belbezig` (primary occupation), 2) `brutoink` (personal gross monthly income), 3) `nettoink` (net montly income), 4) `oplzon` (highest level of education irrespective of diploma), 5) `oplmet` (highest level of education with diploma), 6) `oplcat` (level of education in Statistics Netherlands categories), 7) `brutoink_f` (personal gross monthly income, imputed), 8) `netinc` (net monthly income), and 9) `nettoink_f` (personal net monthly income, imputed). 
+5. `partner` (whether household head lives together with partner)
 
-Thus, we include information from 4 fixed variables, and 14 yearly variables (2007 to 2020) for each of the 16 varying variables, totalling 228 variables. CHECK THIS
+6. `woonvorm` (living arrangement)
 
-## 2. PreFer_train_background_data.csv
+7. `burgstat` (marital status)
 
-This dataset consists all variables that are listed in #background and contains information on XXX respondents. 
+8. `woning` (type of dwelling)
 
-## 3. PreFer_train_supplementary_data.csv
+9. `sted` (urban character of place of residence)
 
-This dataset contains the same variables as `PreFer_train_data.csv`, but it includes data from respondents outside our target group (i.e., this dataset contains people born prior to 1975 or post 2002) and has information on XXXX respondents..
+10. `brutohh_f` (gross household income)
 
-## 4. PreFer_fake_data.csv
+11. `nettohh_f` (net household income).
+
+There are 9 variables that vary over time for each individual for which yearly variables will be added to the Core dataset
+
+12. `belbezig` (primary occupation)
+
+13. `brutoink` (personal gross monthly income)
+
+14. `nettoink` (net montly income)
+
+15. `oplzon` (highest level of education irrespective of diploma) 
+
+16. `oplmet` (highest level of education with diploma), 
+
+17. `oplcat` (level of education in Statistics Netherlands categories)
+
+18. `brutoink_f` (personal gross monthly income, imputed)
+
+19. `netinc` (net monthly income)
+
+20. `nettoink_f` (personal net monthly income, imputed). 
+
+Thus, we include information from 4 fixed variables, and 14 yearly variables (2007 to 2020) for each of the 16 varying variables, totalling 228 variables. 
+
+## 2. PreFer_train_outcome.csv
+
+This dataset contains the outcome variable for the 6418 respondents in our target groups (born between 1975 and 2002) and it includes only two variables, `nomem_encr` and the outcome variable `new_child` (this variables includes missing values). `nomem_encr` can be used to link this dataset to `PreFer_train_data.csv`. 
+
+## 3. PreFer_train_background_data.csv
+
+This dataset consists all 33 variables that are listed in #background and contains information on 12854 respondents from 4950 different households. 
+
+## 4. PreFer_train_supplementary_data.csv
+
+This dataset contains the same 31634 variables as `PreFer_train_data.csv`, but it includes data from 10644 respondents outside our target group (i.e., this dataset contains people born prior to 1975 or post 2002).
+
+## 5. PreFer_train_supplementary_outcome.csv
+
+This dataset contains the outcome (`new_child`) for the respondents in `PreFer_train_supplementary_data.csv`. It can be linked through `nomem_encr`.
+
+## 6. PreFer_fake_data.csv
 
 This dataset contains the same variables as `PreFer_train_data.csv`, but it includes fake data with 30 randomly dawn values from each variable in the train data. This dataset is used for testing whether the developed preprocessing scripts and trained models work. A failed test on this data likely means a failed submission on the holdout data.  
 
-## 5. PreFer_fake_background_data.csv
+## 7. PreFer_fake_outcome.csv
 
-This dataset contains the same variables as `PreFer_train_background_data.csv`, but it includes fake data with randomly dawn values from each variable in the background data. 
+A dataset that contains the fake outcomes for the fake data `PreFer_fake_data.csv`. It can be linked through `nomem_encr`. This dataset is used for testing whether the developed preprocessing scripts and trained models work. A failed test using this data likely means a failed submission on the holdout data.  
+
+## 8. PreFer_fake_background_data.csv
+
+This dataset contains the same variables as `PreFer_train_background_data.csv`, but it includes fake data with randomly dawn values from each variable in the background data. This dataset is used for testing whether the developed preprocessing scripts and trained models work when the original analyses included `PreFer_train_background_data.csv`. A failed test using this data likely means a failed submission on the holdout data.  
+
+## 9. PreFer_holdout_data.csv
+
+The holdout data, only available to PreFer organisers. This dataset contains the same 31634 variables as `PreFer_train_data.csv` and for 395 respondents. It is the dataset that will be used for assessing predictive ability. 
+
+This dataset only contains information for 395 respondents born between 1975 and 2002 and for whom the outcome (`new_child`) was known. 
+
+## 10. PreFer_holdout_outcome.csv
+
+The outcome for the holdout data, only available to PreFer organisers. This dataset contains the outcomes for the same 395 respondents as those in as `PreFer_train_data.csv`. 
+
+# 11. PreFer_holdout_background_data.csv
+
+The holdout background data, only available to PreFer organisers. This dataset contains the same variables as `PreFer_train_background_data.csv` and contains information on 33 variables on 963 respondents from 336 households. 
 
 
-## 6. PreFer_holdout_data.csv
 
-The holdout data. This dataset contains the same variables as `PreFer_train_data.csv`. It is not available to participants. It is the dataset that will be used for evaluation. 
 
-This dataset only contains information for XXXX respondents born between 1975 and 2002 and for whom the outcome (`new_child`) was known. 
 
-# 7. PreFer_holdout_background_data.csv
 
-This dataset contains the same variables as `PreFer_train_background_data.csv` and contains information on XXXX respondents. It is not available to participants. It is a dataset is used if the participants decided to work with `PreFer_train_background_data.csv`.
+6. 
+
+This is a fake dataset that is used for testing whether the method submitted will run on the holdout data. 
+
+7. 
+
+This ZIP-file contains the following documents:
+
+
+*** In the folder "training_data" ***
+
+1. PreFer_train_data.csv
+
+This is the main training data for data challenge participants. It includes respondents born between 1975 and 2002.
+
+2. PreFer_train_outcome.csv
+
+This is the outcome [who had a(nother) child in 2021-2023] for respondents in the training data (PreFer_train_data.csv).
+
+
+*** In the folder "other_data" ***
+
+3. PreFer_train_background_data.csv
+
+This is the dataset with background variables that can be used to augment the PreFer_train_data.csv.
+
+4. PreFer_train_supplementary_data.csv
+
+This is the dataset with information on respondents that are *not* included in PreFer_train_data.csv, but that can be used to augment the PreFer_train_data.csv. It includes respondents born prior to 1975 and after 2002.
+
+5. PreFer_train_supplementary_outcome.csv
+
+This is the outcome [who had a(nother) child in 2021-2023] for respondents in the supplementary data (PreFer_train_data.csv).
+
+6. PreFer_fake_data.csv
+
+This is a fake dataset that is used for testing whether the method submitted will run on the holdout data. 
+
+7. PreFer_fake_background_data.csv
+
+This is a fake dataset that is used for testing whether the method submitted will run on the holdout data. 
+
+8. PreFer_fake_outcome.csv
+
+This is a fake dataset that is used for testing whether the method submitted will run on the holdout data. 
+
+
+*** In the folder "codebooks" ***
+
+9. PreFer_codebook.csv
+
+This provides a machine-readable codebook for *all* variables in the dataset(s). 
+
+10. PreFer_codebook_summary.csv
+
+This provides a machine-readable summary codebook that is useful for tracking the consistency of the measurement of variables across waves. 
 
 
 

@@ -16,18 +16,18 @@ language:
     section-title-footnotes: References
 ---
 
-Here we describe how you can (maybe) fruitfully combine the different datasets `PreFer_train_data.csv`, `PreFer_train_background_data.csv`, and `PreFer_train_supplementary_data.csv`. ([here](UPDATETHIS) you can find a guide on these different datasets)
+Here we describe how you can (maybe) fruitfully combine the different datasets `PreFer_train_data.csv`, `PreFer_train_background_data.csv`, and `PreFer_train_supplementary_data.csv`. ([here](2024-03-20-prefer-datasets.qmd) you can find a guide on these different datasets)
 
 Below it is assumed that you have these datasets in your working directory. 
 
 # Reading-in different datasets
 ## PreFer_train_data.csv
 
-The most important dataset of the PreFer data challenge is the `PreFer_train_data.csv` dataset ([click here](UPDATE THIS) for information on the datasets that are available). This contains data on all LISS respondents who were between the ages of 18 and 45 in 2020 (i.e., had birthyears between 1975 and 2002). [Click here](UPDATETHIS) for an explanation on how to quickly read-in the data 
+The most important dataset of the PreFer data challenge is the `PreFer_train_data.csv` dataset. This contains data on all LISS respondents who were between the ages of 18 and 45 in 2020 (i.e., had birthyears between 1975 and 2002). [Click here](2024-03-22-read-data.qmd) for an explanation on how to quickly read-in the data 
 
 ```{r eval = FALSE}
 library(data.table) # requires install.packages("data.table") first
-data <- data.table::fread("PreFer_train_data.csv", 
+data <- data.table::fread("path/to/folder/PreFer_train_data.csv", 
                           keepLeadingZeros = TRUE, # if FALSE adds zeroes to some dates
                           data.table = FALSE) # returns a data.frame object rather than data.table 
 ```
@@ -37,7 +37,7 @@ data <- data.table::fread("PreFer_train_data.csv",
 The `PreFer_background_data.csv` contains data on particularly variables on a monthly basis for each respondent. 
 
 ```{r eval = FALSE}
-background <- data.table::fread("PreFer_train_background_data.csv", 
+background <- data.table::fread("path/to/folder/PreFer_train_background_data.csv", 
                                 keepLeadingZeros = TRUE, 
                                 data.table = FALSE) 
 ```
@@ -47,7 +47,7 @@ background <- data.table::fread("PreFer_train_background_data.csv",
 The `PreFer_train_supplementary_data.csv` contains data on LISS respondents that did not fall in our target group, i.e., had birthyears lower than 1975 or higher than 2002. 
 
 ```{r eval = FALSE}
-supplement <- data.table::fread("PreFer_train_supplementary_data.csv", 
+supplement <- data.table::fread("path/to/folder/PreFer_train_supplementary_data.csv", 
                                 keepLeadingZeros = TRUE, 
                                 data.table = FALSE) 
 ```
@@ -74,8 +74,7 @@ income_3months <- background %>%
 data <- left_join(data, income_3months, by = "nomem_encr")
 ```
 
-To make this work
-1) don't forget to add `"tidyverse"` to `packages.R`
+To make this work don't forget to add `"tidyverse"` to `packages.R`! [Here](LINKTOGITHUBBRANCH) you can see that it passes the check.
 
 ## Using information from the supplementary data
 
@@ -95,4 +94,4 @@ respondents_1974 <- supplement %>%
 data <- bind_rows(data, respondents_1974)
 ```
 
-And then use your usual method to train on the data. This will work because your method will make use of these new cases, but the structure of the dataset has not changed (no new variables were added). If you would create a novel variable on the basis of the supplementary data and use this variable in your model, it would not work on the holdout data, because that variable will not exist in the holdout data. 
+And then use your usual method to train on the data. This will work because your method will make use of these new cases, but the structure of the dataset has not changed (no new variables were added). If you would create a novel variable on the basis of the supplementary data and use this variable in your model, it would not work on the holdout data, because that variable will not exist in the holdout data. [Here](LINKTOGITHUBBRANCH) you can see that it passes the check.

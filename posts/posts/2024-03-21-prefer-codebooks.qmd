@@ -1,7 +1,7 @@
 ---
-title: "A guide on PreFer codebooks"
+title: "A guide on PreFer codebooks (LISS)"
 description: |
-  Here is some useful information that can help navigate the PreFer codebooks   
+  Here is some useful information that can help navigate the PreFer codebooks for the LISS datasets   
 categories:
   - LISS
   - dataset
@@ -17,7 +17,7 @@ language:
     section-title-footnotes: References
 ---
 
-Here we describe how to make use the codebooks `PreFer_codebook.csv` and `PreFer_codebook_summary.csv`. Broadly speaking, the first codebook is most useful to examine the meaning and characteristics of individual values and the second is most useful to see how the measurement of particular variables may have changed over time. 
+Here we describe how to make use the codebooks [`PreFer_codebook.csv`](../../data/PreFer_codebook.csv) and [`PreFer_codebook_summary.csv`](../../data/PreFer_codebook_summary.csv). Broadly speaking, the first codebook is most useful to examine the meaning and characteristics of individual variables and their values and the second is most useful to see how the measurement of particular variables may have changed over time. 
 
 There are also detailed codebooks in Dutch and English on the [LISS website](https://www.dataarchive.lissdata.nl/study-units/view/1). They contain important information, e.g. about filtering, which can be useful for working with missing values.
 
@@ -25,7 +25,7 @@ Here we describe how to use the PreFer codebooks.
 
 # PreFer_codebook.csv
 
-This codebook contains metadata on all 31665 XXX CHECK THIS variables in the dataset `PreFer_train_data.csv` and the 33 variables XXX CHECK THIS in the `PreFer_background_data.csv`. 
+This codebook contains metadata on all 31634 variables in the dataset `PreFer_train_data.csv` (and `PreFer_train_supplementary_data.csv`) and the 33 variables in the `PreFer_background_data.csv`. 
 
 The codebook contains the following variables:
 
@@ -62,12 +62,12 @@ Imagine you are interested in what the variable `cp12e007` means. You can just o
 
 ![](../../images/cp12e007.png){width=50%}
 
-You can also do that via R or Python. R:
+You can also do that via R or Python. In R:
 ```{r message = FALSE}
 library(readr) # for nicer output tables in html
 codebook <- readr::read_csv("../../data/PreFer_codebook.csv") 
-
 # you can also find this codebook at preferdatachallenge.nl/data/PreFer_codebook.csv
+
 codebook[ codebook$var_name == "cp12e007", ]
 ```
 
@@ -84,7 +84,7 @@ Let's focus on the variable `netinc`:
 codebook[ codebook$var_name == "netinc", ]
 ```
 
-This variables measures personal net monthly income in euro. This is a numeric variable, and about 24% is missing. This is a background variable which means that it is recorded monthly for respondents. This variable can be found in `PreFer_train_background_data.csv`. At one point in time this variable had value labels associated with it: `Unknown (missing)` = -15, `Prefer not to say` = -14, `I dont know` = -13. However, these values were never observed in the actual data, which is why we removed these value labels from the variable `var_label` and why we turned this variable into `numeric` (from categorical). This process is described in `note`.
+This variable measures personal net monthly income in euro. This is a numeric variable, and about 24% is missing. This is a background variable which means that it is recorded monthly for respondents. This variable can be found in `PreFer_train_background_data.csv`. At one point in time this variable had value labels associated with it: `Unknown (missing)` = -15, `Prefer not to say` = -14, `I dont know` = -13. However, these values were never observed in the actual data, which is why we removed these value labels from the variable `var_label` and why we turned this variable into `numeric` (from categorical). This process is described in `note`.
 
 ## Variable types
 
@@ -93,7 +93,8 @@ Most variables types are either categorical (meaning that values have labels ass
 ```{r}
 table(codebook$type_var)
 ```
-Let's imagine that in our analyses we only want to select variables that are categorical, numeric, or date or time. Note that we want to select these variable in the Core survey data (the train data) and do not want to include variables from the Background data (see "Explanation of datasets"-blogs HAVE TO UPDATE THIS for further information)
+Let's imagine that in our analyses we only want to select variables that are categorical, numeric, or date or time. Note that we want to select these variable in the Core survey data (the train data) and do not want to include variables from the Background data (for further explanation on the datasets, [click here](2024-03-20-prefer-datasets.qmd)).
+
 ```{r}
 select_type <- c("categorical", "numeric", "date or time")
 list_variables <- codebook[ (codebook$type_var %in% select_type) & 
