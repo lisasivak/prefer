@@ -198,7 +198,7 @@ Now you need to update your online github repository:
 
 11. Push the changes ("Push origin") (i.e. update your online repository) - press "Push origin" on the upper right.  
 
-12. Now go to the Action page in you online github repository. After a few minutes you'll see if your submission passed the automatic checks.  
+12. Now go to the "Actions" tab in you online github repository. After a few minutes you'll see if your submission passed the automatic checks.  
 
 13. Submit your method as explained [here](https://github.com/eyra/fertility-prediction-challenge/tree/master#submit-your-method){target="_blank"}. 
 
