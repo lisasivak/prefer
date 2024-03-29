@@ -64,10 +64,6 @@ ul.task-list li input[type="checkbox"] {
 
 <link rel="stylesheet" href="../rwds.css">
 <meta property="og:title" content="FAQ">
-<meta property="og:description" content="">
-<meta property="og:image" content="https://preferdatachallenge.nl/images/error_edit_settings.png">
-<meta property="og:image:height" content="283">
-<meta property="og:image:width" content="1419">
 </head>
 
 <body class="nav-fixed">
@@ -162,11 +158,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#participation-general" id="toc-participation-general" class="nav-link active" data-scroll-target="#participation-general">Participation: general</a></li>
-  <li><a href="#participation-submission" id="toc-participation-submission" class="nav-link" data-scroll-target="#participation-submission">Participation: submission</a></li>
-  <li><a href="#ethics" id="toc-ethics" class="nav-link" data-scroll-target="#ethics">Ethics</a></li>
+  <li><a href="#participation" id="toc-participation" class="nav-link active" data-scroll-target="#participation">Participation</a></li>
   <li><a href="#general" id="toc-general" class="nav-link" data-scroll-target="#general">General</a></li>
   <li><a href="#application" id="toc-application" class="nav-link" data-scroll-target="#application">Application</a></li>
+  <li><a href="#ethics" id="toc-ethics" class="nav-link" data-scroll-target="#ethics">Ethics</a></li>
   </ul>
 </nav>
     </div>
@@ -176,8 +171,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="participation-general" class="level2">
-<h2 class="anchored" data-anchor-id="participation-general">Participation: general</h2>
+<section id="participation" class="level2">
+<h2 class="anchored" data-anchor-id="participation">Participation</h2>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -244,42 +239,37 @@ Can I use external data for training?
 </div>
 </div>
 </section>
-<section id="participation-submission" class="level2">
-<h2 class="anchored" data-anchor-id="participation-submission">Participation: submission</h2>
-<p>Here we will be adding common errors during submission and what you should do about them.</p>
+<section id="general" class="level2">
+<h2 class="anchored" data-anchor-id="general">General</h2>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-buildx failed with: ERROR: failed to solve: failed to read dockerfile: open Dockerfile: no such file or directory
+Can I publish my results / can I be a co-author?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><img src="../images/error_edit_settings.png" class="img-fluid"> If you see this on the Action page in your github repository, you are probably using R for submission, but you haven’t changed the settings. The default set-up is Python; if you would like to use R, go to settings.json and change {“dockerfile”: “python.Dockerfile”} into {“dockerfile”: “r.Dockerfile”}. Read here how to update files in your forked repository.</p>
+<p>Everyone who has engaged in the data challenge and submitted predictions through the procedures of the data challenge will be invited to contribute to a “community paper” on the results of the data challenge. You can also consider writing up your (team’s) results and submit it to the special issue; these submissions will be peer-reviewed. Instructions on how to do this will follow after the data challenge. If you want to publish your results separate from the special issue, then you could do so, but only after the community paper and the special issue is fully published (as you will have agreed to via signing the data agreement).</p>
 </div>
 </div>
 </div>
-</section>
-<section id="ethics" class="level2">
-<h2 class="anchored" data-anchor-id="ethics">Ethics</h2>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Why predict whether an individual will have a child in the next few years? Doesn’t this violate people’s privacy?
+I’m new to the topic of fertility, what can I read about it that could be helpful?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Although our aim is to make the best possible predictions for all individuals, we are not interested in individual outcomes. Both LISS panel data and the datasets based on the Dutch registers are anonymized, and precautions are taken to prevent de-anonymization (e.g.&nbsp;full dates of birth or exact income are not available; in the LISS datasets, sensitive information is removed from open answers, etc.). De-anonymization of the Dutch registers data via linking with external datasets is also highly unlikely as linking with external data can only be done by Statistics Netherlands employees and is only possible after the external data is checked for potential risks of de-anonymization. To summarize, it is highly unlikely that during the challenge current (or predictions of the future) fertility outcomes of specific persons will be revealed.<br>
-If policies are developed based on the results (e.g., if particular groups of people will be identified who have fewer children than desired due to particular circumstances) these policies will be targeted at groups rather than individuals.</p>
+<p>You can start with [this review by Balbo et al.] (https://link.springer.com/article/10.1007/s10680-012-9277-y){target=“_blank”}. Keep in mind though, that most studied factors are not necessarily the best predictors.</p>
 </div>
 </div>
 </div>
@@ -289,78 +279,11 @@ If policies are developed based on the results (e.g., if particular groups of pe
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-If you are not interested in individual outcomes, why predict them?
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Developing models that predict individual-level fertility outcomes and then comparing and interpreting these models is a way of learning more about fertility behavior. This way has several advantages in comparison with the more traditional methods of studying fertility in the social sciences, which, for example, do not allow comparison of importance of different factors. In the <a href="https://arxiv.org/abs/2402.00705" target="_blank">preprint</a> we describe these advantages in more detail.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-If predictions are accurate, is there a risk that companies would adopt these methods to target specific individuals (see the for a notorious example <a href="https://www.nytimes.com/2012/02/19/magazine/shopping-habits.html" target="_blank">here</a>)?
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>We think that the risk of companies improving their targeting based on the models produced in this data challenge is exceedingly small, because if predictions are accurate, they will be accurate because we have thousands of variables (including values and preferences) which companies do not usually have and which are hard to obtain without people’s awareness.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="general" class="level2">
-<h2 class="anchored" data-anchor-id="general">General</h2>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Can I publish my results / can I be a co-author?
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Everyone who has engaged in the data challenge and submitted predictions through the procedures of the data challenge will be invited to contribute to a “community paper” on the results of the data challenge. You can also consider writing up your (team’s) results and submit it to the special issue; these submissions will be peer-reviewed. Instructions on how to do this will follow after the data challenge. If you want to publish your results separate from the special issue, then you could do so, but only after the community paper and the special issue is fully published (as you will have agreed to via signing the data agreement).</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-I’m new to the topic of fertility, what can I read about it that could be helpful?
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>You can start with [this review by Balbo et al.] (https://link.springer.com/article/10.1007/s10680-012-9277-y){target=“_blank”}. Keep in mind though, that most studied factors are not necessarily the best predictors.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
 I need help?! Or I have a suggestion
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>You can contact e.sivak [at] rug [dot] nl and/or g.stulp [at] rug [dot] nl for any questions and suggestions you might have.</p>
 </div>
@@ -370,7 +293,7 @@ I need help?! Or I have a suggestion
 <section id="application" class="level2">
 <h2 class="anchored" data-anchor-id="application">Application</h2>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -379,9 +302,73 @@ I don’t have experience in machine learning, can I participate?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Yes. Participating in the challenge is a good opportunity to gain experience in machine learning.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+I’m not a social scientist and/or know nothing about fertility, can I participate?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Yes, we welcome participants from various backgrounds who may take different approaches to developing their predictive models. Knowledge of the factors found to be significantly associated with fertility is not required. However, if you want to get a general overview of the factors influencing fertility behaviour you can read this review <a href="https://link.springer.com/article/10.1007/s10680-012-9277-y" target="_blank">(Balbo et al.&nbsp;2013)</a>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+I’m not affiliated with an academic institution, can I participate?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><a href="../details/overview/3phases.html">Phase 1</a> of the data challenge is open for everyone. It is not required to have an affiliation with an academic institution. Access to Phase 2 is more restricted, you can find the details <a href="../details/overview/3application.html">here</a>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+I want to participate in a team consisting of people from several different institutions. Is it possible?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Yes, it is possible. As in any other case, all team members must submit applications to participate.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+I am a student. Can I apply and use the challenge for my bachelor or master thesis?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Yes, you can participate in the challenge and then describe your approach in your thesis. We can’t help supervise it though, because as organizers we will decide on the winners so we cannot participate ourselves.</p>
 </div>
 </div>
 </div>
@@ -391,29 +378,33 @@ I don’t have experience in machine learning, can I participate?
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-I’m not a social scientist and/or know nothing about fertility, can I participate?
+How much time it will take to participate in the challenge?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Yes, we welcome participants from various backgrounds who may take different approaches to developing their predictive models. Knowledge of the factors found to be significantly associated with fertility is not required. However, if you want to get a general overview of the factors influencing fertility behaviour you can read this review <a href="https://link.springer.com/article/10.1007/s10680-012-9277-y" target="_blank">(Balbo et al.&nbsp;2013)</a>.</p>
+<p>With the example scripts and codebooks that we will provide, you will be able to produce and submit a basic method in several hours. Trying different methods to improve the predictions can take several weeks. However, any contribution is valuable. Consider applying even if you can dedicate only a few days.</p>
 </div>
 </div>
 </div>
+</section>
+<section id="ethics" class="level2">
+<h2 class="anchored" data-anchor-id="ethics">Ethics</h2>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-I’m not affiliated with an academic institution, can I participate?
+Why predict whether an individual will have a child in the next few years? Doesn’t this violate people’s privacy?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><a href="../details/overview/3phases.html">Phase 1</a> of the data challenge is open for everyone. It is not required to have an affiliation with an academic institution. Access to Phase 2 is more restricted, you can find the details <a href="../details/overview/3application.html">here</a>.</p>
+<p>Although our aim is to make the best possible predictions for all individuals, we are not interested in individual outcomes. Both LISS panel data and the datasets based on the Dutch registers are anonymized, and precautions are taken to prevent de-anonymization (e.g.&nbsp;full dates of birth or exact income are not available; in the LISS datasets, sensitive information is removed from open answers, etc.). De-anonymization of the Dutch registers data via linking with external datasets is also highly unlikely as linking with external data can only be done by Statistics Netherlands employees and is only possible after the external data is checked for potential risks of de-anonymization. To summarize, it is highly unlikely that during the challenge current (or predictions of the future) fertility outcomes of specific persons will be revealed.<br>
+If policies are developed based on the results (e.g., if particular groups of people will be identified who have fewer children than desired due to particular circumstances) these policies will be targeted at groups rather than individuals.</p>
 </div>
 </div>
 </div>
@@ -423,13 +414,13 @@ I’m not affiliated with an academic institution, can I participate?
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-I want to participate in a team consisting of people from several different institutions. Is it possible?
+If you are not interested in individual outcomes, why predict them?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Yes, it is possible. As in any other case, all team members must submit applications to participate.</p>
+<p>Developing models that predict individual-level fertility outcomes and then comparing and interpreting these models is a way of learning more about fertility behavior. This way has several advantages in comparison with the more traditional methods of studying fertility in the social sciences, which, for example, do not allow comparison of importance of different factors. In the <a href="https://arxiv.org/abs/2402.00705" target="_blank">preprint</a> we describe these advantages in more detail.</p>
 </div>
 </div>
 </div>
@@ -439,29 +430,13 @@ I want to participate in a team consisting of people from several different inst
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-I am a student. Can I apply and use the challenge for my bachelor or master thesis?
+If predictions are accurate, is there a risk that companies would adopt these methods to target specific individuals (see the for a notorious example <a href="https://www.nytimes.com/2012/02/19/magazine/shopping-habits.html" target="_blank">here</a>)?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Yes, you can participate in the challenge and then describe your approach in your thesis. We can’t help supervise it though, because as organizers we will decide on the winners so we cannot participate ourselves.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-How much time it will take to participate in the challenge?
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-17" class="callout-17-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>With the example scripts and codebooks that we will provide, you will be able to produce and submit a basic method in several hours. Trying different methods to improve the predictions can take several weeks. However, any contribution is valuable. Consider applying even if you can dedicate only a few days.</p>
+<p>We think that the risk of companies improving their targeting based on the models produced in this data challenge is exceedingly small, because if predictions are accurate, they will be accurate because we have thousands of variables (including values and preferences) which companies do not usually have and which are hard to obtain without people’s awareness.</p>
 </div>
 </div>
 </div>

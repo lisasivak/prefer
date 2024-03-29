@@ -10,7 +10,7 @@ search: false
 ---
 
 
-## Participation: general
+## Participation
 
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
 ## Can I work with the data in a cloud (e.g., Google Colab) where I can collaborate with other members of my team in the data challenge?
@@ -35,33 +35,9 @@ In tracks 1-2 (working inside the secure CBS environment) linking external data 
 
 :::
 
-## Participation: submission
-
-Here we will be adding common errors during submission and what you should do about them.  
-
-::: {.callout-note appearance="simple" collapse="true" icon=false}
-## buildx failed with: ERROR: failed to solve: failed to read dockerfile: open Dockerfile: no such file or directory
-![](/images/error_edit_settings.png)
-If you see this on the Action page in your github repository, you are probably using R for submission, but you haven't changed the settings. The default set-up is Python; if you would like to use R, go to settings.json and change {"dockerfile": "python.Dockerfile"} into {"dockerfile": "r.Dockerfile"}. Read here how to update files in your forked repository.
-:::
 
 
-## Ethics
-::: {.callout-note appearance="simple" collapse="true" icon=false}
-## Why predict whether an individual will have a child in the next few years? Doesn't this violate people's privacy? 
-Although our aim is to make the best possible predictions for all individuals, we are not interested in individual outcomes. Both LISS panel data and the datasets based on the Dutch registers are anonymized, and precautions are taken to prevent de-anonymization (e.g. full dates of birth or exact income are not available; in the LISS datasets, sensitive information is removed from open answers, etc.). De-anonymization of the Dutch registers data via linking with external datasets is also highly unlikely as linking with external data can only be done by Statistics Netherlands employees and is only possible after the external data is checked for potential risks of de-anonymization. To summarize, it is highly unlikely that during the challenge current (or predictions of the future) fertility outcomes of specific persons will be revealed.  
-If policies are developed based on the results (e.g., if particular groups of people will be identified who have fewer children than desired due to particular circumstances) these policies will be targeted at groups rather than individuals. 
-:::
 
-::: {.callout-note appearance="simple" collapse="true" icon=false}
-## If you are not interested in individual outcomes, why predict them?
-Developing models that predict individual-level fertility outcomes and then comparing and interpreting these models is a way of learning more about fertility behavior. This way has several advantages in comparison with the more traditional methods of studying fertility in the social sciences, which, for example, do not allow comparison of importance of different factors. In the [preprint](https://arxiv.org/abs/2402.00705){target="_blank"} we describe these advantages in more detail. 
-:::
-
-::: {.callout-note appearance="simple" collapse="true" icon=false}
-## If predictions are accurate, is there a risk that companies would adopt these methods to target specific individuals (see the for a notorious example [here](https://www.nytimes.com/2012/02/19/magazine/shopping-habits.html){target="_blank"})? 
-We think that the risk of companies improving their targeting based on the models produced in this data challenge is exceedingly small, because if predictions are accurate, they will be accurate because we have thousands of variables (including values and preferences) which companies do not usually have and which are hard to obtain without people’s awareness.
-:::
 
 ## General
 
@@ -111,4 +87,21 @@ Yes, you can participate in the challenge and then describe your approach in you
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
 ## How much time it will take to participate in the challenge?
 With the example scripts and codebooks that we will provide, you will be able to produce and submit a basic method in several hours. Trying different methods to improve the predictions can take several weeks. However, any contribution is valuable. Consider applying even if you can dedicate only a few days.
+:::
+
+## Ethics
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## Why predict whether an individual will have a child in the next few years? Doesn't this violate people's privacy? 
+Although our aim is to make the best possible predictions for all individuals, we are not interested in individual outcomes. Both LISS panel data and the datasets based on the Dutch registers are anonymized, and precautions are taken to prevent de-anonymization (e.g. full dates of birth or exact income are not available; in the LISS datasets, sensitive information is removed from open answers, etc.). De-anonymization of the Dutch registers data via linking with external datasets is also highly unlikely as linking with external data can only be done by Statistics Netherlands employees and is only possible after the external data is checked for potential risks of de-anonymization. To summarize, it is highly unlikely that during the challenge current (or predictions of the future) fertility outcomes of specific persons will be revealed.  
+If policies are developed based on the results (e.g., if particular groups of people will be identified who have fewer children than desired due to particular circumstances) these policies will be targeted at groups rather than individuals. 
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## If you are not interested in individual outcomes, why predict them?
+Developing models that predict individual-level fertility outcomes and then comparing and interpreting these models is a way of learning more about fertility behavior. This way has several advantages in comparison with the more traditional methods of studying fertility in the social sciences, which, for example, do not allow comparison of importance of different factors. In the [preprint](https://arxiv.org/abs/2402.00705){target="_blank"} we describe these advantages in more detail. 
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## If predictions are accurate, is there a risk that companies would adopt these methods to target specific individuals (see the for a notorious example [here](https://www.nytimes.com/2012/02/19/magazine/shopping-habits.html){target="_blank"})? 
+We think that the risk of companies improving their targeting based on the models produced in this data challenge is exceedingly small, because if predictions are accurate, they will be accurate because we have thousands of variables (including values and preferences) which companies do not usually have and which are hard to obtain without people’s awareness.
 :::
