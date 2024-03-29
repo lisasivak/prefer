@@ -8,7 +8,7 @@ categories:
 author: 
   - "Gert Stulp"
   - "Lisa Sivak"
-date: '2024-03-26'
+date: '2024-03-29'
 toc: true
 image: ../../images/python_submission.jpg
 image-alt: LISS logo. 
@@ -24,11 +24,11 @@ In this example we assume that you are using [GitHub Desktop](https://docs.githu
 
 We also assume that you did all the prerequisite steps described   [here](https://github.com/eyra/fertility-prediction-challenge?tab=readme-ov-file#prerequisites){target="_blank"}.  
 
-Let's imagine that you want to add one predictor to the model that is already in the repository: highest education level (variable "oplmet_2020", as you found using the codebooks). To produce this model you should use the template functions that are already in the repository:  "clean_df" for preprocessing the data from the "submission.py", "train_save_model" from "training.py" and "predict_outcomes" from "submission.py".   
+Let's imagine that you want to add one predictor to the model that is already in the repository: respondent's gender (variable name "gender_bg", as you found using the codebooks). To produce this model you should use the template functions that are already in the repository:  "clean_df" for preprocessing the data from the "submission.py", "train_save_model" from "training.py" and "predict_outcomes" from "submission.py".   
 
-Overall steps: preprocessing the data --> training the model --> testing on fake data if the preprocessing function and prediction model works on fake data --> editing "submission.py" and "training.py" to prepare a submission.   
+Overall steps: preprocessing the data —> training and saving the model —> testing on the fake data —> editing "submission.py" and "training.py" accordingly —> submitting.   
 
-1. Create new script in the environment for python that you normally use, save the file in the folder with your cloned repository. Import necessary packages (in this case we only need pandas, scikit learn, and joblib to save the model) and load training data and outcome. !VERY IMPORTANT: do not add the data to the folder on your computer with all the files from your repository. If you put the data in this folder and then upload all the changes online, the data will achanges online, the data will be made public in your . 
+1. Create a new script in the environment for python that you normally use, save the file in the folder with your cloned repository. Import necessary packages and read training data and outcome. !IMPORTANT: do not add the data to the folder on your computer with the files from your repository. If you put the data in this folder and then upload all the changes online, the data will be made public in your online github repository. 
 
 ```{{python}}
 import pandas as pd
@@ -41,10 +41,7 @@ train = pd.read_csv("path to the data which is NOT your cloned repository\\PreFe
 outcome = pd.read_csv("path to the data which is NOT your cloned repository\\PreFer_train_outcome.csv", low_memory = False) 
 ```
 
-2. Create a blank script in the environment for python that you normally use, save it into the folder with all repository files. Copypaste into this script the `clean_df` function from the "submission.py" and `train_save_model` function from the "submission.py".  
-
-3. Edit the `clean_df` function - add the new variable:  
-
+2. Copy paste the `clean_df` function from the "submission.py" into this script. Edit the `clean_df` function - add the new variable: 
 
 ```{{python}}
 def clean_df(df, background_df=None):
@@ -67,14 +64,11 @@ def clean_df(df, background_df=None):
     # Imputing missing values in age with the mean
     df["age"] = df["age"].fillna(df["age"].mean())
 
-    # Imputing missing values in education (oplmet_2020) with the mode
-    df["oplmet_2020"] = df["oplmet_2020"].fillna(df["oplmet_2020"].mode()) # <-----ADDED VARIABLE
-
     # Selecting variables for modelling
     keepcols = [
         "nomem_encr",  # ID variable required for predictions,
-        "age"          # newly created variable
-        "oplmet_2020"  # <--------ADDED VARIABLE
+        "age"         # newly created variable
+        ,"gender_bg"  # <--------ADDED VARIABLE
     ] 
 
     # Keeping data with variables selected
@@ -82,7 +76,8 @@ def clean_df(df, background_df=None):
 
     return df
 ```
-4. Edit the `train_save_model` function: add the new variable
+
+3. Copy paste the `train_save_model` function from the "training.py" and edit it - add the new variable:
 
 ```{{python}}
 def train_save_model(cleaned_df, outcome_df):
@@ -92,91 +87,6 @@ def train_save_model(cleaned_df, outcome_df):
     Parameters:
     cleaned_df (pd.DataFrame): The cleaned data from clean_df function to be used for training the model.
     outcome_df (pd.DataFrame): The data with the outcome variable (e.g., from PreFer_train_outcome.csv or PreFer_fake_outcome.csv).
-    """
-    
-    ## This script contains a bare minimum working example
-    random.seed(1) # not useful here because logistic regression deterministic
-    
-    # Combine cleaned_df and outcome_df
-    model_df = pd.merge(cleaned_df, outcome_df, on="nomem_encr")
-
-    # Filter cases for whom the outcome is not available
-    model_df = model_df[~model_df['new_child'].isna()]  
-    
-    # Logistic regression model
-    model = LogisticRegression()
-
-    # Fit the model
-    model.fit(model_df[['age', 'oplmet_2020']], model_df['new_child']) # <-------- ADDED VARIABLE
-
-    # Save the model
-    joblib.dump(model, "model.joblib")
-
-```
-
-5. 
-
-2.
-First, you need to preprocess the data. Create a new script in the environment that you normally use for python, save it in the folder with your cloned repository. This is the script that you should update to produce a model.    
-
-2. Copy paste the "clean_df" function from the "submission.py" script. Add the variable that you want to add and impute missing values.   
-This is what we have now in this function:
-
-```{{python}}
-# List your libraries and modules here. Don't forget to update environment.yml if you use packages that are not there!
-import pandas as pd
-from sklearn.linear_model import LogisticRegression
-import joblib
-
-
-def clean_df(df, background_df=None):
-    """
-    Preprocess the input dataframe to feed the model.
-    # If no cleaning is done (e.g. if all the cleaning is done in a pipeline) leave only the "return df" command
-
-    Parameters:
-    df (pd.DataFrame): The input dataframe containing the raw data (e.g., from PreFer_train_data.csv or PreFer_fake_data.csv).
-    background (pd.DataFrame): Optional input dataframe containing background data (e.g., from PreFer_train_background_data.csv or PreFer_fake_background_data.csv).
-
-    Returns:
-    pd.DataFrame: The cleaned dataframe with only the necessary columns and processed variables.
-    """
-
-    ## This script contains a bare minimum working example
-    # Create new variable with age
-    df["age"] = 2024 - df["birthyear_bg"]
-
-    # Imputing missing values in age with the mean
-    df["age"] = df["age"].fillna(df["age"].mean())
-    
-    # Imputing missing values in education (oplmet_2020) with the mode 
-    df["oplmet_2020"] = df["oplmet_2020"].fillna(df["oplmet_2020"].mode()) # <----- that's what we added!
-
-    # Selecting variables for modelling
-    keepcols = [
-        "nomem_encr",  # ID variable required for predictions,
-        "age"          # newly created variable
-    ] 
-
-    # Keeping data with variables selected
-    df = df[keepcols]
-
-    return df
-
-```
-
-
-3. Edit train_save_model function - add the new variable. Here is how the code will look like
-
-```{{python}}
-def train_save_model(cleaned_df, outcome_df):
-    """
-    Trains a model using the cleaned dataframe and saves the model to a file.
-
-    Parameters:
-    cleaned_df (pd.DataFrame): The cleaned data from clean_df function to be used for training the model.
-    outcome_df (pd.DataFrame): The data with the outcome variable 
-    (e.g., from PreFer_train_outcome.csv or PreFer_fake_outcome.csv).
     """
     
     ## This script contains a bare minimum working example
@@ -192,34 +102,104 @@ def train_save_model(cleaned_df, outcome_df):
     model = LogisticRegression()
 
     # Fit the model
-    model.fit(model_df[['age', 'oplmet_2020']], model_df['new_child']) #<---- added variable here
+    model.fit(model_df[['age', 'gender_bg']], model_df['new_child']) # <------- ADDED VARIABLE
 
     # Save the model
     joblib.dump(model, "model.joblib")
 
 ```
 
-4. Load the data to train the model and apply the clean_df function to it. Code:
+4. Preprocess the data using your updated `clean_df` function, and then train the model. Now the model is saved in the same folder. 
+```{{python}}
+# preprocessing the data
+train_cleaned = clean_df(train)
 
-5. Train the model by feeding the cleaned data to the train_save_model. Now the model is saved in the same folder. Code:
+# training and saving the model
+train_save_model(train_cleaned, outcome)
+```
 
-6. To test your preprocessing function and model, check them on fake data. Code: ... 
+5. Test the preprocessing function and model on fake data to see if they will run on the holdout set. If your method does not run on the "fake data", it will not run on the holdout data. [If you "push" your method to Github this test will also be automatically run].  
 
-Everything works on fake data. Don't forget to save your training script. 
+To do this test you can copy paste the function `predict_outcomes` from the "submission.py". Load the fake data (it is already in your local repository folder) and apply the `predict_outcomes`.
 
-7. You can now edit the submission.py script: copypaste your clean_df function there. This code will be applied to the holdout data 
+```{{python}}
+# load the data
+fake = pd.read_csv("PreFer_fake_data.csv") 
 
-8. (your model is already in the folder, no need to do anything with it)  
+def predict_outcomes(df, background_df=None, model_path="model.joblib"):
+    """Generate predictions using the saved model and the input dataframe.
 
-9. Go to GitHub Desktop and save changes (commit) -- see [here]() how to do it  
+    The predict_outcomes function accepts a Pandas DataFrame as an argument
+    and returns a new DataFrame with two columns: nomem_encr and
+    prediction. The nomem_encr column in the new DataFrame replicates the
+    corresponding column from the input DataFrame. The prediction
+    column contains predictions for each corresponding nomem_encr. Each
+    prediction is represented as a binary value: '0' indicates that the
+    individual did not have a child during 2021-2023, while '1' implies that
+    they did.
 
-10. push the changes ("Push origin") (i.e. update your online repository)  
+    Parameters:
+    df (pd.DataFrame): The input dataframe for which predictions are to be made.
+    background_df (pd.DataFrame): The background dataframe for which predictions are to be made.
+    model_path (str): The path to the saved model file (which is the output of training.py).
 
-11. Go to the Action page. After a few minutes you'll see if your submission passed the authomatic checks  
+    Returns:
+    pd.DataFrame: A dataframe containing the identifiers and their corresponding predictions.
+    """
 
-12. (copy link to commit etc.)  
+    ## This script contains a bare minimum working example
+    if "nomem_encr" not in df.columns:
+        print("The identifier variable 'nomem_encr' should be in the dataset")
+
+    # Load the model
+    model = joblib.load(model_path)
+
+    # Preprocess the fake / holdout data
+    df = clean_df(df, background_df)
+
+    # Exclude the variable nomem_encr if this variable is NOT in your model
+    vars_without_id = df.columns[df.columns != 'nomem_encr']
+
+    # Generate predictions from model, should be 0 (no child) or 1 (had child)
+    predictions = model.predict(df[vars_without_id])
+
+    # Output file should be DataFrame with two columns, nomem_encr and predictions
+    df_predict = pd.DataFrame(
+        {"nomem_encr": df["nomem_encr"], "prediction": predictions}
+    )
+
+    # Return only dataset with predictions and identifier
+    return df_predict
+
+# apply the function to the fake data
+predict_outcomes(fake)
+```
+
+If you see the predictions, not errors, everything worked.  
+![](/images/fake_data_predictions.png)
+
+You can now prepare the files for submission, that will be applied to the holdout set.  
+
+6. "submission.py": edit this script by copypasting your clean_df function there. This code will be applied to the holdout data. You don't need to adapt the `predict_outcomes` function in submission.py because the outputs of your model are predicted classes already (i.e., 0s and 1s), and not, for example, probabilities.   
+
+7. prediction model: make sure that your model is saved in the same folder as submission.py under the name model.joblib  
+
+8. "environment.yml": you don't have to edit this file now, because you used only the packages that are already there.  
+
+9. "training.py": copy paste your updated `train_save_model` function and the packages needed for this function to run to this script.  
 
 
+Now you need to update your online github repository:
+
+10. Go to GitHub Desktop and save changes (i.e. commit).
+
+![](/images/commit.png)
 
 
-(add the note about importance of using the same versions of packages and updating the environment.yml)
+11. Push the changes ("Push origin") (i.e. update your online repository) - press "Push origin" on the upper right.  
+
+12. Now go to the Action page in you online github repository. After a few minutes you'll see if your submission passed the automatic checks.  
+
+13. Submit your method as explained [here](https://github.com/eyra/fertility-prediction-challenge/tree/master#submit-your-method){target="_blank"}. 
+
+

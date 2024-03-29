@@ -8,7 +8,7 @@
 
 <meta name="author" content="Gert Stulp">
 <meta name="author" content="Lisa Sivak">
-<meta name="dcterms.date" content="2024-03-26">
+<meta name="dcterms.date" content="2024-03-29">
 <meta name="description" content="Here we show the steps for submitting a simple model in python">
 
 <title>A walkthough of submitting a simple model in python</title>
@@ -213,7 +213,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 26, 2024</p>
+      <p class="date">March 29, 2024</p>
     </div>
   </div>
   
@@ -227,10 +227,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Disclaimer: the data preprocessing and the model that we will train here are very basic. You should not use it as an example of how to properly train a model (e.g.&nbsp;imputing missing values with a mean or mode is often a bad idea). The sole purpose of this script is to make the submission process more clear.</p>
 <p>In this example we assume that you are using <a href="https://docs.github.com/en/desktop">GitHub Desktop</a>, which is a very convenient tool for updating your github repository. <a href="https://github.com/eyra/fertility-prediction-challenge/wiki">Here</a> you can find useful links how to use GitHub Desktop for cloning your repository and for update the files in it.</p>
 <p>We also assume that you did all the prerequisite steps described <a href="https://github.com/eyra/fertility-prediction-challenge?tab=readme-ov-file#prerequisites" target="_blank">here</a>.</p>
-<p>Let’s imagine that you want to add one predictor to the model that is already in the repository: highest education level (variable “oplmet_2020”, as you found using the codebooks). To produce this model you should use the template functions that are already in the repository: “clean_df” for preprocessing the data from the “submission.py”, “train_save_model” from “training.py” and “predict_outcomes” from “submission.py”.</p>
-<p>Overall steps: preprocessing the data –&gt; training the model –&gt; testing on fake data if the preprocessing function and prediction model works on fake data –&gt; editing “submission.py” and “training.py” to prepare a submission.</p>
+<p>Let’s imagine that you want to add one predictor to the model that is already in the repository: respondent’s gender (variable name “gender_bg”, as you found using the codebooks). To produce this model you should use the template functions that are already in the repository: “clean_df” for preprocessing the data from the “submission.py”, “train_save_model” from “training.py” and “predict_outcomes” from “submission.py”.</p>
+<p>Overall steps: preprocessing the data —&gt; training and saving the model —&gt; testing on the fake data —&gt; editing “submission.py” and “training.py” accordingly —&gt; submitting.</p>
 <ol type="1">
-<li>Create new script in the environment for python that you normally use, save the file in the folder with your cloned repository. Import necessary packages (in this case we only need pandas, scikit learn, and joblib to save the model) and load training data and outcome. !VERY IMPORTANT: do not add the data to the folder on your computer with all the files from your repository. If you put the data in this folder and then upload all the changes online, the data will achanges online, the data will be made public in your .</li>
+<li>Create a new script in the environment for python that you normally use, save the file in the folder with your cloned repository. Import necessary packages and read training data and outcome. !IMPORTANT: do not add the data to the folder on your computer with the files from your repository. If you put the data in this folder and then upload all the changes online, the data will be made public in your online github repository.</li>
 </ol>
 <div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -243,8 +243,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>outcome <span class="op">=</span> pd.read_csv(<span class="st">"path to the data which is NOT your cloned repository</span><span class="ch">\\</span><span class="st">PreFer_train_outcome.csv"</span>, low_memory <span class="op">=</span> <span class="va">False</span>) </span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="2" type="1">
-<li><p>Create a blank script in the environment for python that you normally use, save it into the folder with all repository files. Copypaste into this script the <code>clean_df</code> function from the “submission.py” and <code>train_save_model</code> function from the “submission.py”.</p></li>
-<li><p>Edit the <code>clean_df</code> function - add the new variable:</p></li>
+<li>Copy paste the <code>clean_df</code> function from the “submission.py” into this script. Edit the <code>clean_df</code> function - add the new variable:</li>
 </ol>
 <div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> clean_df(df, background_df<span class="op">=</span><span class="va">None</span>):</span>
@@ -267,23 +266,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Imputing missing values in age with the mean</span></span>
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">"age"</span>] <span class="op">=</span> df[<span class="st">"age"</span>].fillna(df[<span class="st">"age"</span>].mean())</span>
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Imputing missing values in education (oplmet_2020) with the mode</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">"oplmet_2020"</span>] <span class="op">=</span> df[<span class="st">"oplmet_2020"</span>].fillna(df[<span class="st">"oplmet_2020"</span>].mode()) <span class="co"># &lt;-----ADDED VARIABLE</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Selecting variables for modelling</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    keepcols <span class="op">=</span> [</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        <span class="st">"nomem_encr"</span>,  <span class="co"># ID variable required for predictions,</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>        <span class="st">"age"</span>          <span class="co"># newly created variable</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>        <span class="st">"oplmet_2020"</span>  <span class="co"># &lt;--------ADDED VARIABLE</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    ] </span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Selecting variables for modelling</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    keepcols <span class="op">=</span> [</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">"nomem_encr"</span>,  <span class="co"># ID variable required for predictions,</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>        <span class="st">"age"</span>         <span class="co"># newly created variable</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>        ,<span class="st">"gender_bg"</span>  <span class="co"># &lt;--------ADDED VARIABLE</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    ] </span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Keeping data with variables selected</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df[keepcols]</span>
 <span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Keeping data with variables selected</span></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df[keepcols]</span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="4" type="1">
-<li>Edit the <code>train_save_model</code> function: add the new variable</li>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li>Copy paste the <code>train_save_model</code> function from the “training.py” and edit it - add the new variable:</li>
 </ol>
 <div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train_save_model(cleaned_df, outcome_df):</span>
@@ -296,7 +292,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">## This script contains a bare minimum working example</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    random.seed(<span class="dv">1</span>) <span class="co"># not useful here because logistic regression deterministic</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">#random.seed(1) # not useful here because logistic regression deterministic</span></span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Combine cleaned_df and outcome_df</span></span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    model_df <span class="op">=</span> pd.merge(cleaned_df, outcome_df, on<span class="op">=</span><span class="st">"nomem_encr"</span>)</span>
@@ -308,108 +304,97 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    model <span class="op">=</span> LogisticRegression()</span>
 <span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Fit the model</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    model.fit(model_df[[<span class="st">'age'</span>, <span class="st">'oplmet_2020'</span>]], model_df[<span class="st">'new_child'</span>]) <span class="co"># &lt;-------- ADDED VARIABLE</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    model.fit(model_df[[<span class="st">'age'</span>, <span class="st">'gender_bg'</span>]], model_df[<span class="st">'new_child'</span>]) <span class="co"># &lt;------- ADDED VARIABLE</span></span>
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Save the model</span></span>
 <span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    joblib.dump(model, <span class="st">"model.joblib"</span>)</span>
 <span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="5" type="1">
-<li></li>
-<li><p>First, you need to preprocess the data. Create a new script in the environment that you normally use for python, save it in the folder with your cloned repository. This is the script that you should update to produce a model.</p></li>
-<li><p>Copy paste the “clean_df” function from the “submission.py” script. Add the variable that you want to add and impute missing values.<br>
-This is what we have now in this function:</p></li>
+<ol start="4" type="1">
+<li>Preprocess the data using your updated <code>clean_df</code> function, and then train the model. Now the model is saved in the same folder.</li>
 </ol>
 <div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># List your libraries and modules here. Don't forget to update environment.yml if you use packages that are not there!</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> joblib</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> clean_df(df, background_df<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">    Preprocess the input dataframe to feed the model.</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">    # If no cleaning is done (e.g. if all the cleaning is done in a pipeline) leave only the "return df" command</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters:</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">    df (pd.DataFrame): The input dataframe containing the raw data (e.g., from PreFer_train_data.csv or PreFer_fake_data.csv).</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">    background (pd.DataFrame): Optional input dataframe containing background data (e.g., from PreFer_train_background_data.csv or PreFer_fake_background_data.csv).</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co">    pd.DataFrame: The cleaned dataframe with only the necessary columns and processed variables.</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">## This script contains a bare minimum working example</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create new variable with age</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">"age"</span>] <span class="op">=</span> <span class="dv">2024</span> <span class="op">-</span> df[<span class="st">"birthyear_bg"</span>]</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Imputing missing values in age with the mean</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">"age"</span>] <span class="op">=</span> df[<span class="st">"age"</span>].fillna(df[<span class="st">"age"</span>].mean())</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Imputing missing values in education (oplmet_2020) with the mode </span></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">"oplmet_2020"</span>] <span class="op">=</span> df[<span class="st">"oplmet_2020"</span>].fillna(df[<span class="st">"oplmet_2020"</span>].mode()) <span class="co"># &lt;----- that's what we added!</span></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Selecting variables for modelling</span></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    keepcols <span class="op">=</span> [</span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>        <span class="st">"nomem_encr"</span>,  <span class="co"># ID variable required for predictions,</span></span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>        <span class="st">"age"</span>          <span class="co"># newly created variable</span></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    ] </span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Keeping data with variables selected</span></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df[keepcols]</span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="3" type="1">
-<li>Edit train_save_model function - add the new variable. Here is how the code will look like</li>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># preprocessing the data</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>train_cleaned <span class="op">=</span> clean_df(train)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># training and saving the model</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>train_save_model(train_cleaned, outcome)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="5" type="1">
+<li>Test the preprocessing function and model on fake data to see if they will run on the holdout set. If your method does not run on the “fake data”, it will not run on the holdout data. [If you “push” your method to Github this test will also be automatically run].</li>
 </ol>
+<p>To do this test you can copy paste the function <code>predict_outcomes</code> from the “submission.py”. Load the fake data (it is already in your local repository folder) and apply the <code>predict_outcomes</code>.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train_save_model(cleaned_df, outcome_df):</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Trains a model using the cleaned dataframe and saves the model to a file.</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters:</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">    cleaned_df (pd.DataFrame): The cleaned data from clean_df function to be used for training the model.</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">    outcome_df (pd.DataFrame): The data with the outcome variable </span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">    (e.g., from PreFer_train_outcome.csv or PreFer_fake_outcome.csv).</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">## This script contains a bare minimum working example</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">#random.seed(1) # not useful here because logistic regression deterministic</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Combine cleaned_df and outcome_df</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    model_df <span class="op">=</span> pd.merge(cleaned_df, outcome_df, on<span class="op">=</span><span class="st">"nomem_encr"</span>)</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Filter cases for whom the outcome is not available</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    model_df <span class="op">=</span> model_df[<span class="op">~</span>model_df[<span class="st">'new_child'</span>].isna()]  </span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Logistic regression model</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    model <span class="op">=</span> LogisticRegression()</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Fit the model</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    model.fit(model_df[[<span class="st">'age'</span>, <span class="st">'oplmet_2020'</span>]], model_df[<span class="st">'new_child'</span>]) <span class="co">#&lt;---- added variable here</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Save the model</span></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    joblib.dump(model, <span class="st">"model.joblib"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># load the data</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>fake <span class="op">=</span> pd.read_csv(<span class="st">"PreFer_fake_data.csv"</span>) </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> predict_outcomes(df, background_df<span class="op">=</span><span class="va">None</span>, model_path<span class="op">=</span><span class="st">"model.joblib"</span>):</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Generate predictions using the saved model and the input dataframe.</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">    The predict_outcomes function accepts a Pandas DataFrame as an argument</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">    and returns a new DataFrame with two columns: nomem_encr and</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">    prediction. The nomem_encr column in the new DataFrame replicates the</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">    corresponding column from the input DataFrame. The prediction</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">    column contains predictions for each corresponding nomem_encr. Each</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co">    prediction is represented as a binary value: '0' indicates that the</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">    individual did not have a child during 2021-2023, while '1' implies that</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">    they did.</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters:</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co">    df (pd.DataFrame): The input dataframe for which predictions are to be made.</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co">    background_df (pd.DataFrame): The background dataframe for which predictions are to be made.</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co">    model_path (str): The path to the saved model file (which is the output of training.py).</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co">    pd.DataFrame: A dataframe containing the identifiers and their corresponding predictions.</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    <span class="co">## This script contains a bare minimum working example</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"nomem_encr"</span> <span class="kw">not</span> <span class="kw">in</span> df.columns:</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"The identifier variable 'nomem_encr' should be in the dataset"</span>)</span>
 <span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="4" type="1">
-<li><p>Load the data to train the model and apply the clean_df function to it. Code:</p></li>
-<li><p>Train the model by feeding the cleaned data to the train_save_model. Now the model is saved in the same folder. Code:</p></li>
-<li><p>To test your preprocessing function and model, check them on fake data. Code: …</p></li>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Load the model</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    model <span class="op">=</span> joblib.load(model_path)</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Preprocess the fake / holdout data</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> clean_df(df, background_df)</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Exclude the variable nomem_encr if this variable is NOT in your model</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    vars_without_id <span class="op">=</span> df.columns[df.columns <span class="op">!=</span> <span class="st">'nomem_encr'</span>]</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generate predictions from model, should be 0 (no child) or 1 (had child)</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>    predictions <span class="op">=</span> model.predict(df[vars_without_id])</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Output file should be DataFrame with two columns, nomem_encr and predictions</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>    df_predict <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"nomem_encr"</span>: df[<span class="st">"nomem_encr"</span>], <span class="st">"prediction"</span>: predictions}</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Return only dataset with predictions and identifier</span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df_predict</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a><span class="co"># apply the function to the fake data</span></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>predict_outcomes(fake)</span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you see the predictions, not errors, everything worked.<br>
+<img src="../..\images/fake_data_predictions.png" class="img-fluid"></p>
+<p>You can now prepare the files for submission, that will be applied to the holdout set.</p>
+<ol start="6" type="1">
+<li><p>“submission.py”: edit this script by copypasting your clean_df function there. This code will be applied to the holdout data. You don’t need to adapt the <code>predict_outcomes</code> function in submission.py because the outputs of your model are predicted classes already (i.e., 0s and 1s), and not, for example, probabilities.</p></li>
+<li><p>prediction model: make sure that your model is saved in the same folder as submission.py under the name model.joblib</p></li>
+<li><p>“environment.yml”: you don’t have to edit this file now, because you used only the packages that are already there.</p></li>
+<li><p>“training.py”: copy paste your updated <code>train_save_model</code> function and the packages needed for this function to run to this script.</p></li>
 </ol>
-<p>Everything works on fake data. Don’t forget to save your training script.</p>
-<ol start="7" type="1">
-<li><p>You can now edit the submission.py script: copypaste your clean_df function there. This code will be applied to the holdout data</p></li>
-<li><p>(your model is already in the folder, no need to do anything with it)</p></li>
-<li><p>Go to GitHub Desktop and save changes (commit) – see <a href="">here</a> how to do it</p></li>
-<li><p>push the changes (“Push origin”) (i.e.&nbsp;update your online repository)</p></li>
-<li><p>Go to the Action page. After a few minutes you’ll see if your submission passed the authomatic checks</p></li>
-<li><p>(copy link to commit etc.)</p></li>
+<p>Now you need to update your online github repository:</p>
+<ol start="10" type="1">
+<li>Go to GitHub Desktop and save changes (i.e.&nbsp;commit).</li>
 </ol>
-<p>(add the note about importance of using the same versions of packages and updating the environment.yml)</p>
+<p><img src="../..\images/commit.png" class="img-fluid"></p>
+<ol start="11" type="1">
+<li><p>Push the changes (“Push origin”) (i.e.&nbsp;update your online repository) - press “Push origin” on the upper right.</p></li>
+<li><p>Now go to the Action page in you online github repository. After a few minutes you’ll see if your submission passed the automatic checks.</p></li>
+<li><p>Submit your method as explained <a href="https://github.com/eyra/fertility-prediction-challenge/tree/master#submit-your-method" target="_blank">here</a>.</p></li>
+</ol>
 
 
 
