@@ -9,9 +9,9 @@
 <meta name="author" content="Gert Stulp">
 <meta name="author" content="Lisa Sivak">
 <meta name="dcterms.date" content="2024-03-29">
-<meta name="description" content="Here we show the steps for submitting a simple model in python">
+<meta name="description" content="Here we show the common errors and how to fix them.">
 
-<title>A walkthough of submitting a simple model in python</title>
+<title>Frequent errors during submission</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -101,9 +101,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../rwds.css">
-<meta property="og:title" content="A walkthough of submitting a simple model in python">
-<meta property="og:description" content="Here we show the steps for submitting a simple model in python">
-<meta property="og:image" content="https://preferdatachallenge.nl/images/python_submission.jpg">
+<meta property="og:title" content="Frequent errors during submission">
+<meta property="og:description" content="Here we show the common errors and how to fix them.">
+<meta property="og:image" content="https://preferdatachallenge.nl/images/errors_faq.png">
+<meta property="og:image:height" content="720">
+<meta property="og:image:width" content="1280">
 <meta property="og:image:alt" content="LISS logo.">
 </head>
 
@@ -183,7 +185,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#preprocessing-and-training" id="toc-preprocessing-and-training" class="nav-link active" data-scroll-target="#preprocessing-and-training">Preprocessing and training</a></li>
+  <li><a href="#train-the-model" id="toc-train-the-model" class="nav-link active" data-scroll-target="#train-the-model">Train the model</a></li>
   <li><a href="#prepare-files-for-submission" id="toc-prepare-files-for-submission" class="nav-link" data-scroll-target="#prepare-files-for-submission">Prepare files for submission</a></li>
   <li><a href="#update-online-github-repository" id="toc-update-online-github-repository" class="nav-link" data-scroll-target="#update-online-github-repository">Update online GitHub repository</a></li>
   <li><a href="#submit-your-method" id="toc-submit-your-method" class="nav-link" data-scroll-target="#submit-your-method">Submit your method</a></li>
@@ -195,7 +197,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">A walkthough of submitting a simple model in python</h1>
+<h1 class="title">Frequent errors during submission</h1>
   <div class="quarto-categories">
     <div class="quarto-category">dataset</div>
     <div class="quarto-category">guide</div>
@@ -204,7 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div>
   <div class="description">
-    <p>Here we show the steps for submitting a simple model in <code>python</code></p>
+    <p>Here we show the common errors and how to fix them.</p>
   </div>
 </div>
 
@@ -233,15 +235,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p>Here we describe how to prepare and make a submission in Python.</p>
-<hr>
 <p>Disclaimer: The data preprocessing and the model that we will train here are very basic. You should not use it as an example of how to properly train a model (e.g.&nbsp;imputing missing values with a mean is often a bad idea). The sole purpose of this script is to make the submission process more clear.</p>
 <p>In this example, we assume that you are using <a href="https://docs.github.com/en/desktop">GitHub Desktop</a>, which is a very convenient tool for updating your GitHub repository. <a href="https://github.com/eyra/fertility-prediction-challenge/wiki">Here</a> you can find useful links on how to use GitHub Desktop for cloning your repository and for updating the files in it.</p>
 <p>We also assume that you did all the prerequisite steps described <a href="https://github.com/eyra/fertility-prediction-challenge?tab=readme-ov-file#prerequisites" target="_blank">here</a>.</p>
-<hr>
 <p>Let’s imagine that you want to add one predictor to the model that is already in the repository: respondent’s gender (variable name “gender_bg”, as you found using the codebooks). To produce this model you should use the template functions that are already in the repository: <code>clean_df</code> for preprocessing the data from the “submission.py”, <code>train_save_model</code> from “training.py” and <code>predict_outcomes</code> from “submission.py” (to test your model and preprocessing).</p>
-<p><strong>Overall steps</strong>: preprocessing the data —&gt; training and saving the model —&gt; testing on the fake data —&gt; editing “submission.py” and “training.py” accordingly —&gt; submitting.</p>
-<section id="preprocessing-and-training" class="level2">
-<h2 class="anchored" data-anchor-id="preprocessing-and-training">Preprocessing and training</h2>
+<p><strong>Overall steps</strong>: preprocessing the data —&gt; training and saving the model —&gt; testing on the fake data —&gt; editing “submission.py” and “training.py” accordingly —&gt; updating online repository —&gt; submitting.</p>
+<section id="train-the-model" class="level2">
+<h2 class="anchored" data-anchor-id="train-the-model">Train the model</h2>
 <ol type="1">
 <li>Create a new script in the environment for Python that you normally use, and save the file in the folder with your cloned GitHub repository. Import necessary packages and read training data and outcome. <strong>IMPORTANT</strong>: do not add the data to the folder on your computer with your cloned repository. If you put the data in this folder and then upload all the changes online, the data will be made public in your online GitHub repository.</li>
 </ol>

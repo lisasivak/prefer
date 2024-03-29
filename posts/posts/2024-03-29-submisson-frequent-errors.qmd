@@ -1,7 +1,7 @@
 ---
-title: "A walkthough of submitting a simple model in python"
+title: "Frequent errors during submission"
 description: |
-  Here we show the steps for submitting a simple model in `python`
+  Here we show the common errors and how to fix them.
 categories:
   - dataset
   - guide
@@ -10,7 +10,7 @@ author:
   - "Lisa Sivak"
 date: '2024-03-29'
 toc: true
-image: ../../images/python_submission.jpg
+image: ../../images/errors_faq.png
 image-alt: LISS logo. 
 language: 
     section-title-footnotes: References
@@ -18,20 +18,21 @@ language:
 
 Here we describe how to prepare and make a submission in Python.    
 
-***
+
 Disclaimer: The data preprocessing and the model that we will train here are very basic. You should not use it as an example of how to properly train a model (e.g. imputing missing values with a mean is often a bad idea). The sole purpose of this script is to make the submission process more clear.   
 
 In this example, we assume that you are using [GitHub Desktop](https://docs.github.com/en/desktop), which is a very convenient tool for updating your GitHub repository. [Here](https://github.com/eyra/fertility-prediction-challenge/wiki) you can find useful links on how to use GitHub Desktop for cloning your repository and for updating the files in it.  
 
 We also assume that you did all the prerequisite steps described [here](https://github.com/eyra/fertility-prediction-challenge?tab=readme-ov-file#prerequisites){target="_blank"}.  
 
-***
+
 
 Let's imagine that you want to add one predictor to the model that is already in the repository: respondent's gender (variable name "gender_bg", as you found using the codebooks). To produce this model you should use the template functions that are already in the repository:  `clean_df` for preprocessing the data from the "submission.py", `train_save_model` from "training.py" and `predict_outcomes` from "submission.py" (to test your model and preprocessing).   
 
-__Overall steps__: preprocessing the data —> training and saving the model —> testing on the fake data —> editing "submission.py" and "training.py" accordingly —> submitting.   
+__Overall steps__: preprocessing the data —> training and saving the model —> testing on the fake data —> editing "submission.py" and "training.py" accordingly —> updating online repository —> submitting.   
 
-## Preprocessing and training   
+
+## Train the model  
 
 1. Create a new script in the environment for Python that you normally use, and save the file in the folder with your cloned GitHub repository. Import necessary packages and read training data and outcome. __IMPORTANT__: do not add the data to the folder on your computer with your cloned repository. If you put the data in this folder and then upload all the changes online, the data will be made public in your online GitHub repository. 
 
@@ -180,12 +181,13 @@ def predict_outcomes(df, background_df=None, model_path="model.joblib"):
 predict_outcomes(fake)
 ```
 
-If you see the predictions, not errors, everything worked.  
+If you see the predictions, not errors, everything worked.    
 ![](/images/fake_data_predictions.png)
+  
+   
+## Prepare files for submission   
 
-## Prepare files for submission 
-
-You can now prepare the files for submission, that will be applied to the holdout set:      
+You can now prepare the files for submission, that will be applied to the holdout set:     
 
 6. "submission.py": edit this script by copypasting your clean_df function there. This code will be applied to the holdout data. You don't need to adapt the `predict_outcomes` function in submission.py because the outputs of your model are predicted classes already (i.e., 0s and 1s), and not, for example, probabilities.   
 
@@ -209,7 +211,7 @@ Now you need to update your online github repository:
 
 12. Now go to the "Actions" tab in you online github repository. After a few minutes you'll see if your submission passed the automatic checks.  
 
-## Submit your method 
+## Submit your method  
 
 13. Submit your method as explained [here](https://github.com/eyra/fertility-prediction-challenge/tree/master#submit-your-method){target="_blank"}. 
 
