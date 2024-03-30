@@ -34,11 +34,13 @@ __Overall steps__: preprocessing the data —> training and saving the model —
 1. Create a new script in RStudio or other environment for R that you normally use, and save the file in the local repository. Read training data and outcome. __IMPORTANT__: never add the data to the local repository. If you put the data in this folder and then upload all the changes online (i.e. in your online repository on github.com), the data will be made public in your online GitHub repository. 
 
 ```{{r}}
+library(data.table) # <--- to read data faster
+
 # loading data (predictors)
-train <- read.csv("path to the data which is NOT in your local repository/PreFer_train_data.csv") 
+train <- fread("path to the data which is NOT in your local repository/PreFer_train_data.csv") 
 
 # loading the outcome
-outcome <- read.csv("path to the data which is NOT in your local repository/PreFer_train_outcome.csv") 
+outcome <- fread("path to the data which is NOT in your local repository/PreFer_train_outcome.csv") 
 ```
 
 2. Copy paste the `clean_df` function from the "submission.R" into this script. Edit the `clean_df` function - add the new variable: 
@@ -56,7 +58,7 @@ clean_df <- function(df, background_df = NULL){
                'age', 'gender_bg')  # <-------- ADDED VARIABLE 'gender_bg'
   
     # Keeping data with variables selected
-    df <- df[ , keepcols ]
+    df <- df[ , ..keepcols ] #<------ added `..` to select these columns from the data.table
     
     # turning gender into factor
     df$gender_bg<- as.factor(df$gender_bg) # <-------- ADDED THIS
@@ -109,7 +111,7 @@ To do this test you can copy paste the function `predict_outcomes` from the "sub
 
 ```{{r}}
 # load the fake data
-fake <- read.csv("PreFer_fake_data.csv")
+fake <- fread("PreFer_fake_data.csv")
 
 predict_outcomes <- function(df, background_df = NULL, model_path = "./model.rds"){
   # Generate predictions using the saved model and the input dataframe.
@@ -178,7 +180,7 @@ You can now prepare the files for submission, that will be applied to the holdou
 
 7. prediction model: make sure that your model is saved in the same folder as submission.R under the name "model.rds"   
 
-8. "packages.R": you don't have to edit this file now, because you didn't used any packages.  
+8. "packages.R": you don't have to edit this file now, because you only used "data.table", and it is already in this file  
 
 9. "training.R": copy paste your updated `train_save_model` function into this script.  
 

@@ -247,12 +247,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Create a new script in RStudio or other environment for R that you normally use, and save the file in the local repository. Read training data and outcome. <strong>IMPORTANT</strong>: never add the data to the local repository. If you put the data in this folder and then upload all the changes online (i.e.&nbsp;in your online repository on github.com), the data will be made public in your online GitHub repository.</li>
 </ol>
 <div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># loading data (predictors)</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"path to the data which is NOT in your local repository/PreFer_train_data.csv"</span>) </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># loading the outcome</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>outcome <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"path to the data which is NOT in your local repository/PreFer_train_outcome.csv"</span>) </span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table) <span class="co"># &lt;--- to read data faster</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># loading data (predictors)</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">"path to the data which is NOT in your local repository/PreFer_train_data.csv"</span>) </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># loading the outcome</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>outcome <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">"path to the data which is NOT in your local repository/PreFer_train_outcome.csv"</span>) </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="2" type="1">
 <li>Copy paste the <code>clean_df</code> function from the “submission.R” into this script. Edit the <code>clean_df</code> function - add the new variable:</li>
 </ol>
@@ -269,7 +271,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>               <span class="st">'age'</span>, <span class="st">'gender_bg'</span>)  <span class="co"># &lt;-------- ADDED VARIABLE 'gender_bg'</span></span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Keeping data with variables selected</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    df <span class="ot">&lt;-</span> df[ , keepcols ]</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    df <span class="ot">&lt;-</span> df[ , ..keepcols ] <span class="co">#&lt;------ added `..` to select these columns from the data.table</span></span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># turning gender into factor</span></span>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    df<span class="sc">$</span>gender_bg<span class="ot">&lt;-</span> <span class="fu">as.factor</span>(df<span class="sc">$</span>gender_bg) <span class="co"># &lt;-------- ADDED THIS</span></span>
@@ -323,7 +325,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>To do this test you can copy paste the function <code>predict_outcomes</code> from the “submission.R”. Load the fake data (it is already in your local repository) and apply the <code>predict_outcomes</code>.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># load the fake data</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>fake <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"PreFer_fake_data.csv"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>fake <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">"PreFer_fake_data.csv"</span>)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>predict_outcomes <span class="ot">&lt;-</span> <span class="cf">function</span>(df, <span class="at">background_df =</span> <span class="cn">NULL</span>, <span class="at">model_path =</span> <span class="st">"./model.rds"</span>){</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Generate predictions using the saved model and the input dataframe.</span></span>
@@ -389,7 +391,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="6" type="1">
 <li><p>“submission.R”: edit this script by copypasting your <code>clean_df</code> function there. This code will be applied to the holdout data. You don’t need to adapt the <code>predict_outcomes</code> function in submission.R because the outputs of your model are predicted classes already (i.e., 0s and 1s).</p></li>
 <li><p>prediction model: make sure that your model is saved in the same folder as submission.R under the name “model.rds”</p></li>
-<li><p>“packages.R”: you don’t have to edit this file now, because you didn’t used any packages.</p></li>
+<li><p>“packages.R”: you don’t have to edit this file now, because you only used “data.table”, and it is already in this file</p></li>
 <li><p>“training.R”: copy paste your updated <code>train_save_model</code> function into this script.</p></li>
 <li><p>“description.md” - add a brief description of your method here (e.g.&nbsp;“binary logistic regression with two variables - age and gender - selected manually”)</p></li>
 </ol>
