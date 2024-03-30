@@ -1,16 +1,16 @@
 ---
-title: "Frequent errors during submission"
+title: "Frequent errors during submission, and how to debug"
 description: |
   Here we show the common errors and how to fix them.
 categories:
-  - dataset
+  - submission
   - guide
 author: 
   - "Gert Stulp"
   - "Lisa Sivak"
 date: '2024-03-29'
 toc: true
-image: ../../images/errors_faq.png
+image: ../../images/duck_debugging.png
 image-alt: LISS logo. 
 language: 
     section-title-footnotes: References
@@ -60,7 +60,13 @@ This error occurs if you added new variables to the model, but did not change th
 
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
 ### ValueError: The feature names should match those that were passed during fit. Feature names unseen at fit time: 'some_variable_name_here'
-This error occurs if you added new variables to the model and updated the "clean_df" function in submission script accordinly, but the model is not updated.    
+This error occurs if you added new variables to the model and updated the "clean_df" function in submission script accordingly, but the model is not updated.    
 ![](/images/feature_name_unseen.jpg)
 :::
+
+
+Photo by <a href="https://unsplash.com/@sigmund?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Sigmund</a> on <a href="https://unsplash.com/photos/person-using-black-laptop-computer-59yRYIHWtzY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+  
+Photo by <a href="https://unsplash.com/@timothycdykes?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Timothy Dykes</a> on <a href="https://unsplash.com/photos/yellow-rubber-duck-on-white-background-LhqLdDPcSV8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+  
 

@@ -3,7 +3,7 @@ title: "My first (empty) submission"
 description: |
   It might be good to do an `emtpy` submission first to see how the checks work 
 categories:
-  - dataset
+  - submission
   - guide
 author: 
   - "Gert Stulp"
@@ -47,7 +47,7 @@ Here we assume that you have "cloned" your repository, and that all relevant fil
 
 1. Go to the folder where you have stored the PreFer materials. 
 
-2. Open the `description.md` file and add any text, and save your file.. 
+2. Open the `description.md` file and add any text, and save your file. 
 
 3. "Commit" the changes through something like Github Desktop, RStudio, or the command line.
 

@@ -3,7 +3,7 @@ title: "A walkthough of submitting a simple model in python"
 description: |
   Here we show the steps for submitting a simple model in `python`
 categories:
-  - dataset
+  - submission
   - guide
 author: 
   - "Gert Stulp"
@@ -21,19 +21,17 @@ Here we describe how to prepare and make a submission in Python.
 ***
 Disclaimer: The data preprocessing and the model that we will train here are very basic. You should not use it as an example of how to properly train a model (e.g. imputing missing values with a mean is often a bad idea). The sole purpose of this script is to make the submission process more clear.   
 
-In this example, we assume that you are using [GitHub Desktop](https://docs.github.com/en/desktop), which is a very convenient tool for updating your GitHub repository. [Here](https://github.com/eyra/fertility-prediction-challenge/wiki) you can find useful links on how to use GitHub Desktop for cloning your repository and for updating the files in it.  
-
-We also assume that you did all the prerequisite steps described [here](https://github.com/eyra/fertility-prediction-challenge?tab=readme-ov-file#prerequisites){target="_blank"}.  
-
 ***
 
-Let's imagine that you want to add one predictor to the model that is already in the repository: respondent's gender (variable name "gender_bg", as you found using the codebooks). To produce this model you should use the template functions that are already in the repository:  `clean_df` for preprocessing the data from the "submission.py", `train_save_model` from "training.py" and `predict_outcomes` from "submission.py" (to test your model and preprocessing).   
+In this example, we assume that you did all the prerequisite steps described [here](https://github.com/eyra/fertility-prediction-challenge?tab=readme-ov-file#prerequisites){target="_blank"}. You have forked and cloned (e.g. downloaded) the GitHub repository, and now have a folder with all the files from this repository on your computer. We will call this folder a "local repository".    
+
+Let's imagine that you want to add one predictor to the basic model that is already in the repository: respondent's gender (variable name "gender_bg", as you found using the codebooks). To produce this model you should use the template functions that are already in the repository:  `clean_df` for preprocessing the data from the "submission.py", `train_save_model` from "training.py" and `predict_outcomes` from "submission.py" (to test your model and preprocessing).   
 
 __Overall steps__: preprocessing the data —> training and saving the model —> testing on the fake data —> editing "submission.py" and "training.py" accordingly —> submitting.   
 
 ## Preprocessing and training   
 
-1. Create a new script in the environment for Python that you normally use, and save the file in the folder with your cloned GitHub repository. Import necessary packages and read training data and outcome. __IMPORTANT__: do not add the data to the folder on your computer with your cloned repository. If you put the data in this folder and then upload all the changes online, the data will be made public in your online GitHub repository. 
+1. Create a new script in the environment for Python that you normally use, and save the file in the local repository. Import necessary packages and read training data and outcome. __IMPORTANT__: never add the data to the local repository. If you put the data in this folder and then upload all the changes online (i.e. in your online repository on github.com), the data will be made public in your online GitHub repository. 
 
 ```{{python}}
 import pandas as pd
@@ -41,9 +39,9 @@ from sklearn.linear_model import LogisticRegression
 import joblib
 
 # loading data (predictors)
-train = pd.read_csv("path to the data which is NOT your cloned repository\\PreFer_train_data.csv", low_memory = False) 
+train = pd.read_csv("path to the data which is NOT in your local repository\\PreFer_train_data.csv", low_memory = False) 
 # loading the outcome
-outcome = pd.read_csv("path to the data which is NOT your cloned repository\\PreFer_train_outcome.csv") 
+outcome = pd.read_csv("path to the data which is NOT in your local repository\\PreFer_train_outcome.csv") 
 ```
 
 2. Copy paste the `clean_df` function from the "submission.py" into this script. Edit the `clean_df` function - add the new variable: 
@@ -114,8 +112,13 @@ def train_save_model(cleaned_df, outcome_df):
 
 ```
 
-4. Preprocess the data using your updated `clean_df` function, and then train the model. Now the model is saved in the same folder. 
+4. Preprocess the data using your updated `clean_df` function, and then train the model. If you are using Jupyter Notebook, the model is now saved in the same folder as the script - in your local repository. If you are using an environment where the folder where the script is located is not set as the working directory by default, you should manually set the local repository as the working directory.   
 ```{{python}}
+#import os
+#print os.getcwd() <--- this prints the current working directory
+#os.chdir(path to your local repository) #<---- provide the path here
+
+
 # preprocessing the data
 train_cleaned = clean_df(train)
 
@@ -125,7 +128,7 @@ train_save_model(train_cleaned, outcome)
 
 5. Test the preprocessing function and model on the fake data to see if they will run on the holdout set. If your method does not run on the "fake data", it will not run on the holdout data. [If you "push" your method to Github this test will also be automatically run].  
 
-To do this test you can copy paste the function `predict_outcomes` from the "submission.py". Load the fake data (it is already in your local repository folder) and apply the `predict_outcomes`.
+To do this test you can copy paste the function `predict_outcomes` from the "submission.py". Load the fake data (it is already in your local repository) and apply the `predict_outcomes`.
 
 ```{{python}}
 # load the data
@@ -191,16 +194,16 @@ You can now prepare the files for submission, that will be applied to the holdou
 
 7. prediction model: make sure that your model is saved in the same folder as submission.py under the name model.joblib  
 
-8. "environment.yml": you don't have to edit this file now, because you used only the packages that are already there.  
+8. "environment.yml": you don't have to edit this file now, because you used only the packages that are already in this file.  
 
-9. "training.py": copy paste your updated `train_save_model` function and the packages needed for this function to run to this script.  
+9. "training.py": copy paste your updated `train_save_model` function and the packages needed for this function to run into this script.  
 
 
 ## Update online GitHub repository
 
-Now you need to update your online github repository:
+Now you need to update your online GitHub repository. You can do it in several ways. Here we assume that you used GitHub Desktop for cloning the repository and will also use it to commit (i.e. capture the state of the local repository at that point in time) and push the changes (e.g. change the online repository accordingly):
 
-10. Go to GitHub Desktop and save changes (i.e. commit).
+10. Go to GitHub Desktop and press "Commit to master". You need to add some description (e.g. "added variable").  
 
 ![](/images/commit.png)
 
@@ -214,3 +217,4 @@ Now you need to update your online github repository:
 13. Submit your method as explained [here](https://github.com/eyra/fertility-prediction-challenge/tree/master#submit-your-method){target="_blank"}. 
 
 
+__IMPORTANT__: always save the model that you want to submit using the `train_save_model` function and then copy paste it into the "training.py" script. This way ensures reproducibility.  

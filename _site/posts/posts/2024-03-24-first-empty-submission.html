@@ -151,11 +151,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#step-1-change-your-description.md-file" id="toc-step-1-change-your-description.md-file" class="nav-link active" data-scroll-target="#step-1-change-your-description.md-file">Step 1: change your description.md file</a>
-  <ul class="collapse">
-  <li><a href="#via-github.com" id="toc-via-github.com" class="nav-link" data-scroll-target="#via-github.com">Via Github.com</a></li>
+  <li><a href="#via-github.com" id="toc-via-github.com" class="nav-link active" data-scroll-target="#via-github.com">Via Github.com</a></li>
   <li><a href="#making-changes-on-your-computer-and-push-to-github" id="toc-making-changes-on-your-computer-and-push-to-github" class="nav-link" data-scroll-target="#making-changes-on-your-computer-and-push-to-github">Making changes on your computer and push to github</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -166,7 +163,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title">
 <h1 class="title">My first (empty) submission</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">dataset</div>
+    <div class="quarto-category">submission</div>
     <div class="quarto-category">guide</div>
   </div>
   </div>
@@ -202,11 +199,9 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <p>Here we describe how you, before you change any code, can make your first submission in the PreFer data challenge. This is useful because you can see how the online (Github) tests work.</p>
-<section id="step-1-change-your-description.md-file" class="level1">
-<h1>Step 1: change your description.md file</h1>
-<p>First, change the <code>description</code> file. Let’s just write “my first test” in the file. We can do that in multiple ways:</p>
-<section id="via-github.com" class="level2">
-<h2 class="anchored" data-anchor-id="via-github.com">Via Github.com</h2>
+<p>We will only change the <code>description.md</code> file. Let’s just write “my first test” in the file. We can do that in multiple ways:</p>
+<section id="via-github.com" class="level1">
+<h1>Via Github.com</h1>
 <p>Let’s first do it via a browser.</p>
 <ol type="1">
 <li><p>Go to your forked repository, something like https://github.com/YOURNAME/fertility-prediction-challenge</p></li>
@@ -217,14 +212,20 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Commit your changes with a useful message.</p></li>
 </ol>
 <p>Here you can see it in action: <img src=".png" class="img-fluid"> SHOULD INSERT LINK TO VIDEO</p>
-<p>After the commit, your submission (which will be a simple one variable logistic regression as described in <code>submission.py</code> / <code>submission.R</code>) will be evaluated on the fake data for testing. In your Github actions you should now see that a test has been started, and it will give you a green checkmark after a couple of minutes.</p>
+<p>After the commit, your submission (which will be a simple one variable logistic regression as described in <code>submission.py</code> / <code>submission.R</code>) will be evaluated on the fake data for testing. In your Github actions [and only after you have previously clicked “I understand my workflows, go ahead and enable them.”] you should now see that a test has been started, and it will give you a green checkmark after a couple of minutes.</p>
 </section>
-<section id="making-changes-on-your-computer-and-push-to-github" class="level2">
-<h2 class="anchored" data-anchor-id="making-changes-on-your-computer-and-push-to-github">Making changes on your computer and push to github</h2>
-<p>STILL HAVE TO DO THIS.</p>
+<section id="making-changes-on-your-computer-and-push-to-github" class="level1">
+<h1>Making changes on your computer and push to github</h1>
+<p>Here we assume that you have “cloned” your repository, and that all relevant files live in some folder on your computer.</p>
+<ol type="1">
+<li><p>Go to the folder where you have stored the PreFer materials.</p></li>
+<li><p>Open the <code>description.md</code> file and add any text, and save your file.</p></li>
+<li><p>“Commit” the changes through something like Github Desktop, RStudio, or the command line.</p></li>
+<li><p>“Push” your changes to your online repository. <strong>IMPORTANT</strong>: make sure that you don’t push any of the PreFer datasets to your repository! These dataset <em>cannot</em> be shared. It is a safe strategy to keep your datasets in a different folder on your computer.</p></li>
+</ol>
+<p>After the push, your submission (which will be a simple one variable logistic regression as described in <code>submission.py</code> / <code>submission.R</code>) will be evaluated on the fake data for testing. In your Github actions [and only after you have previously clicked “I understand my workflows, go ahead and enable them.”] you should now see that a test has been started, and it will give you a green checkmark after a couple of minutes.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
