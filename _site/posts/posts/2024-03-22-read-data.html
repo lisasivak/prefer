@@ -195,7 +195,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python">Python</a>
   <ul class="collapse">
-  <li><a href="#read_csv-from-pandas-or-pd" id="toc-read_csv-from-pandas-or-pd" class="nav-link" data-scroll-target="#read_csv-from-pandas-or-pd">read_csv from pandas (or pd)</a></li>
+  <li><a href="#read_csv-from-pandas" id="toc-read_csv-from-pandas" class="nav-link" data-scroll-target="#read_csv-from-pandas">read_csv from pandas</a></li>
+  <li><a href="#read_csv-from-polars-or-pl" id="toc-read_csv-from-polars-or-pl" class="nav-link" data-scroll-target="#read_csv-from-polars-or-pl">read_csv from polars (or pl)</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -279,13 +280,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="python" class="level2">
 <h2 class="anchored" data-anchor-id="python">Python</h2>
-<section id="read_csv-from-pandas-or-pd" class="level3">
-<h3 class="anchored" data-anchor-id="read_csv-from-pandas-or-pd">read_csv from pandas (or pd)</h3>
+<section id="read_csv-from-pandas" class="level3">
+<h3 class="anchored" data-anchor-id="read_csv-from-pandas">read_csv from pandas</h3>
 <p><code>pd.read_csv</code> works, but is slow. Specifying <code>low_memory=False</code> is needed. If <code>low_memory=False</code>, then whole columns are read in first, and then the proper data types in the columns are determined. If <code>low_memory=True</code> (default), then pandas reads in the data in chunks of rows, then appends them together. This results in lower memory use while parsing, but incorrect (mixed) type of data in a column, when for example there are many missing values in a column (which are floating point numbers in python) and a few integers.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>train <span class="op">=</span> pd.read_csv(<span class="st">"path to the data which is NOT in your local repository</span><span class="ch">\\</span><span class="st">PreFer_train_data.csv"</span>, low_memory <span class="op">=</span> <span class="va">False</span>) <span class="co"># this works but is slow</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>train <span class="op">=</span> pd.read_csv(<span class="st">"path to the data which is NOT in your local repository</span><span class="ch">\\</span><span class="st">PreFer_train_data.csv"</span>, low_memory <span class="op">=</span> <span class="va">False</span>) <span class="co"># this works but is slow</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="read_csv-from-polars-or-pl" class="level3">
+<h3 class="anchored" data-anchor-id="read_csv-from-polars-or-pl">read_csv from polars (or pl)</h3>
+<p><code>read_csv</code> from the polars package is faster. Polars DataFrame can be then converted into a pandas DataFrame using <code>to_pandas()</code>. For that, <code>pyarrow</code> package also needs to be installed.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>train <span class="op">=</span> pd.read_csv(<span class="st">"path to the data which is NOT in your local repository</span><span class="ch">\\</span><span class="st">PreFer_train_data.csv"</span>, infer_schema_length<span class="op">=</span><span class="dv">10000</span>).to_pandas() </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
