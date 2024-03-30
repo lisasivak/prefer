@@ -36,10 +36,8 @@ Let's first do it via a browser.
 
 6. Commit your changes with a useful message. 
 
-Here you can see it in action:
-![]() SHOULD INSERT LINK TO VIDEO
 
-After the commit, your submission (which will be a simple one variable logistic regression as described in `submission.py` / `submission.R`) will be evaluated on the fake data for testing. In your Github actions [and only after you have previously clicked “I understand my workflows, go ahead and enable them.”] you should now see that a test has been started, and it will give you a green checkmark after a couple of minutes. 
+After the commit, your submission (which will be a simple one variable logistic regression as described in `submission.py` / `submission.R`) will be evaluated on the fake data for testing. In your Github Actions [and only after you have previously clicked “I understand my workflows, go ahead and enable them.”] you should now see that a test has been started, and it will give you a green checkmark after a couple of minutes. 
 
 # Making changes on your computer and push to github
 
@@ -53,7 +51,7 @@ Here we assume that you have "cloned" your repository, and that all relevant fil
 
 4. "Push" your changes to your online repository. **IMPORTANT**: make sure that you don't push any of the PreFer datasets to your repository! These dataset *cannot* be shared. It is a safe strategy to keep your datasets in a different folder on your computer. 
 
-After the push, your submission (which will be a simple one variable logistic regression as described in `submission.py` / `submission.R`) will be evaluated on the fake data for testing. In your Github actions [and only after you have previously clicked “I understand my workflows, go ahead and enable them.”] you should now see that a test has been started, and it will give you a green checkmark after a couple of minutes. 
+After the push, your submission (which will be a simple one variable logistic regression as described in `submission.py` / `submission.R`) will be evaluated on the fake data for testing. In your Github Actions [and only after you have previously clicked “I understand my workflows, go ahead and enable them.”] you should now see that a test has been started, and it will give you a green checkmark after a couple of minutes. 
 
 
 

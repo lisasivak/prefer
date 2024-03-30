@@ -37,8 +37,6 @@ data <- read.csv("path/to/folder/PreFer_train_data.csv", row.names = FALSE) # th
 ### read_csv
 `readr::read_csv` from the package `readr` in principle works, but gets many of the column types wrong with default settings (because, by default, it only bases column types on the first 1000 values present in the variable). Do not run this code `data <- readr::read_csv("PreFer_train_data.csv")`, but use the following code which explicitly tells `read_csv` that it must make use of the entire column (i.e., all cases) to make a guess of the column type:
 
-CHECK THESE NUMBER OF ROWS
-
 ```{r eval = FALSE}
 library(readr) # requires install.packages("readr") first
 data <- readr::read_csv("path/to/folder/PreFer_train_data.csv", guess_max = 6418) # this works but is slow
