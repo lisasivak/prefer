@@ -1,13 +1,13 @@
 ---
 title: "Frequent errors during submission, and how to debug"
 description: |
-  Here we show the common errors and how to fix them.
+  Here we show common errors during the automated tests and how to fix them.
 categories:
   - submission
   - guide
 author: 
-  - "Gert Stulp"
   - "Lisa Sivak"
+  - "Gert Stulp"
 date: '2024-03-29'
 toc: true
 image: ../../images/duck2.png

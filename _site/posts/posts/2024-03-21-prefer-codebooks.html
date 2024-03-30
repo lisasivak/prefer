@@ -140,7 +140,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="https://arxiv.org/abs/2402.00705" rel="" target="">
- <span class="menu-text">Preprint</span></a>
+ <span class="menu-text">Paper</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../faq/index.html" rel="" target="">
@@ -349,7 +349,7 @@ character [almost exclusively empty strings]
                                         1079 </code></pre>
 </div>
 </div>
-<p>Let’s imagine that in our analyses we only want to select variables that are categorical, numeric, or date or time. Note that we want to select these variable in the Core survey data (the train data) and do not want to include variables from the Background data (for further explanation on the datasets, <a href="../../posts/posts/2024-03-20-prefer-datasets.html">click here</a>.</p>
+<p>Let’s imagine that in our analyses we only want to select variables that are categorical, numeric, or date or time. Note that we want to select these variable in the Core survey data (the train data) and do not want to include variables from the Background data (for further explanation on the datasets, <a href="../../posts/posts/2024-03-20-prefer-datasets.html">click here</a>).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>select_type <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"categorical"</span>, <span class="st">"numeric"</span>, <span class="st">"date or time"</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>list_variables <span class="ot">&lt;-</span> codebook[ (codebook<span class="sc">$</span>type_var <span class="sc">%in%</span> select_type) <span class="sc">&amp;</span> </span>

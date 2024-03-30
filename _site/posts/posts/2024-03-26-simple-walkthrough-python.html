@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Gert Stulp">
 <meta name="author" content="Lisa Sivak">
-<meta name="dcterms.date" content="2024-03-29">
+<meta name="author" content="Gert Stulp">
+<meta name="dcterms.date" content="2024-03-26">
 <meta name="description" content="Here we show the steps for submitting a simple model in python">
 
 <title>A walkthough of submitting a simple model in python</title>
@@ -140,7 +140,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="https://arxiv.org/abs/2402.00705" rel="" target="">
- <span class="menu-text">Preprint</span></a>
+ <span class="menu-text">Paper</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../faq/index.html" rel="" target="">
@@ -216,15 +216,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Authors</div>
     <div class="quarto-title-meta-contents">
-             <p>Gert Stulp </p>
              <p>Lisa Sivak </p>
+             <p>Gert Stulp </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 29, 2024</p>
+      <p class="date">March 26, 2024</p>
     </div>
   </div>
   
@@ -329,9 +329,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
 </ol>
 <div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#import os</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#print os.getcwd() &lt;--- this prints the current working directory</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#os.chdir(path to your local repository) #&lt;---- provide the path here</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># import os</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># print os.getcwd() &lt;--- this prints the current working directory</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># os.chdir(path to your local repository) #&lt;---- provide the path here</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># preprocessing the data</span></span>
@@ -397,7 +397,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>predict_outcomes(fake)</span>
 <span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If you see the predictions, not errors, everything worked.<br>
-<img src="../..\images/fake_data_predictions.png" class="img-fluid"></p>
+<img src="../../images/fake_data_predictions.png" class="img-fluid"></p>
 </section>
 <section id="prepare-files-for-submission" class="level2">
 <h2 class="anchored" data-anchor-id="prepare-files-for-submission">Prepare files for submission</h2>
@@ -416,7 +416,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="10" type="1">
 <li>Go to GitHub Desktop and press “Commit to master”. You need to add some description (e.g.&nbsp;“added variable”).</li>
 </ol>
-<p><img src="../..\images/commit.png" class="img-fluid"></p>
+<p><img src="../../images/commit.png" class="img-fluid"></p>
 <ol start="11" type="1">
 <li><p>Push the changes (“Push origin”) (i.e.&nbsp;update your online repository) - press “Push origin” on the upper right.</p></li>
 <li><p>Now go to the “Actions” tab in you online github repository. After a few minutes you’ll see if your submission passed the automatic checks.</p></li>

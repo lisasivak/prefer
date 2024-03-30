@@ -6,9 +6,9 @@ categories:
   - submission
   - guide
 author: 
-  - "Gert Stulp"
   - "Lisa Sivak"
-date: '2024-03-29'
+  - "Gert Stulp"
+date: '2024-03-26'
 toc: true
 image: ../../images/python_submission_basic.png
 image-alt: LISS logo. 
@@ -114,9 +114,9 @@ def train_save_model(cleaned_df, outcome_df):
 
 4. Preprocess the data using your updated `clean_df` function, and then train the model. If you are using Jupyter Notebook, the model is now saved in the same folder as the script - in your local repository. If you are using an environment where the folder where the script is located is not set as the working directory by default, you should manually set the local repository as the working directory.   
 ```{{python}}
-#import os
-#print os.getcwd() <--- this prints the current working directory
-#os.chdir(path to your local repository) #<---- provide the path here
+# import os
+# print os.getcwd() <--- this prints the current working directory
+# os.chdir(path to your local repository) #<---- provide the path here
 
 
 # preprocessing the data

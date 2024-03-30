@@ -2,8 +2,8 @@
   {
     "listing": "/all-content.html",
     "items": [
-      "/posts/posts/2024-03-26-simple-walkthrough-python.html",
       "/posts/posts/2024-03-29-submisson-frequent-errors.html",
+      "/posts/posts/2024-03-26-simple-walkthrough-python.html",
       "/posts/posts/2024-03-25-simple-walkthrough-r.html",
       "/posts/posts/2024-03-24-first-empty-submission.html",
       "/posts/posts/2024-03-23-using-different-dataset.html",
@@ -16,19 +16,19 @@
   {
     "listing": "/index.html",
     "items": [
-      "/details/overview/1research_questions.html",
       "/details/overview/2data.html",
-      "/details/overview/3application.html",
-      "/details/overview/3phases.html",
       "/details/overview/4submission_evaluation_winners.html",
-      "/details/overview/5special_issue.html"
+      "/details/overview/3application.html",
+      "/details/overview/1research_questions.html",
+      "/details/overview/5special_issue.html",
+      "/details/overview/3phases.html"
     ]
   },
   {
     "listing": "/posts/index.html",
     "items": [
-      "/posts/posts/2024-03-26-simple-walkthrough-python.html",
       "/posts/posts/2024-03-29-submisson-frequent-errors.html",
+      "/posts/posts/2024-03-26-simple-walkthrough-python.html",
       "/posts/posts/2024-03-25-simple-walkthrough-r.html",
       "/posts/posts/2024-03-24-first-empty-submission.html",
       "/posts/posts/2024-03-23-using-different-dataset.html",

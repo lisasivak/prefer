@@ -37,7 +37,7 @@ website:
       #  href: "#why-participate"
       - text: "How to participate"
         href: "#how-to-participate"
-      - text: "Preprint"
+      - text: "Paper"
         href: https://arxiv.org/abs/2402.00705
       #- text: "Methodology"
       #  href: "#about-prefer"

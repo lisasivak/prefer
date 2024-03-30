@@ -140,7 +140,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="https://arxiv.org/abs/2402.00705" rel="" target="">
- <span class="menu-text">Preprint</span></a>
+ <span class="menu-text">Paper</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../faq/index.html" rel="" target="">
@@ -241,16 +241,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>Here we describe how you can (maybe) fruitfully combine the different datasets <code>PreFer_train_data.csv</code>, <code>PreFer_train_background_data.csv</code>, and <code>PreFer_train_supplementary_data.csv</code>. (<a href="UPDATETHIS">here</a> you can find a guide on these different datasets)</p>
+<p>Here we describe how you can (maybe) fruitfully combine the different datasets <code>PreFer_train_data.csv</code>, <code>PreFer_train_background_data.csv</code>, and <code>PreFer_train_supplementary_data.csv</code>. (<a href="../../posts/posts/2024-03-20-prefer-datasets.html">here</a> you can find a guide on these different datasets)</p>
 <p>Below it is assumed that you have these datasets in your working directory.</p>
 <section id="reading-in-different-datasets" class="level1">
 <h1>Reading-in different datasets</h1>
 <section id="prefer_train_data.csv" class="level2">
 <h2 class="anchored" data-anchor-id="prefer_train_data.csv">PreFer_train_data.csv</h2>
-<p>The most important dataset of the PreFer data challenge is the <code>PreFer_train_data.csv</code> dataset (<a href="UPDATE THIS">click here</a> for information on the datasets that are available). This contains data on all LISS respondents who were between the ages of 18 and 45 in 2020 (i.e., had birthyears between 1975 and 2002). <a href="UPDATETHIS">Click here</a> for an explanation on how to quickly read-in the data</p>
+<p>The most important dataset of the PreFer data challenge is the <code>PreFer_train_data.csv</code> dataset. This contains data on all LISS respondents who were between the ages of 18 and 45 in 2020 (i.e., had birthyears between 1975 and 2002). <a href="../../posts/posts/2024-03-22-read-data.html">Click here</a> for an explanation on how to quickly read-in the data</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table) <span class="co"># requires install.packages("data.table") first</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">fread</span>(<span class="st">"PreFer_train_data.csv"</span>, </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">fread</span>(<span class="st">"path/to/folder/PreFer_train_data.csv"</span>, </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">keepLeadingZeros =</span> <span class="cn">TRUE</span>, <span class="co"># if FALSE adds zeroes to some dates</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">data.table =</span> <span class="cn">FALSE</span>) <span class="co"># returns a data.frame object rather than data.table </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -259,7 +259,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="prefer_train_background_data.csv">PreFer_train_background_data.csv</h2>
 <p>The <code>PreFer_background_data.csv</code> contains data on particularly variables on a monthly basis for each respondent.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>background <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">fread</span>(<span class="st">"PreFer_train_background_data.csv"</span>, </span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>background <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">fread</span>(<span class="st">"path/to/folder/PreFer_train_background_data.csv"</span>, </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                                <span class="at">keepLeadingZeros =</span> <span class="cn">TRUE</span>, </span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                                <span class="at">data.table =</span> <span class="cn">FALSE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -268,7 +268,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="prefer_train_supplementary_data.csv">PreFer_train_supplementary_data.csv</h2>
 <p>The <code>PreFer_train_supplementary_data.csv</code> contains data on LISS respondents that did not fall in our target group, i.e., had birthyears lower than 1975 or higher than 2002.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>supplement <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">fread</span>(<span class="st">"PreFer_train_supplementary_data.csv"</span>, </span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>supplement <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">fread</span>(<span class="st">"path/to/folder/PreFer_train_supplementary_data.csv"</span>, </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                                <span class="at">keepLeadingZeros =</span> <span class="cn">TRUE</span>, </span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                                <span class="at">data.table =</span> <span class="cn">FALSE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -294,7 +294,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># add income to train data</span></span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">left_join</span>(data, income_3months, <span class="at">by =</span> <span class="st">"nomem_encr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>To make this work 1) don’t forget to add <code>"tidyverse"</code> to <code>packages.R</code></p>
+<p>To make this work don’t forget to add <code>"tidyverse"</code> to <code>packages.R</code>! <a href="LINKTOGITHUBBRANCH">Here</a> you can see that it passes the check.</p>
 </section>
 <section id="using-information-from-the-supplementary-data" class="level2">
 <h2 class="anchored" data-anchor-id="using-information-from-the-supplementary-data">Using information from the supplementary data</h2>
@@ -311,7 +311,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># add respondents from 1974</span></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(data, respondents_1974)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>And then use your usual method to train on the data. This will work because your method will make use of these new cases, but the structure of the dataset has not changed (no new variables were added). If you would create a novel variable on the basis of the supplementary data and use this variable in your model, it would not work on the holdout data, because that variable will not exist in the holdout data.</p>
+<p>And then use your usual method to train on the data. This will work because your method will make use of these new cases, but the structure of the dataset has not changed (no new variables were added). If you would create a novel variable on the basis of the supplementary data and use this variable in your model, it would not work on the holdout data, because that variable will not exist in the holdout data. <a href="LINKTOGITHUBBRANCH">Here</a> you can see that it passes the check.</p>
 
 
 </section>

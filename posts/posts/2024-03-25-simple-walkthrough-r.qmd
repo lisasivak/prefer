@@ -6,8 +6,8 @@ categories:
   - submission
   - guide
 author: 
-  - "Gert Stulp"
   - "Lisa Sivak"
+  - "Gert Stulp"
 date: '2024-03-25'
 toc: true
 image: ../../images/submission_basic_R.png
@@ -16,35 +16,39 @@ language:
     section-title-footnotes: References
 ---
 
-Here we describe how to prepare and make a submission in R    
-
-***
-Disclaimer: The data preprocessing and the model that we will train here are very basic. You should not use it as an example of how to properly train a model (e.g. imputing missing values with a mean is often a bad idea). The sole purpose of this script is to make the submission process more clear.   
+Here we describe how to prepare and make a submission in R. The sole purpose of this script is to make the submission process more clear, not to present a model that is any good.       
 
 ***
 
-In this example, we assume that you did all the prerequisite steps described [here](https://github.com/eyra/fertility-prediction-challenge?tab=readme-ov-file#prerequisites){target="_blank"}. You have forked and cloned (e.g. downloaded) the GitHub repository, and now have a folder with all the files from this repository on your computer. We will call this folder a "local repository".    
+In this example, we assume that you did all the prerequisite steps described [here](https://github.com/eyra/fertility-prediction-challenge?tab=readme-ov-file#prerequisites){target="_blank"}. You have forked and cloned (e.g. downloaded) the GitHub repository, and now have a folder with all the files from this repository on your computer. We will call this folder your "local repository".    
 
-Let's imagine that you want to add one predictor to the basic model that is already in the repository: respondent's gender (variable name "gender_bg", as you found using the codebooks). To produce this model you should use the template functions that are already in the repository:  `clean_df` for preprocessing the data from the "submission.R", `train_save_model` from "training.R" and `predict_outcomes` from "submission.R" (to test your model and preprocessing).   
+Let's imagine that you want to add one predictor to the basic model that is already in the repository: respondents' gender (variable name `gender_bg`, as you found using the [codebooks](2024-03-21-prefer-codebooks.qmd)). To produce this model you should use the template functions that are already in the repository: `clean_df` for preprocessing the data from the "submission.R" script, `train_save_model` from the "training.R" script, and `predict_outcomes` from the "submission.R" script (to test your model and preprocessing).   
 
-__Overall steps__: preprocessing the data —> training and saving the model —> testing on the fake data —> editing "submission.R" and "training.R" accordingly —> add a short description of the method to "description.md" —> submitting.   
+__Overall steps__: reading in the data —> preprocessing the data —> training and saving the model —> testing on the fake data —> editing/saving "submission.R", "training.R", "packages.R" accordingly —> adding a short description of the method to `description.md` —> pushing your materials to the online Github repository -> submitting.   
+
+## Reading-in data    
+
+1. [Read-in](2024-03-22-read-data.qmd) the training data and outcome. __IMPORTANT__: it is strongly advised to save the PreFer datafiles in a *different* folder than your local repository. The reason is that these datasets **cannot** be made public, and when you save the datasets in your local repository you may accidentally upload the datasets to your online repository when you "push" your latest changes. This would constitute a serious data breach.  
+
+```{r, eval = FALSE}
+# loading data (predictors)
+library(data.table) # requires install.packages("data.table") first
+train <- data.table::fread("path to the data which is NOT in your local repository/PreFer_train_data.csv",
+                           keepLeadingZeros = TRUE, # if FALSE adds zeroes to some dates
+                           data.table = FALSE)
+# base R's read.csv is also possible but is ssssllloooowww
+
+# loading the outcome
+outcome <- data.table::fread("path to the data which is NOT in your local repository/PreFer_train_outcome.csv",
+                             data.table = FALSE) 
+```
 
 ## Preprocessing and training   
 
-1. Create a new script in RStudio or other environment for R that you normally use, and save the file in the local repository. Read training data and outcome. __IMPORTANT__: never add the data to the local repository. If you put the data in this folder and then upload all the changes online (i.e. in your online repository on github.com), the data will be made public in your online GitHub repository. 
+2. Find your folder with the PreFer materials, and open the `submission.R` script. Edit the `clean_df` function: add the new variable: 
 
-```{{r}}
-# loading data (predictors)
-train <- read.csv("path to the data which is NOT in your local repository/PreFer_train_data.csv") 
-
-# loading the outcome
-outcome <- read.csv("path to the data which is NOT in your local repository/PreFer_train_outcome.csv") 
-```
-
-2. Copy paste the `clean_df` function from the "submission.R" into this script. Edit the `clean_df` function - add the new variable: 
-
-```{{r}}
-clean_df <- function(df, background_df = NULL){
+```{r, eval = FALSE}
+clean_df <- function(df, background_df = NULL) {
     # Process the input data to feed the model
   
     # calculate age   
@@ -53,7 +57,8 @@ clean_df <- function(df, background_df = NULL){
     # Selecting variables for modelling
 
     keepcols = c('nomem_encr', # ID variable required for predictions,
-               'age', 'gender_bg')  # <-------- ADDED VARIABLE 'gender_bg'
+                 'age', 
+                 'gender_bg')  # <-------- ADDED VARIABLE 'gender_bg'
   
     # Keeping data with variables selected
     df <- df[ , keepcols ]
@@ -65,9 +70,11 @@ clean_df <- function(df, background_df = NULL){
 }
 ```
 
-3. Copy paste the `train_save_model` function from the "training.R" and edit it - add the new variable:
+Now your `clean_df` function is done. Make sure to save it and load it into your R environment.
 
-```{{r}}
+3. Edit the `train_save_model` function from the "training.R": add the new variable:
+
+```{r, eval = FALSE}
 train_save_model <- function(cleaned_df, outcome_df) {
   # Trains a model using the cleaned dataframe and saves the model to a file.
 
@@ -90,26 +97,33 @@ train_save_model <- function(cleaned_df, outcome_df) {
 
 ```
 
-4. Preprocess the data using your updated `clean_df` function, and then train the model. If you are working in the R Markdown or R Notebook document in RStudio, the model is now saved in the same folder as the script - in your local repository. If you are working in a R script, you should manually set the local repository as the working directory.   
-```{{r}}
-#setwd("path to your local repository")#<---- provide the path here
+Now your `train_save_model` function is done. Make sure to save it and load it into your R environment. 
 
+4. Preprocess the data using your updated `clean_df` function, and then train the model via `train_save_model`. If you are working in a R Markdown or R Notebook document in RStudio, or when you have opened an Rproject (recommended!), the model (`model.rds`) will be saved in the same folder as your scripts -- in your local repository. If you are working via an R script, you will probably need to manually set the local repository as the working directory.   
+
+```{R, eval = FALSE}
+# setwd("path to your local repository") # <---- provide the path here
 
 # preprocessing the data
 train_cleaned <- clean_df(train)
 
 # training and saving the model
-train_save_model(train_cleaned, train_outcome)
-
+train_save_model(train_cleaned, outcome)
 ```
 
-5. Test the preprocessing function and model on the fake data to see if they will run on the holdout set. If your method does not run on the "fake data", it will not run on the holdout data. [If you "push" your method to Github this test will also be automatically run].  
+Your model is trained, and saved in `model.rds`. 
 
-To do this test you can copy paste the function `predict_outcomes` from the "submission.R". Load the fake data (it is already in your local repository) and apply the `predict_outcomes`.
+## Testing on fake data
 
-```{{r}}
+5. Test the preprocessing function and model on fake data to see if they will run on the holdout set. If your method does not run on the "fake data", it will not run on the holdout data. [If you "push" your method to Github this test will also be automatically run].  
+
+To do this test you can edit the function `predict_outcomes` from the "submission.R". Load the fake data (it is already in your local repository) and apply the `predict_outcomes`.
+
+```{r, eval = FALSE}
 # load the fake data
-fake <- read.csv("PreFer_fake_data.csv")
+fake <- data.table::fread("PreFer_fake_data.csv",
+                          keepLeadingZeros = TRUE, # if FALSE adds zeroes to some dates
+                          data.table = FALSE)
 
 predict_outcomes <- function(df, background_df = NULL, model_path = "./model.rds"){
   # Generate predictions using the saved model and the input dataframe.
@@ -164,34 +178,35 @@ predict_outcomes <- function(df, background_df = NULL, model_path = "./model.rds
 
 
 # apply the function to the fake data
-pred <- predict_outcomes(fake)
+predict_outcomes(fake)
 ```
 
-If you got prediction, everything worked.  
-![](/images/fake_data_predictions.png)
+If you get a data.frame including predictions, your test on the fake data has passed!  
+![](../..//images/fake_data_predictions.png)
 
-## Prepare files for submission 
+
+## Edit/save files for submission
 
 You can now prepare the files for submission, that will be applied to the holdout set:      
 
-6. "submission.R": edit this script by copypasting your `clean_df` function there. This code will be applied to the holdout data. You don't need to adapt the `predict_outcomes` function in submission.R because the outputs of your model are predicted classes already (i.e., 0s and 1s).   
+6. Edit/Save the `clean_df` function in your "submission.R". This code will be applied to the holdout data. You don't need to adapt the `predict_outcomes` function in "submission.R" because the outputs of your model are predicted classes already (i.e., 0s and 1s).   
 
-7. prediction model: make sure that your model is saved in the same folder as submission.R under the name "model.rds"   
-
+7. prediction model: make sure that your model is saved in the same folder as submission.R under the name `model.rds`.   
 8. "packages.R": you don't have to edit this file now, because you didn't used any packages.  
 
-9. "training.R": copy paste your updated `train_save_model` function into this script.  
+9. Edit/Save the `train_save_model` function in the "training.R" scripts.  
 
-10. "description.md" - add a brief description of your method here (e.g. "binary logistic regression with two variables - age and gender - selected manually")  
+## Adding a description
 
+10. Add a brief description of your method to the file `description.md` (e.g. "binary logistic regression with two variables - age and gender - selected manually")  
 
 ## Update online GitHub repository
 
 Now you need to update your online GitHub repository. You can do it in several ways. Here we assume that you used GitHub Desktop for cloning the repository and will also use it to commit (i.e. capture the state of the local repository at that point in time) and push the changes (e.g. change the online repository):
 
-10. Go to GitHub Desktop and press "Commit to master". You need to add some description (e.g. "added variable").  
+10. Go to GitHub Desktop and press "Commit to master". You need to add some description (e.g. "add gender").  
 
-![](/images/commit.png)
+![](../../images/commit.png)
 
 
 11. Push the changes ("Push origin") (i.e. update your online repository) - press "Push origin" on the upper right.  
@@ -203,7 +218,7 @@ Now you need to update your online GitHub repository. You can do it in several w
 13. Submit your method as explained [here](https://github.com/eyra/fertility-prediction-challenge/tree/master#submit-your-method){target="_blank"}. 
 
 
-__IMPORTANT__: always save the model that you want to submit using the `train_save_model` function and then copy paste it into the "training.R" script. This way ensures reproducibility.  
+__IMPORTANT__: always save the code that you used to produce the model via the `train_save_model` function. Eventhough this function will not be run om the holdout data, we [the PreFer organisers] will use it to ensure reproducibility and verify whether the predictions you submitted are the same as the predictions that arise from your code stored in `train_save_model`.  
 
 
 <font size="-1">Photo by <a href="https://unsplash.com/@ffstop?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Fotis Fotopoulos</a> on <a href="https://unsplash.com/photos/black-computer-keyboard-DuHKoV44prg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></font> | <font size="-1">Photo by <a href="https://unsplash.com/@kelli_mcclintock?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Kelli McClintock</a> on <a href="https://unsplash.com/photos/white-box-on-white-table-GopRYASfsOc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></font>
