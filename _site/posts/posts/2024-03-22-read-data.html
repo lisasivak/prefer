@@ -193,7 +193,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#read_csv" id="toc-read_csv" class="nav-link" data-scroll-target="#read_csv">read_csv</a></li>
   <li><a href="#fread" id="toc-fread" class="nav-link" data-scroll-target="#fread">fread</a></li>
   </ul></li>
-  <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python">Python</a></li>
+  <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python">Python</a>
+  <ul class="collapse">
+  <li><a href="#read_csv-from-pandas-or-pd" id="toc-read_csv-from-pandas-or-pd" class="nav-link" data-scroll-target="#read_csv-from-pandas-or-pd">read_csv from pandas (or pd)</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -257,7 +260,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="read_csv" class="level3">
 <h3 class="anchored" data-anchor-id="read_csv">read_csv</h3>
 <p><code>readr::read_csv</code> from the package <code>readr</code> in principle works, but gets many of the column types wrong with default settings (because, by default, it only bases column types on the first 1000 values present in the variable). Do not run this code <code>data &lt;- readr::read_csv("PreFer_train_data.csv")</code>, but use the following code which explicitly tells <code>read_csv</code> that it must make use of the entire column (i.e., all cases) to make a guess of the column type:</p>
-<p>CHECK THESE NUMBER OF ROWS</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr) <span class="co"># requires install.packages("readr") first</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"path/to/folder/PreFer_train_data.csv"</span>, <span class="at">guess_max =</span> <span class="dv">6418</span>) <span class="co"># this works but is slow</span></span>
@@ -277,9 +279,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="python" class="level2">
 <h2 class="anchored" data-anchor-id="python">Python</h2>
-<p>LISA COULD YOU ADD THIS?</p>
+<section id="read_csv-from-pandas-or-pd" class="level3">
+<h3 class="anchored" data-anchor-id="read_csv-from-pandas-or-pd">read_csv from pandas (or pd)</h3>
+<p><code>pd.read_csv</code> works, but is slow. Specifying <code>low_memory=False</code> is needed. If <code>low_memory=False</code>, then whole columns are read in first, and then the proper data types in the columns are determined. If <code>low_memory=True</code> (default), then pandas reads in the data in chunks of rows, then appends them together. This results in lower memory use while parsing, but incorrect (mixed) type of data in a column, when for example there are many missing values in a column (which are floating point numbers in python) and a few integers.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>train <span class="op">=</span> pd.read_csv(<span class="st">"path to the data which is NOT in your local repository</span><span class="ch">\\</span><span class="st">PreFer_train_data.csv"</span>, low_memory <span class="op">=</span> <span class="va">False</span>) <span class="co"># this works but is slow</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
 </section>
 </section>
 

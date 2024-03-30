@@ -241,7 +241,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 <p>In this example, we assume that you did all the prerequisite steps described <a href="https://github.com/eyra/fertility-prediction-challenge?tab=readme-ov-file#prerequisites" target="_blank">here</a>. You have forked and cloned (e.g.&nbsp;downloaded) the GitHub repository, and now have a folder with all the files from this repository on your computer. We will call this folder your “local repository”.</p>
 <p>Let’s imagine that you want to add one predictor to the basic model that is already in the repository: respondents’ gender (variable name <code>gender_bg</code>, as you found using the <a href="../../posts/posts/2024-03-21-prefer-codebooks.html">codebooks</a>). To produce this model you should use the template functions that are already in the repository: <code>clean_df</code> for preprocessing the data from the “submission.R” script, <code>train_save_model</code> from the “training.R” script, and <code>predict_outcomes</code> from the “submission.R” script (to test your model and preprocessing).</p>
-<p><strong>Overall steps</strong>: reading in the data —&gt; preprocessing the data —&gt; training and saving the model —&gt; testing on the fake data —&gt; editing/saving “submission.R”, “training.R”, “packages.R” accordingly —&gt; adding a short description of the method to <code>description.md</code> —&gt; pushing your materials to the online Github repository -&gt; submitting.</p>
+<p><strong>Overall steps</strong>: reading in the data —&gt; preprocessing the data —&gt; training and saving the model —&gt; testing on the fake data —&gt; editing/saving “submission.R”, “training.R”, “packages.R” accordingly —&gt; adding a short description of the method to “description.md” —&gt; pushing your materials to the online Github repository -&gt; submitting.</p>
 <section id="reading-in-data" class="level2">
 <h2 class="anchored" data-anchor-id="reading-in-data">Reading-in data</h2>
 <ol type="1">
@@ -395,7 +395,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a><span class="fu">predict_outcomes</span>(fake)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If you get a data.frame including predictions, your test on the fake data has passed!<br>
-<img src="../..//images/fake_data_predictions.png" class="img-fluid"></p>
+<img src="../..//images/fake_data_predictions_r.png" class="img-fluid"></p>
 </section>
 <section id="editsave-files-for-submission" class="level2">
 <h2 class="anchored" data-anchor-id="editsave-files-for-submission">Edit/save files for submission</h2>

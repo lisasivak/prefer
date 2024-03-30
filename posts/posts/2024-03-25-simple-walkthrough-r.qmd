@@ -24,7 +24,7 @@ In this example, we assume that you did all the prerequisite steps described [he
 
 Let's imagine that you want to add one predictor to the basic model that is already in the repository: respondents' gender (variable name `gender_bg`, as you found using the [codebooks](2024-03-21-prefer-codebooks.qmd)). To produce this model you should use the template functions that are already in the repository: `clean_df` for preprocessing the data from the "submission.R" script, `train_save_model` from the "training.R" script, and `predict_outcomes` from the "submission.R" script (to test your model and preprocessing).   
 
-__Overall steps__: reading in the data —> preprocessing the data —> training and saving the model —> testing on the fake data —> editing/saving "submission.R", "training.R", "packages.R" accordingly —> adding a short description of the method to `description.md` —> pushing your materials to the online Github repository -> submitting.   
+__Overall steps__: reading in the data —> preprocessing the data —> training and saving the model —> testing on the fake data —> editing/saving "submission.R", "training.R", "packages.R" accordingly —> adding a short description of the method to "description.md" —> pushing your materials to the online Github repository -> submitting.   
 
 ## Reading-in data    
 
@@ -182,7 +182,7 @@ predict_outcomes(fake)
 ```
 
 If you get a data.frame including predictions, your test on the fake data has passed!  
-![](../..//images/fake_data_predictions.png)
+![](../..//images/fake_data_predictions_r.png)
 
 
 ## Edit/save files for submission
