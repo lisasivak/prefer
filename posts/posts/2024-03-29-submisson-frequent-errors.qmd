@@ -64,6 +64,11 @@ This error occurs if you added new variables to the model and updated the "clean
 ![](/images/feature_name_unseen.jpg)
 :::
 
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+### Error in library(some_package_name) : there is no package called ‘some_package_name’
+This error occurs if you are using an (R) package which is not listed in "packages.R" file. Add this package to this file.
+![](/images/no_package.png)
+:::
 
 Photo by <a href="https://unsplash.com/@sigmund?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Sigmund</a> on <a href="https://unsplash.com/photos/person-using-black-laptop-computer-59yRYIHWtzY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
   
