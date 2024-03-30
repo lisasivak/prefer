@@ -3,16 +3,207 @@ title: "A walkthough of submitting a simple model in R"
 description: |
   Here we show the steps for submitting a simple model in `R`  
 categories:
-  - dataset
+  - submission
   - guide
 author: 
   - "Gert Stulp"
   - "Lisa Sivak"
 date: '2024-03-25'
 toc: true
-image: ../../images/liss_pick.png
+image: ../../images/submission_basic_R.png
 image-alt: LISS logo. 
 language: 
     section-title-footnotes: References
 ---
 
+Here we describe how to prepare and make a submission in R    
+
+***
+Disclaimer: The data preprocessing and the model that we will train here are very basic. You should not use it as an example of how to properly train a model (e.g. imputing missing values with a mean is often a bad idea). The sole purpose of this script is to make the submission process more clear.   
+
+***
+
+In this example, we assume that you did all the prerequisite steps described [here](https://github.com/eyra/fertility-prediction-challenge?tab=readme-ov-file#prerequisites){target="_blank"}. You have forked and cloned (e.g. downloaded) the GitHub repository, and now have a folder with all the files from this repository on your computer. We will call this folder a "local repository".    
+
+Let's imagine that you want to add one predictor to the basic model that is already in the repository: respondent's gender (variable name "gender_bg", as you found using the codebooks). To produce this model you should use the template functions that are already in the repository:  `clean_df` for preprocessing the data from the "submission.R", `train_save_model` from "training.R" and `predict_outcomes` from "submission.R" (to test your model and preprocessing).   
+
+__Overall steps__: preprocessing the data —> training and saving the model —> testing on the fake data —> editing "submission.R" and "training.R" accordingly —> add a short description of the method to "description.md" —> submitting.   
+
+## Preprocessing and training   
+
+1. Create a new script in RStudio or other environment for R that you normally use, and save the file in the local repository. Read training data and outcome. __IMPORTANT__: never add the data to the local repository. If you put the data in this folder and then upload all the changes online (i.e. in your online repository on github.com), the data will be made public in your online GitHub repository. 
+
+```{{r}}
+# loading data (predictors)
+train <- read.csv("path to the data which is NOT in your local repository/PreFer_train_data.csv") 
+
+# loading the outcome
+outcome <- read.csv("path to the data which is NOT in your local repository/PreFer_train_outcome.csv") 
+```
+
+2. Copy paste the `clean_df` function from the "submission.R" into this script. Edit the `clean_df` function - add the new variable: 
+
+```{{r}}
+clean_df <- function(df, background_df = NULL){
+    # Process the input data to feed the model
+  
+    # calculate age   
+    df$age <- 2024 - df$birthyear_bg
+
+    # Selecting variables for modelling
+
+    keepcols = c('nomem_encr', # ID variable required for predictions,
+               'age', 'gender_bg')  # <-------- ADDED VARIABLE 'gender_bg'
+  
+    # Keeping data with variables selected
+    df <- df[ , keepcols ]
+    
+    # turning gender into factor
+    df$gender_bg<- as.factor(df$gender_bg) # <-------- ADDED THIS
+
+    return(df)
+}
+```
+
+3. Copy paste the `train_save_model` function from the "training.R" and edit it - add the new variable:
+
+```{{r}}
+train_save_model <- function(cleaned_df, outcome_df) {
+  # Trains a model using the cleaned dataframe and saves the model to a file.
+
+  # Parameters:
+  # cleaned_df (dataframe): The cleaned data from clean_df function to be used for training the model.
+  # outcome_df (dataframe): The data with the outcome variable (e.g., from PreFer_train_outcome.csv or PreFer_fake_outcome.csv).
+
+  ## This script contains a bare minimum working example
+  set.seed(1) # not useful here because logistic regression deterministic
+  
+  # Combine cleaned_df and outcome_df
+  model_df <- merge(cleaned_df, outcome_df, by = "nomem_encr")
+  
+  # Logistic regression model
+  model <- glm(new_child ~ age + gender_bg, family = "binomial", data = model_df) # <-------- ADDED VARIABLE 'gender_bg'
+  
+  # Save the model
+  saveRDS(model, "model.rds")
+}
+
+```
+
+4. Preprocess the data using your updated `clean_df` function, and then train the model. If you are working in the R Markdown or R Notebook document in RStudio, the model is now saved in the same folder as the script - in your local repository. If you are working in a R script, you should manually set the local repository as the working directory.   
+```{{r}}
+#setwd("path to your local repository")#<---- provide the path here
+
+
+# preprocessing the data
+train_cleaned <- clean_df(train)
+
+# training and saving the model
+train_save_model(train_cleaned, train_outcome)
+
+```
+
+5. Test the preprocessing function and model on the fake data to see if they will run on the holdout set. If your method does not run on the "fake data", it will not run on the holdout data. [If you "push" your method to Github this test will also be automatically run].  
+
+To do this test you can copy paste the function `predict_outcomes` from the "submission.R". Load the fake data (it is already in your local repository) and apply the `predict_outcomes`.
+
+```{{r}}
+# load the fake data
+fake <- read.csv("PreFer_fake_data.csv")
+
+predict_outcomes <- function(df, background_df = NULL, model_path = "./model.rds"){
+  # Generate predictions using the saved model and the input dataframe.
+    
+  # The predict_outcomes function accepts a dataframe as an argument
+  # and returns a new dataframe with two columns: nomem_encr and
+  # prediction. The nomem_encr column in the new dataframe replicates the
+  # corresponding column from the input dataframe The prediction
+  # column contains predictions for each corresponding nomem_encr. Each
+  # prediction is represented as a binary value: '0' indicates that the
+  # individual did not have a child during 2021-2023, while '1' implies that
+  # they did.
+  
+  # Parameters:
+  # df (dataframe): The data dataframe for which predictions are to be made.
+  # background_df (dataframe): The background data dataframe for which predictions are to be made.
+  # model_path (str): The path to the saved model file (which is the output of training.R).
+
+  # Returns:
+  # dataframe: A dataframe containing the identifiers and their corresponding predictions.
+  
+  ## This script contains a bare minimum working example
+  if( !("nomem_encr" %in% colnames(df)) ) {
+    warning("The identifier variable 'nomem_encr' should be in the dataset")
+  }
+
+  # Load the model
+  model <- readRDS(model_path)
+    
+  # Preprocess the fake / holdout data
+  df <- clean_df(df, background_df)
+
+  # Exclude the variable nomem_encr if this variable is NOT in your model
+  vars_without_id <- colnames(df)[colnames(df) != "nomem_encr"]
+  
+  # Generate predictions from model
+  predictions <- predict(model, 
+                         subset(df, select = vars_without_id), 
+                         type = "response") 
+  
+  # Create predictions that should be 0s and 1s rather than, e.g., probabilities
+  predictions <- ifelse(predictions > 0.5, 1, 0)  
+  
+  # Output file should be data.frame with two columns, nomem_encr and predictions
+  df_predict <- data.frame("nomem_encr" = df[ , "nomem_encr" ], "prediction" = predictions)
+  # Force columnnames (overrides names that may be given by `predict`)
+  names(df_predict) <- c("nomem_encr", "prediction") 
+  
+  # Return only dataset with predictions and identifier
+  return( df_predict )
+}
+
+
+# apply the function to the fake data
+pred <- predict_outcomes(fake)
+```
+
+If you got prediction, everything worked.  
+![](/images/fake_data_predictions.png)
+
+## Prepare files for submission 
+
+You can now prepare the files for submission, that will be applied to the holdout set:      
+
+6. "submission.R": edit this script by copypasting your `clean_df` function there. This code will be applied to the holdout data. You don't need to adapt the `predict_outcomes` function in submission.R because the outputs of your model are predicted classes already (i.e., 0s and 1s).   
+
+7. prediction model: make sure that your model is saved in the same folder as submission.R under the name "model.rds"   
+
+8. "packages.R": you don't have to edit this file now, because you didn't used any packages.  
+
+9. "training.R": copy paste your updated `train_save_model` function into this script.  
+
+10. "description.md" - add a brief description of your method here (e.g. "binary logistic regression with two variables - age and gender - selected manually")  
+
+
+## Update online GitHub repository
+
+Now you need to update your online GitHub repository. You can do it in several ways. Here we assume that you used GitHub Desktop for cloning the repository and will also use it to commit (i.e. capture the state of the local repository at that point in time) and push the changes (e.g. change the online repository):
+
+10. Go to GitHub Desktop and press "Commit to master". You need to add some description (e.g. "added variable").  
+
+![](/images/commit.png)
+
+
+11. Push the changes ("Push origin") (i.e. update your online repository) - press "Push origin" on the upper right.  
+
+12. Now go to the "Actions" tab in you online github repository. After a few minutes you'll see if your submission passed the automatic checks.  
+
+## Submit your method 
+
+13. Submit your method as explained [here](https://github.com/eyra/fertility-prediction-challenge/tree/master#submit-your-method){target="_blank"}. 
+
+
+__IMPORTANT__: always save the model that you want to submit using the `train_save_model` function and then copy paste it into the "training.R" script. This way ensures reproducibility.  
+
+
+<font size="-1">Photo by <a href="https://unsplash.com/@ffstop?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Fotis Fotopoulos</a> on <a href="https://unsplash.com/photos/black-computer-keyboard-DuHKoV44prg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></font> | <font size="-1">Photo by <a href="https://unsplash.com/@kelli_mcclintock?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Kelli McClintock</a> on <a href="https://unsplash.com/photos/white-box-on-white-table-GopRYASfsOc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></font>

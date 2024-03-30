@@ -103,7 +103,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../rwds.css">
 <meta property="og:title" content="A walkthough of submitting a simple model in python">
 <meta property="og:description" content="Here we show the steps for submitting a simple model in python">
-<meta property="og:image" content="https://preferdatachallenge.nl/images/python_submission.jpg">
+<meta property="og:image" content="https://preferdatachallenge.nl/images/python_submission_basic.png">
+<meta property="og:image:height" content="720">
+<meta property="og:image:width" content="1280">
 <meta property="og:image:alt" content="LISS logo.">
 </head>
 
@@ -197,7 +199,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title">
 <h1 class="title">A walkthough of submitting a simple model in python</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">dataset</div>
+    <div class="quarto-category">submission</div>
     <div class="quarto-category">guide</div>
   </div>
   </div>
@@ -235,15 +237,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Here we describe how to prepare and make a submission in Python.</p>
 <hr>
 <p>Disclaimer: The data preprocessing and the model that we will train here are very basic. You should not use it as an example of how to properly train a model (e.g.&nbsp;imputing missing values with a mean is often a bad idea). The sole purpose of this script is to make the submission process more clear.</p>
-<p>In this example, we assume that you are using <a href="https://docs.github.com/en/desktop">GitHub Desktop</a>, which is a very convenient tool for updating your GitHub repository. <a href="https://github.com/eyra/fertility-prediction-challenge/wiki">Here</a> you can find useful links on how to use GitHub Desktop for cloning your repository and for updating the files in it.</p>
-<p>We also assume that you did all the prerequisite steps described <a href="https://github.com/eyra/fertility-prediction-challenge?tab=readme-ov-file#prerequisites" target="_blank">here</a>.</p>
 <hr>
-<p>Let’s imagine that you want to add one predictor to the model that is already in the repository: respondent’s gender (variable name “gender_bg”, as you found using the codebooks). To produce this model you should use the template functions that are already in the repository: <code>clean_df</code> for preprocessing the data from the “submission.py”, <code>train_save_model</code> from “training.py” and <code>predict_outcomes</code> from “submission.py” (to test your model and preprocessing).</p>
-<p><strong>Overall steps</strong>: preprocessing the data —&gt; training and saving the model —&gt; testing on the fake data —&gt; editing “submission.py” and “training.py” accordingly —&gt; submitting.</p>
+<p>In this example, we assume that you did all the prerequisite steps described <a href="https://github.com/eyra/fertility-prediction-challenge?tab=readme-ov-file#prerequisites" target="_blank">here</a>. You have forked and cloned (e.g.&nbsp;downloaded) the GitHub repository, and now have a folder with all the files from this repository on your computer. We will call this folder a “local repository”.</p>
+<p>Let’s imagine that you want to add one predictor to the basic model that is already in the repository: respondent’s gender (variable name “gender_bg”, as you found using the codebooks). To produce this model you should use the template functions that are already in the repository: <code>clean_df</code> for preprocessing the data from the “submission.py”, <code>train_save_model</code> from “training.py” and <code>predict_outcomes</code> from “submission.py” (to test your model and preprocessing).</p>
+<p><strong>Overall steps</strong>: preprocessing the data —&gt; training and saving the model —&gt; testing on the fake data —&gt; editing “submission.py” and “training.py” accordingly —&gt; add a short description of the method to “description.md” —&gt; submitting.</p>
 <section id="preprocessing-and-training" class="level2">
 <h2 class="anchored" data-anchor-id="preprocessing-and-training">Preprocessing and training</h2>
 <ol type="1">
-<li>Create a new script in the environment for Python that you normally use, and save the file in the folder with your cloned GitHub repository. Import necessary packages and read training data and outcome. <strong>IMPORTANT</strong>: do not add the data to the folder on your computer with your cloned repository. If you put the data in this folder and then upload all the changes online, the data will be made public in your online GitHub repository.</li>
+<li>Create a new script in the environment for Python that you normally use, and save the file in the local repository. Import necessary packages and read training data and outcome. <strong>IMPORTANT</strong>: never add the data to the local repository. If you put the data in this folder and then upload all the changes online (i.e.&nbsp;in your online repository on github.com), the data will be made public in your online GitHub repository.</li>
 </ol>
 <div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -251,9 +252,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> joblib</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># loading data (predictors)</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>train <span class="op">=</span> pd.read_csv(<span class="st">"path to the data which is NOT your cloned repository</span><span class="ch">\\</span><span class="st">PreFer_train_data.csv"</span>, low_memory <span class="op">=</span> <span class="va">False</span>) </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>train <span class="op">=</span> pd.read_csv(<span class="st">"path to the data which is NOT in your local repository</span><span class="ch">\\</span><span class="st">PreFer_train_data.csv"</span>, low_memory <span class="op">=</span> <span class="va">False</span>) </span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># loading the outcome</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>outcome <span class="op">=</span> pd.read_csv(<span class="st">"path to the data which is NOT your cloned repository</span><span class="ch">\\</span><span class="st">PreFer_train_outcome.csv"</span>) </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>outcome <span class="op">=</span> pd.read_csv(<span class="st">"path to the data which is NOT in your local repository</span><span class="ch">\\</span><span class="st">PreFer_train_outcome.csv"</span>) </span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="2" type="1">
 <li>Copy paste the <code>clean_df</code> function from the “submission.py” into this script. Edit the <code>clean_df</code> function - add the new variable:</li>
@@ -324,19 +325,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="4" type="1">
-<li>Preprocess the data using your updated <code>clean_df</code> function, and then train the model. Now the model is saved in the same folder.</li>
+<li>Preprocess the data using your updated <code>clean_df</code> function, and then train the model. If you are using Jupyter Notebook, the model is now saved in the same folder as the script - in your local repository. If you are using an environment where the folder where the script is located is not set as the working directory by default, you should manually set the local repository as the working directory.<br>
+</li>
 </ol>
 <div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># preprocessing the data</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>train_cleaned <span class="op">=</span> clean_df(train)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># training and saving the model</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>train_save_model(train_cleaned, outcome)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#import os</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#print os.getcwd() &lt;--- this prints the current working directory</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#os.chdir(path to your local repository) #&lt;---- provide the path here</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># preprocessing the data</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>train_cleaned <span class="op">=</span> clean_df(train)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># training and saving the model</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>train_save_model(train_cleaned, outcome)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="5" type="1">
 <li>Test the preprocessing function and model on the fake data to see if they will run on the holdout set. If your method does not run on the “fake data”, it will not run on the holdout data. [If you “push” your method to Github this test will also be automatically run].</li>
 </ol>
-<p>To do this test you can copy paste the function <code>predict_outcomes</code> from the “submission.py”. Load the fake data (it is already in your local repository folder) and apply the <code>predict_outcomes</code>.</p>
+<p>To do this test you can copy paste the function <code>predict_outcomes</code> from the “submission.py”. Load the fake data (it is already in your local repository) and apply the <code>predict_outcomes</code>.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># load the data</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>fake <span class="op">=</span> pd.read_csv(<span class="st">"PreFer_fake_data.csv"</span>) </span>
@@ -396,17 +403,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="prepare-files-for-submission">Prepare files for submission</h2>
 <p>You can now prepare the files for submission, that will be applied to the holdout set:</p>
 <ol start="6" type="1">
-<li><p>“submission.py”: edit this script by copypasting your clean_df function there. This code will be applied to the holdout data. You don’t need to adapt the <code>predict_outcomes</code> function in submission.py because the outputs of your model are predicted classes already (i.e., 0s and 1s), and not, for example, probabilities.</p></li>
-<li><p>prediction model: make sure that your model is saved in the same folder as submission.py under the name model.joblib</p></li>
-<li><p>“environment.yml”: you don’t have to edit this file now, because you used only the packages that are already there.</p></li>
-<li><p>“training.py”: copy paste your updated <code>train_save_model</code> function and the packages needed for this function to run to this script.</p></li>
+<li><p>“submission.py”: edit this script by copypasting your <code>clean_df</code> function there. This code will be applied to the holdout data. You don’t need to adapt the <code>predict_outcomes</code> function in submission.py because the outputs of your model are predicted classes already (i.e., 0s and 1s), and not, for example, probabilities.</p></li>
+<li><p>prediction model: make sure that your model is saved in the same folder as submission.py under the name “model.joblib”</p></li>
+<li><p>“environment.yml”: you don’t have to edit this file now, because you used only the packages that are already in this file.</p></li>
+<li><p>“training.py”: copy paste your updated <code>train_save_model</code> function and the packages needed for this function to run into this script.</p></li>
+<li><p>“description.md” - add a brief description of your method here (e.g.&nbsp;“binary logistic regression with two variables - age and gender - selected manually”)</p></li>
 </ol>
 </section>
 <section id="update-online-github-repository" class="level2">
 <h2 class="anchored" data-anchor-id="update-online-github-repository">Update online GitHub repository</h2>
-<p>Now you need to update your online github repository:</p>
+<p>Now you need to update your online GitHub repository. You can do it in several ways. Here we assume that you used GitHub Desktop for cloning the repository and will also use it to commit (i.e.&nbsp;capture the state of the local repository at that point in time) and push the changes (e.g.&nbsp;change the online repository):</p>
 <ol start="10" type="1">
-<li>Go to GitHub Desktop and save changes (i.e.&nbsp;commit).</li>
+<li>Go to GitHub Desktop and press “Commit to master”. You need to add some description (e.g.&nbsp;“added variable”).</li>
 </ol>
 <p><img src="../..\images/commit.png" class="img-fluid"></p>
 <ol start="11" type="1">
@@ -420,6 +428,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Submit your method as explained <a href="https://github.com/eyra/fertility-prediction-challenge/tree/master#submit-your-method" target="_blank">here</a>.</li>
 </ol>
 <p><strong>IMPORTANT</strong>: always save the model that you want to submit using the <code>train_save_model</code> function and then copy paste it into the “training.py” script. This way ensures reproducibility.</p>
+<p><font size="-1">Photo by <a href="https://unsplash.com/@ffstop?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">Fotis Fotopoulos</a> on <a href="https://unsplash.com/photos/black-computer-keyboard-DuHKoV44prg?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">Unsplash</a></font> | <font size="-1">Photo by <a href="https://unsplash.com/@kelli_mcclintock?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">Kelli McClintock</a> on <a href="https://unsplash.com/photos/white-box-on-white-table-GopRYASfsOc?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">Unsplash</a></font></p>
 
 
 </section>

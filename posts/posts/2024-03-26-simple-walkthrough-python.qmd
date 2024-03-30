@@ -10,7 +10,7 @@ author:
   - "Lisa Sivak"
 date: '2024-03-29'
 toc: true
-image: ../../images/python_submission.jpg
+image: ../../images/python_submission_basic.png
 image-alt: LISS logo. 
 language: 
     section-title-footnotes: References
@@ -27,7 +27,7 @@ In this example, we assume that you did all the prerequisite steps described [he
 
 Let's imagine that you want to add one predictor to the basic model that is already in the repository: respondent's gender (variable name "gender_bg", as you found using the codebooks). To produce this model you should use the template functions that are already in the repository:  `clean_df` for preprocessing the data from the "submission.py", `train_save_model` from "training.py" and `predict_outcomes` from "submission.py" (to test your model and preprocessing).   
 
-__Overall steps__: preprocessing the data —> training and saving the model —> testing on the fake data —> editing "submission.py" and "training.py" accordingly —> submitting.   
+__Overall steps__: preprocessing the data —> training and saving the model —> testing on the fake data —> editing "submission.py" and "training.py" accordingly —> add a short description of the method to "description.md" —> submitting.   
 
 ## Preprocessing and training   
 
@@ -190,18 +190,20 @@ If you see the predictions, not errors, everything worked.
 
 You can now prepare the files for submission, that will be applied to the holdout set:      
 
-6. "submission.py": edit this script by copypasting your clean_df function there. This code will be applied to the holdout data. You don't need to adapt the `predict_outcomes` function in submission.py because the outputs of your model are predicted classes already (i.e., 0s and 1s), and not, for example, probabilities.   
+6. "submission.py": edit this script by copypasting your `clean_df` function there. This code will be applied to the holdout data. You don't need to adapt the `predict_outcomes` function in submission.py because the outputs of your model are predicted classes already (i.e., 0s and 1s), and not, for example, probabilities.   
 
-7. prediction model: make sure that your model is saved in the same folder as submission.py under the name model.joblib  
+7. prediction model: make sure that your model is saved in the same folder as submission.py under the name "model.joblib"  
 
 8. "environment.yml": you don't have to edit this file now, because you used only the packages that are already in this file.  
 
 9. "training.py": copy paste your updated `train_save_model` function and the packages needed for this function to run into this script.  
 
+10. "description.md" - add a brief description of your method here (e.g. "binary logistic regression with two variables - age and gender - selected manually")  
+
 
 ## Update online GitHub repository
 
-Now you need to update your online GitHub repository. You can do it in several ways. Here we assume that you used GitHub Desktop for cloning the repository and will also use it to commit (i.e. capture the state of the local repository at that point in time) and push the changes (e.g. change the online repository accordingly):
+Now you need to update your online GitHub repository. You can do it in several ways. Here we assume that you used GitHub Desktop for cloning the repository and will also use it to commit (i.e. capture the state of the local repository at that point in time) and push the changes (e.g. change the online repository):
 
 10. Go to GitHub Desktop and press "Commit to master". You need to add some description (e.g. "added variable").  
 
@@ -218,3 +220,8 @@ Now you need to update your online GitHub repository. You can do it in several w
 
 
 __IMPORTANT__: always save the model that you want to submit using the `train_save_model` function and then copy paste it into the "training.py" script. This way ensures reproducibility.  
+
+
+  
+  
+<font size="-1">Photo by <a href="https://unsplash.com/@ffstop?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Fotis Fotopoulos</a> on <a href="https://unsplash.com/photos/black-computer-keyboard-DuHKoV44prg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></font> | <font size="-1">Photo by <a href="https://unsplash.com/@kelli_mcclintock?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Kelli McClintock</a> on <a href="https://unsplash.com/photos/white-box-on-white-table-GopRYASfsOc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></font>
