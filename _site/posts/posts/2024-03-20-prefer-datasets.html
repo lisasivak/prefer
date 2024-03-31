@@ -224,8 +224,8 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Here we describe the different datasets that are available in the PreFer data challenge that are all based on the <a href="https://www.lissdata.nl/">LISS panel</a>. There are five datasets available to PreFer participants: 1) <code>PreFer_train_data.csv</code>, 2) <code>PreFer_train_outcome</code>, 3) <code>PreFer_train_background_data.csv</code>, 4) <code>PreFer_train_supplementary_data.csv</code>, and 5) <code>PreFer_train_supplementary_outcome.csv</code>. The three datasets <code>PreFer_holdout_data.csv</code>, <code>PreFer_holdout_outcome</code>, and <code>PreFer_holdout_background_data.csv</code> will only be available to PreFer organisers. There are also three datasets of fake data, available for participants, that are mostly in place for testing whether your submission will be able to run on the holdout data (<code>PreFer_fake_data.csv</code>, <code>PreFer_fake_outcome</code>, and <code>PreFer_fake_background_data.csv</code>). This all sounds overwhelming, so let’s quickly get to explaining them.</p>
-<p>To navigate these datasets and get a better understanding of the many variables, there are also machine-readable (and human readable) codebooks available: <a href="../../posts/posts/2024-03-21-prefer-codebooks.html">click here</a> for a guide on how to use the codebooks.</p>
+<p>Here we describe the different datasets that are available in the PreFer data challenge that are all based on the <a href="https://www.lissdata.nl/">LISS panel</a>. There are five datasets available to PreFer participants: 1) <code>PreFer_train_data.csv</code>, 2) <code>PreFer_train_outcome.csv</code>, 3) <code>PreFer_train_background_data.csv</code>, 4) <code>PreFer_train_supplementary_data.csv</code>, and 5) <code>PreFer_train_supplementary_outcome.csv</code>. The three datasets <code>PreFer_holdout_data.csv</code>, <code>PreFer_holdout_outcome.csv</code>, and <code>PreFer_holdout_background_data.csv</code> will only be available to PreFer organisers. There are also three datasets of fake data, available for participants, that are mostly in place for testing whether your submission will be able to run on the holdout data (<code>PreFer_fake_data.csv</code>, <code>PreFer_fake_outcome.csv</code>, and <code>PreFer_fake_background_data.csv</code>). This all sounds overwhelming, so let’s quickly get to explaining them.</p>
+<p>To navigate these datasets and get a better understanding of the many variables, there are also machine-readable (and human readable) codebooks available: <a href="../../posts/posts/2024-03-21-prefer-codebooks.html" target="_blank">click here</a> for a guide on how to use the codebooks.</p>
 <section id="core-surveys-and-background-surveys" class="level1">
 <h1>Core surveys and background surveys</h1>
 <p>Broadly speaking, the LISS panel contains two types of datasets: 1) Core surveys: yearly surveys on topics like health, wealth, and personal values.</p>
@@ -257,7 +257,7 @@ ul.task-list li input[type="checkbox"] {
 <li><em>09</em> refers to the year of this questionnaire. <em>09</em> means 2009. Some Core study modules are fielded each year, some (Assets) once in two years.</li>
 <li><em>b</em> refers to the wave number (in this case, Wave 2). Keep in mind, that because some modules are fielded every year, and some every other year, the same letters do not mean that these surveys were conducted in the same year (e.g.&nbsp;Wave 2 of Family and Household module <em>cf09b</em> was conducted in 2009 whereas the second Wave of the Assets core study module <em>ca10b</em> was conducted in 2010).</li>
 </ul>
-<p><a href="(2024-03-21-prefer-codebooks.qmd)">The codebooks</a> are particularly useful in navigating the merged Core survey dataset. The datasets <code>PreFer_train_data.csv</code>, <code>PreFer_train_supplement.csv</code>, and <code>PreFer_holdout_data.csv</code> all come from this merged Core survey dataset.</p>
+<p><a href="../../posts/posts/2024-03-21-prefer-codebooks.html" target="_blank">The codebooks</a> are particularly useful in navigating the merged Core survey dataset. The datasets <code>PreFer_train_data.csv</code>, <code>PreFer_train_supplement.csv</code>, and <code>PreFer_holdout_data.csv</code> all come from this merged Core survey dataset.</p>
 </section>
 </section>
 <section id="background" class="level2">
@@ -340,8 +340,8 @@ ul.task-list li input[type="checkbox"] {
 <p>The <code>PreFer_train_data.csv</code> consists of 31634 variables from 6418 respondents. These individuals are LISS respondents who were born between 1975 and 2002 (meaning they were between 18 and 45 years old in 2020). These variables are a combination of all Core study modules (see above) and selected yearly background variables.</p>
 <p>Particularly important variables are:</p>
 <ol type="1">
-<li><p><code>nomem_encr</code>: this is the unique identifier and can be used to link the train data to the other datasets (<code>PreFer_train_background.csv</code>, <code>PreFer_train_supplement.csv</code>, and <code>PreFer_train_outcome</code>). Note that this identifier is a pseudonym of the original <code>nomem_encr</code> identifier in the LISS data.</p></li>
-<li><p><code>new_child</code>: this is the outcome variable; whether people had a child between 2021 and 2023. <a href="UPDATE">Here</a> you can find detailed information on how this outcome was constructed. This dataset also included people for whom this outcome is not known.</p></li>
+<li><p><code>nomem_encr</code>: this is the unique identifier and can be used to link the train data to the other datasets (<code>PreFer_train_background.csv</code>, <code>PreFer_train_supplement.csv</code>, and <code>PreFer_train_outcome.csv</code>). Note that this identifier is a pseudonym of the original <code>nomem_encr</code> identifier in the LISS data.</p></li>
+<li><p><code>new_child</code>: this is the outcome variable; whether people had a child between 2021 and 2023. <a href="stay tuned, will appear soon">Here</a> you can find detailed information on how this outcome was constructed. This dataset also included people for whom this outcome is not known.</p></li>
 </ol>
 <p>Less important, but useful to know:</p>
 <ol start="3" type="1">
@@ -353,7 +353,8 @@ ul.task-list li input[type="checkbox"] {
 <p>The background variables can be found in a separate dataset (see <code>PreFer_train_background.csv</code>), but we have chosen to include some of the information from the background variables to the Core surveys. Specifically, we have added information from variables that either vary considerably across time or that are useful as fixed variables. Remember that the background variables contain information on a monthly basis; we chose to add 14 yearly variables (for each of the years 2007 up to and including 2020) for a select number of varying background variables.</p>
 <section id="fixed-background-variables" class="level3">
 <h3 class="anchored" data-anchor-id="fixed-background-variables">Fixed background variables</h3>
-<p>We included the following fixed variables from the background variables: 1. <code>birthyear_bg</code> (birthyear of respondent; which we created and cleaned)</p>
+<p>We included the following fixed variables from the background variables:<br>
+1. <code>birthyear_bg</code> (birthyear of respondent; which we created and cleaned)</p>
 <ol start="2" type="1">
 <li><p><code>gender_bg</code> (gender of respondent; which we created and cleaned)</p></li>
 <li><p><code>migration_background_bg</code> (migration background of the respondent; which we created and cleaned)</p></li>
@@ -405,7 +406,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="prefer_fake_data.csv" class="level2">
 <h2 class="anchored" data-anchor-id="prefer_fake_data.csv">6. PreFer_fake_data.csv</h2>
-<p>This dataset contains the same variables as <code>PreFer_train_data.csv</code>, but it includes fake data with 30 randomly dawn values from each variable in the train data. This dataset is used for testing whether the developed preprocessing scripts and trained models work. A failed test on this data likely means a failed submission on the holdout data.</p>
+<p>This dataset contains the same variables as <code>PreFer_train_data.csv</code>, but it includes fake data with 30 randomly drawn values from each variable in the train and holdout data. This dataset is used for testing whether the developed preprocessing scripts and trained models work. A failed test on this data likely means a failed submission on the holdout data.</p>
 </section>
 <section id="prefer_fake_outcome.csv" class="level2">
 <h2 class="anchored" data-anchor-id="prefer_fake_outcome.csv">7. PreFer_fake_outcome.csv</h2>
@@ -413,7 +414,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="prefer_fake_background_data.csv" class="level2">
 <h2 class="anchored" data-anchor-id="prefer_fake_background_data.csv">8. PreFer_fake_background_data.csv</h2>
-<p>This dataset contains the same variables as <code>PreFer_train_background_data.csv</code>, but it includes fake data with randomly dawn values from each variable in the background data. This dataset is used for testing whether the developed preprocessing scripts and trained models work when the original analyses included <code>PreFer_train_background_data.csv</code>. A failed test using this data likely means a failed submission on the holdout data.</p>
+<p>This dataset contains the same variables as <code>PreFer_train_background_data.csv</code>, but it includes fake data with randomly drawn values from each variable in the background data. This dataset is used for testing whether the developed preprocessing scripts and trained models work when the original analyses included <code>PreFer_train_background_data.csv</code>. A failed test using this data likely means a failed submission on the holdout data.</p>
 </section>
 <section id="prefer_holdout_data.csv" class="level2">
 <h2 class="anchored" data-anchor-id="prefer_holdout_data.csv">9. PreFer_holdout_data.csv</h2>
@@ -428,57 +429,6 @@ ul.task-list li input[type="checkbox"] {
 <section id="prefer_holdout_background_data.csv" class="level1">
 <h1>11. PreFer_holdout_background_data.csv</h1>
 <p>The holdout background data, only available to PreFer organisers. This dataset contains the same variables as <code>PreFer_train_background_data.csv</code> and contains information on 33 variables on 963 respondents from 336 households.</p>
-<ol start="6" type="1">
-<li></li>
-</ol>
-<p>This is a fake dataset that is used for testing whether the method submitted will run on the holdout data.</p>
-<ol start="7" type="1">
-<li></li>
-</ol>
-<p>This ZIP-file contains the following documents:</p>
-<p>*** In the folder “training_data” ***</p>
-<ol type="1">
-<li>PreFer_train_data.csv</li>
-</ol>
-<p>This is the main training data for data challenge participants. It includes respondents born between 1975 and 2002.</p>
-<ol start="2" type="1">
-<li>PreFer_train_outcome.csv</li>
-</ol>
-<p>This is the outcome [who had a(nother) child in 2021-2023] for respondents in the training data (PreFer_train_data.csv).</p>
-<p>*** In the folder “other_data” ***</p>
-<ol start="3" type="1">
-<li>PreFer_train_background_data.csv</li>
-</ol>
-<p>This is the dataset with background variables that can be used to augment the PreFer_train_data.csv.</p>
-<ol start="4" type="1">
-<li>PreFer_train_supplementary_data.csv</li>
-</ol>
-<p>This is the dataset with information on respondents that are <em>not</em> included in PreFer_train_data.csv, but that can be used to augment the PreFer_train_data.csv. It includes respondents born prior to 1975 and after 2002.</p>
-<ol start="5" type="1">
-<li>PreFer_train_supplementary_outcome.csv</li>
-</ol>
-<p>This is the outcome [who had a(nother) child in 2021-2023] for respondents in the supplementary data (PreFer_train_data.csv).</p>
-<ol start="6" type="1">
-<li>PreFer_fake_data.csv</li>
-</ol>
-<p>This is a fake dataset that is used for testing whether the method submitted will run on the holdout data.</p>
-<ol start="7" type="1">
-<li>PreFer_fake_background_data.csv</li>
-</ol>
-<p>This is a fake dataset that is used for testing whether the method submitted will run on the holdout data.</p>
-<ol start="8" type="1">
-<li>PreFer_fake_outcome.csv</li>
-</ol>
-<p>This is a fake dataset that is used for testing whether the method submitted will run on the holdout data.</p>
-<p>*** In the folder “codebooks” ***</p>
-<ol start="9" type="1">
-<li>PreFer_codebook.csv</li>
-</ol>
-<p>This provides a machine-readable codebook for <em>all</em> variables in the dataset(s).</p>
-<ol start="10" type="1">
-<li>PreFer_codebook_summary.csv</li>
-</ol>
-<p>This provides a machine-readable summary codebook that is useful for tracking the consistency of the measurement of variables across waves.</p>
 
 
 </section>

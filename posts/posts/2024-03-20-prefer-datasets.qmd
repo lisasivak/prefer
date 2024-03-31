@@ -17,13 +17,13 @@ language:
     section-title-footnotes: References
 ---
 
-Here we describe the different datasets that are available in the PreFer data challenge that are all based on the [LISS panel](https://www.lissdata.nl/). There are five datasets available to PreFer participants: 1) `PreFer_train_data.csv`, 2) `PreFer_train_outcome`, 3) `PreFer_train_background_data.csv`, 4) `PreFer_train_supplementary_data.csv`, and 5) `PreFer_train_supplementary_outcome.csv`. The three datasets `PreFer_holdout_data.csv`, `PreFer_holdout_outcome`, and `PreFer_holdout_background_data.csv` will only be available to PreFer organisers. There are also three datasets of fake data, available for participants, that are mostly in place for testing whether your submission will be able to run on the holdout data (`PreFer_fake_data.csv`, `PreFer_fake_outcome`, and `PreFer_fake_background_data.csv`). This all sounds overwhelming, so let's quickly get to explaining them. 
+Here we describe the different datasets that are available in the PreFer data challenge that are all based on the [LISS panel](https://www.lissdata.nl/). There are five datasets available to PreFer participants: 1) `PreFer_train_data.csv`, 2) `PreFer_train_outcome.csv`, 3) `PreFer_train_background_data.csv`, 4) `PreFer_train_supplementary_data.csv`, and 5) `PreFer_train_supplementary_outcome.csv`. The three datasets `PreFer_holdout_data.csv`, `PreFer_holdout_outcome.csv`, and `PreFer_holdout_background_data.csv` will only be available to PreFer organisers. There are also three datasets of fake data, available for participants, that are mostly in place for testing whether your submission will be able to run on the holdout data (`PreFer_fake_data.csv`, `PreFer_fake_outcome.csv`, and `PreFer_fake_background_data.csv`). This all sounds overwhelming, so let's quickly get to explaining them. 
 
-To navigate these datasets and get a better understanding of the many variables, there are also machine-readable (and human readable) codebooks available: [click here](2024-03-21-prefer-codebooks.qmd) for a guide on how to use the codebooks.
+To navigate these datasets and get a better understanding of the many variables, there are also machine-readable (and human readable) codebooks available: [click here](2024-03-21-prefer-codebooks.qmd){target="_blank"} for a guide on how to use the codebooks.
 
 # Core surveys and background surveys
 Broadly speaking, the LISS panel contains two types of datasets: 
-1) Core surveys: yearly surveys on topics like health, wealth, and personal values. 
+1) Core surveys: yearly surveys on topics like health, wealth, and personal values.   
 
 2) Background surveys: particular demographic characteristics of households and the individuals in these households (e.g., age, gender, education, income). 
 
@@ -61,7 +61,7 @@ All the variable names in LISS contain information that can help navigate the da
 - *09* refers to the year of this questionnaire. *09* means 2009. Some Core study modules are fielded each year, some (Assets) once in two years. 
 - *b* refers to the wave number (in this case, Wave 2). Keep in mind, that because some modules are fielded every year, and some every other year, the same letters do not mean that these surveys were conducted in the same year (e.g. Wave 2 of Family and Household module *cf09b* was conducted in 2009 whereas the second Wave of the Assets core study module *ca10b* was conducted in 2010).
 
-[The codebooks]((2024-03-21-prefer-codebooks.qmd)) are particularly useful in navigating the merged Core survey dataset. The datasets `PreFer_train_data.csv`, `PreFer_train_supplement.csv`, and `PreFer_holdout_data.csv` all come from this merged Core survey dataset. 
+[The codebooks](2024-03-21-prefer-codebooks.qmd){target="_blank"} are particularly useful in navigating the merged Core survey dataset. The datasets `PreFer_train_data.csv`, `PreFer_train_supplement.csv`, and `PreFer_holdout_data.csv` all come from this merged Core survey dataset. 
 
 ## Background variables {#background}
 
@@ -110,9 +110,9 @@ The `PreFer_train_data.csv` consists of 31634 variables from 6418 respondents. T
 
 Particularly important variables are:
 
-1. `nomem_encr`: this is the unique identifier and can be used to link the train data to the other datasets (`PreFer_train_background.csv`, `PreFer_train_supplement.csv`, and `PreFer_train_outcome`). Note that this identifier is a pseudonym of the original `nomem_encr` identifier in the LISS data. 
+1. `nomem_encr`: this is the unique identifier and can be used to link the train data to the other datasets (`PreFer_train_background.csv`, `PreFer_train_supplement.csv`, and `PreFer_train_outcome.csv`). Note that this identifier is a pseudonym of the original `nomem_encr` identifier in the LISS data. 
 
-2. `new_child`: this is the outcome variable; whether people had a child between 2021 and 2023. [Here](UPDATE) you can find detailed information on how this outcome was constructed. This dataset also included people for whom this outcome is not known.
+2. `new_child`: this is the outcome variable; whether people had a child between 2021 and 2023. [Here](stay tuned, will appear soon) you can find detailed information on how this outcome was constructed. This dataset also included people for whom this outcome is not known.
 
 Less important, but useful to know:
 
@@ -125,7 +125,7 @@ The background variables can be found in a separate dataset (see `PreFer_train_b
 
 ### Fixed background variables
 
-We included the following fixed variables from the background variables: 
+We included the following fixed variables from the background variables:  
 1. `birthyear_bg` (birthyear of respondent; which we created and cleaned)
 
 2. `gender_bg` (gender of respondent; which we created and cleaned)
@@ -192,7 +192,7 @@ This dataset contains the outcome (`new_child`) for the respondents in `PreFer_t
 
 ## 6. PreFer_fake_data.csv
 
-This dataset contains the same variables as `PreFer_train_data.csv`, but it includes fake data with 30 randomly dawn values from each variable in the train data. This dataset is used for testing whether the developed preprocessing scripts and trained models work. A failed test on this data likely means a failed submission on the holdout data.  
+This dataset contains the same variables as `PreFer_train_data.csv`, but it includes fake data with 30 randomly drawn values from each variable in the train and holdout data. This dataset is used for testing whether the developed preprocessing scripts and trained models work. A failed test on this data likely means a failed submission on the holdout data.  
 
 ## 7. PreFer_fake_outcome.csv
 
@@ -200,7 +200,7 @@ A dataset that contains the fake outcomes for the fake data `PreFer_fake_data.cs
 
 ## 8. PreFer_fake_background_data.csv
 
-This dataset contains the same variables as `PreFer_train_background_data.csv`, but it includes fake data with randomly dawn values from each variable in the background data. This dataset is used for testing whether the developed preprocessing scripts and trained models work when the original analyses included `PreFer_train_background_data.csv`. A failed test using this data likely means a failed submission on the holdout data.  
+This dataset contains the same variables as `PreFer_train_background_data.csv`, but it includes fake data with randomly drawn values from each variable in the background data. This dataset is used for testing whether the developed preprocessing scripts and trained models work when the original analyses included `PreFer_train_background_data.csv`. A failed test using this data likely means a failed submission on the holdout data.  
 
 ## 9. PreFer_holdout_data.csv
 
@@ -217,66 +217,6 @@ The outcome for the holdout data, only available to PreFer organisers. This data
 The holdout background data, only available to PreFer organisers. This dataset contains the same variables as `PreFer_train_background_data.csv` and contains information on 33 variables on 963 respondents from 336 households. 
 
 
-
-
-
-
-6. 
-
-This is a fake dataset that is used for testing whether the method submitted will run on the holdout data. 
-
-7. 
-
-This ZIP-file contains the following documents:
-
-
-*** In the folder "training_data" ***
-
-1. PreFer_train_data.csv
-
-This is the main training data for data challenge participants. It includes respondents born between 1975 and 2002.
-
-2. PreFer_train_outcome.csv
-
-This is the outcome [who had a(nother) child in 2021-2023] for respondents in the training data (PreFer_train_data.csv).
-
-
-*** In the folder "other_data" ***
-
-3. PreFer_train_background_data.csv
-
-This is the dataset with background variables that can be used to augment the PreFer_train_data.csv.
-
-4. PreFer_train_supplementary_data.csv
-
-This is the dataset with information on respondents that are *not* included in PreFer_train_data.csv, but that can be used to augment the PreFer_train_data.csv. It includes respondents born prior to 1975 and after 2002.
-
-5. PreFer_train_supplementary_outcome.csv
-
-This is the outcome [who had a(nother) child in 2021-2023] for respondents in the supplementary data (PreFer_train_data.csv).
-
-6. PreFer_fake_data.csv
-
-This is a fake dataset that is used for testing whether the method submitted will run on the holdout data. 
-
-7. PreFer_fake_background_data.csv
-
-This is a fake dataset that is used for testing whether the method submitted will run on the holdout data. 
-
-8. PreFer_fake_outcome.csv
-
-This is a fake dataset that is used for testing whether the method submitted will run on the holdout data. 
-
-
-*** In the folder "codebooks" ***
-
-9. PreFer_codebook.csv
-
-This provides a machine-readable codebook for *all* variables in the dataset(s). 
-
-10. PreFer_codebook_summary.csv
-
-This provides a machine-readable summary codebook that is useful for tracking the consistency of the measurement of variables across waves. 
 
 
 
