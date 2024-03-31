@@ -44,7 +44,7 @@ The metrics below are used in both phases of the challenge to assess the quality
 For both phases of the data challenge, all four metrics will be used for the leaderboards (or ranked lists of the predictive performance of the submitted methods on the holdout data). The F1 score leaderboard is the main leaderboard that will be used as the quantitative criteria to determine the winners of the challenge.
 
 
-## Selection into Phase 2 of the data challenge 
+## Selection into tracks 1-2 of Phase 2 of the data challenge 
 
 F1 score will be used as the main selection criterion for Phase 2 to select approximately 10-20 teams. The score of the best method submitted by a team (the final or one of the intermediate submissions) during Phase 1 will be taken into account.  
 
