@@ -72,9 +72,15 @@ income_3months <- background %>%
 
 # add income to train data
 data <- left_join(data, income_3months, by = "nomem_encr")
+
+data <- data %>% 
+  # impute mean income if missing
+  mutate(mean_income_imp = if_else(is.na(mean_income), 
+                                   mean(mean_income, na.rm = TRUE),
+                                   mean_income))
 ```
 
-To make this work don't forget to add `"tidyverse"` to `packages.R`! [Here](LINKTOGITHUBBRANCH) you can see that it passes the check.
+You can now make use of the variable `mean_income_imp` in your `train_save_model`-file. To make this work don't forget to add `"tidyverse"` to `packages.R`! [Here](https://github.com/gertstulp/fertility-prediction-challenge/tree/background) you can see that it passes the check.
 
 ## Using information from the supplementary data
 
@@ -85,13 +91,12 @@ Imagine that you also want to include people who were born in 1974 in your train
 ```{r eval = FALSE}
 library(tidyverse) # for data wrangling
 
-# creating average income for all respondents
+# selecting only respondents from 1974
 respondents_1974 <- supplement %>% 
-  # only select last 3 months
-  filter(birthyear_bg == 1974) #
+  filter(birthyear_bg == 1974) 
 
 # add respondents from 1974
 data <- bind_rows(data, respondents_1974)
 ```
 
-And then use your usual method to train on the data. This will work because your method will make use of these new cases, but the structure of the dataset has not changed (no new variables were added). If you would create a novel variable on the basis of the supplementary data and use this variable in your model, it would not work on the holdout data, because that variable will not exist in the holdout data. [Here](LINKTOGITHUBBRANCH) you can see that it passes the check.
+And then use your usual method to train on the data. This will work because your method will make use of these new cases, but the structure of the dataset has not changed (no new variables were added). If you would create a novel variable on the basis of the supplementary data and use this variable in your model, it would not work on the holdout data, because that variable will not exist in the holdout data. [Here](https://github.com/gertstulp/fertility-prediction-challenge/blob/supplementarydata) you can see that it passes the check.

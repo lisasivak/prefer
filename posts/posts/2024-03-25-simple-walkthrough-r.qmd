@@ -22,13 +22,15 @@ Here we describe how to prepare and make a submission in R. The sole purpose of 
 
 In this example, we assume that you did all the prerequisite steps described [here](https://github.com/eyra/fertility-prediction-challenge?tab=readme-ov-file#prerequisites){target="_blank"}. You have forked and cloned (e.g. downloaded) the GitHub repository, and now have a folder with all the files from this repository on your computer. We will call this folder your "local repository".    
 
-Let's imagine that you want to add one predictor to the basic model that is already in the repository: respondents' gender (variable name `gender_bg`, as you found using the [codebooks](2024-03-21-prefer-codebooks.qmd)). To produce this model you should use the template functions that are already in the repository: `clean_df` for preprocessing the data from the "submission.R" script, `train_save_model` from the "training.R" script, and `predict_outcomes` from the "submission.R" script (to test your model and preprocessing).   
+Let's imagine that you want to add one predictor to the basic model that is already in the repository: respondents' gender (variable name `gender_bg`, as you found using the [codebooks](2024-03-21-prefer-codebooks.qmd){target=“_blank”}). To produce this model you should use the template functions that are already in the repository: `clean_df` for preprocessing the data from the "submission.R" script, `train_save_model` from the "training.R" script, and `predict_outcomes` from the "submission.R" script (to test your model and preprocessing).   
 
 __Overall steps__: reading in the data —> preprocessing the data —> training and saving the model —> testing on the fake data —> editing/saving "submission.R", "training.R", "packages.R" accordingly —> adding a short description of the method to "description.md" —> pushing your materials to the online Github repository -> submitting.   
 
 ## Reading-in data    
 
-1. [Read-in](2024-03-22-read-data.qmd) the training data and outcome. __IMPORTANT__: it is strongly advised to save the PreFer datafiles in a *different* folder than your local repository. The reason is that these datasets **cannot** be made public, and when you save the datasets in your local repository you may accidentally upload the datasets to your online repository when you "push" your latest changes. This would constitute a serious data breach.  
+1. [Read-in](2024-03-22-read-data.qmd){target=“_blank”} the training data and outcome. __IMPORTANT__: it is strongly advised to save the PreFer datafiles in a *different* folder than your local repository. The reason is that these datasets **cannot** be made public, and when you save the datasets in your local repository you may accidentally upload the datasets to your online repository when you "push" your latest changes. This would constitute a serious data breach.  
+
+*The code to read-in your data is the only code that you do not need to document through your repository.*
 
 ```{r, eval = FALSE}
 # loading data (predictors)
@@ -117,7 +119,7 @@ Your model is trained, and saved in `model.rds`.
 
 5. Test the preprocessing function and model on fake data to see if they will run on the holdout set. If your method does not run on the "fake data", it will not run on the holdout data. [If you "push" your method to Github this test will also be automatically run].  
 
-To do this test you can edit the function `predict_outcomes` from the "submission.R". Load the fake data (it is already in your local repository) and apply the `predict_outcomes`.
+To do this test you can edit the function `predict_outcomes` from "submission.R". Load the fake data (it is already in your local repository) and apply the `predict_outcomes`.
 
 ```{r, eval = FALSE}
 # load the fake data
@@ -184,7 +186,6 @@ predict_outcomes(fake)
 If you get a data.frame including predictions, your test on the fake data has passed!  
 ![](../..//images/fake_data_predictions_r.png)
 
-
 ## Edit/save files for submission
 
 You can now prepare the files for submission, that will be applied to the holdout set:      
@@ -192,33 +193,36 @@ You can now prepare the files for submission, that will be applied to the holdou
 6. Edit/Save the `clean_df` function in your "submission.R". This code will be applied to the holdout data. You don't need to adapt the `predict_outcomes` function in "submission.R" because the outputs of your model are predicted classes already (i.e., 0s and 1s).   
 
 7. prediction model: make sure that your model is saved in the same folder as submission.R under the name `model.rds`.   
+
 8. "packages.R": you don't have to edit this file now, because you didn't used any packages.  
 
-9. Edit/Save the `train_save_model` function in the "training.R" scripts.  
+9. Edit/Save the `train_save_model` function in the "training.R" script.  
+
+10. When you think your all set, it is advised to test the entire workflow by running `Rscript run.R PreFer_fake_data.csv PreFer_fake_background_data.csv` from the command line / terminal. 
 
 ## Adding a description
 
-10. Add a brief description of your method to the file `description.md` (e.g. "binary logistic regression with two variables - age and gender - selected manually")  
+11. Add a brief description of your method to the file `description.md` (e.g. "binary logistic regression with two variables - age and gender - selected manually")  
 
 ## Update online GitHub repository
 
 Now you need to update your online GitHub repository. You can do it in several ways. Here we assume that you used GitHub Desktop for cloning the repository and will also use it to commit (i.e. capture the state of the local repository at that point in time) and push the changes (e.g. change the online repository):
 
-10. Go to GitHub Desktop and press "Commit to master". You need to add some description (e.g. "add gender").  
+12. Go to GitHub Desktop and press "Commit to master". You need to add some description (e.g. "add gender").  
 
 ![](../../images/commit.png)
 
 
-11. Push the changes ("Push origin") (i.e. update your online repository) - press "Push origin" on the upper right.  
+13. Push the changes ("Push origin") (i.e. update your online repository) - press "Push origin" on the upper right.  
 
-12. Now go to the "Actions" tab in you online github repository. After a few minutes you'll see if your submission passed the automatic checks.  
+14. Now go to the "Actions" tab in you online github repository. After a few minutes you'll see if your submission passed the automatic checks.  
 
 ## Submit your method 
 
-13. Submit your method as explained [here](https://github.com/eyra/fertility-prediction-challenge/tree/master#submit-your-method){target="_blank"}. 
+15. Submit your method as explained [here](https://github.com/eyra/fertility-prediction-challenge/tree/master#submit-your-method){target="_blank"}. 
 
 
-__IMPORTANT__: always save the code that you used to produce the model via the `train_save_model` function. Eventhough this function will not be run om the holdout data, we [the PreFer organisers] will use it to ensure reproducibility and verify whether the predictions you submitted are the same as the predictions that arise from your code stored in `train_save_model`.  
+__IMPORTANT__: always save the code that you used to produce the model via the `train_save_model` function. Eventhough this function will not be run on the holdout data, we [the PreFer organisers] will use it to ensure reproducibility and verify whether the predictions you submitted are the same as the predictions that arise from your code stored in `train_save_model`.  
 
 
 <font size="-1">Photo by <a href="https://unsplash.com/@ffstop?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Fotis Fotopoulos</a> on <a href="https://unsplash.com/photos/black-computer-keyboard-DuHKoV44prg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></font> | <font size="-1">Photo by <a href="https://unsplash.com/@kelli_mcclintock?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Kelli McClintock</a> on <a href="https://unsplash.com/photos/white-box-on-white-table-GopRYASfsOc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></font>

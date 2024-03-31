@@ -9,6 +9,28 @@ search: false
 
 ---
 
+## Submission
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## How many submission can I make?
+You can submit as many submissions as you like, but only your most recent submission at the deadline for the leaderboard will be assessed. 
+
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## Why do I have to save and submit my code and model, why don’t I just send in predictions?
+There are several reasons why we want participants’ codes and models, rather than just their predictions. First, the goal of this data challenge is primarily scientific, and the organisers (and future researchers) should be able to reproduce all analyses. This is particularly important because a previous data challenge showed problems with (computational) reproducibility. Second, we will run this code and models on different variants of the data for robustness checks and to delve into substantive problems (e.g., how well do the models predict the outcome one year later). 
+
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## I have submitted a method but don’t see my prediction scores? 
+We have chosen only to provide prediction scores and rankings at set times (see [here](https://preferdatachallenge.nl#important-dates){target="_blank"}). The reason for this is the following: the sample size of the LISS panel for our target group is rather limited. This meant that we had chosen to separate the data into a training and holdout set, and we did not opt for an additional validation set because that would come at a sample size cost for the training data. We will not provide continuous prediction scores based on the holdout data because this would lead to overfitting.
+
+
+:::
+
+
 
 ## Participation
 
@@ -32,9 +54,6 @@ The submission (i.e. the scripts for preprocessing the data and training the mod
 It might be possible. If you want to use external data, please contact the organizers.
 
 :::
-
-
-
 
 
 ## General

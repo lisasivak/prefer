@@ -240,13 +240,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Here we describe how to prepare and make a submission in R. The sole purpose of this script is to make the submission process more clear, not to present a model that is any good.</p>
 <hr>
 <p>In this example, we assume that you did all the prerequisite steps described <a href="https://github.com/eyra/fertility-prediction-challenge?tab=readme-ov-file#prerequisites" target="_blank">here</a>. You have forked and cloned (e.g.&nbsp;downloaded) the GitHub repository, and now have a folder with all the files from this repository on your computer. We will call this folder your “local repository”.</p>
-<p>Let’s imagine that you want to add one predictor to the basic model that is already in the repository: respondents’ gender (variable name <code>gender_bg</code>, as you found using the <a href="../../posts/posts/2024-03-21-prefer-codebooks.html">codebooks</a>). To produce this model you should use the template functions that are already in the repository: <code>clean_df</code> for preprocessing the data from the “submission.R” script, <code>train_save_model</code> from the “training.R” script, and <code>predict_outcomes</code> from the “submission.R” script (to test your model and preprocessing).</p>
+<p>Let’s imagine that you want to add one predictor to the basic model that is already in the repository: respondents’ gender (variable name <code>gender_bg</code>, as you found using the <a href="../../posts/posts/2024-03-21-prefer-codebooks.html" target="“_blank”">codebooks</a>). To produce this model you should use the template functions that are already in the repository: <code>clean_df</code> for preprocessing the data from the “submission.R” script, <code>train_save_model</code> from the “training.R” script, and <code>predict_outcomes</code> from the “submission.R” script (to test your model and preprocessing).</p>
 <p><strong>Overall steps</strong>: reading in the data —&gt; preprocessing the data —&gt; training and saving the model —&gt; testing on the fake data —&gt; editing/saving “submission.R”, “training.R”, “packages.R” accordingly —&gt; adding a short description of the method to “description.md” —&gt; pushing your materials to the online Github repository -&gt; submitting.</p>
 <section id="reading-in-data" class="level2">
 <h2 class="anchored" data-anchor-id="reading-in-data">Reading-in data</h2>
 <ol type="1">
-<li><a href="../../posts/posts/2024-03-22-read-data.html">Read-in</a> the training data and outcome. <strong>IMPORTANT</strong>: it is strongly advised to save the PreFer datafiles in a <em>different</em> folder than your local repository. The reason is that these datasets <strong>cannot</strong> be made public, and when you save the datasets in your local repository you may accidentally upload the datasets to your online repository when you “push” your latest changes. This would constitute a serious data breach.</li>
+<li><a href="../../posts/posts/2024-03-22-read-data.html" target="“_blank”">Read-in</a> the training data and outcome. <strong>IMPORTANT</strong>: it is strongly advised to save the PreFer datafiles in a <em>different</em> folder than your local repository. The reason is that these datasets <strong>cannot</strong> be made public, and when you save the datasets in your local repository you may accidentally upload the datasets to your online repository when you “push” your latest changes. This would constitute a serious data breach.</li>
 </ol>
+<p><em>The code to read-in your data is the only code that you do not need to document through your repository.</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># loading data (predictors)</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table) <span class="co"># requires install.packages("data.table") first</span></span>
@@ -332,7 +333,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="5" type="1">
 <li>Test the preprocessing function and model on fake data to see if they will run on the holdout set. If your method does not run on the “fake data”, it will not run on the holdout data. [If you “push” your method to Github this test will also be automatically run].</li>
 </ol>
-<p>To do this test you can edit the function <code>predict_outcomes</code> from the “submission.R”. Load the fake data (it is already in your local repository) and apply the <code>predict_outcomes</code>.</p>
+<p>To do this test you can edit the function <code>predict_outcomes</code> from “submission.R”. Load the fake data (it is already in your local repository) and apply the <code>predict_outcomes</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the fake data</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>fake <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">fread</span>(<span class="st">"PreFer_fake_data.csv"</span>,</span>
@@ -402,36 +403,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>You can now prepare the files for submission, that will be applied to the holdout set:</p>
 <ol start="6" type="1">
 <li><p>Edit/Save the <code>clean_df</code> function in your “submission.R”. This code will be applied to the holdout data. You don’t need to adapt the <code>predict_outcomes</code> function in “submission.R” because the outputs of your model are predicted classes already (i.e., 0s and 1s).</p></li>
-<li><p>prediction model: make sure that your model is saved in the same folder as submission.R under the name <code>model.rds</code>.<br>
-</p></li>
+<li><p>prediction model: make sure that your model is saved in the same folder as submission.R under the name <code>model.rds</code>.</p></li>
 <li><p>“packages.R”: you don’t have to edit this file now, because you didn’t used any packages.</p></li>
-<li><p>Edit/Save the <code>train_save_model</code> function in the “training.R” scripts.</p></li>
+<li><p>Edit/Save the <code>train_save_model</code> function in the “training.R” script.</p></li>
+<li><p>When you think your all set, it is advised to test the entire workflow by running <code>Rscript run.R PreFer_fake_data.csv PreFer_fake_background_data.csv</code> from the command line / terminal.</p></li>
 </ol>
 </section>
 <section id="adding-a-description" class="level2">
 <h2 class="anchored" data-anchor-id="adding-a-description">Adding a description</h2>
-<ol start="10" type="1">
+<ol start="11" type="1">
 <li>Add a brief description of your method to the file <code>description.md</code> (e.g.&nbsp;“binary logistic regression with two variables - age and gender - selected manually”)</li>
 </ol>
 </section>
 <section id="update-online-github-repository" class="level2">
 <h2 class="anchored" data-anchor-id="update-online-github-repository">Update online GitHub repository</h2>
 <p>Now you need to update your online GitHub repository. You can do it in several ways. Here we assume that you used GitHub Desktop for cloning the repository and will also use it to commit (i.e.&nbsp;capture the state of the local repository at that point in time) and push the changes (e.g.&nbsp;change the online repository):</p>
-<ol start="10" type="1">
+<ol start="12" type="1">
 <li>Go to GitHub Desktop and press “Commit to master”. You need to add some description (e.g.&nbsp;“add gender”).</li>
 </ol>
 <p><img src="../../images/commit.png" class="img-fluid"></p>
-<ol start="11" type="1">
+<ol start="13" type="1">
 <li><p>Push the changes (“Push origin”) (i.e.&nbsp;update your online repository) - press “Push origin” on the upper right.</p></li>
 <li><p>Now go to the “Actions” tab in you online github repository. After a few minutes you’ll see if your submission passed the automatic checks.</p></li>
 </ol>
 </section>
 <section id="submit-your-method" class="level2">
 <h2 class="anchored" data-anchor-id="submit-your-method">Submit your method</h2>
-<ol start="13" type="1">
+<ol start="15" type="1">
 <li>Submit your method as explained <a href="https://github.com/eyra/fertility-prediction-challenge/tree/master#submit-your-method" target="_blank">here</a>.</li>
 </ol>
-<p><strong>IMPORTANT</strong>: always save the code that you used to produce the model via the <code>train_save_model</code> function. Eventhough this function will not be run om the holdout data, we [the PreFer organisers] will use it to ensure reproducibility and verify whether the predictions you submitted are the same as the predictions that arise from your code stored in <code>train_save_model</code>.</p>
+<p><strong>IMPORTANT</strong>: always save the code that you used to produce the model via the <code>train_save_model</code> function. Eventhough this function will not be run on the holdout data, we [the PreFer organisers] will use it to ensure reproducibility and verify whether the predictions you submitted are the same as the predictions that arise from your code stored in <code>train_save_model</code>.</p>
 <p><font size="-1">Photo by <a href="https://unsplash.com/@ffstop?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">Fotis Fotopoulos</a> on <a href="https://unsplash.com/photos/black-computer-keyboard-DuHKoV44prg?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">Unsplash</a></font> | <font size="-1">Photo by <a href="https://unsplash.com/@kelli_mcclintock?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">Kelli McClintock</a> on <a href="https://unsplash.com/photos/white-box-on-white-table-GopRYASfsOc?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">Unsplash</a></font></p>
 
 

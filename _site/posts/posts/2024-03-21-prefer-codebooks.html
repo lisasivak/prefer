@@ -365,12 +365,12 @@ character [almost exclusively empty strings]
 <pre><code># A tibble: 6 × 30,540
   nomem_encr outcome_available cf08a_m cf09b_m cf10c_m cf11d_m cf12e_m cf13f_m
        &lt;dbl&gt;             &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-1     700001                 1  200803  200903   93692  201104  201204  201303
-2     700002                 0  200803  200903   16854  201103  201204  201304
-3     700003                 1  200806  200903   17532  201104  201203  201303
-4     700004                NA  200803  200903  181091  201103  201203  201303
-5     700005                 0  200803  200903  155615  201104  201203  201304
-6     700006                NA  200803  200904   77410  201104  201203  201304
+1     700001                 1  200803  200904  172453  201104  201203  201303
+2     700002                 1  200806  200904   78071  201104  201203  201303
+3     700003                 1  200806  200904  151277  201103  201204  201303
+4     700004                 1  200806  200903  139537  201104  201204  201304
+5     700005                 1  200806  200903   99522  201104  201203  201304
+6     700006                 1  200806  200904  186163  201103  201203  201304
 # ℹ 30,532 more variables: cf14g_m &lt;dbl&gt;, cf15h_m &lt;dbl&gt;, cf16i_m &lt;dbl&gt;,
 #   cf17j_m &lt;dbl&gt;, cf18k_m &lt;dbl&gt;, cf19l_m &lt;dbl&gt;, cf20m_m &lt;dbl&gt;, cf08a001 &lt;dbl&gt;,
 #   cf09b001 &lt;dbl&gt;, cf10c001 &lt;dbl&gt;, cf11d001 &lt;dbl&gt;, cf12e001 &lt;dbl&gt;,
@@ -380,29 +380,21 @@ character [almost exclusively empty strings]
 #   cf12e002 &lt;dbl&gt;, cf13f002 &lt;dbl&gt;, cf14g002 &lt;dbl&gt;, cf15h002 &lt;dbl&gt;, …</code></pre>
 </div>
 </div>
-<p>The Python equivalent for the above steps would be something like:</p>
-<pre><code>codebook &lt;- read.csv("PreFer_codebook.csv")
-codebook[ codebook$var_name == "cp12e007", ]
-select_type &lt;- c("categorical", "numeric", "date or time")
-list_variables &lt;- codebook[ (codebook$type_var %in% select_type) &amp; 
-                              codebook$dataset == "PreFer_train_data.csv", ]$var_name
-fake_data &lt;- read.csv("PreFer_fake_data.csv")
-fake_data_sel &lt;- fake_data[ , list_variables ]</code></pre>
 </section>
 <section id="using-variable-information" class="level2">
 <h2 class="anchored" data-anchor-id="using-variable-information">Using variable information</h2>
 <p>In an earlier example, we observed that variable <code>cp12e007</code> was a categorical variable, but from the <code>labels_cat</code> it was clear that this was some sort of Likert scale, from “1 totally disagree; 2; 3; 4; 5; 6; 7 totally agree” (separated by semi-colons). Let’s read-in and parse the values from <code>values_cat</code> and the corresponding labels from <code>labels_cat</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>values_cp12e007 <span class="ot">&lt;-</span> codebook[ codebook<span class="sc">$</span>var_name <span class="sc">==</span> <span class="st">"cp12e007"</span>, ]<span class="sc">$</span>values_cat <span class="co"># is a string</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>values_cp12e007 <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(values_cp12e007, <span class="st">"; "</span>)[[<span class="dv">1</span>]] <span class="co"># to vector</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>labels_cp12e007 <span class="ot">&lt;-</span> codebook[ codebook<span class="sc">$</span>var_name <span class="sc">==</span> <span class="st">"cp12e007"</span>, ]<span class="sc">$</span>labels_cat <span class="co"># is a string</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>labels_cp12e007 <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(labels_cp12e007, <span class="st">"; "</span>)[[<span class="dv">1</span>]] <span class="co"># to vector</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># add information to variable in data</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>fake_data_sel<span class="sc">$</span>cp12e007 <span class="ot">&lt;-</span> <span class="fu">factor</span>(fake_data_sel<span class="sc">$</span>cp12e007, </span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">levels =</span> values_cp12e007, <span class="at">labels =</span> labels_cp12e007,</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(fake_data_sel<span class="sc">$</span>cp12e007)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>values_cp12e007 <span class="ot">&lt;-</span> codebook[ codebook<span class="sc">$</span>var_name <span class="sc">==</span> <span class="st">"cp12e007"</span>, ]<span class="sc">$</span>values_cat <span class="co"># is a string</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>values_cp12e007 <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(values_cp12e007, <span class="st">"; "</span>)[[<span class="dv">1</span>]] <span class="co"># to vector</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>labels_cp12e007 <span class="ot">&lt;-</span> codebook[ codebook<span class="sc">$</span>var_name <span class="sc">==</span> <span class="st">"cp12e007"</span>, ]<span class="sc">$</span>labels_cat <span class="co"># is a string</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>labels_cp12e007 <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(labels_cp12e007, <span class="st">"; "</span>)[[<span class="dv">1</span>]] <span class="co"># to vector</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># add information to variable in data</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>fake_data_sel<span class="sc">$</span>cp12e007 <span class="ot">&lt;-</span> <span class="fu">factor</span>(fake_data_sel<span class="sc">$</span>cp12e007, </span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">levels =</span> values_cp12e007, <span class="at">labels =</span> labels_cp12e007,</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(fake_data_sel<span class="sc">$</span>cp12e007)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$levels
 [1] "1 totally disagree" "2"                  "3"                 
@@ -435,10 +427,10 @@ $class
 <h2 class="anchored" data-anchor-id="example-interpretation">Example interpretation</h2>
 <p>Here we examine the variable with the extension <code>007</code> both in the “Family &amp; Household” and “Personality” core surveys.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>codebook_summ <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"../../data/PreFer_codebook_summary.csv"</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># can also be found at preferdatachallenge.nl/data/PreFer_codebook_summary.csv</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(codebook_summ, </span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>       last3letters <span class="sc">==</span> <span class="st">"007"</span> <span class="sc">&amp;</span> survey <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Family &amp; Household"</span>, <span class="st">"Personality"</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>codebook_summ <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"../../data/PreFer_codebook_summary.csv"</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># can also be found at preferdatachallenge.nl/data/PreFer_codebook_summary.csv</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(codebook_summ, </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>       last3letters <span class="sc">==</span> <span class="st">"007"</span> <span class="sc">&amp;</span> survey <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Family &amp; Household"</span>, <span class="st">"Personality"</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 11
   survey        last3letters var_names n_waves which_waves n_different_var_label

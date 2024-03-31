@@ -97,7 +97,7 @@ toc: false
 ::: {.listing-block}
 
 ## Important dates
-- <s>[Application](/details/overview/3application.md){target="_blank"} deadline: March 24, 2024</s>. This deadline has passed and the challenge is about to start, but you can still apply.
+- <s>[Application](/details/overview/3application.md){target="_blank"} deadline: March 24, 2024</s>. This deadline has passed and the challenge is about to start, but [you can still apply](https://forms.gle/cxc7U24n5ox7A1vu7){target="_blank"}.
 - Start of the data challenge [Phase 1](/details/overview/3phases.md): April 1, 2024
 - Selection into [Phase 2](/details/overview/3phases.md): June 3 - June 17, 2024
 - Start of [Phase 2](/details/overview/3phases.md): June 17, 2024

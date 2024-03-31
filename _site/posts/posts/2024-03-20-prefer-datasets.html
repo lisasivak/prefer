@@ -228,9 +228,10 @@ ul.task-list li input[type="checkbox"] {
 <p>To navigate these datasets and get a better understanding of the many variables, there are also machine-readable (and human readable) codebooks available: <a href="../../posts/posts/2024-03-21-prefer-codebooks.html" target="_blank">click here</a> for a guide on how to use the codebooks.</p>
 <section id="core-surveys-and-background-surveys" class="level1">
 <h1>Core surveys and background surveys</h1>
-<p>Broadly speaking, the LISS panel contains two types of datasets: 1) Core surveys: yearly surveys on topics like health, wealth, and personal values.</p>
-<ol start="2" type="1">
-<li>Background surveys: particular demographic characteristics of households and the individuals in these households (e.g., age, gender, education, income).</li>
+<p>Broadly speaking, the LISS panel contains two types of datasets:</p>
+<ol type="1">
+<li><p>Core surveys: yearly surveys on topics like health, wealth, and personal values.</p></li>
+<li><p>Background surveys: particular demographic characteristics of households and the individuals in these households (e.g., age, gender, education, income).</p></li>
 </ol>
 <section id="core-surveys" class="level2">
 <h2 class="anchored" data-anchor-id="core-surveys">Core surveys</h2>
@@ -353,9 +354,9 @@ ul.task-list li input[type="checkbox"] {
 <p>The background variables can be found in a separate dataset (see <code>PreFer_train_background.csv</code>), but we have chosen to include some of the information from the background variables to the Core surveys. Specifically, we have added information from variables that either vary considerably across time or that are useful as fixed variables. Remember that the background variables contain information on a monthly basis; we chose to add 14 yearly variables (for each of the years 2007 up to and including 2020) for a select number of varying background variables.</p>
 <section id="fixed-background-variables" class="level3">
 <h3 class="anchored" data-anchor-id="fixed-background-variables">Fixed background variables</h3>
-<p>We included the following fixed variables from the background variables:<br>
-1. <code>birthyear_bg</code> (birthyear of respondent; which we created and cleaned)</p>
-<ol start="2" type="1">
+<p>We included the following fixed variables from the background variables:</p>
+<ol type="1">
+<li><p><code>birthyear_bg</code> (birthyear of respondent; which we created and cleaned)</p></li>
 <li><p><code>gender_bg</code> (gender of respondent; which we created and cleaned)</p></li>
 <li><p><code>migration_background_bg</code> (migration background of the respondent; which we created and cleaned)</p></li>
 <li><p><code>age_bg</code> (the age of the respondent for each wave; which we created; this variable is obviously not fixed, but more or less records the same information as birthyear).</p></li>

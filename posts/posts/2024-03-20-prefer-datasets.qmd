@@ -22,7 +22,8 @@ Here we describe the different datasets that are available in the PreFer data ch
 To navigate these datasets and get a better understanding of the many variables, there are also machine-readable (and human readable) codebooks available: [click here](2024-03-21-prefer-codebooks.qmd){target="_blank"} for a guide on how to use the codebooks.
 
 # Core surveys and background surveys
-Broadly speaking, the LISS panel contains two types of datasets: 
+Broadly speaking, the LISS panel contains two types of datasets:   
+
 1) Core surveys: yearly surveys on topics like health, wealth, and personal values.   
 
 2) Background surveys: particular demographic characteristics of households and the individuals in these households (e.g., age, gender, education, income). 
@@ -125,7 +126,8 @@ The background variables can be found in a separate dataset (see `PreFer_train_b
 
 ### Fixed background variables
 
-We included the following fixed variables from the background variables:  
+We included the following fixed variables from the background variables:    
+
 1. `birthyear_bg` (birthyear of respondent; which we created and cleaned)
 
 2. `gender_bg` (gender of respondent; which we created and cleaned)

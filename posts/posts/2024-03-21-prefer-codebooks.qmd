@@ -109,18 +109,6 @@ fake_data_sel <- fake_data[ , list_variables ]
 head(fake_data_sel) # brief overview
 ```
 
-The Python equivalent for the above steps would be something like:
-```
-codebook <- read.csv("PreFer_codebook.csv")
-codebook[ codebook$var_name == "cp12e007", ]
-select_type <- c("categorical", "numeric", "date or time")
-list_variables <- codebook[ (codebook$type_var %in% select_type) & 
-                              codebook$dataset == "PreFer_train_data.csv", ]$var_name
-fake_data <- read.csv("PreFer_fake_data.csv")
-fake_data_sel <- fake_data[ , list_variables ]
-```
-
-
 ## Using variable information
 In an earlier example, we observed that variable `cp12e007` was a categorical variable, but from the `labels_cat` it was clear that this was some sort of Likert scale, from "1 totally disagree; 2; 3; 4; 5; 6; 7 totally agree" (separated by semi-colons). Let's read-in and parse the values from `values_cat` and the corresponding labels from `labels_cat`
 

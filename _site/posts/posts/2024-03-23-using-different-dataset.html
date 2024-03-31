@@ -292,9 +292,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_income =</span> <span class="fu">mean</span>(netinc, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># add income to train data</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">left_join</span>(data, income_3months, <span class="at">by =</span> <span class="st">"nomem_encr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">left_join</span>(data, income_3months, <span class="at">by =</span> <span class="st">"nomem_encr"</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># impute mean income if missing</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mean_income_imp =</span> <span class="fu">if_else</span>(<span class="fu">is.na</span>(mean_income), </span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>                                   <span class="fu">mean</span>(mean_income, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>                                   mean_income))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>To make this work don’t forget to add <code>"tidyverse"</code> to <code>packages.R</code>! <a href="LINKTOGITHUBBRANCH">Here</a> you can see that it passes the check.</p>
+<p>You can now make use of the variable <code>mean_income_imp</code> in your <code>train_save_model</code>-file. To make this work don’t forget to add <code>"tidyverse"</code> to <code>packages.R</code>! <a href="https://github.com/gertstulp/fertility-prediction-challenge/tree/background">Here</a> you can see that it passes the check.</p>
 </section>
 <section id="using-information-from-the-supplementary-data" class="level2">
 <h2 class="anchored" data-anchor-id="using-information-from-the-supplementary-data">Using information from the supplementary data</h2>
@@ -303,15 +309,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># for data wrangling</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># creating average income for all respondents</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># selecting only respondents from 1974</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>respondents_1974 <span class="ot">&lt;-</span> supplement <span class="sc">%&gt;%</span> </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># only select last 3 months</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(birthyear_bg <span class="sc">==</span> <span class="dv">1974</span>) <span class="co">#</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># add respondents from 1974</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(data, respondents_1974)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(birthyear_bg <span class="sc">==</span> <span class="dv">1974</span>) </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># add respondents from 1974</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(data, respondents_1974)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>And then use your usual method to train on the data. This will work because your method will make use of these new cases, but the structure of the dataset has not changed (no new variables were added). If you would create a novel variable on the basis of the supplementary data and use this variable in your model, it would not work on the holdout data, because that variable will not exist in the holdout data. <a href="LINKTOGITHUBBRANCH">Here</a> you can see that it passes the check.</p>
+<p>And then use your usual method to train on the data. This will work because your method will make use of these new cases, but the structure of the dataset has not changed (no new variables were added). If you would create a novel variable on the basis of the supplementary data and use this variable in your model, it would not work on the holdout data, because that variable will not exist in the holdout data. <a href="https://github.com/gertstulp/fertility-prediction-challenge/blob/supplementarydata">Here</a> you can see that it passes the check.</p>
 
 
 </section>
