@@ -104,6 +104,11 @@ toc: false
 - End of [Phase 2](/details/overview/3phases.md) and [Phase 1](/details/overview/3phases.md): September 30, 2024
 - Announcing the winners: October 2024
 
+Leaderboards with the results of intermediate submissions in Phase 1 are planned to be published on these dates:  
+
+- April 22 
+- May 13
+- June 3
 
 :::
 :::
