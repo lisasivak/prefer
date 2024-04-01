@@ -516,5 +516,26 @@
     "title": "CV",
     "section": "Grants, awards, nominations",
     "text": "Grants, awards, nominations"
+  },
+  {
+    "objectID": "posts/posts/2024-04-01-testing-predictive-ability-R.html",
+    "href": "posts/posts/2024-04-01-testing-predictive-ability-R.html",
+    "title": "Calculating predictive accuracy scores in R",
+    "section": "",
+    "text": "The predictive accuracy scores (F1, accuracy, precision, recall) for all submissions will be calculated via the script score.py. If you work in Python, you can also calculate these scores by running python score.py predictions.csv outcome.csv, where “predictions.csv” refers to a csv-file that includes two columns (nomem_encr and prediction; the output of predict_outcomes and outcome.csv (for example PreFer_train_outcome.csv) to a csv-file that contains the ground truth (also via two columns; nomem_encr and new_child).\nIf you work in R, you cannot do this (unless you save your predictions from submission.R in a csv file and then run the Python code). That’s why we provide a script to calculate these scores yourself. The reason that we do not include this R-script in the repository, is because when you submit your model/method, the Python-script will be used to calculate the outcomes for your submission during the challenge. Although entirely unlikely, for whatever reason, the Python- and R-script to produce the scores may lead to different results. So use this R-script for convenience, but note the disclaimer above."
+  },
+  {
+    "objectID": "posts/posts/2024-04-01-testing-predictive-ability-R.html#manually",
+    "href": "posts/posts/2024-04-01-testing-predictive-ability-R.html#manually",
+    "title": "Calculating predictive accuracy scores in R",
+    "section": "Manually",
+    "text": "Manually\n\nAccuracy: fraction of correct predictions out of total predictions made. Number of people who did not have a child who were correctly predicted not to have births (6 in our example) plus the number of people who had a child and were correctly predicted to have a child (7 in our example), divided by the total number of people (20). Thus, the accuracy for our example is \\(\\frac{6+7}{20}=0.65\\)\nPrecision: fraction of correct predictions out of total number of predicted cases “of interest”. Among those who were predicted to have child (11 in our case), the percentage who indeed had a child (7 out of those 11 had a child), thus 0.64. Sometimes this is phrased as the \\(\\frac{\\text{true positives}}{\\text{true positives + false positives}} =\\frac{7}{7+4}\\).\nRecall: fraction of correct predictions out of total number of cases “of interest”. Among those who had a child (10 in our case), the percentage who were predicted to have a child (7 out of those 10 had a child), thus 0.7. Sometimes this is phrased as the \\(\\frac{\\text{true positives}}{\\text{true positives + false false negatives}} =\\frac{7}{7+3}\\).\nF1-score: the harmonic mean between precision and recall: \\(2\\frac{precision*recall}{precision+recall}\\). Here \\(2*\\frac{0.64*0.7}{0.64*0.7}=0.67\\)."
+  },
+  {
+    "objectID": "posts/posts/2024-04-01-testing-predictive-ability-R.html#via-the-script",
+    "href": "posts/posts/2024-04-01-testing-predictive-ability-R.html#via-the-script",
+    "title": "Calculating predictive accuracy scores in R",
+    "section": "Via the script",
+    "text": "Via the script\n\nsource(\"https://preferdatachallenge.nl/data/score.R\")\n\n\nscore(predictions_df, truth_df)\n\n  accuracy precision recall  f1_score\n1     0.65 0.6363636    0.7 0.6666667"
   }
 ]

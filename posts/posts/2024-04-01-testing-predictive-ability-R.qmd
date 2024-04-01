@@ -1,0 +1,113 @@
+---
+title: "Calculating predictive accuracy scores in R"
+description: |
+  Here we show to evaluate your model in terms of predictive accuracy when you are working in R.
+categories:
+  - prediction
+  - guide
+author: 
+  - "Gert Stulp"
+  - "Lisa Sivak"
+date: '2024-04-01'
+toc: true
+image: ../../images/duck2.png
+image-alt: LISS logo. 
+language: 
+    section-title-footnotes: References
+---
+
+The predictive accuracy scores (F1, accuracy, precision, recall) for all submissions will be calculated via the script `score.py`. If you work in Python, you can also calculate these scores by running `python score.py predictions.csv outcome.csv`, where "predictions.csv" refers to a csv-file that includes two columns (nomem_encr and prediction; the output of `predict_outcomes` and `outcome.csv` (for example PreFer_train_outcome.csv) to a csv-file that contains the ground truth (also via two columns; nomem_encr and new_child). 
+
+If you work in R, you cannot do this (unless you save your predictions from submission.R in a csv file and then run the Python code). That's why we provide a script to calculate these scores yourself. The reason that we do not include this R-script in the repository, is because when you submit your model/method, the Python-script will be used to calculate the outcomes for your submission during the challenge. Although entirely unlikely, for whatever reason, the Python- and R-script to produce the scores may lead to different results. So use this R-script for convenience, but note the disclaimer above.
+
+# score.R
+You can just `source` this function into your R-environment by running: `source("https://preferdatachallenge.nl/data/score.R")`. This R-script contains the following code:
+
+```{r}
+# predictions_df = data.frame with two columns; nomem_encr and predictions
+# ground_truth_df = data.frame with two columns; nomem_encr and new_child
+
+score <- function(predictions_df, ground_truth_df) {
+  
+  merged_df = merge(predictions_df, ground_truth_df, by = "nomem_encr",
+                    all.y = TRUE) # right join
+  
+  # Calculate accuracy
+  accuracy = sum( merged_df$prediction == merged_df$new_child) / length(merged_df$new_child) 
+  
+  # Calculate true positives, false positives, and false negatives
+  true_positives = sum( merged_df$prediction == 1 & merged_df$new_child == 1 )
+    
+  false_positives = sum( merged_df$prediction == 1 & merged_df$new_child == 0 )
+    
+  false_negatives = sum( merged_df$prediction == 0 & merged_df$new_child == 1 )
+    
+  # Calculate precision, recall, and F1 score
+  if( (true_positives + false_positives) == 0) {
+    precision = 0
+  } else {
+    precision = true_positives / (true_positives + false_positives)
+  }
+  if( (true_positives + false_negatives) == 0) {
+    recall = 0
+  } else {
+    recall = true_positives / (true_positives + false_negatives)
+  }
+  if( (precision + recall) == 0) {
+    f1_score = 0
+  } else {
+    f1_score = 2 * (precision * recall) / (precision + recall)
+  }
+  
+  metrics_df <- data.frame(
+    'accuracy' = accuracy,
+    'precision' = precision,
+    'recall' = recall,
+    'f1_score' = f1_score
+  )
+  
+  return(metrics_df)
+
+}
+```
+
+
+# Creating fake data
+Let's create fake data to use for our script. 
+```{r}
+# the names of these variables for both datasets are set
+truth_df <- data.frame(
+  nomem_encr = 1:20, # 20 fake IDs
+  new_child  = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                 1, 1, 1, 1, 1, 1, 1, 1, 1, 1) # 10 people had child, 10 people did not
+)
+predictions_df <- data.frame(
+  nomem_encr = 1:20, # same fake IDs
+  prediction = c(0, 0, 0, 0, 0, 0, 1, 1, 1, 1,
+                 0, 0, 0, 1, 1, 1, 1, 1, 1, 1)
+)
+```
+
+# Scores
+The following scores are created: F1, accuracy, precision, recall, using counts of true positives, false positives, and false negatives.
+
+## Manually
+- **Accuracy**: fraction of correct predictions out of total predictions made. Number of people who did not have a child who were correctly predicted not to have births (6 in our example) plus the number of people who had a child and were correctly predicted to have a child (7 in our example), divided by the total number of people (20). Thus, the accuracy for our example is $\frac{6+7}{20}=0.65$
+
+- **Precision**: fraction of correct predictions out of total number of predicted cases "of interest". Among those who were predicted to have child (11 in our case), the percentage who indeed had a child (7 out of those 11 had a child), thus 0.64. Sometimes this is phrased as the $\frac{\text{true positives}}{\text{true positives + false positives}} =\frac{7}{7+4}$.
+
+- **Recall**: fraction of correct predictions out of total number of cases "of interest". Among those who had a child (10 in our case), the percentage who were predicted to have a child (7 out of those 10 had a child), thus 0.7. Sometimes this is phrased as the $\frac{\text{true positives}}{\text{true positives + false false negatives}} =\frac{7}{7+3}$.
+
+- **F1-score**: the harmonic mean between precision and recall: $2\frac{precision*recall}{precision+recall}$. Here $2*\frac{0.64*0.7}{0.64*0.7}=0.67$.
+
+## Via the script
+```{r}
+source("https://preferdatachallenge.nl/data/score.R")
+```
+
+```{r}
+score(predictions_df, truth_df)
+```
+
+
+

@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://preferdatachallenge.nl/all-content.html</loc>
-    <lastmod>2024-03-31T21:22:45.115Z</lastmod>
+    <lastmod>2024-04-01T14:11:51.465Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/funding.html</loc>
@@ -30,7 +30,7 @@
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/posts/index.html</loc>
-    <lastmod>2024-03-31T21:22:33.409Z</lastmod>
+    <lastmod>2024-04-01T14:11:48.612Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/posts/posts/2024-03-25-simple-walkthrough-r.html</loc>
@@ -103,5 +103,9 @@
   <url>
     <loc>https://preferdatachallenge.nl/CV/index.html</loc>
     <lastmod>2024-03-31T21:22:42.938Z</lastmod>
+  </url>
+  <url>
+    <loc>https://preferdatachallenge.nl/posts/posts/2024-04-01-testing-predictive-ability-R.html</loc>
+    <lastmod>2024-04-01T14:11:57.329Z</lastmod>
   </url>
 </urlset>
