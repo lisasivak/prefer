@@ -12,7 +12,7 @@ search: false
 ## Submission
 
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
-## How many submission can I make?
+## How many submissions can I make?
 You can submit as many submissions as you like, but only your most recent submission at the deadline for the leaderboard will be assessed. 
 
 :::

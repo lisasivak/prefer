@@ -18,7 +18,7 @@ Phase 1 will run from April 1 till the end of May, 2024.
 
 ## Phase 2  
 
-In mid-June 2024, Phase 2 will start. It will run until the end of September 2024.  
+In mid-June 2024, Phase 2 will start. It will run until mid-September 2024.  
 
 Phase 2 includes three tracks. Based on all the submissions that teams make in the first phase, we will select several of the best-performing teams (10-20 teams) for tracks 1 and 2 of the second phase to work inside the secure Remote Access (RA) environment of CBS, or Statistics Netherlands. You can read about how teams will be selected to participate in tracks 1-2 and the conditions for accessing the CBS data [here](/details/overview/4submission_evaluation_winners.md){target="_blank"}.  
 
