@@ -1,5 +1,5 @@
 ---
-title: "A guide on using different datasets"
+title: "A guide on using different datasets [LISS]"
 description: |
   Here is some useful information on how to use the different PreFer datasets on offer
 categories:
@@ -59,28 +59,28 @@ supplement <- data.table::fread("path/to/folder/PreFer_train_supplementary_data.
 One could use the background data to enhance the train data (`PreFer_train_data.csv`). For example, imagine that you would want to add the average income of respondents in the last three months prior to 2021. Here is what one could add to the `submission.R` script:
 
 ```{r eval = FALSE}
-library(tidyverse) # for data wrangling
+library(dplyr) # for data wrangling
 
 # creating average income for all respondents
-income_3months <- background %>% 
+income_3months <- background |>
   # only select last 3 months
-  filter(wave >= 202010 & wave <= 202012) %>% 
+  filter(wave >= 202010 & wave <= 202012) |>
   # for each respondent
-  group_by(nomem_encr) %>% 
+  group_by(nomem_encr) |>
   # calculate average income
   summarise(mean_income = mean(netinc, na.rm = TRUE))
 
 # add income to train data
 data <- left_join(data, income_3months, by = "nomem_encr")
 
-data <- data %>% 
+data <- data |>
   # impute mean income if missing
   mutate(mean_income_imp = if_else(is.na(mean_income), 
                                    mean(mean_income, na.rm = TRUE),
                                    mean_income))
 ```
 
-You can now make use of the variable `mean_income_imp` in your `train_save_model`-file. To make this work don't forget to add `"tidyverse"` to `packages.R`! [Here](https://github.com/gertstulp/fertility-prediction-challenge/tree/background) you can see that it passes the check.
+You can now make use of the variable `mean_income_imp` in your `train_save_model`-file. To make this work don't forget to add `"dplyr"` to `packages.R`! [Here](https://github.com/gertstulp/fertility-prediction-challenge/tree/usesupplement){target="_blank"} you can see it in action and that it passes the check.
 
 ## Using information from the supplementary data
 
@@ -89,14 +89,15 @@ Using information from the supplementary data is slightly more complex. Remember
 Imagine that you also want to include people who were born in 1974 in your train data. You could insert something like the below in your `train_save_model` function:
 
 ```{r eval = FALSE}
-library(tidyverse) # for data wrangling
+library(dplyr) # for data wrangling
 
 # selecting only respondents from 1974
-respondents_1974 <- supplement %>% 
+respondents_1974 <- supplement |>
   filter(birthyear_bg == 1974) 
 
 # add respondents from 1974
 data <- bind_rows(data, respondents_1974)
 ```
 
-And then use your usual method to train on the data. This will work because your method will make use of these new cases, but the structure of the dataset has not changed (no new variables were added). If you would create a novel variable on the basis of the supplementary data and use this variable in your model, it would not work on the holdout data, because that variable will not exist in the holdout data. [Here](https://github.com/gertstulp/fertility-prediction-challenge/blob/supplementarydata) you can see that it passes the check.
+And then use your usual method to train on the data. This will work because your method will make use of these new cases, but the structure of the dataset has not changed (no new variables were added). If you would create a novel variable on the basis of the supplementary data and use this variable in your model, it would not work on the holdout data, because that variable will not exist in the holdout data. [Here](https://github.com/gertstulp/fertility-prediction-challenge/tree/usebackground){target="_blank"} you can see it in action and that it passes the check.
+

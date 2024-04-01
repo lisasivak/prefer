@@ -280,43 +280,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="using-information-from-background-data">Using information from background data</h2>
 <p>One could use the background data to enhance the train data (<code>PreFer_train_data.csv</code>). For example, imagine that you would want to add the average income of respondents in the last three months prior to 2021. Here is what one could add to the <code>submission.R</code> script:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># for data wrangling</span></span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) <span class="co"># for data wrangling</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># creating average income for all respondents</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>income_3months <span class="ot">&lt;-</span> background <span class="sc">%&gt;%</span> </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>income_3months <span class="ot">&lt;-</span> background <span class="sc">|&gt;</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># only select last 3 months</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(wave <span class="sc">&gt;=</span> <span class="dv">202010</span> <span class="sc">&amp;</span> wave <span class="sc">&lt;=</span> <span class="dv">202012</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(wave <span class="sc">&gt;=</span> <span class="dv">202010</span> <span class="sc">&amp;</span> wave <span class="sc">&lt;=</span> <span class="dv">202012</span>) <span class="sc">|&gt;</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># for each respondent</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(nomem_encr) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(nomem_encr) <span class="sc">|&gt;</span></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate average income</span></span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_income =</span> <span class="fu">mean</span>(netinc, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># add income to train data</span></span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">left_join</span>(data, income_3months, <span class="at">by =</span> <span class="st">"nomem_encr"</span>)</span>
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># impute mean income if missing</span></span>
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mean_income_imp =</span> <span class="fu">if_else</span>(<span class="fu">is.na</span>(mean_income), </span>
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>                                   <span class="fu">mean</span>(mean_income, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>                                   mean_income))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You can now make use of the variable <code>mean_income_imp</code> in your <code>train_save_model</code>-file. To make this work don’t forget to add <code>"tidyverse"</code> to <code>packages.R</code>! <a href="https://github.com/gertstulp/fertility-prediction-challenge/tree/background">Here</a> you can see that it passes the check.</p>
+<p>You can now make use of the variable <code>mean_income_imp</code> in your <code>train_save_model</code>-file. To make this work don’t forget to add <code>"dplyr"</code> to <code>packages.R</code>! <a href="https://github.com/gertstulp/fertility-prediction-challenge/tree/usesupplement" target="_blank">Here</a> you can see it in action and that it passes the check.</p>
 </section>
 <section id="using-information-from-the-supplementary-data" class="level2">
 <h2 class="anchored" data-anchor-id="using-information-from-the-supplementary-data">Using information from the supplementary data</h2>
 <p>Using information from the supplementary data is slightly more complex. Remember that the supplementary data (<code>PreFer_train_supplementary_data.csv</code>) consists of all people who are not in the target group (i.e., it consists of respondents with birthyears prior to 1975 and post 2002). In contrast to the background data, where a <code>PreFer_train_background_data.csv</code> is available (to participants) and where a<code>PreFer_holdout_background_data.csv</code> exists (but is not available to PreFer participants), there is no equivalent of the supplementary data for the holdout data. This means that we <em>cannot</em> use any code to process the supplementary data in the function <code>clean_df</code>, because everything inserted into <code>clean_df</code> will be applied to holdout data. Thus, everything you do with the supplementary data must be specified in the training.R file.</p>
 <p>Imagine that you also want to include people who were born in 1974 in your train data. You could insert something like the below in your <code>train_save_model</code> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># for data wrangling</span></span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) <span class="co"># for data wrangling</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># selecting only respondents from 1974</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>respondents_1974 <span class="ot">&lt;-</span> supplement <span class="sc">%&gt;%</span> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>respondents_1974 <span class="ot">&lt;-</span> supplement <span class="sc">|&gt;</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(birthyear_bg <span class="sc">==</span> <span class="dv">1974</span>) </span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># add respondents from 1974</span></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(data, respondents_1974)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>And then use your usual method to train on the data. This will work because your method will make use of these new cases, but the structure of the dataset has not changed (no new variables were added). If you would create a novel variable on the basis of the supplementary data and use this variable in your model, it would not work on the holdout data, because that variable will not exist in the holdout data. <a href="https://github.com/gertstulp/fertility-prediction-challenge/blob/supplementarydata">Here</a> you can see that it passes the check.</p>
+<p>And then use your usual method to train on the data. This will work because your method will make use of these new cases, but the structure of the dataset has not changed (no new variables were added). If you would create a novel variable on the basis of the supplementary data and use this variable in your model, it would not work on the holdout data, because that variable will not exist in the holdout data. <a href="https://github.com/gertstulp/fertility-prediction-challenge/tree/usebackground" target="_blank">Here</a> you can see it in action and that it passes the check.</p>
 
 
 </section>

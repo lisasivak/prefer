@@ -1,5 +1,5 @@
 ---
-title: "A guide on PreFer codebooks (LISS)"
+title: "A guide on PreFer codebooks [LISS]"
 description: |
   Here is some useful information that can help navigate the PreFer codebooks for the LISS datasets   
 categories:

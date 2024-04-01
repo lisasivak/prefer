@@ -10,6 +10,7 @@ listing:
   contents: 
   - posts
   - "!index.qmd"
+  fields: [image, title, author]
   sort: "date"
   type: grid
   categories: false

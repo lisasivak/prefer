@@ -1,10 +1,10 @@
 ---
-title: "Gert Stulp talks about PreFer"
+title: "Introducing the PreFer data challenge [video]"
 description: |
   ODISSEI lecture about the challenge.   
 categories:
   - General info
-#author: "Lisa Sivak"
+author: "Gert Stulp"
 date: '2024-04-02'
 toc: true
 image: ../../images/incompatible_results.png
