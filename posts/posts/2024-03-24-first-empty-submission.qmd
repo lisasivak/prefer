@@ -1,0 +1,58 @@
+---
+title: "My first (empty) submission"
+description: |
+  It might be good to do an `emtpy` submission first to see how the checks work 
+categories:
+  - submission
+  - guide
+author: 
+  - "Gert Stulp"
+  - "Lisa Sivak"
+date: '2024-03-24'
+toc: true
+image: ../../images/empty_submission.png
+image-alt: LISS logo. 
+language: 
+    section-title-footnotes: References
+---
+
+Here we describe how you, before you change any code, can make your first submission in the PreFer data challenge. This is useful because you can see how the online (Github) tests work.
+
+We will only change the `description.md` file. Let's just write "my first test" in the file. We can do that in multiple ways:
+
+# Via Github.com 
+
+Let's first do it via a browser. 
+
+1. Go to your forked repository, something like https://github.com/YOURNAME/fertility-prediction-challenge
+
+2. Select the `description.md` file. 
+
+3. Click on the pencil button in the top right corner
+
+4. Add your text to the description file
+
+5. Click on "Commit changes" in the green button in the top right corner
+
+6. Commit your changes with a useful message. 
+
+
+After the commit, your submission (which will be a simple one variable logistic regression as described in `submission.py` / `submission.R`) will be evaluated on the fake data for testing. In your Github Actions [and only after you have previously clicked “I understand my workflows, go ahead and enable them.”] you should now see that a test has been started, and it will give you a green checkmark after a couple of minutes. 
+
+# Making changes on your computer and push to github
+
+Here we assume that you have "cloned" your repository, and that all relevant files live in some folder on your computer. 
+
+1. Go to the folder where you have stored the PreFer materials. 
+
+2. Open the `description.md` file and add any text, and save your file. 
+
+3. "Commit" the changes through something like Github Desktop, RStudio, or the command line.
+
+4. "Push" your changes to your online repository. **IMPORTANT**: make sure that you don't push any of the PreFer datasets to your repository! These dataset *cannot* be shared. It is a safe strategy to keep your datasets in a different folder on your computer. 
+
+After the push, your submission (which will be a simple one variable logistic regression as described in `submission.py` / `submission.R`) will be evaluated on the fake data for testing. In your Github Actions [and only after you have previously clicked “I understand my workflows, go ahead and enable them.”] you should now see that a test has been started, and it will give you a green checkmark after a couple of minutes. 
+
+
+
+<font size="-1">Photo by <a href="https://unsplash.com/@mjh_shikder?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">MJH SHIKDER</a> on <a href="https://unsplash.com/photos/two-white-sheets-of-paper-on-a-gray-background-qNMsA7ucvqo?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></font> | <font size="-1">Photo by <a href="https://unsplash.com/@kelli_mcclintock?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Kelli McClintock</a> on <a href="https://unsplash.com/photos/white-box-on-white-table-GopRYASfsOc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></font>

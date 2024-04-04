@@ -1,0 +1,77 @@
+---
+title: "Frequent errors during submission, and how to debug"
+description: |
+  Here we show common errors during the automated tests and how to fix them.
+categories:
+  - submission
+  - guide
+author: 
+  - "Lisa Sivak"
+  - "Gert Stulp"
+date: '2024-03-29'
+toc: true
+image: ../../images/duck2.png
+image-alt: LISS logo. 
+language: 
+    section-title-footnotes: References
+---
+
+When you submit your method, it will automatically run on the fake data first ("PreFer_fake_data.csv"). Only if this check is successful, the method will run on the holdout set. Here we will be adding common reasons why your submission might fail to pass this automatic checks.    
+
+
+_Note: always test your method locally on the fake data before submitting (e.g. apply your method to the fake data to see if the method produces predictions) and debug in case of errors. Here we will mostly focus on errors that you might still encounter during this automated check even if your method was working locally)._  
+
+
+## How to find out if your method passed automatic checks
+
+You can see it on the "Actions" tab in your own github repository. After you update your repository, you will see on this page whether your method passed automatic checks or not. Make sure to allow Github Actions: go to the “Actions” tab and click “I understand my workflows, go ahead and enable them.”
+![](/images/actions.png)
+ 
+
+
+## How to find the error message
+
+Click on the failed "run". You'll see a message there.  
+
+![](/images/failed_run3.png)
+
+
+You can also click on “test” and view more detailed information about the error and the stage at which it occurred.  
+
+![](/images/failed_read_dockerfile.png)
+
+
+
+
+## Common errors
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+### ERROR: failed to solve: failed to read dockerfile: open Dockerfile: no such file or directory
+
+This error appears if you are using one programming language for submission, but the "settings.json" indicates a different language. Most likely you are using R, but you haven't changed the settings. The default set-up is Python; if you would like to use R, go to settings.json and change {"dockerfile": "python.Dockerfile"} into {"dockerfile": "r.Dockerfile"}.  
+![](/images/error_edit_settings.png)
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+### Error in eval(predvars, data, env) : object 'some_variable_name_here' not found
+This error occurs if you added new variables to the model, but did not change the "clean_df" function in the submission script accordingly.    
+![](/images/error_edit_settings.png)
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+### ValueError: The feature names should match those that were passed during fit. Feature names unseen at fit time: 'some_variable_name_here'
+This error occurs if you added new variables to the model and updated the "clean_df" function in submission script accordingly, but the model is not updated.    
+![](/images/feature_name_unseen.jpg)
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+### Error in library(some_package_name) : there is no package called ‘some_package_name’
+This error occurs if you are using an (R) package which is not listed in "packages.R" file. Add this package to this file.  
+![](/images/no_package.png)
+:::
+
+Photo by <a href="https://unsplash.com/@sigmund?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Sigmund</a> on <a href="https://unsplash.com/photos/person-using-black-laptop-computer-59yRYIHWtzY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+  
+Photo by <a href="https://unsplash.com/@timothycdykes?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Timothy Dykes</a> on <a href="https://unsplash.com/photos/yellow-rubber-duck-on-white-background-LhqLdDPcSV8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+  
+

@@ -1,0 +1,124 @@
+---
+pagetitle: FAQ
+title: FAQ
+#subtitle: Questions
+title-block-banner: true
+sidebar: false
+page-layout: full
+search: false  
+
+---
+
+## Submission
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## How many submissions can I make?
+You can submit as many submissions as you like, but only your most recent submission at the deadline for the leaderboard will be assessed. 
+
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## Why do I have to save and submit my code and model, why don’t I just send in predictions?
+There are several reasons why we want participants’ codes and models, rather than just their predictions. First, the goal of this data challenge is primarily scientific, and the organisers (and future researchers) should be able to reproduce all analyses. This is particularly important because a previous data challenge showed problems with (computational) reproducibility. Second, we will run this code and models on different variants of the data for robustness checks and to delve into substantive problems (e.g., how well do the models predict the outcome one year later). 
+
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## I have submitted a method but don’t see my prediction scores? 
+We have chosen only to provide prediction scores and rankings at set times (see [here](https://preferdatachallenge.nl#important-dates){target="_blank"}). The reason for this is the following: the sample size of the LISS panel for our target group is rather limited. This meant that we had chosen to separate the data into a training and holdout set, and we did not opt for an additional validation set because that would come at a sample size cost for the training data. We will not provide continuous prediction scores based on the holdout data because this would lead to overfitting.
+
+
+:::
+
+
+
+## Participation
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## Can I work with the data in a cloud (e.g., Google Colab) where I can collaborate with other members of my team in the data challenge?
+Yes, in Phase 1 you can use the LISS data in such a shared cloud environment, but all people who will have access to the data need to have signed the data agreement, and the data cannot be available to everyone.
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## What programming languages can I use? 
+You can use either R or python to develop your method (i.e. train your model). [Here](/details/overview/4submission.md){target="_blank"} you can read how to prepare a submission and submit your method.
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## Can I use both Python and R? For example, R for cleaning the data, and Python for training 
+The submission (i.e. the scripts for preprocessing the data and training the model, and the model itself) should be either in Python or R, otherwise it will not run on the holdout data.    
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## Can I use external data for training? 
+It might be possible. If you want to use external data, please contact the organizers.
+
+:::
+
+
+## General
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## Can I publish my results / can I be a co-author?
+Everyone who has engaged in the data challenge and submitted predictions through the procedures of the data challenge will be invited to contribute to a “community paper” on the results of the data challenge. You can also consider writing up your (team’s) results and submit it to the special issue; these submissions will be peer-reviewed. Instructions on how to do this will follow after the data challenge. If you want to publish your results separate from the special issue, then you could do so, but only after the community paper and the special issue is fully published (as you will have agreed to via signing the data agreement).
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## I’m new to the topic of fertility, what can I read about it that could be helpful?
+You can start with [this review by Balbo et al.] (https://link.springer.com/article/10.1007/s10680-012-9277-y){target="_blank"}. Keep in mind though, that most studied factors are not necessarily the best predictors.
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## I need help?! Or I have a suggestion
+You can contact e.sivak [at] rug [dot] nl and/or g.stulp [at] rug [dot] nl for any questions and suggestions you might have. 
+:::
+
+
+## Application
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## I don't have experience in machine learning, can I participate?
+Yes. Participating in the challenge is a good opportunity to gain experience in machine learning.
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## I'm not a social scientist and/or know nothing about fertility, can I participate?
+Yes, we welcome participants from various backgrounds who may take different approaches to developing their predictive models. Knowledge of the factors found to be significantly associated with fertility is not required. However, if you want to get a general overview of the factors influencing fertility behaviour you can read this review [(Balbo et al. 2013)](https://link.springer.com/article/10.1007/s10680-012-9277-y){target="_blank"}.
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## I'm not affiliated with an academic institution, can I participate?
+[Phase 1](/details/overview/3phases.md) of the data challenge is open for everyone. It is not required to have an affiliation with an academic institution. Access to Phase 2 is more restricted, you can find the details [here](/details/overview/3application.md).
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## I want to participate in a team consisting of people from several different institutions. Is it possible?
+Yes, it is possible. As in any other case, all team members must submit applications to participate.
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## I am a student. Can I apply and use the challenge for my bachelor or master thesis?
+Yes, you can participate in the challenge and then describe your approach in your thesis. We can't help supervise it though, because as organizers we will decide on the winners so we cannot participate ourselves.
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## How much time it will take to participate in the challenge?
+With the example scripts and codebooks that we will provide, you will be able to produce and submit a basic method in several hours. Trying different methods to improve the predictions can take several weeks. However, any contribution is valuable. Consider applying even if you can dedicate only a few days.
+:::
+
+## Ethics
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## Why predict whether an individual will have a child in the next few years? Doesn't this violate people's privacy? 
+Although our aim is to make the best possible predictions for all individuals, we are not interested in individual outcomes. Both LISS panel data and the datasets based on the Dutch registers are anonymized, and precautions are taken to prevent de-anonymization (e.g. full dates of birth or exact income are not available; in the LISS datasets, sensitive information is removed from open answers, etc.). De-anonymization of the Dutch registers data via linking with external datasets is also highly unlikely as linking with external data can only be done by Statistics Netherlands employees and is only possible after the external data is checked for potential risks of de-anonymization. To summarize, it is highly unlikely that during the challenge current (or predictions of the future) fertility outcomes of specific persons will be revealed.  
+If policies are developed based on the results (e.g., if particular groups of people will be identified who have fewer children than desired due to particular circumstances) these policies will be targeted at groups rather than individuals. 
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## If you are not interested in individual outcomes, why predict them?
+Developing models that predict individual-level fertility outcomes and then comparing and interpreting these models is a way of learning more about fertility behavior. This way has several advantages in comparison with the more traditional methods of studying fertility in the social sciences, which, for example, do not allow comparison of importance of different factors. In the [preprint](https://arxiv.org/abs/2402.00705){target="_blank"} we describe these advantages in more detail. 
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## If predictions are accurate, is there a risk that companies would adopt these methods to target specific individuals (see the for a notorious example [here](https://www.nytimes.com/2012/02/19/magazine/shopping-habits.html){target="_blank"})? 
+We think that the risk of companies improving their targeting based on the models produced in this data challenge is exceedingly small, because if predictions are accurate, they will be accurate because we have thousands of variables (including values and preferences) which companies do not usually have and which are hard to obtain without people’s awareness.
+:::

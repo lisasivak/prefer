@@ -1,133 +1,178 @@
 ---
-pagetitle: "gertstulp.com"
+pagetitle: "preferdatachallenge.nl"
 page-layout: custom
 section-divs: false
 editor: source
 sidebar: false
 search: false
 description: | 
-  personal website of gert stulp
-#image: images/rwds-logo-150px.png
-#title: "GERT<span class='icon-line'></span>STULP"
+  website of the PreFer data challenge
+image: images/PreFer_logo_no_text2.png
+#title: "PreFer data<span class='icon-line'></span>challenge"
 listing:
-  - id: research-overview
+  - id: details-overview
     contents: 
-    - /research/overview
+    - /details/overview
     - "!index.qmd"
     sort: "date desc"
     type: grid
-    fields: [title, description, image]
     categories: false
     sort-ui: false
     filter-ui: false
-    max-items: 6
+    #max-items: 6
     feed: false
     
-  - id: latest-content
-    contents: 
-    - /posts
-    - /research/publications
-    - /research/talks
-    - /viewpoints
-    - "!index.qmd"
-    - "!template_talk.md"
-    - "!template_pub.md"
-    sort: "date desc"
-    type: grid
-    categories: false
-    sort-ui: false
-    filter-ui: false
-    max-items: 3
-    feed: false
+#  - id: research-overview
+#    contents: 
+#    - /research/overview
+#    - "!index.qmd"
+#    sort: "date desc"
+#    type: grid
+#    categories: false
+#    sort-ui: false
+#    filter-ui: false
+#    max-items: 6
+#    feed: false
+    
+#  - id: latest-content
+#    contents: 
+#    - /posts
+#    - /research/publications
+#    - /research/talks
+#    - /viewpoints
+#    - "!index.qmd"
+#    - "!template_talk.md"
+#    - "!template_pub.md"
+#    sort: "date desc"
+#    type: grid
+#    categories: false
+#    sort-ui: false
+#    filter-ui: false
+#    max-items: 3
+#    feed: false
 
 toc: false
 ---
 
-<!-- purple bar at top -->
 ::: {.content-container}
 ::: {.top-story .purple-background}
-::: {.website-text}
 
-WELCOME TO WWW.GERTSTULP.COM
+::: grid
+
+::: {.g-col-9  .top-story-text}
+<!-- add emply line-->
+<font size="+1">    </font>
+  
+<font size="+1">Welcome to the website of the __Predicting Fertility data challenge (PreFer)__. The aim of the challenge is to measure current predictability of fertility outcomes in the Netherlands to advance our understanding of fertility</font>  
+
+<font size="+1">[<span style="color:#cbcfe6;">__APPLY TO PARTICIPATE __</span>](https://forms.gle/cxc7U24n5ox7A1vu7){target="_blank"} and become a part of a unique data challenge in the social sciences</font> 
 
 :::
-:::
+
+::: {.g-col-3  .top-story-img}
+![](/images/map_nl1.png)
 :::
 
+:::
 
-<!-- quick overview GS -->
+:::
+::: 
+
+
+<!-- details about the challenge -->
 ::: {.content-container}
 ::: {.listing-block}
 
-:::: {.columns}
+## About PreFer 
 
-::: {.column width="31%"}
-::: {.face}
-<!-- quick overview GS ![](images/Gert_website_round.png){width=85%} -->
-![](images/Gert_website_round.png){width=85%}
+::: {#details-overview}
 :::
-:::
-
-::: {.column width="2.5%"}
-
-:::
-
-::: {.column width="31%"}
-<!-- empty column to create gap -->
-I'm Gert Stulp. I like:
-
-- cats
-- visualisations in R
-- Gary Larson 
-- Arnold Schwarzenegger (sort of)
-
-:::
-
-::: {.column width="4.5%"}
-
-:::
-
-::: {.column width="29%"}
-
-::: {.logo}
-
-
-![](/images/logo.gif){width=95%}
-:::
-:::
-
-::::
 
 :::
 :::
 
-<!-- overview of research -->
+
+<!--  dates  -->
 ::: {.content-container}
 ::: {.listing-block}
-<a href="research/index.qmd">
 
-## Research
-</a> 
+## Important dates
+- <s>[Application](/details/overview/3application.md){target="_blank"} deadline: March 24, 2024</s>. This deadline has passed and the challenge is about to start, but [you can still apply](https://forms.gle/cxc7U24n5ox7A1vu7){target="_blank"}.
+- Start of the data challenge [Phase 1](/details/overview/3phases.md): April 1, 2024
+- Selection into [Phase 2](/details/overview/3phases.md): June 3 - June 17, 2024
+- Start of [Phase 2](/details/overview/3phases.md): June 17, 2024
+- End of [Phase 2](/details/overview/3phases.md) and [Phase 1](/details/overview/3phases.md): September 16, 2024
+- Announcing the winners: October 2024
 
-::: {#research-overview}
+Leaderboards with the results of intermediate submissions in Phase 1 are planned to be published on these dates:  
+
+- April 22 
+- May 13
+- June 3
+
+:::
 :::
 
-:::
-:::
 
-
-<!-- latest content information -->
+<!--  overview  -->
 ::: {.content-container}
-::: {.listing-block .last-block} 
-<!-- last-block to remove line below -->
-<a href="all-content.qmd">
+::: {.listing-block}
 
-## Latest content 
-</a>
+## Why predict fertility outcomes in a data challenge?
 
+Fertility is widely studied in diverse disciplines due to its importance to individuals and societies. A lot of factors have been identified that are related to fertility outcomes. Yet these important factors only explain a fraction of the variation in fertility outcomes and we are unable to explain even their short-term changes. What do we miss?
 
-::: {#latest-content}
+This data challenge can potentially advance our understanding of fertility behavior and improve social policies and family planning in several ways. Measuring how well different factors and models can predict fertility outcomes for new cases will show __which factors are more important__. It can narrow down a scope for potential interventions and help people reach their desired family size. Comparing and interpreting different models submitted to a data challenge (e.g. theory- and data-driven) can identify __new factors__ currently overlooked by the theories of fertility and  highlight the __gaps in current knowledge__ (e.g. important interactions or non-linear effects). 
+
+  
+
+:::
 :::
 
+
+
+
+
+<!-- how to participate -->
+::: {.content-container}
+::: {.listing-block}
+
+## Why participate
+* Use unique data from the LISS panel and the Dutch population registers, including a social network for the entire Dutch population*  
+* Have fun learning new skills, competing with other teams, and discovering unique data while predicting an important life outcome  
+* Contribute to research on fertility behaviour  
+* Collaborate on scientific papers describing the results of the challenge  
+* Win recognition and prizes  
+  
+   
+
+*Only a selection of participants will get an opportunity to work with the register data in [Phase 2](/details/overview/3phases.md){target="_blank"} of the data challenge. For these participants the costs of access to the register datasets will be covered by ODISSEI. See __conditions for accessing the register data__ [here](/details/overview/4submission_evaluation_winners.md){target="_blank"}.
+
+## How to participate
+<!-- :::: {.columns}-->
+<!--::: {.column width="30%"}-->
+### Apply 
+
+Fill out [this form](https://forms.gle/cxc7U24n5ox7A1vu7){target="_blank"} to apply for participation in the data challenge. You can find the details about applications [here](details/overview/3application.md).
+__The application deadline is March 24th.__  
+
+
+### Build a model 
+
+Use any method you’d like to train a predictive model using training data we provide. The models will be then evaluated on a holdout set based on the F1 score. More information about the phases of the data challenge can be found [here](/details/overview/3phases.md).
+
+### Submit the model  
+
+Submit your model (in [Phase 1](/details/overview/3phases.md)) or predictions (in [Phase 2](/details/overview/3phases.md)). The link the submission platform with all the instructions how to submit will appear on this website soon.
+ 
+
+
 :::
 :::
+
+
+
+
+
+
+

@@ -1,7 +1,7 @@
 ---
-pagetitle: Posts | Gert Stulp
-title: Posts
-subtitle: I blog infrequently, and mostly to support my memory rather than to communicate.
+pagetitle: Guides
+title: Guides
+subtitle: We will post useful materials and news about the challenge here.
 search: false  
 title-block-banner: true
 sidebar: false
@@ -10,9 +10,10 @@ listing:
   contents: 
   - posts
   - "!index.qmd"
-  sort: "date desc"
+  fields: [image, title, author]
+  sort: "date"
   type: grid
-  categories: true
+  categories: false
   sort-ui: false
   filter-ui: false
   page-size: 30

@@ -1,0 +1,236 @@
+---
+title: "A walkthough of submitting a simple model in R"
+description: |
+  Here we show the steps for submitting a simple model in `R`  
+categories:
+  - submission
+  - guide
+  - R
+author: 
+  - "Gert Stulp"
+  - "Lisa Sivak"
+date: '2024-03-30'
+toc: true
+image: ../../images/submission_basic_R.png
+image-alt: LISS logo. 
+language: 
+    section-title-footnotes: References
+---
+
+Here we describe how to prepare and make a slighty more complex submission in R than [this one](2024-03-25-simple-walkthrough-r.qmd){target="_blank"}. The sole purpose of this script is to make the submission process more clear by showing some of the errors that you might bump into, not to present a model that is any good.       
+
+***
+
+Our aim is to run a penalized regression via the package `glmnet`. We're only doing a penalized regression with three variables, `birthyear_bg`, `gender_bg`, and `oplmet_2020`. 
+
+# Working on submission.R 
+We are going to use the packages `dplyr`, `tidyr`, and `glmnet` so we're going to put these at the top of `submission.R`. Then we'll start by selecting the variables, processing these variables, and then turn the dataset into a matrix, needed for the function `glmnet`. We'll use the function `model.matrix` to conveniently turn our factors into dummies. 
+
+*First part of submission.R:*
+```{r message = FALSE}
+library(dplyr)
+library(tidyr)
+library(glmnet)
+
+clean_df <- function(df, background_df = NULL){
+  
+  ## Selecting variables
+  keepcols = c('nomem_encr', # ID variable required for predictions,
+               'birthyear_bg', # birthyear of respondents
+               'gender_bg', # gender of respondents, factor
+               'oplmet_2020') # highest educational level in 2020
+  
+  ## Keeping data with variables selected
+  df <- df |> select(all_of(keepcols))
+  
+  df <- df |>
+    # standardise continuous variable, create factor for categorical variables
+    # needed for glmnet
+    mutate(
+      birthyear_bg = as.numeric(scale(birthyear_bg)), # z-scores, as.numeric to remove attributes
+      gender_bg = factor(gender_bg),
+      oplmet_2020 = factor(oplmet_2020)
+    )
+  
+  # turn factors into dummy variables, required for glmnet
+  df <- model.matrix(~ ., df)
+  
+  return(df)
+  
+}
+```
+
+## Testing clean_df
+Let's test if our `clean_df` function works. Let's read in the `PreFer_train_data.csv` (which you hopefully have in a different folder than your local repository; see step 1 [here](2024-03-25-simple-walkthrough-r.qmd) {target="_blank"}). Let's also read-in the outcome for the training data and the fake training data, which we'll both use.
+
+```{r message = FALSE}
+library(data.table)
+train <- data.table::fread("../../../PreFer_data/PreFer_train_data.csv", 
+                           keepLeadingZeros = TRUE, # if FALSE adds zeroes to some dates
+                           data.table = FALSE) # returns a data.frame object rather than data.table 
+outcome <- data.table::fread("../../../PreFer_data/PreFer_train_outcome.csv", 
+                           keepLeadingZeros = TRUE, data.table = FALSE)
+fake <- data.table::fread("../../../PreFer_data/PreFer_fake_data.csv", 
+                          keepLeadingZeros = TRUE, data.table = FALSE)
+
+clean <- clean_df(train)
+str(clean)
+```
+
+A matrix with 2939 cases and 12 variables. 
+
+# Using training.R
+We'll use this dataset (matrix) for training, using the `train_save_model` function in `training.R`. We want to do a penalized regression. We'll first do a 10-fold cross-validation, determine the optimal penalty (lambda), and run another penalized regression using this lambda [nested cross-validation may be more appropriate here, but we'll go with it]. 
+
+*training.R:*
+```{r}
+train_save_model <- function(cleaned_df, outcome_df) {
+  set.seed(1) # useful here because penalized regression not deterministic
+  
+  # Combine cleaned_df and outcome_df to match on ID
+  model_df <- merge(cleaned_df, outcome_df, by = "nomem_encr")
+  
+  # glmnet requires matrix, and also features (X) separately from outcome (y)
+  model_df <- as.matrix(model_df) # merged filed into matrix
+  
+  # features without outcome and identifier
+  X <- model_df[ , !(colnames(model_df) %in% c("nomem_encr", "new_child"))]
+  y <- model_df[ , colnames(model_df) == "new_child"] # outcome only
+  
+  ## LASSO regression ##
+  # hyperparameter tuning: 10 fold cross-validation to retrieve optimal lambda
+  CV <- cv.glmnet(x = X,  y = y, 
+                  family = "binomial", nfolds = 10, standardize = FALSE)
+  optimal_lambda <- CV$lambda.min
+  
+  # Run model with optimal lambda
+  model <- glmnet(x = X, y = y, 
+                  family = "binomial", 
+                  lambda = optimal_lambda, standardize = FALSE )
+  
+  # Save the model
+  saveRDS(model, "model.rds")
+}
+```
+
+Will it work?!
+```{r error = TRUE}
+train_save_model(clean, outcome)
+```
+
+Some error about missing values. This is actually about missing values in the outcome variable, which glmnet does not except. 
+
+```{r}
+table(outcome$new_child, useNA = "always")
+```
+
+
+# Back to submission.R 
+
+Annoyingly, there are some missing values in the outcome values, and this means that we want to exclude all cases with missing outcome values (or impute the outcomes). We have created the variable `outcome_available` for this reason, which has a `1` if the outcome is available. Let's update our `clean_df` function.
+
+
+*Updated first part of submission.R:*
+```{r}
+clean_df <- function(df, background_df = NULL){
+  
+  # glmnet requires that outcome is available for all cases
+  df <- df |> filter(outcome_available == 1)
+  
+  ## Selecting variables, we don't need outcome_available!
+  keepcols = c('nomem_encr', # ID variable required for predictions,
+               'birthyear_bg', # birthyear of respondents
+               'gender_bg', # gender of respondents, factor
+               'oplmet_2020') # highest educational level in 2020
+  
+  ## Keeping data with variables selected
+  df <- df |> select(all_of(keepcols))
+  
+  df <- df |>
+    # standardise continuous variable, create factor for categorical variables
+    # needed for glmnet
+    mutate(
+      birthyear_bg = as.numeric(scale(birthyear_bg)), # z-scores, as.numeric to remove attributes
+      gender_bg = factor(gender_bg),
+      oplmet_2020 = factor(oplmet_2020)
+    )
+  
+  # turn factors into dummy variables, required for glmnet
+  df <- model.matrix(~ ., df)
+  
+  return(df)
+}
+```
+
+Let's try again with our updated `clean_df`.
+
+```{r}
+clean <- clean_df(train)
+train_save_model(clean, outcome)
+```
+
+Score! The function worked, and a `model.rds` was created. 
+
+# Working on submission.R: predict_outcomes
+
+Only one more step: trying to see if we can make predictions via `predict_outcomes` in `submission.R`.
+
+```{r}
+predict_outcomes <- function(df, background_df = NULL, model_path = "./model.rds"){
+  
+  if( !("nomem_encr" %in% colnames(df)) ) {
+    warning("The identifier variable 'nomem_encr' should be in the dataset")
+  }
+  
+  # Load the model
+  model <- readRDS(model_path)
+  
+  # Preprocess the fake / holdout data
+  df <- clean_df(df) # is matrix
+  
+  # Exclude id because not used in model
+  X_pred <- df[ , !(colnames(df) %in% c("nomem_encr"))]
+  
+  # Generate predictions from model
+  predictions <- predict(model, 
+                         X_pred, 
+                         type = "response") 
+  predictions <- ifelse(predictions > 0.5, 1, 0)  
+  
+  # Output file should be data.frame with two columns, nomem_encr and predictions
+  df_predict <- data.frame("nomem_encr" = df[ , colnames(df) == "nomem_encr"], 
+                           "prediction" = predictions)
+  # Force columnnames (overrides names that may be given by `predict`)
+  names(df_predict) <- c("nomem_encr", "prediction") 
+  
+  # Return only dataset with predictions and identifier
+  return( df_predict )
+  
+}
+```
+
+Let's check. It works on the training data itself! 
+```{r}
+predict_outcomes(train) |> head() # only first couple of rows
+```
+
+Let's check on fake data:
+```{r}
+predict_outcomes(fake) |> head() # only first couple of rows
+```
+Success. 
+
+# Adding packages to packages.R
+We have used the packages `dplyr`, `tidyr`, and `glmnet`, which means you will also put these packages into `packages.R`. 
+
+# settings.json
+Make sure you have written `{"dockerfile": "r.Dockerfile"}` in `settings.json`
+
+# Testing everything
+Even though we have now tested everything manually, it's still good to do a check via the terminal with `Rscript run.R PreFer_fake_data.csv PreFer_fake_background_data.csv`.
+
+[Here](https://github.com/gertstulp/fertility-prediction-challenge/tree/usebackground){target="_blank"} you can see it in action and that it passes the check.
+
+
+
+<font size="-1">Photo by <a href="https://unsplash.com/@ffstop?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Fotis Fotopoulos</a> on <a href="https://unsplash.com/photos/black-computer-keyboard-DuHKoV44prg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></font> | <font size="-1">Photo by <a href="https://unsplash.com/@kelli_mcclintock?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Kelli McClintock</a> on <a href="https://unsplash.com/photos/white-box-on-white-table-GopRYASfsOc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></font>

@@ -2,33 +2,68 @@ project:
   type: website
 
 website:
-  title: "Gert Stulp"
+  #title: "PreFer"
   open-graph: true
-  site-url: https://www.gertstulp.com/
-  repo-url: https://github.com/gertstulp/website
-  #image: images/rwds-logo-150px.png
-  favicon: images/faviconGS.png
+  site-url: https://preferdatachallenge.nl/
+  repo-url: https://github.com/lisasivak/prefer
+  image: images/PreFer_logo_no_text2.png
+  favicon: images/PreFer_logo_favicon.png
   navbar:
     background: "#f0eeeb"
-    #logo: images/rwds-logo-150px.png
+    logo: images/PreFer_logo_no_text2.png
     #logo-alt: "should be a picture of GS"
-    title: "&nbsp;GERT<span class='icon-line'></span>STULP"
+    #title: "Pre<span class='icon-line'></span>Fer"
     collapse-below: lg
     right:
-      - research/index.qmd
+      #- research/index.qmd
+      #- posts/index.qmd
+      #- CV/index.qmd
+      #- resources/index.qmd
+      #- text: "Other"
+      #  menu: 
+      #  - text: "Some notes"
+      #    href: other/about.qmd
+      #  - text: "copy-paste"
+      #    href: other/copypaste.qmd
+      #- text: "About PreFer"
+      #  href: "#about-prefer"
+      - text: "APPLY"
+        href: details/overview/3application.md
+      - text: "Important dates"
+        href: "#important-dates"
+      #- text: "The aim"
+      #  href: "#the-aim"
+      #- text: "Why participate"
+      #  href: "#why-participate"
+      - text: "How to participate"
+        href: "#how-to-participate"
+      - text: "Paper"
+        href: https://arxiv.org/abs/2402.00705
+      #- text: "Methodology"
+      #  href: "#about-prefer"
+      - faq/index.qmd
       - posts/index.qmd
-      - CV/index.qmd
-      - resources/index.qmd
-      - text: "Other"
+      - text: "Organizers"
         menu: 
-        - text: "Some notes"
-          href: other/about.qmd
-        - text: "copy-paste"
-          href: other/copypaste.qmd
-  # sidebar: 
+        - text: "Who we are"
+          href: about-us.qmd
+        - text: "Contact us"
+          href: contact.qmd
+        - text: "Funding"
+          href: funding.qmd
+      #    href: contact.qmd
+      #  - text: "Why participate"
+      #    href: "#why participate"
+      #  - text: "Organisers"
+      #    href: "#organisers"
+      #  - text: "Details about the challenge"
+      #    href: "#details"
+      
+  #sidebar: 
   #   - title: "About us"
   #     contents:
-  #       - about-rwds.qmd
+  #       - about-us.qmd
+  #       - contact.qmd
   #       - viewpoints/editors-blog/posts/2022/10/18/meet-the-team.qmd
   #       - rwds-partners.qmd
   #       - contact.qmd
@@ -67,22 +102,24 @@ website:
   page-footer:
     background: "#000000"
     left: |
-      GS
-    center:  
-      - href: mailto:g.stulp@rug.nl
-        icon: envelope
-        aria-label: envelope
-      - href: https://github.com/gertstulp
-        icon: github
-        aria-label: GitHub
-      - href: https://scholar.google.nl/citations?user=fFcVaEYAAAAJ&hl=nl
-        text: "{{< ai google-scholar >}}"
-        aria-label: Scholar
-      - href: https://orcid.org/0000-0003-0173-5554
-        text: "{{< ai orcid >}}"
-        aria-label: Orcid
+      PreFer data challenge  
+      The website is based on [Real World Data Science](https://realworlddatascience.net/){target="_blank"}  
+      
+    #center:  
+    #  - href: mailto:g.stulp@rug.nl
+    #    icon: envelope
+    #    aria-label: envelope
+    #  - href: https://github.com/gertstulp
+    #    icon: github
+    #    aria-label: GitHub
+    #  - href: https://scholar.google.nl/citations?user=fFcVaEYAAAAJ&hl=nl
+    #    text: "{{< ai google-scholar >}}"
+    #    aria-label: Scholar
+    #  - href: https://orcid.org/0000-0003-0173-5554
+    #    text: "{{< ai orcid >}}"
+    #    aria-label: Orcid
     right: |
-      GS
+      The map of the Netherlands by [Tananuphong Kummaru on Vecteezy](https://www.vecteezy.com/png/18876571-polygonal-netherlands-map){target="_blank"}
     
 format:
   html:

@@ -1,0 +1,228 @@
+---
+title: "A walkthough of submitting a simple model in R"
+description: |
+  Here we show the steps for submitting a simple model in `R`  
+categories:
+  - submission
+  - guide
+author: 
+  - "Lisa Sivak"
+  - "Gert Stulp"
+date: '2024-03-25'
+toc: true
+image: ../../images/submission_basic_R.png
+image-alt: LISS logo. 
+language: 
+    section-title-footnotes: References
+---
+
+Here we describe how to prepare and make a submission in R. The sole purpose of this script is to make the submission process more clear, not to present a model that is any good.       
+
+***
+
+In this example, we assume that you did all the prerequisite steps described [here](https://github.com/eyra/fertility-prediction-challenge?tab=readme-ov-file#prerequisites){target="_blank"}. You have forked and cloned (e.g. downloaded) the GitHub repository, and now have a folder with all the files from this repository on your computer. We will call this folder your "local repository".    
+
+Let's imagine that you want to add one predictor to the basic model that is already in the repository: respondents' gender (variable name `gender_bg`, as you found using the [codebooks](2024-03-21-prefer-codebooks.qmd){target=“_blank”}). To produce this model you should use the template functions that are already in the repository: `clean_df` for preprocessing the data from the "submission.R" script, `train_save_model` from the "training.R" script, and `predict_outcomes` from the "submission.R" script (to test your model and preprocessing).   
+
+__Overall steps__: reading in the data —> preprocessing the data —> training and saving the model —> testing on the fake data —> editing/saving "submission.R", "training.R", "packages.R" accordingly —> adding a short description of the method to "description.md" —> pushing your materials to the online Github repository -> submitting.   
+
+## Reading-in data    
+
+1. [Read-in](2024-03-22-read-data.qmd){target=“_blank”} the training data and outcome. __IMPORTANT__: it is strongly advised to save the PreFer datafiles in a *different* folder than your local repository. The reason is that these datasets **cannot** be made public, and when you save the datasets in your local repository you may accidentally upload the datasets to your online repository when you "push" your latest changes. This would constitute a serious data breach.  
+
+*The code to read-in your data is the only code that you do not need to document through your repository.*
+
+```{r, eval = FALSE}
+# loading data (predictors)
+library(data.table) # requires install.packages("data.table") first
+train <- data.table::fread("path to the data which is NOT in your local repository/PreFer_train_data.csv",
+                           keepLeadingZeros = TRUE, # if FALSE adds zeroes to some dates
+                           data.table = FALSE)
+# base R's read.csv is also possible but is ssssllloooowww
+
+# loading the outcome
+outcome <- data.table::fread("path to the data which is NOT in your local repository/PreFer_train_outcome.csv",
+                             data.table = FALSE) 
+```
+
+## Preprocessing and training   
+
+2. Find your folder with the PreFer materials, and open the `submission.R` script. Edit the `clean_df` function: add the new variable: 
+
+```{r, eval = FALSE}
+clean_df <- function(df, background_df = NULL) {
+    # Process the input data to feed the model
+  
+    # calculate age   
+    df$age <- 2024 - df$birthyear_bg
+
+    # Selecting variables for modelling
+
+    keepcols = c('nomem_encr', # ID variable required for predictions,
+                 'age', 
+                 'gender_bg')  # <-------- ADDED VARIABLE 'gender_bg'
+  
+    # Keeping data with variables selected
+    df <- df[ , keepcols ]
+    
+    # turning gender into factor
+    df$gender_bg<- as.factor(df$gender_bg) # <-------- ADDED THIS
+
+    return(df)
+}
+```
+
+Now your `clean_df` function is done. Make sure to save it and load it into your R environment.
+
+3. Edit the `train_save_model` function from the "training.R": add the new variable:
+
+```{r, eval = FALSE}
+train_save_model <- function(cleaned_df, outcome_df) {
+  # Trains a model using the cleaned dataframe and saves the model to a file.
+
+  # Parameters:
+  # cleaned_df (dataframe): The cleaned data from clean_df function to be used for training the model.
+  # outcome_df (dataframe): The data with the outcome variable (e.g., from PreFer_train_outcome.csv or PreFer_fake_outcome.csv).
+
+  ## This script contains a bare minimum working example
+  set.seed(1) # not useful here because logistic regression deterministic
+  
+  # Combine cleaned_df and outcome_df
+  model_df <- merge(cleaned_df, outcome_df, by = "nomem_encr")
+  
+  # Logistic regression model
+  model <- glm(new_child ~ age + gender_bg, family = "binomial", data = model_df) # <-------- ADDED VARIABLE 'gender_bg'
+  
+  # Save the model
+  saveRDS(model, "model.rds")
+}
+
+```
+
+Now your `train_save_model` function is done. Make sure to save it and load it into your R environment. 
+
+4. Preprocess the data using your updated `clean_df` function, and then train the model via `train_save_model`. If you are working in a R Markdown or R Notebook document in RStudio, or when you have opened an Rproject (recommended!), the model (`model.rds`) will be saved in the same folder as your scripts -- in your local repository. If you are working via an R script, you will probably need to manually set the local repository as the working directory.   
+
+```{R, eval = FALSE}
+# setwd("path to your local repository") # <---- provide the path here
+
+# preprocessing the data
+train_cleaned <- clean_df(train)
+
+# training and saving the model
+train_save_model(train_cleaned, outcome)
+```
+
+Your model is trained, and saved in `model.rds`. 
+
+## Testing on fake data
+
+5. Test the preprocessing function and model on fake data to see if they will run on the holdout set. If your method does not run on the "fake data", it will not run on the holdout data. [If you "push" your method to Github this test will also be automatically run].  
+
+To do this test you can edit the function `predict_outcomes` from "submission.R". Load the fake data (it is already in your local repository) and apply the `predict_outcomes`.
+
+```{r, eval = FALSE}
+# load the fake data
+fake <- data.table::fread("PreFer_fake_data.csv",
+                          keepLeadingZeros = TRUE, # if FALSE adds zeroes to some dates
+                          data.table = FALSE)
+
+predict_outcomes <- function(df, background_df = NULL, model_path = "./model.rds"){
+  # Generate predictions using the saved model and the input dataframe.
+    
+  # The predict_outcomes function accepts a dataframe as an argument
+  # and returns a new dataframe with two columns: nomem_encr and
+  # prediction. The nomem_encr column in the new dataframe replicates the
+  # corresponding column from the input dataframe The prediction
+  # column contains predictions for each corresponding nomem_encr. Each
+  # prediction is represented as a binary value: '0' indicates that the
+  # individual did not have a child during 2021-2023, while '1' implies that
+  # they did.
+  
+  # Parameters:
+  # df (dataframe): The data dataframe for which predictions are to be made.
+  # background_df (dataframe): The background data dataframe for which predictions are to be made.
+  # model_path (str): The path to the saved model file (which is the output of training.R).
+
+  # Returns:
+  # dataframe: A dataframe containing the identifiers and their corresponding predictions.
+  
+  ## This script contains a bare minimum working example
+  if( !("nomem_encr" %in% colnames(df)) ) {
+    warning("The identifier variable 'nomem_encr' should be in the dataset")
+  }
+
+  # Load the model
+  model <- readRDS(model_path)
+    
+  # Preprocess the fake / holdout data
+  df <- clean_df(df, background_df)
+
+  # Exclude the variable nomem_encr if this variable is NOT in your model
+  vars_without_id <- colnames(df)[colnames(df) != "nomem_encr"]
+  
+  # Generate predictions from model
+  predictions <- predict(model, 
+                         subset(df, select = vars_without_id), 
+                         type = "response") 
+  
+  # Create predictions that should be 0s and 1s rather than, e.g., probabilities
+  predictions <- ifelse(predictions > 0.5, 1, 0)  
+  
+  # Output file should be data.frame with two columns, nomem_encr and predictions
+  df_predict <- data.frame("nomem_encr" = df[ , "nomem_encr" ], "prediction" = predictions)
+  # Force columnnames (overrides names that may be given by `predict`)
+  names(df_predict) <- c("nomem_encr", "prediction") 
+  
+  # Return only dataset with predictions and identifier
+  return( df_predict )
+}
+
+
+# apply the function to the fake data
+predict_outcomes(fake)
+```
+
+If you get a data.frame including predictions, your test on the fake data has passed!  
+![](../..//images/fake_data_predictions_r.png)
+
+## Edit/save files for submission
+
+You can now prepare the files for submission, that will be applied to the holdout set:      
+
+6. Edit/Save the `clean_df` function in your "submission.R". This code will be applied to the holdout data. You don't need to adapt the `predict_outcomes` function in "submission.R" because the outputs of your model are predicted classes already (i.e., 0s and 1s).   
+
+7. prediction model: make sure that your model is saved in the same folder as submission.R under the name `model.rds`.   
+
+8. "packages.R": you don't have to edit this file now, because you didn't used any packages.  
+
+9. Edit/Save the `train_save_model` function in the "training.R" script.  
+
+10. When you think your all set, it is advised to test the entire workflow by running `Rscript run.R PreFer_fake_data.csv PreFer_fake_background_data.csv` from the command line / terminal. 
+
+## Adding a description
+
+11. Add a brief description of your method to the file `description.md` (e.g. "binary logistic regression with two variables - age and gender - selected manually")  
+
+## Update online GitHub repository
+
+Now you need to update your online GitHub repository. You can do it in several ways. Here we assume that you used GitHub Desktop for cloning the repository and will also use it to commit (i.e. capture the state of the local repository at that point in time) and push the changes (e.g. change the online repository):
+
+12. Go to GitHub Desktop and press "Commit to master". You need to add some description (e.g. "add gender").  
+
+![](../../images/commit.png)
+
+
+13. Push the changes ("Push origin") (i.e. update your online repository) - press "Push origin" on the upper right.  
+
+14. Now go to the "Actions" tab in you online github repository. After a few minutes you'll see if your submission passed the automatic checks.  
+
+## Submit your method 
+
+15. Submit your method as explained [here](https://github.com/eyra/fertility-prediction-challenge/tree/master#submit-your-method){target="_blank"}. 
+
+
+__IMPORTANT__: always save the code that you used to produce the model via the `train_save_model` function. Eventhough this function will not be run on the holdout data, we [the PreFer organisers] will use it to ensure reproducibility and verify whether the predictions you submitted are the same as the predictions that arise from your code stored in `train_save_model`.  
+
+
+<font size="-1">Photo by <a href="https://unsplash.com/@ffstop?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Fotis Fotopoulos</a> on <a href="https://unsplash.com/photos/black-computer-keyboard-DuHKoV44prg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></font> | <font size="-1">Photo by <a href="https://unsplash.com/@kelli_mcclintock?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Kelli McClintock</a> on <a href="https://unsplash.com/photos/white-box-on-white-table-GopRYASfsOc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></font>

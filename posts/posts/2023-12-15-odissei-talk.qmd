@@ -1,0 +1,20 @@
+---
+title: "Introducing the PreFer data challenge [video]"
+description: |
+  ODISSEI lecture about the challenge.   
+categories:
+  - General info
+author: "Gert Stulp"
+date: '2024-04-02'
+toc: true
+image: ../../images/incompatible_results.png
+image-alt: I still have to find a figure for this. 
+language: 
+    section-title-footnotes: References
+---
+
+In this ODISSEI lecture, Gert Stulp talks about PreFer: the reasons for the challenge, its potential for research into fertility behaviour and design of the challenge.  
+
+You can watch the recording [here](https://eur.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=addbcfb3-2803-4ad7-a175-b0d600f80a92){target="_blank"}.
+
+![](/images/reasons_challenge.png)

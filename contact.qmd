@@ -1,0 +1,15 @@
+---
+title: "Contact us"
+subtitle: "Please, email us, if you have any questions about this data challenge." 
+sidebar: false
+page-layout: full
+toc: false
+title-block-banner: true
+---
+
+
+**Gert Stulp:** [g.stulp@rug.nl](mailto:g.stulp@rug.nl)  
+
+**Elizaveta Sivak:** [e.sivak@rug.nl](mailto:e.sivak@rug.nl)  
+
+

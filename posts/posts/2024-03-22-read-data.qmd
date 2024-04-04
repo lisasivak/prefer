@@ -1,0 +1,78 @@
+---
+title: "Reading in data [LISS]"
+description: |
+  Here is some useful information on reading in / load PreFer data.   
+categories:
+  - dataset
+  - guide
+author: 
+  - "Gert Stulp"
+  - "Lisa Sivak"
+date: '2024-03-22'
+toc: true
+image: ../../images/liss_pick.png
+image-alt: LISS logo. 
+language: 
+    section-title-footnotes: References
+---
+
+
+Here we describe ways of reading-in the data for both Python and R.  
+
+Note that different packages may lead to partly different datasets (for example, with columns of different types), because of the way different packages treat things like missing values, empty strings, and dates. 
+
+
+# Reading in the data
+
+The most important dataset of the PreFer data challenge is the `PreFer_train_data.csv` dataset ([click here](2024-03-20-prefer-datasets.qmd) for information on the datasets that are available). It contains data on all LISS respondents who were between the ages of 18 and 45 in 2020 (i.e., had birthyears between 1975 and 2002). We will see how we can read-in this data with the help of R or Python. 
+
+
+## R
+
+There are several ways in which one could read data into R, but some of them are more successful and quicker than others (TL;DR: use `data.table::fread`).   
+
+### read.csv
+`read.csv` works, requires no additional packages, but is *very* slow. 
+```{r eval = FALSE}
+data <- read.csv("path/to/folder/PreFer_train_data.csv", row.names = FALSE) # this works but is very slow
+```
+
+### read_csv
+`readr::read_csv` from the package `readr` in principle works, but gets many of the column types wrong with default settings (because, by default, it only bases column types on the first 1000 values present in the variable). Do not run this code `data <- readr::read_csv("PreFer_train_data.csv")`, but use the following code which explicitly tells `read_csv` that it must make use of the entire column (i.e., all cases) to make a guess of the column type:
+
+```{r eval = FALSE}
+library(readr) # requires install.packages("readr") first
+data <- readr::read_csv("path/to/folder/PreFer_train_data.csv", guess_max = 6418) # this works but is slow
+# 6418 is the number of rows in the data
+```
+
+### fread
+`data.table::fread` from the package `data.table` works like a charm and is very fast. Some additional arguments are useful to avoid default behaviour. 
+
+```{r eval = FALSE}
+library(data.table) # requires install.packages("data.table") first
+data <- data.table::fread("path/to/folder/PreFer_train_data.csv", 
+                          keepLeadingZeros = TRUE, # if FALSE adds zeroes to some dates
+                          data.table = FALSE) # returns a data.frame object rather than data.table 
+```
+
+
+## Python
+
+### read_csv from pandas
+`read_csv` from `pandas` works, but is slow. Specifying `low_memory=False` is needed. If `low_memory=False`, then whole columns are read in first, and then the proper data types in the columns are determined. If `low_memory=True` (default), then `pandas` reads in the data in chunks of rows, then appends them together. This results in lower memory use while parsing, but incorrect (mixed) type of data in a column, when for example there are many missing values in a column (which are floating point numbers in python) but all other values are integers.  
+```{{python}}
+import pandas as pd # requires installing pandas first
+train = pd.read_csv("path to the data which is NOT in your local repository\\PreFer_train_data.csv", low_memory = False) # this works but is slow
+```
+
+
+### read_csv from polars 
+`read_csv` from the `polars` package takes less time. `Polars` is a `pandas` alternative designed to process data faster. If you want to work with a pandas dataframe, use `to_pandas()` to convert. For that, `pyarrow` package also needs to be installed.  
+
+`infer_schema_length=6418` is needed to increase the number of lines used for determining column types; 6418 is the number of rows in the data.  
+```{{python}}
+import polars as pl     # requires installing polars first
+import pyarrow          # requires installing pyarrow first
+train = pd.read_csv("path to the data which is NOT in your local repository\\PreFer_train_data.csv", infer_schema_length=6418).to_pandas() 
+```
