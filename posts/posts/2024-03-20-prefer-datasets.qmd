@@ -109,15 +109,11 @@ The PreFer datasets `PreFer_train_background_data.csv` and `PreFer_holdout_backg
 
 The `PreFer_train_data.csv` consists of 31634 variables from 6418 respondents. These individuals are LISS respondents who were born between 1975 and 2002 (meaning they were between 18 and 45 years old in 2020). These variables are a combination of all Core study modules (see above) and selected yearly background variables. 
 
-Particularly important variables are:
-
-1. `nomem_encr`: this is the unique identifier and can be used to link the train data to the other datasets (`PreFer_train_background.csv`, `PreFer_train_supplement.csv`, and `PreFer_train_outcome.csv`). Note that this identifier is a pseudonym of the original `nomem_encr` identifier in the LISS data. 
-
-2. `new_child`: this is the outcome variable; whether people had a child between 2021 and 2023. [Here](stay tuned, will appear soon) you can find detailed information on how this outcome was constructed. This dataset also included people for whom this outcome is not known.
+Particularly important variable is `nomem_encr`: this is the unique identifier and can be used to link the train data to the other datasets (`PreFer_train_background.csv`, `PreFer_train_supplement.csv`, and `PreFer_train_outcome.csv`). Note that this identifier is a pseudonym of the original `nomem_encr` identifier in the LISS data. 
 
 Less important, but useful to know:
 
-3. `outcome_available`: this is variable that records whether the outcome `new_child` is available for a particular respondent. `1` means that the outcome is available, `0` means that the outcome is unavailable. Most likely, one would use this variable to restrict the sample to respondents for whom the outcome is available (i.e. `outcome_available = 1`).  
+- `outcome_available`: this is variable that records whether the outcome `new_child` is available for a particular respondent. `1` means that the outcome is available, `0` means that the outcome is unavailable. Most likely, one would use this variable to restrict the sample to respondents for whom the outcome is available (i.e. `outcome_available = 1`).  
 
 
 ## Selected yearly background variables added to Core surveys
@@ -178,7 +174,7 @@ Thus, we include information from 4 fixed variables, and 14 yearly variables (20
 
 ## 2. PreFer_train_outcome.csv
 
-This dataset contains the outcome variable for the 6418 respondents in our target groups (born between 1975 and 2002) and it includes only two variables, `nomem_encr` and the outcome variable `new_child` (this variables includes missing values). `nomem_encr` can be used to link this dataset to `PreFer_train_data.csv`. 
+This dataset contains the outcome variable for the 6418 respondents in our target groups (born between 1975 and 2002) and it includes only two variables, `nomem_encr` and the outcome variable `new_child` (this variables includes missing values). `nomem_encr` can be used to link this dataset to `PreFer_train_data.csv`. [Here](stay tuned, will appear soon) you can find detailed information on how this outcome was constructed.  
 
 ## 3. PreFer_train_background_data.csv
 
