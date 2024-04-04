@@ -2,6 +2,7 @@
   {
     "listing": "/all-content.html",
     "items": [
+      "/posts/posts/2024-04-03-calculating-the-outcome.html",
       "/posts/posts/2023-12-15-odissei-talk.html",
       "/posts/posts/2024-04-01-testing-predictive-ability-R.html",
       "/posts/posts/2024-03-30-slightly-complexer-walkthrough-r.html",
@@ -18,12 +19,12 @@
   {
     "listing": "/index.html",
     "items": [
-      "/details/overview/2data.html",
-      "/details/overview/4submission_evaluation_winners.html",
-      "/details/overview/3application.html",
       "/details/overview/1research_questions.html",
-      "/details/overview/5special_issue.html",
-      "/details/overview/3phases.html"
+      "/details/overview/2data.html",
+      "/details/overview/3application.html",
+      "/details/overview/3phases.html",
+      "/details/overview/4submission_evaluation_winners.html",
+      "/details/overview/5special_issue.html"
     ]
   },
   {
@@ -39,7 +40,8 @@
       "/posts/posts/2024-03-29-submisson-frequent-errors.html",
       "/posts/posts/2024-03-30-slightly-complexer-walkthrough-r.html",
       "/posts/posts/2024-04-01-testing-predictive-ability-R.html",
-      "/posts/posts/2023-12-15-odissei-talk.html"
+      "/posts/posts/2023-12-15-odissei-talk.html",
+      "/posts/posts/2024-04-03-calculating-the-outcome.html"
     ]
   },
   {

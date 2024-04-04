@@ -1,0 +1,64 @@
+---
+title: "Calculating the outcome for the LISS data"
+description: |
+ Here we describe the outcome (or target variable) for the LISS dataset and how we calculated it.
+categories:
+  - outcome
+  - data preprocessing
+  - LISS
+author: 
+  - "Gert Stulp"
+  - "Lisa Sivak"
+date: '2024-04-03'
+toc: true
+image: ../../images/duck2.png
+image-alt: LISS logo. 
+language: 
+    section-title-footnotes: References
+---
+
+## Main things to know about the outcome
+
+- The outcome, or variable `new_child`, is having a(nother) child in 2021-2023, biological or adopted. If the outcome is `1` it means that the respondent got a new biological or adopted child in 2021-2023, and if it is `0` it means that there were no new biological or adopted children in this period  
+- The outcome is only available for around 1400 people in our target group  
+- In the training data there are around 1000 people, for whom the outcome is available (for about 22% of them it is 1). The rest are in the holdout data with the same proportion  
+- In the holdout data there are no people with missing outcome  
+- Only people with known outcome are comparable  
+
+## Details about the outcome
+- The outcome is only available for 1400 people from our target group because some dropped out altogether from the LISS panel before 2020 or just didn't participate in Family and Household surveys in 2020-2023  
+- Why do we count only biological and adopted children? LISS surveys ask about all children (biological, adopted, living-at-home stepchildren, and foster children). However, the Dutch register data, that will be used in Phase 2, records only legal parenthood. You can find the full definition of legal parents [here](https://www.rijksoverheid.nl/onderwerpen/ouderlijk-gezag/vraag-en-antwoord/biologisch-juridisch-ouderschap), but mainly this definition includes biological and adoptive parents, and excludes foster parents and step-parents. To make the outcome comparable across our datasets, we only took biological and adopted children into account in calculating the outcome for the LISS data. Another reason is that getting a foster or step-child is likely not the same as getting a biological child or adopted child. 
+- the outcome is also available for people outside the target group (e.g. older than 45 and younger than 18), see `PreFer_train_supplementary_outcome.csv`
+
+
+## How we calculated the outcome
+### Main approach
+We mainly used information from the Family and Household Core Study module from 2020-2023. In this survey, people answer each year, whether they have children – biological children as well as stepchildren, adoptive children, and foster children. Respondents then further answer how many children they have, list the birth years of these children, and the type of parent-child relation (biological, adoptive, foster, step). People are also asked whether they have deceased children and their birth years.  
+
+We used all this information to calculate the overall number of biological and adoptive children (alive and deceased) for each year between 2020-2023. If in 2021, 2022, or 2023 this number was higher than in 2020, then the outcome is 1. If in 2021, 2020, and 2023 the number of children is not higher than in 2020, the outcome is 0. 
+
+### Particularities
+In cases when information from some year(s) was missing, we used some additional information. Examples: 
+- if person reported the same number of children in 2021-2023, but the information from 2020 was missing, we checked birth years of children reported in 2023. If there were children with birth years in 2021-2023, the outcome is 1. We used the same strategy when information was missing in 2020-2021 or 2020-2022. 
+- if person reported the same number of children in 2021-2023, but the information from 2020 was missing, we used overall number of children (calculated the same was as for 2020-2023) from 2019, and if it was the same, than the outcome was 0. If 2019 was no available, we used information from last available pre-2020 wave. If the number of children is not the same or missing, then we cannot establish the outcome (it is missing). We can compare if the number of children was the same in 2019 as in 2021-2023; if it's the same we can assume that there were no new children in 2021-2023. So, we use information from the last year before 2020, for which information about children is not missing, only in these specific cases, and only to potentially change the outcome from NA to 0. We cannot change the outcome from NA to 1 if the number of children is lower in 2019, because this child might have been born in 2020.  
+- if person missed all or some waves in 2020-2022 (and if answered in some waves, the answer was never 1) and in 2023 a person reported not ever having alive children and no deceased children, we assumed the the outcome is 0
+
+
+
+
+
+### Additional data source
+
+
+## Notes
+These notes could be useful if you decide to calculate the number of children in 2008-2020 to use as a feature
+- Note: type of relationship is not available for deceased children. Given that the majority of children in the data (~95%) are biological, we will count all deceased children as biological (~4% of respondents reported one or more deceased children).   
+- Used info from previous years
+- people report deceased children inconsistently. 
+- types of relationships also inconsistently
+There are 147 people who reported more than one birth year of deceased child(ren) - e.g. reported two birth years in the same wave or in different waves. Some of these cases seem problematic: people report deceased child(ren) with the same birth year(s) in several waves. It is very likely a misunderstanding of the question `cf***471`: if people already reported a deceased child in previous waves, in this question they are asked if they have another deceased child. They shouldn't report all deceased children. 
+
+Because of these problems it is better to count unique birth years of deceased children instead of counting the number of all reported birth years. We choose this, because it could happen that the number of children in 2021-2023 increases only because people reports the birthyear of a (likely) previously deceased child. Moreover, if the number of alive children (at one point in that same time range) does not similarly increase, the outcome cannot be 1. 
+- For readability, we omit the details about data preprocessing and checking inconsistencies in people reporting about children, and some details about how we calculated the number of children for each year. The full script will be available after the challenge as well as all other scripts for data preprocessing.  
+
+
