@@ -10,6 +10,7 @@ language:
 ---
 
 To apply for the data challenge, please fill in [this google form](https://forms.gle/cxc7U24n5ox7A1vu7){target="_blank"}. 
+The challenge has already started, but you can still apply.  
 
 You can participate individually or as part of a team. If you participate as a team, all team members should fill in the application form.
 

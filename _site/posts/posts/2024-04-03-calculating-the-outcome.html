@@ -8,10 +8,10 @@
 
 <meta name="author" content="Gert Stulp">
 <meta name="author" content="Lisa Sivak">
-<meta name="dcterms.date" content="2024-04-03">
-<meta name="description" content="Here we describe the outcome (or target variable) for the LISS dataset and how we calculated it.">
+<meta name="dcterms.date" content="2024-04-04">
+<meta name="description" content="Here we describe the outcome (or target variable) in the the LISS dataset and how we calculated it.">
 
-<title>Calculating the outcome for the LISS data</title>
+<title>The outcome [LISS]</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,8 +67,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../../rwds.css">
-<meta property="og:title" content="Calculating the outcome for the LISS data">
-<meta property="og:description" content="Here we describe the outcome (or target variable) for the LISS dataset and how we calculated it.">
+<meta property="og:title" content="The outcome [LISS]">
+<meta property="og:description" content="Here we describe the outcome (or target variable) in the the LISS dataset and how we calculated it.">
 <meta property="og:image" content="https://preferdatachallenge.nl/images/duck2.png">
 <meta property="og:image:height" content="720">
 <meta property="og:image:width" content="1280">
@@ -152,14 +152,12 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#main-things-to-know-about-the-outcome" id="toc-main-things-to-know-about-the-outcome" class="nav-link active" data-scroll-target="#main-things-to-know-about-the-outcome">Main things to know about the outcome</a></li>
-  <li><a href="#details-about-the-outcome" id="toc-details-about-the-outcome" class="nav-link" data-scroll-target="#details-about-the-outcome">Details about the outcome</a></li>
   <li><a href="#how-we-calculated-the-outcome" id="toc-how-we-calculated-the-outcome" class="nav-link" data-scroll-target="#how-we-calculated-the-outcome">How we calculated the outcome</a>
   <ul class="collapse">
-  <li><a href="#main-approach" id="toc-main-approach" class="nav-link" data-scroll-target="#main-approach">Main approach</a></li>
-  <li><a href="#particularities" id="toc-particularities" class="nav-link" data-scroll-target="#particularities">Particularities</a></li>
+  <li><a href="#approach" id="toc-approach" class="nav-link" data-scroll-target="#approach">Approach</a></li>
+  <li><a href="#details" id="toc-details" class="nav-link" data-scroll-target="#details">Details</a></li>
   <li><a href="#additional-data-source" id="toc-additional-data-source" class="nav-link" data-scroll-target="#additional-data-source">Additional data source</a></li>
   </ul></li>
-  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
   </ul>
 </nav>
     </div>
@@ -168,7 +166,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Calculating the outcome for the LISS data</h1>
+<h1 class="title">The outcome [LISS]</h1>
   <div class="quarto-categories">
     <div class="quarto-category">outcome</div>
     <div class="quarto-category">data preprocessing</div>
@@ -178,7 +176,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div>
   <div class="description">
-    <p>Here we describe the outcome (or target variable) for the LISS dataset and how we calculated it.</p>
+    <p>Here we describe the outcome (or target variable) in the the LISS dataset and how we calculated it.</p>
   </div>
 </div>
 
@@ -196,7 +194,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 3, 2024</p>
+      <p class="date">April 4, 2024</p>
     </div>
   </div>
   
@@ -209,49 +207,39 @@ ul.task-list li input[type="checkbox"] {
 <section id="main-things-to-know-about-the-outcome" class="level2">
 <h2 class="anchored" data-anchor-id="main-things-to-know-about-the-outcome">Main things to know about the outcome</h2>
 <ul>
-<li>The outcome, or variable <code>new_child</code>, is having a(nother) child in 2021-2023, biological or adopted. If the outcome is <code>1</code> it means that the respondent got a new biological or adopted child in 2021-2023, and if it is <code>0</code> it means that there were no new biological or adopted children in this period<br>
+<li>The outcome to be predicted in this data challenge is whether a person got a child (biological or adopted) in 2021-2023</li>
+<li>The outcome is only available for a part of our target group, or people born between 1975 and 2002 (~18-45 years old in 2020). For most people in the target group we couldn’t establish the outcome because they didn’t participate in particular LISS surveys in 2021-2023 that were used to calculate the outcome.<br>
 </li>
-<li>The outcome is only available for around 1400 people in our target group<br>
+<li>The outcome is available for around 1000 people in the training set (see <code>PreFer_train_outcome.csv</code>). For 22% of them the outcome is <code>1</code>, which means that a person got a biological or adopted child in 2021-2023. For other respondents in the training set the outcome is either <code>0</code> (no new children in 2021-2023) or is missing (the outcome couldn’t be established)<br>
 </li>
-<li>In the training data there are around 1000 people, for whom the outcome is available (for about 22% of them it is 1). The rest are in the holdout data with the same proportion<br>
-</li>
-<li>In the holdout data there are no people with missing outcome<br>
-</li>
-<li>Only people with known outcome are comparable</li>
+<li>For all ~ 400 people in the holdout set the outcome is known</li>
+<li>Only part of the training set — people for whom the outcome is not missing — is comparable to the holdout set because the holdout set does not include people for whom the outcome is missing and the outcome is probably not missing at random</li>
+<li>The outcome is also available for people outside the target group (e.g.&nbsp;older than 45 and younger than 18 in 2020), see <code>PreFer_train_supplementary_outcome.csv</code></li>
 </ul>
-</section>
-<section id="details-about-the-outcome" class="level2">
-<h2 class="anchored" data-anchor-id="details-about-the-outcome">Details about the outcome</h2>
-<ul>
-<li>The outcome is only available for 1400 people from our target group because some dropped out altogether from the LISS panel before 2020 or just didn’t participate in Family and Household surveys in 2020-2023<br>
-</li>
-<li>Why do we count only biological and adopted children? LISS surveys ask about all children (biological, adopted, living-at-home stepchildren, and foster children). However, the Dutch register data, that will be used in Phase 2, records only legal parenthood. You can find the full definition of legal parents <a href="https://www.rijksoverheid.nl/onderwerpen/ouderlijk-gezag/vraag-en-antwoord/biologisch-juridisch-ouderschap">here</a>, but mainly this definition includes biological and adoptive parents, and excludes foster parents and step-parents. To make the outcome comparable across our datasets, we only took biological and adopted children into account in calculating the outcome for the LISS data. Another reason is that getting a foster or step-child is likely not the same as getting a biological child or adopted child.</li>
-<li>the outcome is also available for people outside the target group (e.g.&nbsp;older than 45 and younger than 18), see <code>PreFer_train_supplementary_outcome.csv</code></li>
-</ul>
+<p>Why do we count only biological and adopted children? LISS surveys ask about all children (biological, adopted, living-at-home stepchildren, and foster children). However, the Dutch register data, that will be used in Phase 2, records only legal parenthood. Biological and adoptive parents fall under the category of “legal parents”, but adoptive and adoptive parents do not (see full definition of legal parents <a href="https://www.rijksoverheid.nl/onderwerpen/ouderlijk-gezag/vraag-en-antwoord/biologisch-juridisch-ouderschap">here</a>). We took only biological and adopted children into account in calculating the outcome for the LISS data to make the outcome comparable across our the LISS and CSB datasets.</p>
 </section>
 <section id="how-we-calculated-the-outcome" class="level2">
 <h2 class="anchored" data-anchor-id="how-we-calculated-the-outcome">How we calculated the outcome</h2>
-<section id="main-approach" class="level3">
-<h3 class="anchored" data-anchor-id="main-approach">Main approach</h3>
-<p>We mainly used information from the Family and Household Core Study module from 2020-2023. In this survey, people answer each year, whether they have children – biological children as well as stepchildren, adoptive children, and foster children. Respondents then further answer how many children they have, list the birth years of these children, and the type of parent-child relation (biological, adoptive, foster, step). People are also asked whether they have deceased children and their birth years.</p>
-<p>We used all this information to calculate the overall number of biological and adoptive children (alive and deceased) for each year between 2020-2023. If in 2021, 2022, or 2023 this number was higher than in 2020, then the outcome is 1. If in 2021, 2020, and 2023 the number of children is not higher than in 2020, the outcome is 0.</p>
+<section id="approach" class="level3">
+<h3 class="anchored" data-anchor-id="approach">Approach</h3>
+<p>We mainly used information from the Family and Household Core Study module from 2020-2023. In this survey, people answer each year whether they have children – biological children as well as stepchildren, adoptive children, and foster children. Respondents then further answer how many children they have, list the birth years of these children, and the type of parent-child relation (biological, adoptive, foster, step). People are also asked whether they have deceased children and their birth years.</p>
+<p>We used this information to calculate the overall number of biological and adoptive children (alive and deceased) for each year between 2020-2023. If in 2021 or 2022 or 2023 this number was higher than in 2020, then the outcome is 1. If in 2021, 2020, and 2023 the number of children is not higher than in 2020, the outcome is 0.</p>
 </section>
-<section id="particularities" class="level3">
-<h3 class="anchored" data-anchor-id="particularities">Particularities</h3>
-<p>In cases when information from some year(s) was missing, we used some additional information. Examples: - if person reported the same number of children in 2021-2023, but the information from 2020 was missing, we checked birth years of children reported in 2023. If there were children with birth years in 2021-2023, the outcome is 1. We used the same strategy when information was missing in 2020-2021 or 2020-2022. - if person reported the same number of children in 2021-2023, but the information from 2020 was missing, we used overall number of children (calculated the same was as for 2020-2023) from 2019, and if it was the same, than the outcome was 0. If 2019 was no available, we used information from last available pre-2020 wave. If the number of children is not the same or missing, then we cannot establish the outcome (it is missing). We can compare if the number of children was the same in 2019 as in 2021-2023; if it’s the same we can assume that there were no new children in 2021-2023. So, we use information from the last year before 2020, for which information about children is not missing, only in these specific cases, and only to potentially change the outcome from NA to 0. We cannot change the outcome from NA to 1 if the number of children is lower in 2019, because this child might have been born in 2020.<br>
-- if person missed all or some waves in 2020-2022 (and if answered in some waves, the answer was never 1) and in 2023 a person reported not ever having alive children and no deceased children, we assumed the the outcome is 0</p>
+<section id="details" class="level3">
+<h3 class="anchored" data-anchor-id="details">Details</h3>
+<p>If information from some year(s) was missing, we used some additional information: - if a person reported the same number of children in 2021-2023, but the information from 2020 was missing, we checked birth years of children reported in 2023. If there were children born in 2021-2023, the outcome is 1. We used the same strategy when information was missing in other years (e.g.&nbsp;2020-2021 or 2020-2022). (If there were no children born in 2021-2023, the outcome is either missing or 0, see next bullet point)<br>
+- if a person reported the same number of children in 2021-2023, but the information from 2020 was missing AND there were no birth years 2021-2023 reported, we compared the number of children in 2021-2023 to the overall number of children in 2019 that was calculated the same way as for 2020-2023 (if 2019 was no available, we used information from last available pre-2020 wave). If the number of children was not the same or missing, then we couldn’t establish the outcome (it is missing). If it was the same we assumed that there were no new children in 2021-2023<br>
+- if a person did not answer the questions about children in some (or all) waves in 2020-2022, but in 2023 reported not ever having children and no deceased children, we assumed that the outcome is 0</p>
+<p>For readability, we omit some details about how we calculated the number of children for each year, and the details about data preprocessing and checking inconsistencies in people reporting about children. The full script will be available after the challenge (as well as all other scripts for data preprocessing).</p>
 </section>
 <section id="additional-data-source" class="level3">
 <h3 class="anchored" data-anchor-id="additional-data-source">Additional data source</h3>
-</section>
-</section>
-<section id="notes" class="level2">
-<h2 class="anchored" data-anchor-id="notes">Notes</h2>
-<p>These notes could be useful if you decide to calculate the number of children in 2008-2020 to use as a feature - Note: type of relationship is not available for deceased children. Given that the majority of children in the data (~95%) are biological, we will count all deceased children as biological (~4% of respondents reported one or more deceased children).<br>
-- Used info from previous years - people report deceased children inconsistently. - types of relationships also inconsistently There are 147 people who reported more than one birth year of deceased child(ren) - e.g.&nbsp;reported two birth years in the same wave or in different waves. Some of these cases seem problematic: people report deceased child(ren) with the same birth year(s) in several waves. It is very likely a misunderstanding of the question <code>cf***471</code>: if people already reported a deceased child in previous waves, in this question they are asked if they have another deceased child. They shouldn’t report all deceased children.</p>
-<p>Because of these problems it is better to count unique birth years of deceased children instead of counting the number of all reported birth years. We choose this, because it could happen that the number of children in 2021-2023 increases only because people reports the birthyear of a (likely) previously deceased child. Moreover, if the number of alive children (at one point in that same time range) does not similarly increase, the outcome cannot be 1. - For readability, we omit the details about data preprocessing and checking inconsistencies in people reporting about children, and some details about how we calculated the number of children for each year. The full script will be available after the challenge as well as all other scripts for data preprocessing.</p>
+<p>We also used Background survey as an additional source of data about children. In the Background survey, a household contact person lists all people who live in the household, how they are related to the household head (e.g.&nbsp;his/her wedded or unwedded partner, child, or other), and years of birth of all household members. If there was a new child born in 2021-2023 who was added to a household, we assumed that the household head and his/her partner had a new child, and the outcome for these people is 1. We checked the correspondence between the outcome calculated using the Background survey and the outcome calculated using the Family and Household survey for people for whom both outcomes were available, and the correspondence was high.</p>
+<p>Note: Only children <em>living in the household</em> are listed in the Background survey. If there were no new children added to the household in 2021-2023, it does not mean that no one in this household had a new child in this period. Someone might have a new child, but they do not live together, and the child does not appear in this data.</p>
+<p>Hence we couldn’t calculate the outcome using the Background survey only and used it only as a supplementary source of information to find people who had a new child, but for whom we couldn’t calculate the outcome based on the LISS Family &amp; Household surveys.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

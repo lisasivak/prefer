@@ -39,6 +39,7 @@ website:
         href: "#how-to-participate"
       - text: "Paper"
         href: https://arxiv.org/abs/2402.00705
+        target: _blank
       #- text: "Methodology"
       #  href: "#about-prefer"
       - faq/index.qmd
