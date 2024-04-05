@@ -9,9 +9,9 @@ categories:
 author: 
   - "Gert Stulp"
   - "Lisa Sivak"
-date: '2024-04-04'
+date: '2024-04-05'
 toc: true
-image: ../../images/duck2.png
+image: ../../images/outcome_post.png
 image-alt: LISS logo. 
 language: 
     section-title-footnotes: References
@@ -53,3 +53,5 @@ Hence we couldn't calculate the outcome using the Background survey only and use
 
 
 
+<font size="-1">Photo by <a href="https://unsplash.com/@designfuchs?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">max fuchs</a> on <a href="https://unsplash.com/photos/a-black-and-white-photo-of-a-bird-flying-in-the-sky-Nm6ojlDO-5c?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></font>
+  
