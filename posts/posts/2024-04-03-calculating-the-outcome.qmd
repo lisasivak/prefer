@@ -22,7 +22,7 @@ language:
 - The outcome to be predicted in this data challenge is whether a person got a child (biological or adopted) in 2021-2023
 - The outcome is only available for a part of our target group, or people born between 1975 and 2002 (~18-45 years old in 2020). For most people in the target group we couldn't establish the outcome because they didn't participate in particular LISS surveys in 2021-2023 that were used to calculate the outcome.     
 - The outcome is available for around 1000 people in the training set (see `PreFer_train_outcome.csv`). For 22% of them the outcome is `1`, which means that a person got a biological or adopted child in 2021-2023. For other respondents in the training set the outcome is either `0` (no new children in 2021-2023) or is missing (the outcome couldn't be established)  
-- For all ~ 400 people in the holdout set the outcome is known; the outcome is `1` for 22% of them
+- For all ~ 400 people in the holdout set the outcome is known
 - Only part of the training set — people for whom the outcome is not missing — is comparable to the holdout set because the holdout set does not include people for whom the outcome is missing and the outcome is probably not missing at random
 - The outcome is also available for people outside the target group (e.g. older than 45 and younger than 18 in 2020), see  `PreFer_train_supplementary_outcome.csv`
 
@@ -45,7 +45,7 @@ For readability, we omit some details about how we calculated the number of chil
 
 
 ### Additional data source
-We also used Background survey as an additional source of data about children. In the Background survey, a household contact person lists all people who live in the household, how they are related to the household head (e.g. his/her wedded or unwedded partner, child, or other), and years of birth of all household members. If there was a new child born in 2021-2023 who was added to a household, we (rather safely) assumed that the household head and his/her partner had a new child, and the outcome for these people is 1. We checked the correspondence between the outcome calculated using the Background survey andthe outcome calculated using the Family and Household survey for people for whom both outcomes were available, and the correspondence was high [ADD]. 
+We also used Background survey as an additional source of data about children. In the Background survey, a household contact person lists all people who live in the household, how they are related to the household head (e.g. his/her wedded or unwedded partner, child, or other), and years of birth of all household members. If there was a new child born in 2021-2023 who was added to a household, we assumed that the household head and his/her partner had a new child, and the outcome for these people is 1. We checked the correspondence between the outcome calculated using the Background survey and the outcome calculated using the Family and Household survey for people for whom both outcomes were available, and the correspondence was high. 
 
 Note: Only children *living in the household* are listed in the Background survey. If there were no new children added to the household in 2021-2023, it does not mean that no one in this household had a new child in this period. Someone might have a new child, but they do not live together, and the child does not appear in this data.  
 
