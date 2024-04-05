@@ -10,7 +10,7 @@ author:
   - "Lisa Sivak"
 date: '2024-04-01'
 toc: true
-image: ../../images/scoring.png
+image: ../../images/scoring2.png
 image-alt: LISS logo. 
 language: 
     section-title-footnotes: References
