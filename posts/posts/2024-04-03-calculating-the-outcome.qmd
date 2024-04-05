@@ -10,9 +10,8 @@ author:
   - "Gert Stulp"
   - "Lisa Sivak"
 date: '2024-04-05'
-toc: true
 image: ../../images/outcome_post.png
-image-alt: LISS logo. 
+toc: true
 language: 
     section-title-footnotes: References
 ---
