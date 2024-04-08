@@ -7,8 +7,8 @@ categories:
   - data preprocessing
   - LISS
 author: 
-  - "Gert Stulp"
   - "Lisa Sivak"
+  - "Gert Stulp"
 date: '2024-04-05'
 image: ../../images/outcome_post.png
 toc: true
@@ -18,36 +18,43 @@ language:
 
 ## Main things to know about the outcome
 
-- The outcome to be predicted in this data challenge is whether a person got a child (biological or adopted) in 2021-2023
-- The outcome is only available for a part of our target group, or people born between 1975 and 2002 (~18-45 years old in 2020). For most people in the target group we couldn't establish the outcome because they didn't participate in particular LISS surveys in 2021-2023 that were used to calculate the outcome     
+- The outcome to be predicted in this data challenge is whether a person had a child (biological or adopted) in 2021-2023
+
+- The outcome is only available for a part of our target group, people born between 1975 and 2002 (~18-45 years old in 2020). For most people in the target group we couldn't establish the outcome because they didn't participate in particular LISS surveys in 2021-2023 that were used to calculate the outcome     
+
 - The outcome is available for around 1000 people in the training set (see `PreFer_train_outcome.csv`). For 22% of them the outcome is `1`, which means that a person got a biological or adopted child in 2021-2023. For other respondents in the training set the outcome is either `0` (no new children in 2021-2023) or is missing (the outcome couldn't be established)  
+
 - For all ~ 400 people in the holdout set the outcome is known
-- Only part of the training set — people for whom the outcome is not missing — is comparable to the holdout set because the holdout set does not include people for whom the outcome is missing and the outcome is probably not missing at random
-- The outcome is also available for people outside the target group (e.g. older than 45 years and younger than 18 in 2020), see  `PreFer_train_supplementary_outcome.csv`
+
+- Only part of the training set —- people for whom the outcome is not missing —- is comparable to the holdout set because the holdout set does not include people for whom the outcome is missing and the outcome is probably not missing at random
+
+- The outcome is also available for people outside the target group (e.g. older than 45 years and younger than 18 in 2020), see `PreFer_train_supplementary_outcome.csv`
 
 
 Why do we count only biological and adopted children? LISS surveys ask about all children (biological, adopted, living-at-home stepchildren, and foster children). However, the Dutch register data, that will be used in Phase 2, records only legal parenthood. Biological and adoptive parents fall under the category of “legal parents", but foster and step parents do not (see full definition of legal parents [here](https://www.rijksoverheid.nl/onderwerpen/ouderlijk-gezag/vraag-en-antwoord/biologisch-juridisch-ouderschap){target="_blank"}). We took only biological and adopted children into account in calculating the outcome for the LISS data to make the outcome comparable across the LISS and CSB datasets.   
 
 ## How we calculated the outcome
-### Approach
-We mainly used information from the Family and Household Core Study module from 2020-2023. In this survey, people answer each year whether they have children – biological children as well as stepchildren, adopted children, and foster children. Respondents then further answer how many children they have, list all their birth years, and the type of parent-child relation (biological, adoptive, foster, step). People are also asked whether they have deceased children and their birth years.  
+### Main approach
+We mainly used information from the Family and Household Core Study modules from 2020-2023. In this survey, people answer each year whether they have children -– biological children as well as stepchildren, adopted children, and foster children. Respondents then further answer how many children they have, list all their birth years, and the type of parent-child relation (biological, adoptive, foster, step). People are also asked whether they have deceased children and their birth years.  
 
-We used this information to calculate the overall number of biological and adopted children (alive and deceased) for each year between 2020-2023. If in 2021 or 2022 or 2023 this number was higher than in 2020, then the outcome is 1. If in 2021, 2020, and 2023 the number of children is not higher than in 2020, the outcome is 0. 
+We used this information to calculate the overall number of biological and adopted children (alive and deceased) for each year between 2020-2023. If in 2021 or 2022 or 2023 this number was higher than in 2020, then the outcome is 1. If in 2021, 2022, and 2023 the number of children is not higher than in 2020, the outcome is 0. 
 
 ### Details
 If information from some year(s) was missing, we used additional information:
 
-- if a person reported the same number of children in 2021-2023, but the information from 2020 was missing, we checked birth years of children reported in 2023. If there were children born in 2021-2023, the outcome is 1. We used the same strategy when information was missing in other years (e.g. 2020-2021 or 2020-2022).  (If there were no children born in 2021-2023, the outcome is either missing or 0, see next bullet point) 
-- if a person reported the same number of children in 2021-2023, but the information from 2020 was missing AND there were no birth years 2021-2023 reported, we compared the number of children in 2021-2023 to the overall number of children in 2019 that was calculated the same way as for 2020-2023 (if 2019 was no available, we used information from last available pre-2020 wave). If the number of children was not the same or missing, then we couldn't establish the outcome (it is missing). If it was the same we assumed that there were no new children in 2021-2023, and the outcome is 0  
-- if a person did not answer the questions about children in some (or all) waves in 2020-2022, but in 2023 reported not ever having children and no deceased children, we assumed that the outcome is 0
+- If a person reported the same number of children in 2021-2023, but the information from 2020 was missing, we checked birth years of children reported in 2023. If there were children born in 2021-2023, the outcome is 1. We used the same strategy when information was missing in other years (e.g. 2020-2021 or 2020-2022).  (If there were no children born in 2021-2023, the outcome is either missing or 0, see next bullet point) 
 
-For readability, we omit some details about how we calculated the number of children for each year, and the details about data preprocessing and checking inconsistencies in people reporting about children. The full script will be available after the challenge (as well as all other scripts for data preprocessing). 
+- If a person reported the same number of children in 2021-2023, but the information from 2020 was missing AND there were no birth years 2021-2023 reported, we compared the number of children in 2021-2023 to the overall number of children in 2019 that was calculated the same way as for 2020-2023 (if 2019 was no available, we used information from the last available pre-2020 wave). If the number of children was not the same or missing, then we couldn't establish the outcome (it is missing). If it was the same we assumed that there were no new children in 2021-2023, and the outcome is 0  
+
+- If a person did not answer the questions about children in some (or all) waves in 2020-2022, but in 2023 reported not ever having children and no deceased children, we assumed that the outcome is 0
+
+For readability, we omit some details about how we calculated the number of children for each year, and the details about data preprocessing and checking inconsistencies in people's reporting about children. The full script will be available after the challenge (as well as all other scripts for data preprocessing). 
 
 
 ### Additional data source
 We also used Background survey as an additional source of data about children. In the Background survey, a household contact person lists all people who live in the household, how they are related to the household head (e.g. his/her wedded or unwedded partner, child, or other), and years of birth of all household members. If there was a new child born in 2021-2023 who was added to a household, we assumed that the household head and his/her partner had a new child, and the outcome for these people is 1. We checked the correspondence between the outcome calculated using the Background survey and the outcome calculated using the Family and Household survey for people for whom both outcomes were available, and the correspondence was high. 
 
-Note: Only children *living in the household* are listed in the Background survey. If there were no new children added to the household in 2021-2023, it does not mean that no one in this household had a new child in this period. Someone might have a new child, but they do not live together, and the child does not appear in this data.  
+Note: Only children *living in the household* are listed in the Background survey. If there were no new children added to the household in 2021-2023, it does not mean that no one in this household had a new child in this period. Someone might have a child, but that child may live in a different household, and the child will not appear in this (background) data.  
 
 Hence we couldn't calculate the outcome using the Background survey only and used it only as a supplementary source of information to find people who had a new child, but for whom we couldn't calculate the outcome based on the LISS Family & Household surveys.  
 
