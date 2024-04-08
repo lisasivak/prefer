@@ -174,7 +174,7 @@ Thus, we include information from 4 fixed variables, and 14 yearly variables (20
 
 ## 2. PreFer_train_outcome.csv
 
-This dataset contains the outcome variable for the 6418 respondents in our target groups (born between 1975 and 2002) and it includes only two variables, `nomem_encr` and the outcome variable `new_child` (this variables includes missing values). `nomem_encr` can be used to link this dataset to `PreFer_train_data.csv`. [Here](stay tuned, will appear soon) you can find detailed information on how this outcome was constructed.  
+This dataset contains the outcome variable for the 6418 respondents in our target groups (born between 1975 and 2002) and it includes only two variables, `nomem_encr` and the outcome variable `new_child` (this variables includes missing values). `nomem_encr` can be used to link this dataset to `PreFer_train_data.csv`. [Here](/posts/posts/2024-04-03-calculating-the-outcome.qmd) you can find out how this outcome was constructed.  
 
 ## 3. PreFer_train_background_data.csv
 

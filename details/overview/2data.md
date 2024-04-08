@@ -24,7 +24,7 @@ We made several datasets based on these sources of data. See details about all t
 
 The main training dataset includes people aged 18-45 years old in 2020, who participated at least in one Core study survey in 2007-2020. Overall, there are ~6900 people in this group. However, most of them have dropped out of the LISS panel by 2021-2023, and because of that the outcome - getting a new child in 2021-2023 - is available only for ~1400 of them.  
 
-We splitted all individuals for whom the outcome is available into a training set and holdout (test) set. Because some respondents come from the same households, we first splitted the households into train and holdout to avoid data leakage. See more details on the train-test split in the [paper](https://arxiv.org/abs/2402.00705){target="_blank"}).
+We splitted all individuals for whom the [outcome](/posts/posts/2024-04-03-calculating-the-outcome.qmd) is available into a training set and holdout (test) set. Because some respondents come from the same households, we first splitted the households into train and holdout to avoid data leakage. See more details on the train-test split in the [paper](https://arxiv.org/abs/2402.00705){target="_blank"}).
 
 
 __All the datasets will be provided to the participants of the data challenge after sighing the user statement.__
