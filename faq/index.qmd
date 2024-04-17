@@ -13,7 +13,23 @@ search: false
 
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
 ## How many submissions can I make?
-You can submit as many submissions as you like, but only your most recent submission at the deadline for the leaderboard will be assessed. 
+You can submit as many [submissions via the Next platform](https://github.com/eyra/fertility-prediction-challenge?tab=readme-ov-file#submit-your-method){target="_blank"} as you like, but only your most recent submission at the deadline for the leaderboard will be assessed.
+
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## Can I submit before the deadline, but then change my submission if I find a better model?
+Yes, you can make a submission via the Next platform in advance, and then update your submission if you find a better model.  
+
+How to update your submission: you will see an "Update" button on the Submit page after you submit something. To change your submission, replace the link to your commit and press this "Update" button.
+
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## Do I have to submit a model each time for the intermediate leaderboards?
+It is not obligatory to make a submission every time before we publish an intermediate leaderboard. An intermediate leaderboard is just an opportunity for you to see how your model is performing on the holdout set.  
+
+Make sure that you submit at least once before the final submission deadline in Phase 1 - June 3, 12:00pm (afternoon) CEST.
 
 :::
 

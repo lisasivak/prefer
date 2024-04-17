@@ -106,9 +106,9 @@ toc: false
 
 Leaderboards with the results of intermediate submissions in Phase 1 are planned to be published on these dates:  
 
-- April 22 
-- May 13
-- June 3
+- April 22nd, 12:00pm (afternoon) CEST 
+- May 13, 12:00pm (afternoon) CEST
+- June 3, 12:00pm (afternoon) CEST
 
 :::
 :::
