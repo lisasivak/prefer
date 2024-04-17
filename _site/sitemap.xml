@@ -2,114 +2,110 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://preferdatachallenge.nl/all-content.html</loc>
-    <lastmod>2024-04-08T07:49:03.240Z</lastmod>
+    <lastmod>2024-04-17T09:25:25.152Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/about-us.html</loc>
-    <lastmod>2024-04-08T07:48:59.082Z</lastmod>
+    <lastmod>2024-04-17T09:25:22.028Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/details/overview/3phases.html</loc>
-    <lastmod>2024-04-08T07:48:57.001Z</lastmod>
+    <lastmod>2024-04-17T09:25:20.437Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/details/overview/1research_questions.html</loc>
-    <lastmod>2024-04-08T07:48:55.535Z</lastmod>
+    <lastmod>2024-04-17T09:25:19.214Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/details/overview/4submission_evaluation_winners.html</loc>
-    <lastmod>2024-04-08T07:48:54.040Z</lastmod>
+    <lastmod>2024-04-17T09:25:18.037Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/details/index.html</loc>
-    <lastmod>2024-04-08T07:48:51.957Z</lastmod>
+    <lastmod>2024-04-17T09:25:16.640Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/5platform.html</loc>
-    <lastmod>2024-04-08T07:48:49.443Z</lastmod>
+    <lastmod>2024-04-17T09:25:14.623Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/posts/posts/2024-03-23-using-different-dataset.html</loc>
-    <lastmod>2024-04-08T07:48:46.204Z</lastmod>
+    <lastmod>2024-04-17T09:25:12.627Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/posts/posts/2024-03-25-simple-walkthrough-r.html</loc>
-    <lastmod>2024-04-08T07:48:41.446Z</lastmod>
+    <lastmod>2024-04-17T09:25:09.694Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/posts/posts/2024-03-24-first-empty-submission.html</loc>
-    <lastmod>2024-04-08T07:48:37.835Z</lastmod>
+    <lastmod>2024-04-17T09:25:07.911Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/posts/posts/2024-03-22-read-data.html</loc>
-    <lastmod>2024-04-08T07:48:35.367Z</lastmod>
+    <lastmod>2024-04-17T09:25:05.712Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/posts/posts/2024-03-29-submisson-frequent-errors.html</loc>
-    <lastmod>2024-04-08T07:48:16.128Z</lastmod>
+    <lastmod>2024-04-17T09:25:02.985Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/posts/posts/2024-03-26-simple-walkthrough-python.html</loc>
-    <lastmod>2024-04-08T07:48:13.991Z</lastmod>
-  </url>
-  <url>
-    <loc>https://preferdatachallenge.nl/work-in-progress.html</loc>
-    <lastmod>2024-04-08T07:48:10.122Z</lastmod>
+    <lastmod>2024-04-17T09:25:01.566Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/contact.html</loc>
-    <lastmod>2024-04-08T07:48:08.132Z</lastmod>
+    <lastmod>2024-04-17T09:24:58.199Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/posts/posts/2024-03-20-prefer-datasets.html</loc>
-    <lastmod>2024-04-08T07:48:12.466Z</lastmod>
+    <lastmod>2024-04-17T09:25:00.104Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/posts/posts/2024-04-03-calculating-the-outcome.html</loc>
-    <lastmod>2024-04-08T07:48:15.037Z</lastmod>
+    <lastmod>2024-04-17T09:25:02.261Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/posts/posts/2024-03-21-prefer-codebooks.html</loc>
-    <lastmod>2024-04-08T07:48:32.016Z</lastmod>
+    <lastmod>2024-04-17T09:25:04.560Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/posts/posts/2024-03-30-slightly-complexer-walkthrough-r.html</loc>
-    <lastmod>2024-04-08T07:48:36.950Z</lastmod>
+    <lastmod>2024-04-17T09:25:07.317Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/posts/posts/2023-12-15-odissei-talk.html</loc>
-    <lastmod>2024-04-08T07:48:38.731Z</lastmod>
+    <lastmod>2024-04-17T09:25:08.478Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/posts/posts/2024-04-01-testing-predictive-ability-R.html</loc>
-    <lastmod>2024-04-08T07:48:42.628Z</lastmod>
+    <lastmod>2024-04-17T09:25:11.256Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/posts/index.html</loc>
-    <lastmod>2024-04-08T07:48:47.788Z</lastmod>
+    <lastmod>2024-04-17T09:25:14.161Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/faq/index.html</loc>
-    <lastmod>2024-04-17T09:14:54.532Z</lastmod>
+    <lastmod>2024-04-17T09:25:15.888Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/details/overview/2data.html</loc>
-    <lastmod>2024-04-08T07:48:52.901Z</lastmod>
+    <lastmod>2024-04-17T09:25:17.336Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/details/overview/3application.html</loc>
-    <lastmod>2024-04-08T07:48:54.766Z</lastmod>
+    <lastmod>2024-04-17T09:25:18.630Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/details/overview/5special_issue.html</loc>
-    <lastmod>2024-04-08T07:48:56.134Z</lastmod>
+    <lastmod>2024-04-17T09:25:19.730Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/index.html</loc>
-    <lastmod>2024-04-17T09:13:16.464Z</lastmod>
+    <lastmod>2024-04-17T09:25:21.613Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/funding.html</loc>
-    <lastmod>2024-04-08T07:49:00.055Z</lastmod>
+    <lastmod>2024-04-17T09:25:22.641Z</lastmod>
   </url>
 </urlset>
