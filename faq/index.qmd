@@ -9,7 +9,62 @@ search: false
 
 ---
 
-## Submission
+## Preparing your submission
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## What programming languages can I use? 
+You can use either R or python to develop your method (i.e. train your model). [Here](/details/overview/4submission.md){target="_blank"} you can read how to prepare a submission and submit your method.
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## Can I use both Python and R? For example, R for cleaning the data, and Python for training 
+The submission (i.e. the scripts for preprocessing the data and training the model, and the model itself) should be either in Python or R, otherwise it will not run on the holdout data.    
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## Can I work with the data in a cloud (e.g., Google Colab) where I can collaborate with other members of my team in the data challenge?
+Yes, in Phase 1 (and track 3 of phase 2) you can use the LISS data in such a shared cloud environment, but all people who will have access to the data need to have signed the data agreement, and the data cannot be available to everyone.
+:::
+
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## Can I use external data in my model? 
+It is possible if this data is publicly available. You need to describe in the 'description.md' where you downloaded the data, and why and how you use it. Don't forget to document in the training.R/training.py script everything you've done with this external data, e.g. all the preprocessing steps and merging.  
+
+If you need this data to be merged with the holdout set, you can read it in inside the preprocessing function ("clean_df") in the submission script (submission.py/submission.R). Add the code needed for merging and preprocessing of the external data to this function. You should also add a .csv file with the external data to your Github repository (root folder). In case you use R, add 'COPY *.csv /app' to the 'r.Dockerfile' which is in your repository (in case it is missing currently).
+
+If you have any questions about using external data, please contact us.
+
+:::
+
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## Is it necessary to save my model in the "joblib" format (in the case of Python) or can other formats be used?
+Yes, you can use other formats. In this case, you'll need to change the way you load the model (and all additional files needed to run this model) in the submission.py script (in the 'predict_outcomes' function) - currently a model in the .joblib format is loaded there, 2) update the list of packages in environment.yml - don't forget any packages that you use. 
+
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## Which version of Python and R are used to run the models on the holdout set?
+The Python version is 3.11.7 and the R version is 4.3.3.
+
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## What if I am using another version of Python or R? 
+It's better to stick to the same version unless that's the only way to use a particular function or package (for example, the package is only supported in the older version of Python/R). 
+
+To use another version of Python, edit the file 'python.Dockerfile' in your repository. Replace 'anaconda3:2024.02-1' in the first line with the tag for anaconda release, which uses the Python version that you need. First, check which Python versions are used in different Anaconda's [here](https://docs.anaconda.com/free/anaconda/allpkglists/2024.02-1/). Then go [here](https://registry.hub.docker.com/r/continuumio/anaconda3/tags) and find the tag for this version. For example, the tag for Anaconda 2020.02 is 'anaconda3:2020.02'. And then replace the tag in the 'python.Dockerfile', so the first line will look like this:
+FROM continuumio/anaconda3:2020.02  
+
+The docker tag should be similar to the one currently used; so no suffixes e.g.  -alpine.
+
+
+
+:::
+
+
+## Submitting your model
 
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
 ## How many submissions can I make?
@@ -24,6 +79,8 @@ Yes, you can make a submission via the Next platform in advance, and then update
 How to update your submission: you will see an "Update" button on the Submit page after you submit something. To change your submission, replace the link to your commit and press this "Update" button.
 
 :::
+
+
 
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
 ## Do I have to submit a model each time for the intermediate leaderboards?
@@ -48,28 +105,6 @@ We have chosen only to provide prediction scores and rankings at set times (see 
 
 
 
-## Participation
-
-::: {.callout-note appearance="simple" collapse="true" icon=false}
-## Can I work with the data in a cloud (e.g., Google Colab) where I can collaborate with other members of my team in the data challenge?
-Yes, in Phase 1 you can use the LISS data in such a shared cloud environment, but all people who will have access to the data need to have signed the data agreement, and the data cannot be available to everyone.
-:::
-
-::: {.callout-note appearance="simple" collapse="true" icon=false}
-## What programming languages can I use? 
-You can use either R or python to develop your method (i.e. train your model). [Here](/details/overview/4submission.md){target="_blank"} you can read how to prepare a submission and submit your method.
-:::
-
-::: {.callout-note appearance="simple" collapse="true" icon=false}
-## Can I use both Python and R? For example, R for cleaning the data, and Python for training 
-The submission (i.e. the scripts for preprocessing the data and training the model, and the model itself) should be either in Python or R, otherwise it will not run on the holdout data.    
-:::
-
-::: {.callout-note appearance="simple" collapse="true" icon=false}
-## Can I use external data for training? 
-It might be possible. If you want to use external data, please contact the organizers.
-
-:::
 
 
 ## General
