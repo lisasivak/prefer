@@ -117,8 +117,6 @@ def train_save_model(cleaned_df, outcome_df):
 
 Now your `train_save_model` function is done. 
 
-4. Preprocess the data using your updated `clean_df` function, and then train the model via `train_save_model`. If you are working in a R Markdown or R Notebook document in RStudio, or when you have opened an Rproject (recommended!), the model (`model.rds`) will be saved in the same folder as your scripts -- in your local repository. If you are working via an R script, you will probably need to manually set the local repository as the working directory.   
-
 4. Preprocess the data using your updated `clean_df` function, and then train the model via `train_save_model`. If you are using Jupyter Notebook, the model (`model.joblib`) is now saved in the same folder as the script - in your local repository. If you are using an environment where the folder where the script is located is not set as the working directory by default, you should manually set the local repository as the working directory.   
 
 ```{{python}}
