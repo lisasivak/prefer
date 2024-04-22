@@ -26,7 +26,13 @@ _Note: always test your method locally on the fake data before submitting (e.g. 
 
 You can see it on the "Actions" tab in your own github repository. After you update your repository, you will see on this page whether your method passed automatic checks or not. Make sure to allow Github Actions: go to the “Actions” tab and click “I understand my workflows, go ahead and enable them.”
 ![](/images/actions.png)
- 
+## Checklist to avoid errors (the list will be updated)
+
+What to check before submission to avoid errors:      
+- if you are using R, you've changed the settings.json file
+- all packages that you are using are added to the environment.yml or packages.R  
+- the environment name in environment.yml ('eyra-rank') was not changed 
+- all additional files that you are using (e.g. the codebooks, your custom scripts with functions, etc.) are added to you repository
 
 
 ## How to find the error message
@@ -43,7 +49,7 @@ You can also click on “test” and view more detailed information about the er
 
 
 
-## Common errors
+## Common errors 
 
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
 ### ERROR: failed to solve: failed to read dockerfile: open Dockerfile: no such file or directory
@@ -69,6 +75,14 @@ This error occurs if you added new variables to the model and updated the "clean
 This error occurs if you are using an (R) package which is not listed in "packages.R" file. Add this package to this file.  
 ![](/images/no_package.png)
 :::
+
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+### EnvironmentLocationNotFound: Not a conda environment
+This error occurs if you changed the environment name in 'environment.yml' file (first line). You should change the name back: 'name: eyra-rank'.
+
+:::
+
 
 Photo by <a href="https://unsplash.com/@sigmund?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Sigmund</a> on <a href="https://unsplash.com/photos/person-using-black-laptop-computer-59yRYIHWtzY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
   

@@ -1,7 +1,7 @@
 ---
-title: "A walkthough of submitting a simple model in R"
+title: "A walkthough of submitting a slighty more complex model in R"
 description: |
-  Here we show the steps for submitting a simple model in `R`  
+  Here we show the steps for submitting a slighty more complex model in `R`  
 categories:
   - submission
   - guide
