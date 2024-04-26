@@ -35,9 +35,10 @@ If you need this data to be merged with the holdout set, you can read it in insi
 
 If you are using R, additionally you need to check the 'r.Dockerfile' file, which is in your repository: check if the line 'COPY *.csv /app' is there. If not, please add it after the other lines with 'COPY'. 
 
-If you have any questions about using external data, please contact us.
 
-<b>Important<b>: the data should be from before 2020, because the task is to predict fertility outcomes in 2021-2023 based on information from earlier years. If you have an interesting strategy for which it is important to use data from 2021-2023, you can do that, but you cannot become a winner based on the F1 score. You can still become a winner based on [qualitative criteria](/details/overview/4submission_evaluation_winners.md){target="_blank"}  be selected into Phase 2. 
+**Important**: the data should be from before 2020, because the task is to predict fertility outcomes in 2021-2023 based on information from earlier years. If you have an interesting strategy for which it is important to use data from 2021-2023, you can do that, but you cannot become a winner based on the F1 score (exceptions are possible depending on the data; please contact us if you want to use external data from 2021-2023). You can still become a winner based on [qualitative criteria](/details/overview/4submission_evaluation_winners.md){target="_blank"}, and you can still be selected into Phase 2. 
+
+If you have any questions about using external data, please contact us.
 
 :::
 
