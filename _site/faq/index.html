@@ -234,11 +234,9 @@ Can I use external data in my model?
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>It is possible if this data is publicly available. You need to describe in the ‘description.md’ where you downloaded the data, and why and how you use it. Don’t forget to document in the training.R/training.py script everything you’ve done with this external data, e.g.&nbsp;all the preprocessing steps and merging.</p>
-<p>If you need this data to be merged with the holdout set, you can read it in inside the preprocessing function (“clean_df”) in the submission script (submission.py/submission.R). Add the code needed for merging and preprocessing of the external data to this function. You should also add a .csv file with the external data to your Github repository (root folder).</p>
-<p>If you are using R, additionally you need to check the ‘r.Dockerfile’ file, which is in your repository: check if the line ’COPY *.csv /app’ is there. If not, please add it after the other lines with ‘COPY’.</p>
-<p><strong>Important</strong>: the data should be from before 2020, because the task is to predict fertility outcomes in 2021-2023 based on information from earlier years. If you have an interesting strategy for which it is important to use data from 2021-2023, you can do that, but you cannot become a winner based on the F1 score (exceptions are possible depending on the data; please contact us if you want to use external data from 2021-2023). You can still become a winner based on <a href="../details/overview/4submission_evaluation_winners.html" target="_blank">qualitative criteria</a>, and you can still be selected into Phase 2.</p>
-<p>If you have any questions about using external data, please contact us.</p>
+<p>It is possible if this data is publicly available.</p>
+<p>The data should be from before 2020, because the task is to predict fertility outcomes in 2021-2023 based on information from earlier years. Exceptions are possible depending on the data, but in this case the results will not be evaluated in a standard way, so results may not be on the leaderboard.</p>
+<p>If you plan to use any external data, please contact us.</p>
 </div>
 </div>
 </div>
