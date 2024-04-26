@@ -80,11 +80,14 @@ The docker tag should be similar to the one currently used; so no suffixes e.g. 
 
 ## Submitting your model
 
+
+
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
 ## How many submissions can I make?
 You can submit as many [submissions via the Next platform](https://github.com/eyra/fertility-prediction-challenge?tab=readme-ov-file#submit-your-method){target="_blank"} as you like, but only your most recent submission at the deadline for the leaderboard will be assessed.
 
 :::
+
 
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
 ## Can I submit before the deadline, but then change my submission if I find a better model?
@@ -117,7 +120,12 @@ We have chosen only to provide prediction scores and rankings at set times (see 
 
 :::
 
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## You ask to submit a link to a commit. I've changed several files and made several commits. Which link to send?
 
+Each commit doesn't only include the changes of a certain file. It captures the state of your **whole** repository at that moment in time. After you changed all the files that you needed to change, copy the link to the last commit and send it as explained [here](https://github.com/eyra/fertility-prediction-challenge?tab=readme-ov-file#submit-your-method) {target="_blank"}.
+
+:::
 
 
 
