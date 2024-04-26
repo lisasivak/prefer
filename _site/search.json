@@ -368,7 +368,7 @@
     "href": "posts/posts/2024-03-20-prefer-datasets.html#prefer_fake_data.csv",
     "title": "A guide on PreFer datasets [LISS]",
     "section": "6. PreFer_fake_data.csv",
-    "text": "6. PreFer_fake_data.csv\nThis dataset contains the same variables as PreFer_train_data.csv, but it includes fake data with 30 randomly drawn values from each variable in the train and holdout data. This dataset is used for testing whether the developed preprocessing scripts and trained models work. A failed test on this data likely means a failed submission on the holdout data."
+    "text": "6. PreFer_fake_data.csv\nThis dataset contains the same variables as PreFer_train_data.csv, but it includes fake data with 30 randomly drawn values from each variable in the holdout data. This dataset is used for testing whether the developed preprocessing scripts and trained models work. A failed test on this data likely means a failed submission on the holdout data.\nCategorical variables in the fake data include all unique values that are present in the corresponding variable in the holdout data, and do not include values that are only present in the training data but not in the holdout data. Continuous variables in the fake data do not include all the values in the corresponding variable in the holdout data (the file would be too large)."
   },
   {
     "objectID": "posts/posts/2024-03-20-prefer-datasets.html#prefer_fake_outcome.csv",
@@ -382,7 +382,7 @@
     "href": "posts/posts/2024-03-20-prefer-datasets.html#prefer_fake_background_data.csv",
     "title": "A guide on PreFer datasets [LISS]",
     "section": "8. PreFer_fake_background_data.csv",
-    "text": "8. PreFer_fake_background_data.csv\nThis dataset contains the same variables as PreFer_train_background_data.csv, but it includes fake data with randomly drawn values from each variable in the background data. This dataset is used for testing whether the developed preprocessing scripts and trained models work when the original analyses included PreFer_train_background_data.csv. A failed test using this data likely means a failed submission on the holdout data."
+    "text": "8. PreFer_fake_background_data.csv\nThis dataset contains the same variables as PreFer_train_background_data.csv, but it includes fake data with randomly drawn values from each variable in the background data. This dataset is used for testing whether the developed preprocessing scripts and trained models work when the original analyses included PreFer_train_background_data.csv. A failed test using this data likely means a failed submission on the holdout data.\nCategorical variables in the fake data include all unique values that are present in the corresponding variable in the holdout data, and do not include values that are only present in the training data but not in the holdout data. Continuous variables in the fake data do not include all the values in the corresponding variable in the holdout data (the file would be too large)."
   },
   {
     "objectID": "posts/posts/2024-03-20-prefer-datasets.html#prefer_holdout_data.csv",

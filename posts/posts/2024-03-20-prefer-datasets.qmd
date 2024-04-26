@@ -200,7 +200,10 @@ A dataset that contains the fake outcomes for the fake data `PreFer_fake_data.cs
 
 ## 8. PreFer_fake_background_data.csv
 
-This dataset contains the same variables as `PreFer_train_background_data.csv`, but it includes fake data with randomly drawn values from each variable in the background data. This dataset is used for testing whether the developed preprocessing scripts and trained models work when the original analyses included `PreFer_train_background_data.csv`. A failed test using this data likely means a failed submission on the holdout data.  
+This dataset contains the same variables as `PreFer_train_background_data.csv`, but it includes fake data with randomly drawn values from each variable in the background data. This dataset is used for testing whether the developed preprocessing scripts and trained models work when the original analyses included `PreFer_train_background_data.csv`. A failed test using this data likely means a failed submission on the holdout data.   
+
+**Categorical** variables in the fake data include all unique values that are present in the corresponding variable in the holdout data, and do not include values that are only present in the training data but not in the holdout data. **Continuous** variables in the fake data do not include all the values in the corresponding variable in the holdout data (the file would be too large).
+
 
 ## 9. PreFer_holdout_data.csv
 
