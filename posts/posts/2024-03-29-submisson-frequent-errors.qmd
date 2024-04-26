@@ -35,6 +35,8 @@ What to check before submission to avoid errors:
 - all additional files that you are using (e.g. the codebooks, your custom scripts with functions, etc.) are added to you repository
 
 
+- don't delete files. settings.json is necessary- that you need to turn on Action page to see if your submission rn. For that you need to fork the repository.- don't forget to produce 0/1, not other outcome values- careful with producing columns with one-hot encoding- ask to don't forget to update training script! - если вам не пришло от нас письмо, что submission was successfull или что unseccessful а вы думали, что вы сделали submission - это значит, что вы не отправили через Next platform. - you should fork the main repository and work with it. Currently, you copied some files from it to your repository, right? If you fork it and work with the files in this fork, you'll be able to see on the Actions tab in this forked repository, if your submission works on the fake data. This way you will know, if your submission is working properly or not, and will be able to debug it. For example, here you can find some common errors- you shouldn't delete other files from these repository because some of them are needed for evaluating your model. For example, the file settings.json has information whether you use R or Python for your submission. (use are using R, so you should change 'python.Dockerfile' into 'r.Dockerfile' as mentioned in the instructions)- don't delete the predict_outcomes function from the 'submission.r' script, even if you don't change it - this function is used to produce predictions
+
 ## How to find the error message
 
 Click on the failed "run". You'll see a message there.  

@@ -31,9 +31,22 @@ Yes, in Phase 1 (and track 3 of phase 2) you can use the LISS data in such a sha
 ## Can I use external data in my model? 
 It is possible if this data is publicly available. You need to describe in the 'description.md' where you downloaded the data, and why and how you use it. Don't forget to document in the training.R/training.py script everything you've done with this external data, e.g. all the preprocessing steps and merging.  
 
-If you need this data to be merged with the holdout set, you can read it in inside the preprocessing function ("clean_df") in the submission script (submission.py/submission.R). Add the code needed for merging and preprocessing of the external data to this function. You should also add a .csv file with the external data to your Github repository (root folder). In case you use R, add 'COPY *.csv /app' to the 'r.Dockerfile' which is in your repository (in case it is missing currently).
+If you need this data to be merged with the holdout set, you can read it in inside the preprocessing function ("clean_df") in the submission script (submission.py/submission.R). Add the code needed for merging and preprocessing of the external data to this function. You should also add a .csv file with the external data to your Github repository (root folder). 
+
+If you are using R, additionally you need to check the 'r.Dockerfile' file, which is in your repository: check if the line 'COPY *.csv /app' is there. If not, please add it after the other lines with 'COPY'. 
 
 If you have any questions about using external data, please contact us.
+
+<b>Important<b>: the data should be from before 2020, because the task is to predict fertility outcomes in 2021-2023 based on information from earlier years. If you have an interesting strategy for which it is important to use data from 2021-2023, you can do that, but you cannot become a winner based on the F1 score. You can still become a winner based on [qualitative criteria](/details/overview/4submission_evaluation_winners.md){target="_blank"}  be selected into Phase 2. 
+
+:::
+
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## Can I use the codebooks in my submission? 
+Yes, you can use the codebooks. You need to add the codebook (or both codebooks) to your repository (root folder), and then you can just read the file(s) inside the function (i.e. not from an argument) the way you normally would read a csv file.  
+
+If you are using R, additionally you need to check the 'r.Dockerfile' file, which is in your repository: check if the line 'COPY *.csv /app' is there. If not, please add it after the other lines with 'COPY'. 
 
 :::
 
@@ -51,8 +64,8 @@ The Python version is 3.11.7 and the R version is 4.3.3.
 :::
 
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
-## What if I am using another version of Python or R? 
-It's better to stick to the same version unless that's the only way to use a particular function or package (for example, the package is only supported in the older version of Python/R). 
+## What if I am using another version of Python? 
+It's better to stick to the same version unless that's the only way to use a particular function or package (for example, the package is only supported in the older version of Python). 
 
 To use another version of Python, edit the file 'python.Dockerfile' in your repository. Replace 'anaconda3:2024.02-1' in the first line with the tag for anaconda release, which uses the Python version that you need. First, check which Python versions are used in different Anaconda's [here](https://docs.anaconda.com/free/anaconda/allpkglists/2024.02-1/). Then go [here](https://registry.hub.docker.com/r/continuumio/anaconda3/tags) and find the tag for this version. For example, the tag for Anaconda 2020.02 is 'anaconda3:2020.02'. And then replace the tag in the 'python.Dockerfile', so the first line will look like this:
 FROM continuumio/anaconda3:2020.02  
@@ -110,6 +123,11 @@ We have chosen only to provide prediction scores and rankings at set times (see 
 ## General
 
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
+## There is a change in my team (e.g. another person joined, or somebody decided to stop participating), what should I do?
+You should fill in the form about team membership that we've sent again before you make a new submission.
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
 ## Can I publish my results / can I be a co-author?
 Everyone who has engaged in the data challenge and submitted predictions through the procedures of the data challenge will be invited to contribute to a “community paper” on the results of the data challenge. You can also consider writing up your (team’s) results and submit it to the special issue; these submissions will be peer-reviewed. Instructions on how to do this will follow after the data challenge. If you want to publish your results separate from the special issue, then you could do so, but only after the community paper and the special issue is fully published (as you will have agreed to via signing the data agreement).
 :::
@@ -121,7 +139,7 @@ You can start with [this review by Balbo et al.] (https://link.springer.com/arti
 
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
 ## I need help?! Or I have a suggestion
-You can contact e.sivak [at] rug [dot] nl and/or g.stulp [at] rug [dot] nl for any questions and suggestions you might have. 
+You can contact Elizaveta Sivak and Gert Stulp at preferdatachallenge [at] gmail [dot] com for any questions and suggestions you might have. 
 :::
 
 
