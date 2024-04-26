@@ -22,20 +22,34 @@ When you submit your method, it will automatically run on the fake data first ("
 _Note: always test your method locally on the fake data before submitting (e.g. apply your method to the fake data to see if the method produces predictions) and debug in case of errors. Here we will mostly focus on errors that you might still encounter during this automated check even if your method was working locally)._  
 
 
+## Checklist to avoid errors  
+
+We will be constantly updating this list based on the errors in submissions.
+
+What to check to avoid errors:  
+
+- if at any point during preprocessing you do one-hot encoding (create dummy variables), make sure that you do not include columns in the model that would not exist in the preprocessed dataset because there are no such values in the holdout data. You can check which categorical variable values are present in the holdout data using fake data. Categorical variables in the fake data only include values that are present in the holdout data. And vice versa: check if there are any values of the categorical variables you want to include in your model, which are not present in the training data but are present in the holdout data. If there are, you need to add these columns to the model
+- you've edited the function clean_df in submission.py/submission.r so that it can be applied to the holdout data. For example, inside this function you use the argument (df), not a custom variable name you used during preprocessing the training data
+- you don't load the training data in the submission.py/submission.r. It shouldn't be loaded because the clean_df function will be applied to the holdout data which will be provided as the argument to this function
+- you don't use the file with the outcome in the clean_df function; if you need to select only observations for which the outcome is not missing, you can use the variable 'outcome_available' (described [here](/posts/posts/2024-03-20-prefer-datasets.qmd){target="_blank"})
+- (for Python users) the environment name in environment.yml is not changed - it is 'eyra-rank'
+- all additional files that you are using (e.g. the codebooks, your custom scripts with functions, etc.) are added to you repository (root folder). If you are using R, additionally you need to check the 'r.Dockerfile' file, which is in your repository: check if the line 'COPY *.csv /app' is there. If not, please add it after the other lines with 'COPY'. 
+- all the files needed for the submission are in the repository. It's easier not to delete anything from the repository. The most important files are submission.py/submission.r, settings.json (has information about whether you use python or R), environment.yml/packages.R, training.py/training.r, description.md, model.joblib/model.rds (or the model in another format), run.py/run.r, python.Dockerfile/r.Dockerfile, score.py
+- you haven't deleted any functions from submission.py/submission.r. Even if you don't have to change the 'predict_outcomes' function, you shouldn't delete it
+- your 'predict_outcomes' function produces predictions in the format of 1s and 0s, not e.g. probabilities. If your model by default produces predictions in another format,  don't forget to update the 'predict_outcomes' function
+- if you are using R, you've changed the settings.json file as explained [here](https://github.com/eyra/fertility-prediction-challenge?tab=readme-ov-file#prepare-your-method){target="_blank"}
+- all packages that you are using are added to the environment.yml or packages.R
+
+
 ## How to find out if your method passed automatic checks
 
-You can see it on the "Actions" tab in your own github repository. After you update your repository, you will see on this page whether your method passed automatic checks or not. Make sure to allow Github Actions: go to the “Actions” tab and click “I understand my workflows, go ahead and enable them.”
-![](/images/actions.png)
-## Checklist to avoid errors (the list will be updated)
+You can see it on the "Actions" tab in your own github repository. Make sure to allow Github Actions: go to the “Actions” tab and click “I understand my workflows, go ahead and enable them.”  
+![](/images/actions.png) 
 
-What to check before submission to avoid errors:      
-- if you are using R, you've changed the settings.json file
-- all packages that you are using are added to the environment.yml or packages.R  
-- the environment name in environment.yml ('eyra-rank') was not changed 
-- all additional files that you are using (e.g. the codebooks, your custom scripts with functions, etc.) are added to you repository
+After you update your repository, you will see on this page whether your method passed automatic checks or not. 
 
+If you cannot enable Actions, it might mean that you haven't forked the repository. Make a copy of the template repository by forking and cloning as explained [here](https://github.com/eyra/fertility-prediction-challenge/wiki/PreFer-Challenge-Wiki#how-to-fork-and-clone-this-repository){target="_blank"}, not by creating a new repository.
 
-- don't delete files. settings.json is necessary- that you need to turn on Action page to see if your submission rn. For that you need to fork the repository.- don't forget to produce 0/1, not other outcome values- careful with producing columns with one-hot encoding- ask to don't forget to update training script! - если вам не пришло от нас письмо, что submission was successfull или что unseccessful а вы думали, что вы сделали submission - это значит, что вы не отправили через Next platform. - you should fork the main repository and work with it. Currently, you copied some files from it to your repository, right? If you fork it and work with the files in this fork, you'll be able to see on the Actions tab in this forked repository, if your submission works on the fake data. This way you will know, if your submission is working properly or not, and will be able to debug it. For example, here you can find some common errors- you shouldn't delete other files from these repository because some of them are needed for evaluating your model. For example, the file settings.json has information whether you use R or Python for your submission. (use are using R, so you should change 'python.Dockerfile' into 'r.Dockerfile' as mentioned in the instructions)- don't delete the predict_outcomes function from the 'submission.r' script, even if you don't change it - this function is used to produce predictions
 
 ## How to find the error message
 

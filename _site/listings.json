@@ -40,12 +40,12 @@
   {
     "listing": "/index.html",
     "items": [
-      "/details/overview/2data.html",
-      "/details/overview/4submission_evaluation_winners.html",
-      "/details/overview/3application.html",
       "/details/overview/1research_questions.html",
-      "/details/overview/5special_issue.html",
-      "/details/overview/3phases.html"
+      "/details/overview/2data.html",
+      "/details/overview/3application.html",
+      "/details/overview/3phases.html",
+      "/details/overview/4submission_evaluation_winners.html",
+      "/details/overview/5special_issue.html"
     ]
   }
 ]

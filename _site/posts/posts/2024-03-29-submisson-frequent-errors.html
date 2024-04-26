@@ -151,7 +151,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#how-to-find-out-if-your-method-passed-automatic-checks" id="toc-how-to-find-out-if-your-method-passed-automatic-checks" class="nav-link active" data-scroll-target="#how-to-find-out-if-your-method-passed-automatic-checks">How to find out if your method passed automatic checks</a></li>
+  <li><a href="#checklist-to-avoid-errors" id="toc-checklist-to-avoid-errors" class="nav-link active" data-scroll-target="#checklist-to-avoid-errors">Checklist to avoid errors</a></li>
+  <li><a href="#how-to-find-out-if-your-method-passed-automatic-checks" id="toc-how-to-find-out-if-your-method-passed-automatic-checks" class="nav-link" data-scroll-target="#how-to-find-out-if-your-method-passed-automatic-checks">How to find out if your method passed automatic checks</a></li>
   <li><a href="#how-to-find-the-error-message" id="toc-how-to-find-the-error-message" class="nav-link" data-scroll-target="#how-to-find-the-error-message">How to find the error message</a></li>
   <li><a href="#common-errors" id="toc-common-errors" class="nav-link" data-scroll-target="#common-errors">Common errors</a></li>
   </ul>
@@ -201,16 +202,37 @@ ul.task-list li input[type="checkbox"] {
 
 <p>When you submit your method, it will automatically run on the fake data first (“PreFer_fake_data.csv”). Only if this check is successful, the method will run on the holdout set. Here we will be adding common reasons why your submission might fail to pass this automatic checks.</p>
 <p><em>Note: always test your method locally on the fake data before submitting (e.g.&nbsp;apply your method to the fake data to see if the method produces predictions) and debug in case of errors. Here we will mostly focus on errors that you might still encounter during this automated check even if your method was working locally).</em></p>
+<section id="checklist-to-avoid-errors" class="level2">
+<h2 class="anchored" data-anchor-id="checklist-to-avoid-errors">Checklist to avoid errors</h2>
+<p>We will be constantly updating this list based on the errors in submissions.</p>
+<p>What to check to avoid errors:</p>
+<ul>
+<li>if at any point during preprocessing you do one-hot encoding (create dummy variables), make sure that you do not include columns in the model that would not exist in the preprocessed dataset because there are no such values in the holdout data. You can check which categorical variable values are present in the holdout data using fake data. Categorical variables in the fake data only include values that are present in the holdout data. And vice versa: check if there are any values of the categorical variables you want to include in your model, which are not present in the training data but are present in the holdout data. If there are, you need to add these columns to the model</li>
+<li>you’ve edited the function clean_df in submission.py/submission.r so that it can be applied to the holdout data. For example, inside this function you use the argument (df), not a custom variable name you used during preprocessing the training data</li>
+<li>you don’t load the training data in the submission.py/submission.r. It shouldn’t be loaded because the clean_df function will be applied to the holdout data which will be provided as the argument to this function</li>
+<li>you don’t use the file with the outcome in the clean_df function; if you need to select only observations for which the outcome is not missing, you can use the variable ‘outcome_available’ (described <a href="../../posts/posts/2024-03-20-prefer-datasets.html" target="_blank">here</a>)</li>
+<li>(for Python users) the environment name in environment.yml is not changed - it is ‘eyra-rank’</li>
+<li>all additional files that you are using (e.g.&nbsp;the codebooks, your custom scripts with functions, etc.) are added to you repository (root folder). If you are using R, additionally you need to check the ‘r.Dockerfile’ file, which is in your repository: check if the line ’COPY *.csv /app’ is there. If not, please add it after the other lines with ‘COPY’.</li>
+<li>all the files needed for the submission are in the repository. It’s easier not to delete anything from the repository. The most important files are submission.py/submission.r, settings.json (has information about whether you use python or R), environment.yml/packages.R, training.py/training.r, description.md, model.joblib/model.rds (or the model in another format), run.py/run.r, python.Dockerfile/r.Dockerfile, score.py</li>
+<li>you haven’t deleted any functions from submission.py/submission.r. Even if you don’t have to change the ‘predict_outcomes’ function, you shouldn’t delete it</li>
+<li>your ‘predict_outcomes’ function produces predictions in the format of 1s and 0s, not e.g.&nbsp;probabilities. If your model by default produces predictions in another format, don’t forget to update the ‘predict_outcomes’ function</li>
+<li>if you are using R, you’ve changed the settings.json file as explained <a href="https://github.com/eyra/fertility-prediction-challenge?tab=readme-ov-file#prepare-your-method" target="_blank">here</a></li>
+<li>all packages that you are using are added to the environment.yml or packages.R</li>
+</ul>
+</section>
 <section id="how-to-find-out-if-your-method-passed-automatic-checks" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-find-out-if-your-method-passed-automatic-checks">How to find out if your method passed automatic checks</h2>
-<p>You can see it on the “Actions” tab in your own github repository. After you update your repository, you will see on this page whether your method passed automatic checks or not. Make sure to allow Github Actions: go to the “Actions” tab and click “I understand my workflows, go ahead and enable them.” <img src="../../images/actions.png" class="img-fluid"></p>
+<p>You can see it on the “Actions” tab in your own github repository. Make sure to allow Github Actions: go to the “Actions” tab and click “I understand my workflows, go ahead and enable them.”<br>
+<img src="../..\images/actions.png" class="img-fluid"></p>
+<p>After you update your repository, you will see on this page whether your method passed automatic checks or not.</p>
+<p>If you cannot enable Actions, it might mean that you haven’t forked the repository. Make a copy of the template repository by forking and cloning as explained <a href="https://github.com/eyra/fertility-prediction-challenge/wiki/PreFer-Challenge-Wiki#how-to-fork-and-clone-this-repository" target="_blank">here</a>, not by creating a new repository.</p>
 </section>
 <section id="how-to-find-the-error-message" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-find-the-error-message">How to find the error message</h2>
 <p>Click on the failed “run”. You’ll see a message there.</p>
-<p><img src="../../images/failed_run3.png" class="img-fluid"></p>
+<p><img src="../..\images/failed_run3.png" class="img-fluid"></p>
 <p>You can also click on “test” and view more detailed information about the error and the stage at which it occurred.</p>
-<p><img src="../../images/failed_read_dockerfile.png" class="img-fluid"></p>
+<p><img src="../..\images/failed_read_dockerfile.png" class="img-fluid"></p>
 </section>
 <section id="common-errors" class="level2">
 <h2 class="anchored" data-anchor-id="common-errors">Common errors</h2>
@@ -227,7 +249,7 @@ ERROR: failed to solve: failed to read dockerfile: open Dockerfile: no such file
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>This error appears if you are using one programming language for submission, but the “settings.json” indicates a different language. Most likely you are using R, but you haven’t changed the settings. The default set-up is Python; if you would like to use R, go to settings.json and change {“dockerfile”: “python.Dockerfile”} into {“dockerfile”: “r.Dockerfile”}.<br>
-<img src="../../images/error_edit_settings.png" class="img-fluid"></p>
+<img src="../..\images/error_edit_settings.png" class="img-fluid"></p>
 </div>
 </div>
 </div>
@@ -244,7 +266,7 @@ Error in eval(predvars, data, env) : object ‘some_variable_name_here’ not fo
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>This error occurs if you added new variables to the model, but did not change the “clean_df” function in the submission script accordingly.<br>
-<img src="../../images/error_edit_settings.png" class="img-fluid"></p>
+<img src="../..\images/error_edit_settings.png" class="img-fluid"></p>
 </div>
 </div>
 </div>
@@ -261,7 +283,7 @@ ValueError: The feature names should match those that were passed during fit. Fe
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>This error occurs if you added new variables to the model and updated the “clean_df” function in submission script accordingly, but the model is not updated.<br>
-<img src="../../images/feature_name_unseen.jpg" class="img-fluid"></p>
+<img src="../..\images/feature_name_unseen.jpg" class="img-fluid"></p>
 </div>
 </div>
 </div>
@@ -278,7 +300,23 @@ Error in library(some_package_name) : there is no package called ‘some_package
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>This error occurs if you are using an (R) package which is not listed in “packages.R” file. Add this package to this file.<br>
-<img src="../../images/no_package.png" class="img-fluid"></p>
+<img src="../..\images/no_package.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+EnvironmentLocationNotFound: Not a conda environment
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This error occurs if you changed the environment name in ‘environment.yml’ file (first line). You should change the name back: ‘name: eyra-rank’.</p>
 </div>
 </div>
 </div>
