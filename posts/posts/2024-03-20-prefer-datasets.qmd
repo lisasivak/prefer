@@ -192,7 +192,7 @@ This dataset contains the outcome (`new_child`) for the respondents in `PreFer_t
 
 This dataset contains the same variables as `PreFer_train_data.csv`, but it includes fake data with 30 randomly drawn values from each variable in the holdout data. This dataset is used for testing whether the developed preprocessing scripts and trained models work. A failed test on this data likely means a failed submission on the holdout data. 
 
-**Categorical** variables in the fake data include all unique values that are present in the corresponding variable in the holdout data, and do not include values that are only present in the training data but not in the holdout data. **Continuous** variables in the fake data do not include all the values in the corresponding variable in the holdout data (the file would be too large).
+**Categorical** variables in the fake data include all unique values that are present in the corresponding variable in the holdout data, and do not include values that are only present in the training data but not in the holdout data. **Continuous** variables in the fake data do not include all the values in the corresponding variable in the holdout data (the file would be too large). The minimum and maximum values of a continuous variables are the same as in the holdout data.
 
 ## 7. PreFer_fake_outcome.csv
 
@@ -202,7 +202,7 @@ A dataset that contains the fake outcomes for the fake data `PreFer_fake_data.cs
 
 This dataset contains the same variables as `PreFer_train_background_data.csv`, but it includes fake data with randomly drawn values from each variable in the background data. This dataset is used for testing whether the developed preprocessing scripts and trained models work when the original analyses included `PreFer_train_background_data.csv`. A failed test using this data likely means a failed submission on the holdout data.   
 
-**Categorical** variables in the fake data include all unique values that are present in the corresponding variable in the holdout data, and do not include values that are only present in the training data but not in the holdout data. **Continuous** variables in the fake data do not include all the values in the corresponding variable in the holdout data (the file would be too large).
+**Categorical** variables in the fake data include all unique values that are present in the corresponding variable in the holdout data, and do not include values that are only present in the training data but not in the holdout data. **Continuous** variables in the fake data do not include all the values in the corresponding variable in the holdout data (to keep the fake data at a manageable size). The minimum and maximum values of a continuous variables are the same as in the holdout data.
 
 
 ## 9. PreFer_holdout_data.csv
