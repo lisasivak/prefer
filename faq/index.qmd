@@ -31,7 +31,7 @@ Yes, in Phase 1 (and track 3 of phase 2) you can use the LISS data in such a sha
 ## Can I use external data in my model? 
 It is possible if this data is publicly available.  
 
-The data should be from before 2020, because the task is to predict fertility outcomes in 2021-2023 based on information from earlier years. Exceptions are possible depending on the data, but in this case the results will not be evaluated in a standard way, so results may not be on the leaderboard.  
+The data must be from 2020 or earlier, because the task is to predict fertility outcomes in 2021-2023 based on information from earlier years. If you usу more recent data (from 2021 onwards), the result may not be evaluated in a standard way and ше may not be on the leaderboard. Exceptions are possible depending on the data.  
 
 If you plan to use any external data, please contact us.
 
