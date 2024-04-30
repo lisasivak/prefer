@@ -20,9 +20,13 @@ The predictive accuracy scores (F1, accuracy, precision, recall) for all submiss
 
 If you work in R, you cannot do this (unless you save your predictions from submission.R in a csv file and then run the Python code). That's why we provide a script to calculate these scores yourself. The reason that we do not include this R-script in the repository, is because when you submit your model/method, the Python-script will be used to calculate the outcomes for your submission during the challenge. Although entirely unlikely, for whatever reason the Python- and R-script that produce the scores may lead to different results. So use this R-script for convenience, but note the disclaimer above.
 
+**Update from April 30:**  
+Starting from the second intermediate leaderboard, we use an updated `score.py` script. When calculating recall, we now take into account not only the cases when a predicted value was available (i.e., not missing) but all cases in the holdout set. Specifically, in the updated script, we divide the number of true positives by the total number of positive cases in the ground truth data (i.e., the number of people who actually had a new child), rather than by the sum of true positives and false negatives. This change only matters if there are missing values in predictions. We made this change to avoid a situation where a model makes very accurate predictions for only a small number of cases (where the remaining cases were not predicted because of missing values on predictor variables), yet gets the same result as a model that makes similar accurate predictions but for all cases. 
+
 # score.R
 You can just `source` this function into your R-environment by running: `source("https://preferdatachallenge.nl/data/score.R")`. This R-script contains the following code:
 
+Commented lines of code (preceded with `#`) were part of our original scoring function. 
 ```{r}
 # predictions_df = data.frame with two columns; nomem_encr and predictions
 # ground_truth_df = data.frame with two columns; nomem_encr and new_child
@@ -33,26 +37,31 @@ score <- function(predictions_df, ground_truth_df) {
                     all.y = TRUE) # right join
   
   # Calculate accuracy
-  accuracy = sum( merged_df$prediction == merged_df$new_child) / length(merged_df$new_child) 
+  accuracy = sum( merged_df$prediction == merged_df$new_child, na.rm = T) / length(merged_df$new_child) 
   
-  # Calculate true positives, false positives, and false negatives
-  true_positives = sum( merged_df$prediction == 1 & merged_df$new_child == 1 )
-    
-  false_positives = sum( merged_df$prediction == 1 & merged_df$new_child == 0 )
-    
-  false_negatives = sum( merged_df$prediction == 0 & merged_df$new_child == 1 )
-    
+  # Calculate true positives and false positives 
+  true_positives = sum( merged_df$prediction == 1 & merged_df$new_child == 1, na.rm = T )
+  
+  false_positives = sum( merged_df$prediction == 1 & merged_df$new_child == 0 , na.rm = T)
+  
+  #false_negatives = sum( merged_df$prediction == 0 & merged_df$new_child == 1 , na.rm = T)
+  
+  # Calculate the actual number of positive instances (N of people who actually had a new child) for calculating recall
+  n_all_positive_instances = sum(ground_truth_df$new_child == 1)
+  
   # Calculate precision, recall, and F1 score
   if( (true_positives + false_positives) == 0) {
     precision = 0
   } else {
     precision = true_positives / (true_positives + false_positives)
   }
-  if( (true_positives + false_negatives) == 0) {
-    recall = 0
-  } else {
-    recall = true_positives / (true_positives + false_negatives)
-  }
+  # if( (true_positives + false_negatives) == 0) {
+  #   recall = 0
+  # } else {
+  #   recall = true_positives / (true_positives + false_negatives)
+  # }
+  recall = true_positives / n_all_positive_instances
+  
   if( (precision + recall) == 0) {
     f1_score = 0
   } else {
@@ -67,7 +76,7 @@ score <- function(predictions_df, ground_truth_df) {
   )
   
   return(metrics_df)
-
+  
 }
 ```
 
@@ -96,7 +105,7 @@ The following scores are created: F1, accuracy, precision, recall, using counts 
 
 - **Precision**: fraction of correct predictions out of total number of predicted cases "of interest". Among those who were predicted to have child (11 in our case), the percentage who indeed had a child (7 out of those 11 had a child), thus 0.64. Sometimes this is phrased as the $\frac{\text{true positives}}{\text{true positives + false positives}} =\frac{7}{7+4}$.
 
-- **Recall**: fraction of correct predictions out of total number of cases "of interest". Among those who had a child (10 in our case), the percentage who were predicted to have a child (7 out of those 10 had a child), thus 0.7. Sometimes this is phrased as the $\frac{\text{true positives}}{\text{true positives + false false negatives}} =\frac{7}{7+3}$.
+- **Recall**: fraction of correct predictions out of total number of cases "of interest". Among those who had a child (10 in our case), the percentage who were predicted to have a child (7 out of those 10 had a child), thus 0.7. Sometimes this is phrased as the $\frac{\text{true positives}}{\text{true positives + false negatives}} =\frac{7}{7+3}$. After our update, this is $\frac{\text{true positives}}{\text{all positive instances}} =\frac{7}{7+3}$ [leading to the same score, as there were no missing predictions in this case].
 
 - **F1-score**: the harmonic mean between precision and recall: $2\frac{precision*recall}{precision+recall}$. Here $2*\frac{0.64*0.7}{0.64*0.7}=0.67$.
 
