@@ -241,9 +241,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>The predictive accuracy scores (F1, accuracy, precision, recall) for all submissions will be calculated via the script <code>score.py</code>. If you work in Python, you can also calculate these scores by running <code>python score.py predictions.csv outcome.csv</code> in the command line, where “predictions.csv” refers to a csv-file that includes two columns (nomem_encr and prediction; the output of <code>predict_outcomes</code> function) and <code>outcome.csv</code> (for example “PreFer_train_outcome.csv”) refers to a csv-file that contains the ground truth (also with two columns; nomem_encr and new_child).</p>
 <p>If you work in R, you cannot do this (unless you save your predictions from submission.R in a csv file and then run the Python code). That’s why we provide a script to calculate these scores yourself. The reason that we do not include this R-script in the repository, is because when you submit your model/method, the Python-script will be used to calculate the outcomes for your submission during the challenge. Although entirely unlikely, for whatever reason the Python- and R-script that produce the scores may lead to different results. So use this R-script for convenience, but note the disclaimer above.</p>
+<p><strong>Update from April 30:</strong><br>
+Starting from the second intermediate leaderboard, we use an updated <code>score.py</code> script. When calculating recall, we now take into account not only the cases when a predicted value was available (i.e., not missing) but all cases in the holdout set. Specifically, in the updated script, we divide the number of true positives by the total number of positive cases in the ground truth data (i.e., the number of people who actually had a new child), rather than by the sum of true positives and false negatives. This change only matters if there are missing values in predictions. We made this change to avoid a situation where a model makes very accurate predictions for only a small number of cases (where the remaining cases were not predicted because of missing values on predictor variables), yet gets the same result as a model that makes similar accurate predictions but for all cases.</p>
 <section id="score.r" class="level1">
 <h1>score.R</h1>
 <p>You can just <code>source</code> this function into your R-environment by running: <code>source("https://preferdatachallenge.nl/data/score.R")</code>. This R-script contains the following code:</p>
+<p>Commented lines of code (preceded with <code>#</code>) were part of our original scoring function.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># predictions_df = data.frame with two columns; nomem_encr and predictions</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ground_truth_df = data.frame with two columns; nomem_encr and new_child</span></span>
@@ -254,42 +257,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">all.y =</span> <span class="cn">TRUE</span>) <span class="co"># right join</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate accuracy</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  accuracy <span class="ot">=</span> <span class="fu">sum</span>( merged_df<span class="sc">$</span>prediction <span class="sc">==</span> merged_df<span class="sc">$</span>new_child) <span class="sc">/</span> <span class="fu">length</span>(merged_df<span class="sc">$</span>new_child) </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  accuracy <span class="ot">=</span> <span class="fu">sum</span>( merged_df<span class="sc">$</span>prediction <span class="sc">==</span> merged_df<span class="sc">$</span>new_child, <span class="at">na.rm =</span> T) <span class="sc">/</span> <span class="fu">length</span>(merged_df<span class="sc">$</span>new_child) </span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate true positives, false positives, and false negatives</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  true_positives <span class="ot">=</span> <span class="fu">sum</span>( merged_df<span class="sc">$</span>prediction <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> merged_df<span class="sc">$</span>new_child <span class="sc">==</span> <span class="dv">1</span> )</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  false_positives <span class="ot">=</span> <span class="fu">sum</span>( merged_df<span class="sc">$</span>prediction <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> merged_df<span class="sc">$</span>new_child <span class="sc">==</span> <span class="dv">0</span> )</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  false_negatives <span class="ot">=</span> <span class="fu">sum</span>( merged_df<span class="sc">$</span>prediction <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;</span> merged_df<span class="sc">$</span>new_child <span class="sc">==</span> <span class="dv">1</span> )</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate precision, recall, and F1 score</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>( (true_positives <span class="sc">+</span> false_positives) <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    precision <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    precision <span class="ot">=</span> true_positives <span class="sc">/</span> (true_positives <span class="sc">+</span> false_positives)</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>( (true_positives <span class="sc">+</span> false_negatives) <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    recall <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    recall <span class="ot">=</span> true_positives <span class="sc">/</span> (true_positives <span class="sc">+</span> false_negatives)</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>( (precision <span class="sc">+</span> recall) <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    f1_score <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    f1_score <span class="ot">=</span> <span class="dv">2</span> <span class="sc">*</span> (precision <span class="sc">*</span> recall) <span class="sc">/</span> (precision <span class="sc">+</span> recall)</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>  metrics_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    <span class="st">'accuracy'</span> <span class="ot">=</span> accuracy,</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="st">'precision'</span> <span class="ot">=</span> precision,</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    <span class="st">'recall'</span> <span class="ot">=</span> recall,</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="st">'f1_score'</span> <span class="ot">=</span> f1_score</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(metrics_df)</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate true positives and false positives </span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  true_positives <span class="ot">=</span> <span class="fu">sum</span>( merged_df<span class="sc">$</span>prediction <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> merged_df<span class="sc">$</span>new_child <span class="sc">==</span> <span class="dv">1</span>, <span class="at">na.rm =</span> T )</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  false_positives <span class="ot">=</span> <span class="fu">sum</span>( merged_df<span class="sc">$</span>prediction <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> merged_df<span class="sc">$</span>new_child <span class="sc">==</span> <span class="dv">0</span> , <span class="at">na.rm =</span> T)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="co">#false_negatives = sum( merged_df$prediction == 0 &amp; merged_df$new_child == 1 , na.rm = T)</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate the actual number of positive instances (N of people who actually had a new child) for calculating recall</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  n_all_positive_instances <span class="ot">=</span> <span class="fu">sum</span>(ground_truth_df<span class="sc">$</span>new_child <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate precision, recall, and F1 score</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>( (true_positives <span class="sc">+</span> false_positives) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    precision <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    precision <span class="ot">=</span> true_positives <span class="sc">/</span> (true_positives <span class="sc">+</span> false_positives)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># if( (true_positives + false_negatives) == 0) {</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   recall = 0</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># } else {</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   recall = true_positives / (true_positives + false_negatives)</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># }</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  recall <span class="ot">=</span> true_positives <span class="sc">/</span> n_all_positive_instances</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>( (precision <span class="sc">+</span> recall) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    f1_score <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    f1_score <span class="ot">=</span> <span class="dv">2</span> <span class="sc">*</span> (precision <span class="sc">*</span> recall) <span class="sc">/</span> (precision <span class="sc">+</span> recall)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>  metrics_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    <span class="st">'accuracy'</span> <span class="ot">=</span> accuracy,</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="st">'precision'</span> <span class="ot">=</span> precision,</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    <span class="st">'recall'</span> <span class="ot">=</span> recall,</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    <span class="st">'f1_score'</span> <span class="ot">=</span> f1_score</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(metrics_df)</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="creating-fake-data" class="level1">
@@ -317,7 +325,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><p><strong>Accuracy</strong>: fraction of correct predictions out of total predictions made. Number of people who did not have a child who were correctly predicted not to have births (6 in our example) plus the number of people who had a child and were correctly predicted to have a child (7 in our example), divided by the total number of people (20). Thus, the accuracy for our example is <span class="math inline">\(\frac{6+7}{20}=0.65\)</span></p></li>
 <li><p><strong>Precision</strong>: fraction of correct predictions out of total number of predicted cases “of interest”. Among those who were predicted to have child (11 in our case), the percentage who indeed had a child (7 out of those 11 had a child), thus 0.64. Sometimes this is phrased as the <span class="math inline">\(\frac{\text{true positives}}{\text{true positives + false positives}} =\frac{7}{7+4}\)</span>.</p></li>
-<li><p><strong>Recall</strong>: fraction of correct predictions out of total number of cases “of interest”. Among those who had a child (10 in our case), the percentage who were predicted to have a child (7 out of those 10 had a child), thus 0.7. Sometimes this is phrased as the <span class="math inline">\(\frac{\text{true positives}}{\text{true positives + false false negatives}} =\frac{7}{7+3}\)</span>.</p></li>
+<li><p><strong>Recall</strong>: fraction of correct predictions out of total number of cases “of interest”. Among those who had a child (10 in our case), the percentage who were predicted to have a child (7 out of those 10 had a child), thus 0.7. Sometimes this is phrased as the <span class="math inline">\(\frac{\text{true positives}}{\text{true positives + false negatives}} =\frac{7}{7+3}\)</span>. After our update, this is <span class="math inline">\(\frac{\text{true positives}}{\text{all positive instances}} =\frac{7}{7+3}\)</span> [leading to the same score, as there were no missing predictions in this case].</p></li>
 <li><p><strong>F1-score</strong>: the harmonic mean between precision and recall: <span class="math inline">\(2\frac{precision*recall}{precision+recall}\)</span>. Here <span class="math inline">\(2*\frac{0.64*0.7}{0.64*0.7}=0.67\)</span>.</p></li>
 </ul>
 </section>
