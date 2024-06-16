@@ -104,11 +104,13 @@ toc: false
 - End of [Phase 2](/details/overview/3phases.md) and [Phase 1](/details/overview/3phases.md): September 16, 2024
 - Announcing the winners: October 2024
 
-Leaderboards with the results of intermediate submissions in Phase 1 are planned to be published on these dates:  
+Deadlines for submissions:  
 
-- April 22nd, 12:00pm (afternoon) CEST 
-- May 13, 12:00pm (afternoon) CEST
-- June 3, 12:00pm (afternoon) CEST
+- <s>April 22nd, 12:00pm (afternoon) CEST (intermediate leaderboard)</s>
+- <s>May 13, 12:00pm (afternoon) CEST (intermediate leaderboard)</s>
+- <s>June 3, 12:00pm (afternoon) CEST (intermediate leaderboard)</s>
+- July 29, 12:00pm (afternoon) CEST (intermediate leaderboard)
+- September 16, 12:00pm (afternoon) CEST - final deadline for submissions
 
 :::
 :::
