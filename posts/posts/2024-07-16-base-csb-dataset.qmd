@@ -9,9 +9,9 @@ categories:
 author: 
   - "Lisa Sivak"
   - "Gert Stulp"
-date: '2024-07-16'
+date: '2024-07-15'
 toc: true
-image: ../../images/liss_pick.png
+image: ../../images/cbs_pick.jpg
 image-alt: LISS logo. 
 language: 
     section-title-footnotes: References
@@ -48,3 +48,4 @@ download_link(
 
 ## Base dataset: supplementary
 
+<font size="-1">Photo by <a href="https://unsplash.com/@dulhiier?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Nastya Dulhiier</a> on <a href="https://unsplash.com/photos/lighted-city-at-night-aerial-photo-OKOOGO578eo?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></font>

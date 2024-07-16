@@ -1,7 +1,7 @@
 ---
 title: "Intro to the CBS data"
 description: |
-  Here we provide some useful information about the datasets based on Dutch registers, that are available for selected teams in the second part of PreFer.
+  Here we provide some general information about the datasets based on Dutch registers, that are available for selected teams in the second part of PreFer.
 categories:
   - LISS
   - dataset

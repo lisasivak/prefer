@@ -5,7 +5,7 @@ description: |
 categories:
   - General info
 author: "Gert Stulp"
-date: '2024-04-02'
+date: '2023-12-11'
 toc: true
 image: ../../images/incompatible_results.png
 image-alt: I still have to find a figure for this. 

@@ -11,7 +11,7 @@ listing:
   - posts
   - "!index.qmd"
   fields: [image, title, author]
-  sort: "date"
+  sort: "date desc"
   type: grid
   categories: false
   sort-ui: false

@@ -9,7 +9,7 @@
 <meta name="author" content="Lisa Sivak">
 <meta name="author" content="Gert Stulp">
 <meta name="dcterms.date" content="2024-07-16">
-<meta name="description" content="Here we provide some useful information about the datasets based on Dutch registers, that are available for selected teams in the second part of PreFer.">
+<meta name="description" content="Here we provide some general information about the datasets based on Dutch registers, that are available for selected teams in the second part of PreFer.">
 
 <title>Intro to the CBS data</title>
 <style>
@@ -68,7 +68,7 @@ ul.task-list li input[type="checkbox"] {
 
 <link rel="stylesheet" href="../../rwds.css">
 <meta property="og:title" content="Intro to the CBS data">
-<meta property="og:description" content="Here we provide some useful information about the datasets based on Dutch registers, that are available for selected teams in the second part of PreFer.">
+<meta property="og:description" content="Here we provide some general information about the datasets based on Dutch registers, that are available for selected teams in the second part of PreFer.">
 <meta property="og:image" content="https://preferdatachallenge.nl/images/cbs_pick.jpg">
 <meta property="og:image:alt" content="LISS logo.">
 </head>
@@ -153,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#cbs-datasets-used-in-prefer" id="toc-cbs-datasets-used-in-prefer" class="nav-link" data-scroll-target="#cbs-datasets-used-in-prefer">CBS datasets used in PreFer</a>
   <ul class="collapse">
   <li><a href="#general-comments" id="toc-general-comments" class="nav-link" data-scroll-target="#general-comments">General comments</a></li>
-  <li><a href="#cbs-datasets-used-in-prefer-and-some-tips" id="toc-cbs-datasets-used-in-prefer-and-some-tips" class="nav-link" data-scroll-target="#cbs-datasets-used-in-prefer-and-some-tips">CBS datasets used in PreFer and some tips</a></li>
+  <li><a href="#brief-description-and-some-tips" id="toc-brief-description-and-some-tips" class="nav-link" data-scroll-target="#brief-description-and-some-tips">Brief description and some tips</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -173,7 +173,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div>
   <div class="description">
-    <p>Here we provide some useful information about the datasets based on Dutch registers, that are available for selected teams in the second part of PreFer.</p>
+    <p>Here we provide some general information about the datasets based on Dutch registers, that are available for selected teams in the second part of PreFer.</p>
   </div>
 </div>
 
@@ -215,7 +215,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="cbs-datasets-used-in-prefer" class="level2">
 <h2 class="anchored" data-anchor-id="cbs-datasets-used-in-prefer">CBS datasets used in PreFer</h2>
-<p>We selected several most relevant CBS datasets which can be used in PreFer (only data before 2021). Participants can also request additional datasets but have to provide argumentation. We also created <a href="../../posts/posts/2024-03-21-prefer-codebooks.html" target="_blank">a base file</a> which includes variables from different datasets (mostly from 2020). The codebook for this base dataset (downloadable from <a href="">here</a>) includes some comments which might be useful even if you will not use the base file.</p>
+<p>We selected several most relevant CBS datasets which can be used in PreFer (only data before 2021). Participants can also request additional datasets but have to provide argumentation. We also created <a href="../../posts/posts/2024-03-21-prefer-codebooks.html" target="_blank">a base file</a> which includes variables from different datasets (mostly from 2020). The codebook for this base dataset (downloadable from <a href="../../posts/posts/2024-07-16-base-csb-dataset.html">here</a>) includes some comments which might be useful even if you will not use the base file.</p>
 <section id="general-comments" class="level3">
 <h3 class="anchored" data-anchor-id="general-comments">General comments</h3>
 <p>CBS uses different structures to store information. This is important to keep in mind to avoid mistakes in linking datasets and prevent using information from 2021 and later.</p>
@@ -226,8 +226,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p>In some cases, there is only one file which is updated each year; when a new version is released, the older version becomes unavailable. Examples include GBABURGERLIJKESTAAT (civil status - married/registered partnership/single/etc.) and SECMBUS (socio-economic category). If you use these datasets, make sure you <strong>don’t use information starting from January 1, 2021</strong> (civil status and socio-economic category with start date on January 1, 2021 or later).</p></li>
 </ul>
 </section>
-<section id="cbs-datasets-used-in-prefer-and-some-tips" class="level3">
-<h3 class="anchored" data-anchor-id="cbs-datasets-used-in-prefer-and-some-tips">CBS datasets used in PreFer and some tips</h3>
+<section id="brief-description-and-some-tips" class="level3">
+<h3 class="anchored" data-anchor-id="brief-description-and-some-tips">Brief description and some tips</h3>
 <ol type="1">
 <li><p><strong>GBAPERSOONTAB</strong> (<a href="https://www.cbs.nl/nl-nl/onze-diensten/maatwerk-en-microdata/microdata-zelf-onderzoek-doen/microdatabestanden/gbapersoontab-persoonskenmerken-van-personen-in-de-brp" target="_blank">CBS codebook</a>, <a href="https://doi.org/10.57934/0b01e4108071ba40" target="_blank">ODISSEI portal</a>): demographic characteristics (e.g.&nbsp;gender, year of birth, country of origin) of people included in the Municipal Personal Records Database (BRP). Most of them are Dutch residents; but from 2014 the dataset also includes people who are not residents but have relationships with Dutch authorities (e.g.&nbsp;work in the Netherlands but don’t live there long-term). There is one file per year (starting from 2009). Each file includes people who are registered in the BRP from January 1, 1994 to December 31, YYYY. People who were registered before January 1, 1994, but not after, are only partly covered.</p></li>
 <li><p><strong>GBAADRESOBJECTBUS</strong> (<a href="https://www.cbs.nl/nl-nl/onze-diensten/maatwerk-en-microdata/microdata-zelf-onderzoek-doen/microdatabestanden/gbaadresobjectbus-gba-adreskenmerken-van-personen" target="_blank">CBS codebook</a>, <a href="https://doi.org/10.57934/0b01e410802154d6" target="_blank">ODISSEI portal</a>): addresses of people registered in the Netherlands: address ID, date of registration at this address, and end date of address (when a person moved out or died). There are multiple rows per person (one row for each address). Also includes object ID (i.e.&nbsp;house ID) which can be used to link neighborhood characteristics to individuals.</p>

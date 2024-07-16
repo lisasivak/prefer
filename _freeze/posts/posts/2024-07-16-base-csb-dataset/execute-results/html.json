@@ -1,0 +1,14 @@
+{
+  "hash": "0cdc8ce9723edabe76bb5f551a42b215",
+  "result": {
+    "markdown": "---\ntitle: \"Register data: training and holdout sets used in PreFer\"\ndescription: |\n  The base CBS dataset that we created is described here.\ncategories:\n  - LISS\n  - dataset\n  - guide\nauthor: \n  - \"Lisa Sivak\"\n  - \"Gert Stulp\"\ndate: '2024-07-15'\ntoc: true\nimage: ../../images/liss_pick.png\nimage-alt: LISS logo. \nlanguage: \n    section-title-footnotes: References\n---\n\n\nOnce you have access to the CBS remote environment and log in, navigate to the folder 'H:\\\\DATASETS' and read the 'Readme' file. You will find the necessary files and instructions there.  \n\nWe prepared a base dataset mostly with the data from 2020 based on several CBS datasets. This base dataset contains information about the target group (individuals who were 18-45 years old at the end of 2020 and registered in the Netherlands at least in 2020-2023. In addition to the variables already included in the selected datasets (such as level of education, partnership status, and personal income), we constructed several variables (e.g., total number of children in 2020, age of the youngest child in 2020, total number of marriages and partnerships by the end of 2020, characteristics of jobs).\n\nWe splitted this dataset into the training and holdout sets (for the intermediate and final leaderboards). You can use the training set ('train.csv') with the outcome variable for training and the holdout (for intermediate leaderboard) without the outcome variable to produce predictions. You can also use 'train.csv' to get the IDs of people in the target group and then subset this group from the raw CBS datasets. \n\n\n\n\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n```{=html}\n<a href=\"https://raw.githubusercontent.com/lisasivak/prefer/master/data/codebook_base_file.xlsx\">\n<button class=\"btn btn-default hvr-sweep-to-left\">Download the codebook</button>\n</a>\n```\n:::\n:::\n\n\n\n## Base dataset: supplementary\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
