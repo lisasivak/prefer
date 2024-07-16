@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://preferdatachallenge.nl/all-content.html</loc>
-    <lastmod>2024-07-16T19:32:08.147Z</lastmod>
+    <lastmod>2024-07-16T20:03:24.380Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/about-us.html</loc>
@@ -82,7 +82,7 @@
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/posts/index.html</loc>
-    <lastmod>2024-07-16T19:32:09.837Z</lastmod>
+    <lastmod>2024-07-16T20:03:16.448Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/faq/index.html</loc>
@@ -102,7 +102,7 @@
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/index.html</loc>
-    <lastmod>2024-07-16T19:32:03.969Z</lastmod>
+    <lastmod>2024-07-16T20:03:18.681Z</lastmod>
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/funding.html</loc>
@@ -118,6 +118,10 @@
   </url>
   <url>
     <loc>https://preferdatachallenge.nl/posts/posts/2024-07-16-using_python-in-ra.html</loc>
-    <lastmod>2024-07-16T19:32:01.826Z</lastmod>
+    <lastmod>2024-07-16T19:38:00.001Z</lastmod>
+  </url>
+  <url>
+    <loc>https://preferdatachallenge.nl/posts/posts/2024-07-16-base-csb-dataset.html</loc>
+    <lastmod>2024-07-16T20:02:27.972Z</lastmod>
   </url>
 </urlset>

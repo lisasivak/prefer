@@ -1,7 +1,7 @@
 ---
-title: "Register data: training and holdout sets used in PreFer"
+title: "Where to start once you get access to the CBS remote access environment"
 description: |
-  The base CBS dataset that we created is described here.
+  Here we describe the datasets that we created based on the CBS data. You can use them for training or only to get IDs of people in the target group (in the training and holdout sets). 
 categories:
   - LISS
   - dataset
@@ -17,13 +17,20 @@ language:
     section-title-footnotes: References
 ---
 
-Once you have access to the CBS remote environment and log in, navigate to the folder 'H:\\DATASETS' and read the 'Readme' file. You will find the necessary files and instructions there.  
+Once you have access to the CBS remote environment and log in, navigate to the folder 'H:\\DATASETS'. You'll find the preprocessed files there (with IDs of people in the training and holdout sets). Read the 'Readme' file for more details. You will also find information in the Readme about where to find the raw CBS data which you can also use.    
 
-We prepared a base dataset mostly with the data from 2020 based on several CBS datasets. This base dataset contains information about the target group (individuals who were 18-45 years old at the end of 2020 and registered in the Netherlands at least in 2020-2023. In addition to the variables already included in the selected datasets (such as level of education, partnership status, and personal income), we constructed several variables (e.g., total number of children in 2020, age of the youngest child in 2020, total number of marriages and partnerships by the end of 2020, characteristics of jobs).
+## Base dataset
+We prepared a base dataset mostly with the data from 2020 based on several CBS datasets. This base dataset contains information about the target group (individuals who were 18-45 years old at the end of 2020 and registered in the Netherlands in 2020-2023). In addition to the variables already included in the selected datasets (such as level of education, partnership status, and personal income), we constructed several variables (e.g., total number of children in 2020, age of the youngest child in 2020, total number of marriages and partnerships by the end of 2020, characteristics of jobs). You can download the codebook for this base dataset below. The codebook is also available in the CBS RA.
 
-We splitted this dataset into the training and holdout sets (for the intermediate and final leaderboards). You can use the training set ('train.csv') with the outcome variable for training and the holdout (for intermediate leaderboard) without the outcome variable to produce predictions. You can also use 'train.csv' to get the IDs of people in the target group and then subset this group from the raw CBS datasets. 
+We splitted this dataset into the training and holdout sets (for the intermediate and final leaderboards). You can use the training set ('train.csv') with the outcome variable for training and the holdout (for intermediate leaderboard) without the outcome variable to produce predictions.  
 
+You can also use the 'train.csv' to get the IDs of people in the target group and then subset this group from the raw CBS datasets. 
 
+### Supplementary data
+
+We created the same base dataset (but without the outcome variable) for people who were registered in the Netherlands in 2020 (hence, the data from 2020 is also available for them) but who don't belong to the target group. You can use this data to get additional information about members of the target group's households or to create compositional characteristics about target group's networks.  
+
+We also created a file with all IDs and demographic information of people who were not registered in the Netherlands in 2020, but who were registered at some point in 2009-2019. This means that these people are likely included in the target group's networks. 
 
 
 

@@ -592,7 +592,7 @@
     "href": "posts/posts/2024-07-16-using_python-in-ra.html#how-to-create-python-environment",
     "title": "Using Python in CBS remote access environment",
     "section": "How to create Python environment",
-    "text": "How to create Python environment\nYou need to create the environment outside the RA, in Python on Windows, using Mambaforge installed in C:\\mambaforge. Follow the steps below to generate a txt file and send it to us. NOTE: if you want to use Jupyter Notebook or Spyder, you need to install them in the environment as well.\n\nOn your own Windows system in Python, create a new environment named after the project code (9469) plus your 4-letter RA username and activate it. As an example, we use 9469user.\nconda create –n 9469user\nconda activate 9469user\nInstall pip.\nconda install pip\nThen, install the required packages with pip.\npip install package_name\nExport the environment with pip.\n\npip freeze &gt; C:\\temp\\environment0000user.txt\n\nCheck that the file does not contain references to local paths (file://).\n\nIf it does, use the following command:\npip list --format=freeze &gt; C:\\\\temp\\\\environment0000user.txt\n\nTest the environment by removing and recreating it.\nrd /q /s &lt;path to python&gt;\\envs\\0000user\nconda create –n 0000user\nconda activate 0000user\nconda install pip\npip install –r C:\\temp\\environment0000user.txt\nNow test the Python environment."
+    "text": "How to create Python environment\nYou need to create the environment outside the RA, in Python on Windows, using Mambaforge installed in C:\\mambaforge. Follow the steps below to generate a txt file and send it to us. NOTE: if you want to use Jupyter Notebook or Spyder, you need to install them in the environment as well.\n\nOn your own Windows system in Python, create a new environment named after the project code (9469) plus your 4-letter RA username and activate it. As an example, we use 9469user.\nconda create –n 9469user\nconda activate 9469user\nInstall pip.\nconda install pip\nThen, install the required packages with pip.\npip install package_name\nExport the environment with pip.\n\npip freeze &gt; C:\\temp\\environment0000user.txt\n\nCheck that the file does not contain references to local paths (‘file://’).\n\nIf it does, use the following command:\npip list --format=freeze &gt; C:\\\\temp\\\\environment0000user.txt\n\nTest the environment by removing and recreating it.\nrd /q /s &lt;path to python&gt;\\envs\\0000user\nconda create –n 0000user\nconda activate 0000user\nconda install pip\npip install –r C:\\temp\\environment0000user.txt\nNow test the Python environment."
   },
   {
     "objectID": "posts/posts/2024-07-16-using_python-in-ra.html#how-to-start-jupyter-notebook",
@@ -606,6 +606,27 @@
     "href": "posts/posts/2024-07-16-using_python-in-ra.html#how-to-start-jupyter-notebook-in-ra",
     "title": "Using Python in CBS remote access environment",
     "section": "How to start Jupyter Notebook in RA",
-    "text": "How to start Jupyter Notebook in RA\nIn the search bar, type Python prompt and open it. Then run the command below. It will open Jupyter Notebook. Change drive (e.g., to F:) if you want to access another drive.\n‘C:\\mambaforge\\envs\\9469\\Scripts\\jupyter-notebook.exe –notebook-dir=“H:\\’\nPhoto by Nastya Dulhiier on Unsplash"
+    "text": "How to start Jupyter Notebook in RA\nIn the search bar, type Python prompt and open it. Then run the command below. It will open Jupyter Notebook. Change drive (e.g., to F:) if you want to access another drive.\nC:\\\\mambaforge\\\\envs\\\\9469\\\\Scripts\\\\jupyter-notebook.exe --notebook-dir=\"H:\\\\\nPhoto by Nastya Dulhiier on Unsplash"
+  },
+  {
+    "objectID": "posts/posts/2024-07-16-base-csb-dataset.html",
+    "href": "posts/posts/2024-07-16-base-csb-dataset.html",
+    "title": "Where to start once you get access to the CBS remote access environment",
+    "section": "",
+    "text": "Once you have access to the CBS remote environment and log in, navigate to the folder ‘H:\\DATASETS’. You’ll find the preprocessed files there (with IDs of people in the training and holdout sets). Read the ‘Readme’ file for more details. You will also find information in the Readme about where to find the raw CBS data which you can also use."
+  },
+  {
+    "objectID": "posts/posts/2024-07-16-base-csb-dataset.html#base-dataset",
+    "href": "posts/posts/2024-07-16-base-csb-dataset.html#base-dataset",
+    "title": "Where to start once you get access to the CBS remote access environment",
+    "section": "Base dataset",
+    "text": "Base dataset\nWe prepared a base dataset mostly with the data from 2020 based on several CBS datasets. This base dataset contains information about the target group (individuals who were 18-45 years old at the end of 2020 and registered in the Netherlands in 2020-2023). In addition to the variables already included in the selected datasets (such as level of education, partnership status, and personal income), we constructed several variables (e.g., total number of children in 2020, age of the youngest child in 2020, total number of marriages and partnerships by the end of 2020, characteristics of jobs). You can download the codebook for this base dataset below. The codebook is also available in the CBS RA.\nWe splitted this dataset into the training and holdout sets (for the intermediate and final leaderboards). You can use the training set (‘train.csv’) with the outcome variable for training and the holdout (for intermediate leaderboard) without the outcome variable to produce predictions.\nYou can also use the ‘train.csv’ to get the IDs of people in the target group and then subset this group from the raw CBS datasets.\n\nSupplementary data\nWe created the same base dataset (but without the outcome variable) for people who were registered in the Netherlands in 2020 (hence, the data from 2020 is also available for them) but who don’t belong to the target group. You can use this data to get additional information about members of the target group’s households or to create compositional characteristics about target group’s networks.\nWe also created a file with all IDs and demographic information of people who were not registered in the Netherlands in 2020, but who were registered at some point in 2009-2019. This means that these people are likely included in the target group’s networks.\n\n\n\nDownload the codebook"
+  },
+  {
+    "objectID": "posts/posts/2024-07-16-base-csb-dataset.html#base-dataset-supplementary",
+    "href": "posts/posts/2024-07-16-base-csb-dataset.html#base-dataset-supplementary",
+    "title": "Where to start once you get access to the CBS remote access environment",
+    "section": "Base dataset: supplementary",
+    "text": "Base dataset: supplementary\nPhoto by Nastya Dulhiier on Unsplash"
   }
 ]

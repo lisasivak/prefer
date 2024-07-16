@@ -8,10 +8,10 @@
 
 <meta name="author" content="Lisa Sivak">
 <meta name="author" content="Gert Stulp">
-<meta name="dcterms.date" content="2024-07-14">
-<meta name="description" content="Some tips for using Python in CBS remote access environment (RA).">
+<meta name="dcterms.date" content="2024-07-15">
+<meta name="description" content="Here we describe the datasets that we created based on the CBS data. You can use them for training or only to get IDs of people in the target group (in the training and holdout sets).">
 
-<title>Using Python in CBS remote access environment</title>
+<title>Where to start once you get access to the CBS remote access environment</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,9 +67,9 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../../rwds.css">
-<meta property="og:title" content="Using Python in CBS remote access environment">
-<meta property="og:description" content="Some tips for using Python in CBS remote access environment (RA).">
-<meta property="og:image" content="https://preferdatachallenge.nl/images/cbs_pick_python.jpg">
+<meta property="og:title" content="Where to start once you get access to the CBS remote access environment">
+<meta property="og:description" content="Here we describe the datasets that we created based on the CBS data. You can use them for training or only to get IDs of people in the target group (in the training and holdout sets).">
+<meta property="og:image" content="https://preferdatachallenge.nl/images/cbs_pick.jpg">
 <meta property="og:image:alt" content="LISS logo.">
 </head>
 
@@ -149,9 +149,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#current-python-environment" id="toc-current-python-environment" class="nav-link active" data-scroll-target="#current-python-environment">Current Python environment</a></li>
-  <li><a href="#how-to-create-python-environment" id="toc-how-to-create-python-environment" class="nav-link" data-scroll-target="#how-to-create-python-environment">How to create Python environment</a></li>
-  <li><a href="#how-to-start-jupyter-notebook-in-ra" id="toc-how-to-start-jupyter-notebook-in-ra" class="nav-link" data-scroll-target="#how-to-start-jupyter-notebook-in-ra">How to start Jupyter Notebook in RA</a></li>
+  <li><a href="#base-dataset" id="toc-base-dataset" class="nav-link active" data-scroll-target="#base-dataset">Base dataset</a>
+  <ul class="collapse">
+  <li><a href="#supplementary-data" id="toc-supplementary-data" class="nav-link" data-scroll-target="#supplementary-data">Supplementary data</a></li>
+  </ul></li>
+  <li><a href="#base-dataset-supplementary" id="toc-base-dataset-supplementary" class="nav-link" data-scroll-target="#base-dataset-supplementary">Base dataset: supplementary</a></li>
   </ul>
 </nav>
     </div>
@@ -160,16 +162,17 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Using Python in CBS remote access environment</h1>
+<h1 class="title">Where to start once you get access to the CBS remote access environment</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">prediction</div>
+    <div class="quarto-category">LISS</div>
+    <div class="quarto-category">dataset</div>
     <div class="quarto-category">guide</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    <p>Some tips for using Python in CBS remote access environment (RA).</p>
+    <p>Here we describe the datasets that we created based on the CBS data. You can use them for training or only to get IDs of people in the target group (in the training and holdout sets).</p>
   </div>
 </div>
 
@@ -187,7 +190,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 14, 2024</p>
+      <p class="date">July 15, 2024</p>
     </div>
   </div>
   
@@ -197,44 +200,27 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="current-python-environment" class="level2">
-<h2 class="anchored" data-anchor-id="current-python-environment">Current Python environment</h2>
-<p>It is impossible to install packages yourself inside the CBS RA since it’s cut off from the external Internet. One need to prepare a requirements file, and then CBS installs the environment based on it. To see which packages and versions are installed in the current Python environment in our project in RA, you can download the requirements file by right-clicking and selecting “Save As…” on <a href="https://raw.githubusercontent.com/lisasivak/prefer/master/data/environment9469.txt" download="environment9469.txt">this link</a>. The Python version is 3.10. This environment will be automatically activated when you load Python prompt (see instructions below) - you don’t have to activate it.</p>
-<p>If you need other packages, please create a new requirements file following instructions below and send it to us. It is possible to install several different environments (then you’ll need to activate and deactivate them using ‘conda deactivate’ and ‘conda activate env’ commands in Python prompt).</p>
+<p>Once you have access to the CBS remote environment and log in, navigate to the folder ‘H:\DATASETS’. You’ll find the preprocessed files there (with IDs of people in the training and holdout sets). Read the ‘Readme’ file for more details. You will also find information in the Readme about where to find the raw CBS data which you can also use.</p>
+<section id="base-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="base-dataset">Base dataset</h2>
+<p>We prepared a base dataset mostly with the data from 2020 based on several CBS datasets. This base dataset contains information about the target group (individuals who were 18-45 years old at the end of 2020 and registered in the Netherlands in 2020-2023). In addition to the variables already included in the selected datasets (such as level of education, partnership status, and personal income), we constructed several variables (e.g., total number of children in 2020, age of the youngest child in 2020, total number of marriages and partnerships by the end of 2020, characteristics of jobs). You can download the codebook for this base dataset below. The codebook is also available in the CBS RA.</p>
+<p>We splitted this dataset into the training and holdout sets (for the intermediate and final leaderboards). You can use the training set (‘train.csv’) with the outcome variable for training and the holdout (for intermediate leaderboard) without the outcome variable to produce predictions.</p>
+<p>You can also use the ‘train.csv’ to get the IDs of people in the target group and then subset this group from the raw CBS datasets.</p>
+<section id="supplementary-data" class="level3">
+<h3 class="anchored" data-anchor-id="supplementary-data">Supplementary data</h3>
+<p>We created the same base dataset (but without the outcome variable) for people who were registered in the Netherlands in 2020 (hence, the data from 2020 is also available for them) but who don’t belong to the target group. You can use this data to get additional information about members of the target group’s households or to create compositional characteristics about target group’s networks.</p>
+<p>We also created a file with all IDs and demographic information of people who were not registered in the Netherlands in 2020, but who were registered at some point in 2009-2019. This means that these people are likely included in the target group’s networks.</p>
+<div class="cell">
+<div class="cell-output-display">
+<a href="https://raw.githubusercontent.com/lisasivak/prefer/master/data/codebook_base_file.xlsx">
+<button class="btn btn-default hvr-sweep-to-left">Download the codebook</button>
+</a>
+</div>
+</div>
 </section>
-<section id="how-to-create-python-environment" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-create-python-environment">How to create Python environment</h2>
-<p>You need to create the environment outside the RA, in Python on <strong>Windows</strong>, using Mambaforge installed in C:\mambaforge. Follow the steps below to generate a txt file and send it to us. NOTE: if you want to use Jupyter Notebook or Spyder, you need to install them in the environment as well.</p>
-<ol type="1">
-<li><p>On your own Windows system in Python, create a new environment named after the project code (9469) plus your 4-letter RA username and activate it. As an example, we use 9469user.<br>
-<code>conda create –n 9469user</code><br>
-<code>conda activate 9469user</code></p></li>
-<li><p>Install pip.<br>
-<code>conda install pip</code></p></li>
-<li><p>Then, install the required packages with pip.<br>
-<code>pip install package_name</code></p></li>
-<li><p>Export the environment with pip.</p>
-<ol type="a">
-<li><code>pip freeze &gt; C:\temp\environment0000user.txt</code><br>
-</li>
-<li>Check that the file does not contain references to local paths (‘file://’).<br>
-</li>
-<li>If it does, use the following command:<br>
-<code>pip list --format=freeze &gt; C:\\temp\\environment0000user.txt</code></li>
-</ol></li>
-<li><p>Test the environment by removing and recreating it.<br>
-<code>rd /q /s &lt;path to python&gt;\envs\0000user</code><br>
-<code>conda create –n 0000user</code><br>
-<code>conda activate 0000user</code><br>
-<code>conda install pip</code><br>
-<code>pip install –r C:\temp\environment0000user.txt</code><br>
-Now test the Python environment.</p></li>
-</ol>
 </section>
-<section id="how-to-start-jupyter-notebook-in-ra" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-start-jupyter-notebook-in-ra">How to start Jupyter Notebook in RA</h2>
-<p>In the search bar, type Python prompt and open it. Then run the command below. It will open Jupyter Notebook. Change drive (e.g., to F:) if you want to access another drive.</p>
-<p><code>C:\\mambaforge\\envs\\9469\\Scripts\\jupyter-notebook.exe --notebook-dir="H:\\</code></p>
+<section id="base-dataset-supplementary" class="level2">
+<h2 class="anchored" data-anchor-id="base-dataset-supplementary">Base dataset: supplementary</h2>
 <p><font size="-1">Photo by <a href="https://unsplash.com/@dulhiier?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">Nastya Dulhiier</a> on <a href="https://unsplash.com/photos/lighted-city-at-night-aerial-photo-OKOOGO578eo?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">Unsplash</a></font></p>
 
 
