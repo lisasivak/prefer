@@ -1,0 +1,50 @@
+---
+title: "Register data: training and holdout sets used in PreFer"
+description: |
+  The base CBS dataset that we created is described here.
+categories:
+  - LISS
+  - dataset
+  - guide
+author: 
+  - "Lisa Sivak"
+  - "Gert Stulp"
+date: '2024-07-16'
+toc: true
+image: ../../images/liss_pick.png
+image-alt: LISS logo. 
+language: 
+    section-title-footnotes: References
+---
+
+Once you have access to the CBS remote environment and log in, navigate to the folder 'H:\\DATASETS' and read the 'Readme' file. You will find the necessary files and instructions there.  
+
+We prepared a base dataset mostly with the data from 2020 based on several CBS datasets. This base dataset contains information about the target group (individuals who were 18-45 years old at the end of 2020 and registered in the Netherlands at least in 2020-2023. In addition to the variables already included in the selected datasets (such as level of education, partnership status, and personal income), we constructed several variables (e.g., total number of children in 2020, age of the youngest child in 2020, total number of marriages and partnerships by the end of 2020, characteristics of jobs).
+
+We splitted this dataset into the training and holdout sets (for the intermediate and final leaderboards). You can use the training set ('train.csv') with the outcome variable for training and the holdout (for intermediate leaderboard) without the outcome variable to produce predictions. You can also use 'train.csv' to get the IDs of people in the target group and then subset this group from the raw CBS datasets. 
+
+
+
+
+
+
+```{r, warning = F, message = F}
+#| echo: false
+
+#install.packages("downloadthis")
+library(downloadthis)
+
+download_link(
+  link = "https://raw.githubusercontent.com/lisasivak/prefer/master/data/codebook_base_file.xlsx",
+  button_label = "Download the codebook",
+  button_type = "default",
+  has_icon = F,
+  icon = "fa fa-save",
+  self_contained = FALSE,
+  class = "hvr-sweep-to-left"
+)
+```
+
+
+## Base dataset: supplementary
+

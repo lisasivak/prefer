@@ -2,6 +2,9 @@
   {
     "listing": "/all-content.html",
     "items": [
+      "/posts/posts/2024-07-16-using_python-in-ra.html",
+      "/posts/posts/2024-07-16-base-csb-dataset.html",
+      "/posts/posts/2024-07-16-intro-csb-datasets.html",
       "/posts/posts/2024-04-03-calculating-the-outcome.html",
       "/posts/posts/2023-12-15-odissei-talk.html",
       "/posts/posts/2024-04-01-testing-predictive-ability-R.html",
@@ -34,7 +37,10 @@
       "/posts/posts/2024-03-30-slightly-complexer-walkthrough-r.html",
       "/posts/posts/2024-04-01-testing-predictive-ability-R.html",
       "/posts/posts/2023-12-15-odissei-talk.html",
-      "/posts/posts/2024-04-03-calculating-the-outcome.html"
+      "/posts/posts/2024-04-03-calculating-the-outcome.html",
+      "/posts/posts/2024-07-16-base-csb-dataset.html",
+      "/posts/posts/2024-07-16-intro-csb-datasets.html",
+      "/posts/posts/2024-07-16-using_python-in-ra.html"
     ]
   },
   {

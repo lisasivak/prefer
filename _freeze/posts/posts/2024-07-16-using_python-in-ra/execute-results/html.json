@@ -1,0 +1,14 @@
+{
+  "hash": "c2db951258ebb489d6b51e4bc99a3550",
+  "result": {
+    "markdown": "---\ntitle: \"Using Python in CBS remote access\"\ndescription: |\n  Some tips for using Python in CBS remote access environment.\ncategories:\n  - prediction\n  - guide\nauthor: \n  - \"Lisa Sivak\"\n  - \"Gert Stulp\"\ndate: '2024-16-07'\ntoc: true\nimage: ../../images/cbs_pick_python.jpg\nimage-alt: LISS logo. \nlanguage: \n    section-title-footnotes: References\n---\n\n\n## Current Python environment\nIt is impossible to install packages yourself inside the CBS remote environment since it's cut off from the external Internet. CBS can install an environment using the requirements file. You can download the requirements file below to see which packages and versions are currently installed (python version is 3.10). This environment will be automatically activated when you load python prompt (see instructions below) - you don't have to activate it.\n\nIf you need other packages, please create a new requirement file following instructions below and send it to us.  \n \n\n::: {.cell}\n::: {.cell-output-display}\n```{=html}\n<a href=\"https://raw.githubusercontent.com/lisasivak/prefer/master/data/codebook_base_file.xlsx\">\n<button class=\"btn btn-default hvr-sweep-to-left\">Download the requirements file</button>\n</a>\n```\n:::\n:::\n\n\n## How to create Python environment\nFollow the instructions below to create the requirements file. You need a __Windows__ machine for that. \n\n1. On your own Windows system in Python, create a new environment named after the project code plus your 4-letter RA username and activate it. As an example, we use 0000user.\n      a.`conda create –n 0000user`\n\n      b.`conda activate 0000user`\n\n\nInstall pip.\n`conda install pip`\n\nThen, install the required packages with pip.\n`pip install package_name`\n\nExport the environment with pip.\n`pip freeze > C:\\temp\\environment0000user.txt`\nCheck that the file does not contain references to local paths (file://).\nIf it does, use the following command:\npip list --format=freeze > C:\\\\temp\\\\environment0000user.txt\n\nTest the environment by removing and recreating it.\n`rd /q /s <path to python>\\envs\\0000user`\n`conda create –n 0000user`\n`conda activate 0000user`\n`conda install pip`\n`pip install –r C:\\temp\\environment0000user.txt`\n\nTest the Python environment.\n\n\n## How to start Jupyter Notebook\n\nIn the search bar, type Python prompt and open it. Then run the command below. It will open Jupyter Notebook. Change drive (e.g., to F:) if you want to access another drive.\n\n'C:\\\\mambaforge\\\\envs\\\\9469\\\\Scripts\\\\jupyter-notebook.exe --notebook-dir=\"H:\\\\'",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

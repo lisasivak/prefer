@@ -1,0 +1,76 @@
+---
+title: "Using Python in CBS remote access"
+description: |
+  Some tips for using Python in CBS remote access environment.
+categories:
+  - prediction
+  - guide
+author: 
+  - "Lisa Sivak"
+  - "Gert Stulp"
+date: '2024-16-07'
+toc: true
+image: ../../images/cbs_pick_python.jpg
+image-alt: LISS logo. 
+language: 
+    section-title-footnotes: References
+---
+
+## Current Python environment
+It is impossible to install packages yourself inside the CBS remote environment since it's cut off from the external Internet. CBS can install an environment using the requirements file. You can download the requirements file below to see which packages and versions are currently installed (python version is 3.10). This environment will be automatically activated when you load python prompt (see instructions below) - you don't have to activate it.
+
+If you need other packages, please create a new requirement file following instructions below and send it to us.  
+ 
+```{r, warning = F, message = F}
+#| echo: false
+
+#install.packages("downloadthis")
+library(downloadthis)
+
+download_link(
+  link = "https://raw.githubusercontent.com/lisasivak/prefer/master/data/codebook_base_file.xlsx",
+  button_label = "Download the requirements file",
+  button_type = "default",
+  has_icon = F,
+  icon = "fa fa-save",
+  self_contained = FALSE,
+  class = "hvr-sweep-to-left"
+)
+```
+
+## How to create Python environment
+Follow the instructions below to create the requirements file. You need a __Windows__ machine for that. 
+
+1. On your own Windows system in Python, create a new environment named after the project code plus your 4-letter RA username and activate it. As an example, we use 0000user.
+      a.`conda create –n 0000user`
+
+      b.`conda activate 0000user`
+
+
+Install pip.
+`conda install pip`
+
+Then, install the required packages with pip.
+`pip install package_name`
+
+Export the environment with pip.
+`pip freeze > C:\temp\environment0000user.txt`
+Check that the file does not contain references to local paths (file://).
+If it does, use the following command:
+pip list --format=freeze > C:\\temp\\environment0000user.txt
+
+Test the environment by removing and recreating it.
+`rd /q /s <path to python>\envs\0000user`
+`conda create –n 0000user`
+`conda activate 0000user`
+`conda install pip`
+`pip install –r C:\temp\environment0000user.txt`
+
+Test the Python environment.
+
+
+## How to start Jupyter Notebook
+
+In the search bar, type Python prompt and open it. Then run the command below. It will open Jupyter Notebook. Change drive (e.g., to F:) if you want to access another drive.
+
+'C:\\mambaforge\\envs\\9469\\Scripts\\jupyter-notebook.exe --notebook-dir="H:\\'
