@@ -55,8 +55,8 @@ You need to create the environment outside the RA, in Python on __Windows__, usi
 
 ## How to start Jupyter Notebook in RA
 
-In the search bar, type Python prompt and open it. Then run the command below. It will open Jupyter Notebook. Change drive (e.g., to F:) if you want to access another drive.  
+In the search bar, type Python prompt and open it. Then run the command below (sometimes it only works without quotation marks around `H:\`). It will open Jupyter Notebook. Change drive (e.g., to F:) if you want to access another drive.  
 
-`C:\\mambaforge\\envs\\9469\\Scripts\\jupyter-notebook.exe --notebook-dir="H:\\`  
+`C:\mambaforge\envs\9469\Scripts\jupyter-notebook.exe --notebook-dir="H:\"`  
 
 <font size="-1">Photo by <a href="https://unsplash.com/@dulhiier?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Nastya Dulhiier</a> on <a href="https://unsplash.com/photos/lighted-city-at-night-aerial-photo-OKOOGO578eo?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></font>

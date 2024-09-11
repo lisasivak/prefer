@@ -606,7 +606,7 @@
     "href": "posts/posts/2024-07-16-using_python-in-ra.html#how-to-start-jupyter-notebook-in-ra",
     "title": "Using Python in CBS remote access environment",
     "section": "How to start Jupyter Notebook in RA",
-    "text": "How to start Jupyter Notebook in RA\nIn the search bar, type Python prompt and open it. Then run the command below. It will open Jupyter Notebook. Change drive (e.g., to F:) if you want to access another drive.\nC:\\\\mambaforge\\\\envs\\\\9469\\\\Scripts\\\\jupyter-notebook.exe --notebook-dir=\"H:\\\\\nPhoto by Nastya Dulhiier on Unsplash"
+    "text": "How to start Jupyter Notebook in RA\nIn the search bar, type Python prompt and open it. Then run the command below (sometimes it only works without quotation marks around H:\\). It will open Jupyter Notebook. Change drive (e.g., to F:) if you want to access another drive.\nC:\\mambaforge\\envs\\9469\\Scripts\\jupyter-notebook.exe --notebook-dir=\"H:\\\"\nPhoto by Nastya Dulhiier on Unsplash"
   },
   {
     "objectID": "posts/posts/2024-07-16-base-csb-dataset.html",
