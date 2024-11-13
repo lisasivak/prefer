@@ -65,7 +65,7 @@ We think that the risk of companies improving their targeting based on the model
 
 Access to Dutch registry data is highly restricted. It is available only to authorized universities, scientific organizations, public policy institutions, and research institutes in the Netherlands and certain other EU countries, and can only be used for scientific (non-commercial) purposes under stringent conditions. Data access is granted exclusively to researchers affiliated with these organizations, who must first pass an awareness test.  
 
-All data analysis is conducted in a secure environment without internet access, and it is not possible to download the data onto personal computers. Only aggregated statistics, such as accuracy measures, can be exported; actual probabilities, such as the likelihood of having a child, cannot be exported from this environment.
+All data analysis is conducted in a secure environment without internet access, and it is not possible to download the data onto personal computers. Only aggregated statistics, such as accuracy measures, can be exported only after verification by Statistics Netherlands (CBS) employees. Individual level data, even statistical estimates such as an individual-level estimated probability of having a(nother) child, can never be exported from the environment.
 
 :::
 

@@ -65,7 +65,7 @@ toc: false
   
 <font size="+1">Welcome to the website of the __Predicting Fertility data challenge (PreFer)__. The aim of the challenge is to measure current predictability of fertility outcomes in the Netherlands to advance our understanding of fertility</font>  
 
-<font size="+1">[<span style="color:#cbcfe6;">__APPLY TO PARTICIPATE __</span>](https://forms.gle/cxc7U24n5ox7A1vu7){target="_blank"} and become a part of a unique data challenge in the social sciences</font> 
+<font size="+1">The challenge has now ended. We are analysing the results and will be sharing updates on this website. If you have questions about PreFer, please check the [<span style="color:#cbcfe6;">__FAQ__</span>](/faq/index.qmd) or [<span style="color:#cbcfe6;">__contact us__</span>](contact.qmd) </font> 
 
 :::
 
@@ -98,20 +98,20 @@ toc: false
 
 ## Important dates
 - <s>[Application](/details/overview/3application.md){target="_blank"} deadline: March 24, 2024</s>. This deadline has passed and the application is now closed.  
-- Start of the data challenge [Phase 1](/details/overview/3phases.md): April 1, 2024
-- Selection into [Phase 2](/details/overview/3phases.md): June 3 - June 17, 2024
-- Start of [Phase 2](/details/overview/3phases.md): June 17, 2024
-- End of [Phase 2](/details/overview/3phases.md) and [Phase 1](/details/overview/3phases.md): September 16, 2024
+- <s>Start of the data challenge [Phase 1](/details/overview/3phases.md): April 1, 2024</s>
+- <s>Selection into [Phase 2](/details/overview/3phases.md): June 3 - June 17, 2024</s>
+- <s>Start of [Phase 2](/details/overview/3phases.md): June 17, 2024</s>
+- <s>End of [Phase 2](/details/overview/3phases.md) and [Phase 1](/details/overview/3phases.md): September 16, 2024</s>
 - Announcing the winners: November 2024
 
 Deadlines for submissions:  
 
-- April 22nd, 12:00pm (afternoon) CEST (intermediate leaderboard)
-- May 13, 12:00pm (afternoon) CEST (intermediate leaderboard)
-- June 3, 12:00pm (afternoon) CEST (intermediate leaderboard)
-- July 29, 12:00pm (afternoon) CEST (intermediate leaderboard)
-- September 16, 12:00pm (afternoon) CEST - final deadline for submissions based on survey data
-- October 25, 17:00 CET - final deadline for submissions based on register data
+- <s>April 22nd, 12:00pm (afternoon) CEST (intermediate leaderboard)</s>
+- <s>May 13, 12:00pm (afternoon) CEST (intermediate leaderboard)</s>
+- <s>June 3, 12:00pm (afternoon) CEST (intermediate leaderboard)</s>
+- <s>July 29, 12:00pm (afternoon) CEST (intermediate leaderboard)</s>
+- <s>September 16, 12:00pm (afternoon) CEST - final deadline for submissions based on survey data</s>
+- <s>October 25, 17:00 CET - final deadline for submissions based on register data</s>
 
 :::
 :::
