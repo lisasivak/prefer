@@ -1,7 +1,7 @@
 ---
 pagetitle: FAQ
 title: FAQ
-#subtitle: Questions
+subtitle: Here we answer the most common questions about PreFer (Predicting Fertility in the Netherlands data challenge). The list is updated.
 title-block-banner: true
 sidebar: false
 page-layout: full
@@ -9,7 +9,42 @@ search: false
 
 ---
 
-## Preparing your submission
+## For general audience and media
+
+### General
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## What is a data challenge?
+A data challenge is a competition where research teams compete to predict a specific characteristic using provided datasets. The winning team is determined by comparing their predictions against actual values known only to the challenge organizers.  
+
+In the PreFer data challenge, researchers predicted who will have the first or subsequent child in the next three years (2021-2023) based on information from previous years.
+
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## Why predict who will have a child in the next years? is this useful? Is this scientifically important?
+
+
+:::
+
+### Ethics
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## Why predict whether an individual will have a child in the next few years? Doesn't this violate people's privacy? 
+Although our aim is to make the best possible predictions for all individuals, we are not interested in individual outcomes. Both LISS panel data and the datasets based on the Dutch registers are anonymized, and precautions are taken to prevent de-anonymization (e.g. full dates of birth or exact income are not available; in the LISS datasets, sensitive information is removed from open answers, etc.). De-anonymization of the Dutch registers data via linking with external datasets is also highly unlikely as linking with external data can only be done by Statistics Netherlands employees and is only possible after the external data is checked for potential risks of de-anonymization. To summarize, it is highly unlikely that during the challenge current (or predictions of the future) fertility outcomes of specific persons will be revealed.  
+If policies are developed based on the results (e.g., if particular groups of people will be identified who have fewer children than desired due to particular circumstances) these policies will be targeted at groups rather than individuals. 
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## If you are not interested in individual outcomes, why predict them?
+Developing models that predict individual-level fertility outcomes and then comparing and interpreting these models is a way of learning more about fertility behavior. This way has several advantages in comparison with the more traditional methods of studying fertility in the social sciences, which, for example, do not allow comparison of importance of different factors. In the [preprint](https://arxiv.org/abs/2402.00705){target="_blank"} we describe these advantages in more detail. 
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## If predictions are accurate, is there a risk that companies would adopt these methods to target specific individuals (see the for a notorious example [here](https://www.nytimes.com/2012/02/19/magazine/shopping-habits.html){target="_blank"})? 
+We think that the risk of companies improving their targeting based on the models produced in this data challenge is exceedingly small, because if predictions are accurate, they will be accurate because we have thousands of variables (including values and preferences) which companies do not usually have and which are hard to obtain without people’s awareness.
+:::
+
+## For PreFer participants
+### Preparing your submission
 
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
 ## What programming languages can I use? 
@@ -73,7 +108,7 @@ The docker tag should be similar to the one currently used; so no suffixes e.g. 
 :::
 
 
-## Submitting your model
+### Submitting your model
 
 
 
@@ -124,7 +159,7 @@ Each commit doesn't only include the changes of a certain file. It captures the 
 
 
 
-## General
+### General questions about participation
 
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
 ## There is a change in my team (e.g. another person joined, or somebody decided to stop participating), what should I do?
@@ -141,13 +176,6 @@ Everyone who has engaged in the data challenge and submitted predictions through
 You can start with [this review by Balbo et al.] (https://link.springer.com/article/10.1007/s10680-012-9277-y){target="_blank"}. Keep in mind though, that most studied factors are not necessarily the best predictors.
 :::
 
-::: {.callout-note appearance="simple" collapse="true" icon=false}
-## I need help?! Or I have a suggestion
-You can contact Elizaveta Sivak and Gert Stulp at preferdatachallenge [at] gmail [dot] com for any questions and suggestions you might have. 
-:::
-
-
-## Application
 
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
 ## I don't have experience in machine learning, can I participate?
@@ -179,19 +207,9 @@ Yes, you can participate in the challenge and then describe your approach in you
 With the example scripts and codebooks that we will provide, you will be able to produce and submit a basic method in several hours. Trying different methods to improve the predictions can take several weeks. However, any contribution is valuable. Consider applying even if you can dedicate only a few days.
 :::
 
-## Ethics
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
-## Why predict whether an individual will have a child in the next few years? Doesn't this violate people's privacy? 
-Although our aim is to make the best possible predictions for all individuals, we are not interested in individual outcomes. Both LISS panel data and the datasets based on the Dutch registers are anonymized, and precautions are taken to prevent de-anonymization (e.g. full dates of birth or exact income are not available; in the LISS datasets, sensitive information is removed from open answers, etc.). De-anonymization of the Dutch registers data via linking with external datasets is also highly unlikely as linking with external data can only be done by Statistics Netherlands employees and is only possible after the external data is checked for potential risks of de-anonymization. To summarize, it is highly unlikely that during the challenge current (or predictions of the future) fertility outcomes of specific persons will be revealed.  
-If policies are developed based on the results (e.g., if particular groups of people will be identified who have fewer children than desired due to particular circumstances) these policies will be targeted at groups rather than individuals. 
+## I need help?! Or I have a suggestion
+You can contact Elizaveta Sivak and Gert Stulp at preferdatachallenge [at] gmail [dot] com for any questions and suggestions you might have. 
 :::
 
-::: {.callout-note appearance="simple" collapse="true" icon=false}
-## If you are not interested in individual outcomes, why predict them?
-Developing models that predict individual-level fertility outcomes and then comparing and interpreting these models is a way of learning more about fertility behavior. This way has several advantages in comparison with the more traditional methods of studying fertility in the social sciences, which, for example, do not allow comparison of importance of different factors. In the [preprint](https://arxiv.org/abs/2402.00705){target="_blank"} we describe these advantages in more detail. 
-:::
 
-::: {.callout-note appearance="simple" collapse="true" icon=false}
-## If predictions are accurate, is there a risk that companies would adopt these methods to target specific individuals (see the for a notorious example [here](https://www.nytimes.com/2012/02/19/magazine/shopping-habits.html){target="_blank"})? 
-We think that the risk of companies improving their targeting based on the models produced in this data challenge is exceedingly small, because if predictions are accurate, they will be accurate because we have thousands of variables (including values and preferences) which companies do not usually have and which are hard to obtain without people’s awareness.
-:::

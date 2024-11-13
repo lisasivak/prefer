@@ -97,20 +97,21 @@ toc: false
 ::: {.listing-block}
 
 ## Important dates
-- <s>[Application](/details/overview/3application.md){target="_blank"} deadline: March 24, 2024</s>. This deadline has passed and the challenge has started, but [you can still apply](https://forms.gle/cxc7U24n5ox7A1vu7){target="_blank"}.  
+- <s>[Application](/details/overview/3application.md){target="_blank"} deadline: March 24, 2024</s>. This deadline has passed and the application is now closed.  
 - Start of the data challenge [Phase 1](/details/overview/3phases.md): April 1, 2024
 - Selection into [Phase 2](/details/overview/3phases.md): June 3 - June 17, 2024
 - Start of [Phase 2](/details/overview/3phases.md): June 17, 2024
 - End of [Phase 2](/details/overview/3phases.md) and [Phase 1](/details/overview/3phases.md): September 16, 2024
-- Announcing the winners: October 2024
+- Announcing the winners: November 2024
 
 Deadlines for submissions:  
 
-- <s>April 22nd, 12:00pm (afternoon) CEST (intermediate leaderboard)</s>
-- <s>May 13, 12:00pm (afternoon) CEST (intermediate leaderboard)</s>
-- <s>June 3, 12:00pm (afternoon) CEST (intermediate leaderboard)</s>
+- April 22nd, 12:00pm (afternoon) CEST (intermediate leaderboard)
+- May 13, 12:00pm (afternoon) CEST (intermediate leaderboard)
+- June 3, 12:00pm (afternoon) CEST (intermediate leaderboard)
 - July 29, 12:00pm (afternoon) CEST (intermediate leaderboard)
-- September 16, 12:00pm (afternoon) CEST - final deadline for submissions
+- September 16, 12:00pm (afternoon) CEST - final deadline for submissions based on survey data
+- October 25, 17:00 CET - final deadline for submissions based on register data
 
 :::
 :::
@@ -172,7 +173,15 @@ Submit your model (in [Phase 1](/details/overview/3phases.md)) or predictions (i
 :::
 :::
 
+::: {.content-container}
+::: {.listing-block}
 
+## Ethical approval
+
+This research was approved by the ethical committee of sociology at the University of Groningen (SOC-2425-S-0002).
+
+:::
+:::
 
 
 

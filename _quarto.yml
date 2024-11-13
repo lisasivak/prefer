@@ -27,22 +27,22 @@ website:
       #    href: other/copypaste.qmd
       #- text: "About PreFer"
       #  href: "#about-prefer"
-      - text: "APPLY"
-        href: details/overview/3application.md
-      - text: "Important dates"
-        href: "#important-dates"
+      #- text: "APPLY"
+      #  href: details/overview/3application.md
+      #- text: "Important dates"
+      #  href: "#important-dates"
       #- text: "The aim"
       #  href: "#the-aim"
       #- text: "Why participate"
       #  href: "#why-participate"
-      - text: "How to participate"
-        href: "#how-to-participate"
+      #- text: "How to participate"
+      #  href: "#how-to-participate"
+      - faq/index.qmd
       - text: "Paper"
         href: https://link.springer.com/article/10.1007/s42001-024-00275-6
         target: _blank
       #- text: "Methodology"
       #  href: "#about-prefer"
-      - faq/index.qmd
       - posts/index.qmd
       - text: "Organizers"
         menu: 
