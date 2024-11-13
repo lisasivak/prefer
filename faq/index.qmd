@@ -14,33 +14,59 @@ search: false
 ### General
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
 ## What is a data challenge?
-A data challenge is a competition where research teams compete to predict a specific characteristic using provided datasets. The winning team is determined by comparing their predictions against actual values known only to the challenge organizers.  
+A data challenge is a competition where research teams try to predict a specific characteristic as accurately as possible using provided datasets. The winning team is chosen based on how closely their predictions match actual values, which are known only to the challenge organizers.
+
+These competitions not only help identify the most accurate predictive models but also often drive scientific progress by refining predictive methods and uncovering new insights.
 
 In the PreFer data challenge, researchers predicted who will have the first or subsequent child in the next three years (2021-2023) based on information from previous years.
 
 :::
 
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
-## Why predict who will have a child in the next years? is this useful? Is this scientifically important?
+## Why predict who will have a child in the next years? Is this useful?
 
+Birth rates are a key driver of population growth and age structure, with profound socio-economic implications. Developing accurate predictive models and identifying the most predictive factors can enhance our ability to forecast future birth rates. Identifying groups at higher risk of having few or no children in the coming years is also vital. This can help policymakers support individuals in achieving their desired family sizes and address involuntary childlessness.
+
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## What is novel about PreFer?
+
+PreFer is the first data challenge in demography, and it uniquely combines large-scale administrative data from Dutch population registers with rich survey data from the LISS panel. By integrating these two data sources with advanced infrastructure provided by ODISSEI and partner organizations (such as the ODISSEI Secure Supercomputer supported by SURF), PreFer measures the current upper limits of predictability of fertility outcomes. By comparing performance of different methods and different data sources, this setting also help understand how predictability of fertility outcomes can be improved, or what are the limits of theory, methods, data, and infrastructure.
+:::
+
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## Where can I find the results of PreFer?
+
+PreFer ended in October 2024, and we are currently analysing the results. We plan to publish a paper with the main results and a special issue in the Journal of Computational Social Science in 2025. In the meanwhile, we will present results at conferences (check our session at the ODISSEI conference for computational social science) and post updates on this website.
 
 :::
 
 ### Ethics
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
-## Why predict whether an individual will have a child in the next few years? Doesn't this violate people's privacy? 
-Although our aim is to make the best possible predictions for all individuals, we are not interested in individual outcomes. Both LISS panel data and the datasets based on the Dutch registers are anonymized, and precautions are taken to prevent de-anonymization (e.g. full dates of birth or exact income are not available; in the LISS datasets, sensitive information is removed from open answers, etc.). De-anonymization of the Dutch registers data via linking with external datasets is also highly unlikely as linking with external data can only be done by Statistics Netherlands employees and is only possible after the external data is checked for potential risks of de-anonymization. To summarize, it is highly unlikely that during the challenge current (or predictions of the future) fertility outcomes of specific persons will be revealed.  
+## Doesn't predicting whether an individual will have a child in the next few years violate people's privacy? 
+Although our aim is to make the best possible predictions for all individuals, we are not interested in individual outcomes. Both PreFer data sources - LISS panel data and the datasets based on the Dutch registers - are anonymised, and precautions are taken to prevent de-anonymisation (e.g. full dates of birth or exact income are not available; in the LISS datasets, sensitive information is removed from open answers, etc.). De-anonymisation of the Dutch registers data via linking with external datasets is also highly unlikely as linking with external data can only be done by Statistics Netherlands employees and is only possible after the external data is checked for potential risks of de-anonymisation. To summarize, it is highly unlikely that during the challenge current (or predictions of the future) fertility outcomes of specific persons will be revealed. 
 If policies are developed based on the results (e.g., if particular groups of people will be identified who have fewer children than desired due to particular circumstances) these policies will be targeted at groups rather than individuals. 
 :::
 
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
 ## If you are not interested in individual outcomes, why predict them?
-Developing models that predict individual-level fertility outcomes and then comparing and interpreting these models is a way of learning more about fertility behavior. This way has several advantages in comparison with the more traditional methods of studying fertility in the social sciences, which, for example, do not allow comparison of importance of different factors. In the [preprint](https://arxiv.org/abs/2402.00705){target="_blank"} we describe these advantages in more detail. 
+Group-level predictions may overlook important variability within subgroups. By predicting fertility outcomes at the individual level, we can better analyze predictive performance across diverse subgroups, potentially enabling more targeted interventions. Identifying subgroups with lower predictability can highlight areas where our understanding of fertility behavior is limited or where important data is missing.
 :::
 
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
 ## If predictions are accurate, is there a risk that companies would adopt these methods to target specific individuals (see the for a notorious example [here](https://www.nytimes.com/2012/02/19/magazine/shopping-habits.html){target="_blank"})? 
 We think that the risk of companies improving their targeting based on the models produced in this data challenge is exceedingly small, because if predictions are accurate, they will be accurate because we have thousands of variables (including values and preferences) which companies do not usually have and which are hard to obtain without people’s awareness.
+:::
+
+::: {.callout-note appearance="simple" collapse="true" icon=false}
+## Research teams in PreFer used Dutch register data to predict fertility outcomes. This data contains detailed demographic and socio-economic information about all Dutch residents. How is this data protected?
+
+Access to Dutch registry data is highly restricted. It is available only to authorized universities, scientific organizations, public policy institutions, and research institutes in the Netherlands and certain other EU countries, and can only be used for scientific (non-commercial) purposes under stringent conditions. Data access is granted exclusively to researchers affiliated with these organizations, who must first pass an awareness test.  
+
+All data analysis is conducted in a secure environment without internet access, and it is not possible to download the data onto personal computers. Only aggregated statistics, such as accuracy measures, can be exported; actual probabilities, such as the likelihood of having a child, cannot be exported from this environment.
+
 :::
 
 ## For PreFer participants
@@ -53,7 +79,7 @@ You can use either R or python to develop your method (i.e. train your model). [
 
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
 ## Can I use both Python and R? For example, R for cleaning the data, and Python for training 
-The submission (i.e. the scripts for preprocessing the data and training the model, and the model itself) should be either in Python or R, otherwise it will not run on the holdout data.    
+The submission (i.e. the scripts for preprocessing the data and training the model, and the model itself) should be either in Python or R, otherwise it will not run on the holdout data.    
 :::
 
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
@@ -64,9 +90,9 @@ Yes, in Phase 1 (and track 3 of phase 2) you can use the LISS data in such a sha
 
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
 ## Can I use external data in my model? 
-It is possible if this data is publicly available.  
+It is possible if this data is publicly available.  
 
-The data must be from 2020 or earlier, because the task is to predict fertility outcomes in 2021-2023 based on information from earlier years. If you usу more recent data (from 2021 onwards), the result may not be evaluated in a standard way and ше may not be on the leaderboard. Exceptions are possible depending on the data.  
+The data must be from 2020 or earlier, because the task is to predict fertility outcomes in 2021-2023 based on information from earlier years. If you usу more recent data (from 2021 onwards), the result may not be evaluated in a standard way and ше may not be on the leaderboard. Exceptions are possible depending on the data.  
 
 If you plan to use any external data, please contact us.
 
@@ -75,7 +101,7 @@ If you plan to use any external data, please contact us.
 
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
 ## Can I use the codebooks in my submission? 
-Yes, you can use the codebooks. You need to add the codebook (or both codebooks) to your repository (root folder), and then you can just read the file(s) inside the function (i.e. not from an argument) the way you normally would read a csv file.  
+Yes, you can use the codebooks. You need to add the codebook (or both codebooks) to your repository (root folder), and then you can just read the file(s) inside the function (i.e. not from an argument) the way you normally would read a csv file.  
 
 If you are using R, additionally you need to check the 'r.Dockerfile' file, which is in your repository: check if the line 'COPY *.csv /app' is there. If not, please add it after the other lines with 'COPY'. 
 
@@ -99,9 +125,9 @@ The Python version is 3.11.7 and the R version is 4.3.3.
 It's better to stick to the same version unless that's the only way to use a particular function or package (for example, the package is only supported in the older version of Python). 
 
 To use another version of Python, edit the file 'python.Dockerfile' in your repository. Replace 'anaconda3:2024.02-1' in the first line with the tag for anaconda release, which uses the Python version that you need. First, check which Python versions are used in different Anaconda's [here](https://docs.anaconda.com/free/anaconda/allpkglists/2024.02-1/). Then go [here](https://registry.hub.docker.com/r/continuumio/anaconda3/tags) and find the tag for this version. For example, the tag for Anaconda 2020.02 is 'anaconda3:2020.02'. And then replace the tag in the 'python.Dockerfile', so the first line will look like this:
-FROM continuumio/anaconda3:2020.02  
+FROM continuumio/anaconda3:2020.02  
 
-The docker tag should be similar to the one currently used; so no suffixes e.g.  -alpine.
+The docker tag should be similar to the one currently used; so no suffixes e.g.  -alpine.
 
 
 
@@ -121,7 +147,7 @@ You can submit as many [submissions via the Next platform](https://github.com/ey
 
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
 ## Can I submit before the deadline, but then change my submission if I find a better model?
-Yes, you can make a submission via the Next platform in advance, and then update your submission if you find a better model.  
+Yes, you can make a submission via the Next platform in advance, and then update your submission if you find a better model.  
 
 How to update your submission: you will see an "Update" button on the Submit page after you submit something. To change your submission, replace the link to your commit and press this "Update" button.
 
@@ -131,7 +157,7 @@ How to update your submission: you will see an "Update" button on the Submit pag
 
 ::: {.callout-note appearance="simple" collapse="true" icon=false}
 ## Do I have to submit a model each time for the intermediate leaderboards?
-It is not obligatory to make a submission every time before we publish an intermediate leaderboard. An intermediate leaderboard is just an opportunity for you to see how your model is performing on the holdout set.  
+It is not obligatory to make a submission every time before we publish an intermediate leaderboard. An intermediate leaderboard is just an opportunity for you to see how your model is performing on the holdout set.  
 
 Make sure that you submit at least once before the final submission deadline in Phase 1 - June 3, 12:00pm (afternoon) CEST.
 
